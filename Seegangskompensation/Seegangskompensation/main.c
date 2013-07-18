@@ -13,8 +13,13 @@ void main(void)
 {
 	// Difinition der Konstanten
 	
-	// Initialisierung des Controlers
+	// Variablendeklration
+	char rgchLCD[] = "Test";   // Define RAM string
 	
+	// Initialisierung des Controlers
+		
+  	LCD_Start();                  // Initialisation des LCD-Displays
+   	
 	// Endlosschleife
 	while(){
 	
@@ -25,6 +30,8 @@ void main(void)
 		// Ausgang Setzen
 		
 		// LCD Ansteuern 
+		LCD_Position(0,5);            
+   		LCD_PrString(rgchLCD);        
 	};
 	
 }
