@@ -38,3 +38,6 @@ done
 Performing Project Clean...
 done
 
+Performing Project Clean...
+done
+

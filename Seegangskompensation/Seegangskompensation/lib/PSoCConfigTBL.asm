@@ -20,6 +20,33 @@ export LoadConfigTBL_seegangskompensation_Bank0
 export LoadConfigTBL_seegangskompensation_Ordered
 AREA lit(rom, rel)
 LoadConfigTBL_seegangskompensation_Bank0:
+;  Instance name DUALADC8_1, User Module DUALADC8
+;       Instance name DUALADC8_1, Block Name ADC1(ASC10)
+	db		80h, 90h		;DUALADC8_1_bfADC1cr0(ASC10CR0)
+	db		81h, 00h		;DUALADC8_1_bfADC1cr1(ASC10CR1)
+	db		82h, 60h		;DUALADC8_1_bfADC1cr2(ASC10CR2)
+	db		83h, f0h		;DUALADC8_1_bfADC1cr3(ASC10CR3)
+;       Instance name DUALADC8_1, Block Name ADC2(ASD11)
+	db		84h, 90h		;DUALADC8_1_bfADC2cr0(ASD11CR0)
+	db		85h, 00h		;DUALADC8_1_bfADC2cr1(ASD11CR1)
+	db		86h, 60h		;DUALADC8_1_bfADC2cr2(ASD11CR2)
+	db		87h, f0h		;DUALADC8_1_bfADC2cr3(ASD11CR3)
+;       Instance name DUALADC8_1, Block Name CNT1(DCB02)
+	db		2bh, 00h		;DUALADC8_1_bCounter1_CR0(DCB02CR0)
+	db		29h, 00h		;DUALADC8_1_bPeriod1(DCB02DR1)
+	db		2ah, 00h		;DUALADC8_1_bCompare1(DCB02DR2)
+;       Instance name DUALADC8_1, Block Name CNT2(DBB11)
+	db		37h, 00h		;DUALADC8_1_bCounter2_CR0(DBB11CR0)
+	db		35h, 00h		;DUALADC8_1_bPeriod2(DBB11DR1)
+	db		36h, 00h		;DUALADC8_1_bCompare2(DBB11DR2)
+;       Instance name DUALADC8_1, Block Name PWM16_LSB(DCB03)
+	db		2fh, 00h		;DUALADC8_1_fPWM_LSB_CR0(DCB03CR0)
+	db		2dh, 00h		;DUALADC8_1_bPWM_Period_LSB(DCB03DR1)
+	db		2eh, 00h		;DUALADC8_1_bPWM_IntTime_LSB(DCB03DR2)
+;       Instance name DUALADC8_1, Block Name PWM16_MSB(DBB10)
+	db		33h, 00h		;DUALADC8_1_fPWM_MSB_CR0(DBB10CR0)
+	db		31h, 00h		;DUALADC8_1_bPWM_Period_MSB(DBB10DR1)
+	db		32h, 00h		;DUALADC8_1_bPWM_IntTime_MSB(DBB10DR2)
 ;  Instance name LCD_1, User Module LCD
 ;  Instance name PWM16_1, User Module PWM16
 ;       Instance name PWM16_1, Block Name PWM16_LSB(DBB00)
@@ -35,15 +62,15 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
 	db		63h, 05h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
-	db		e6h, 00h		; DecimatorControl_0 register (DEC_CR0)
-	db		e7h, 00h		; DecimatorControl_1 register (DEC_CR1)
+	db		e6h, 38h		; DecimatorControl_0 register (DEC_CR0)
+	db		e7h, 10h		; DecimatorControl_1 register (DEC_CR1)
 	db		d6h, 00h		; I2CConfig register (I2CCFG)
 	db		b0h, 00h		; Row_0_InputMux register (RDI0RI)
 	db		b1h, 00h		; Row_0_InputSync register (RDI0SYN)
 	db		b2h, 00h		; Row_0_LogicInputAMux register (RDI0IS)
 	db		b3h, 33h		; Row_0_LogicSelect_0 register (RDI0LT0)
 	db		b4h, 33h		; Row_0_LogicSelect_1 register (RDI0LT1)
-	db		b5h, 00h		; Row_0_OutputDrive_0 register (RDI0SRO0)
+	db		b5h, 08h		; Row_0_OutputDrive_0 register (RDI0SRO0)
 	db		b6h, 00h		; Row_0_OutputDrive_1 register (RDI0SRO1)
 	db		b8h, 55h		; Row_1_InputMux register (RDI1RI)
 	db		b9h, 00h		; Row_1_InputSync register (RDI1SYN)
@@ -54,6 +81,25 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		beh, 00h		; Row_1_OutputDrive_1 register (RDI1SRO1)
 	db		ffh
 LoadConfigTBL_seegangskompensation_Bank1:
+;  Instance name DUALADC8_1, User Module DUALADC8
+;       Instance name DUALADC8_1, Block Name ADC1(ASC10)
+;       Instance name DUALADC8_1, Block Name ADC2(ASD11)
+;       Instance name DUALADC8_1, Block Name CNT1(DCB02)
+	db		28h, 21h		;DUALADC8_1_fCounter1FN(DCB02FN)
+	db		29h, 40h		;DUALADC8_1_fCounter1SL(DCB02IN)
+	db		2ah, 40h		;DUALADC8_1_fCounter1OS(DCB02OU)
+;       Instance name DUALADC8_1, Block Name CNT2(DBB11)
+	db		34h, 21h		;DUALADC8_1_fCounter2FN(DBB11FN)
+	db		35h, 50h		;DUALADC8_1_fCounter2SL(DBB11IN)
+	db		36h, 40h		;DUALADC8_1_fCounter2OS(DBB11OU)
+;       Instance name DUALADC8_1, Block Name PWM16_LSB(DCB03)
+	db		2ch, 01h		;DUALADC8_1_bfPWM_LSB_FN(DCB03FN)
+	db		2dh, 10h		;DUALADC8_1_(DCB03IN)
+	db		2eh, 40h		;DUALADC8_1_(DCB03OU)
+;       Instance name DUALADC8_1, Block Name PWM16_MSB(DBB10)
+	db		30h, 21h		;DUALADC8_1_bfPWM_MSB_FN(DBB10FN)
+	db		31h, 30h		;DUALADC8_1_(DBB10IN)
+	db		32h, 40h		;DUALADC8_1_(DBB10OU)
 ;  Instance name LCD_1, User Module LCD
 ;  Instance name PWM16_1, User Module PWM16
 ;       Instance name PWM16_1, Block Name PWM16_LSB(DBB00)
@@ -63,7 +109,7 @@ LoadConfigTBL_seegangskompensation_Bank1:
 ;       Instance name PWM16_1, Block Name PWM16_MSB(DBB01)
 	db		24h, 21h		;PWM16_1_FUNC_MSB_REG(DBB01FN)
 	db		25h, 30h		;PWM16_1_INPUT_MSB_REG(DBB01IN)
-	db		26h, 00h		;PWM16_1_OUTPUT_MSB_REG(DBB01OU)
+	db		26h, 04h		;PWM16_1_OUTPUT_MSB_REG(DBB01OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -90,7 +136,7 @@ LoadConfigTBL_seegangskompensation_Ordered:
 	mov	reg[00h], 00h		; Port_0_Data register (PRT0DR)
 	M8C_SetBank1
 	mov	reg[00h], 00h		; Port_0_DriveMode_0 register (PRT0DM0)
-	mov	reg[01h], ffh		; Port_0_DriveMode_1 register (PRT0DM1)
+	mov	reg[01h], feh		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
 	mov	reg[03h], ffh		; Port_0_DriveMode_2 register (PRT0DM2)
 	mov	reg[02h], 00h		; Port_0_GlobalSelect register (PRT0GS)
@@ -101,11 +147,11 @@ LoadConfigTBL_seegangskompensation_Ordered:
 	mov	reg[01h], 00h		; Port_0_IntEn register (PRT0IE)
 	mov	reg[04h], 00h		; Port_1_Data register (PRT1DR)
 	M8C_SetBank1
-	mov	reg[04h], 00h		; Port_1_DriveMode_0 register (PRT1DM0)
-	mov	reg[05h], ffh		; Port_1_DriveMode_1 register (PRT1DM1)
+	mov	reg[04h], 10h		; Port_1_DriveMode_0 register (PRT1DM0)
+	mov	reg[05h], efh		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], ffh		; Port_1_DriveMode_2 register (PRT1DM2)
-	mov	reg[06h], 00h		; Port_1_GlobalSelect register (PRT1GS)
+	mov	reg[07h], efh		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[06h], 10h		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)
 	mov	reg[07h], 00h		; Port_1_IntCtrl_1 register (PRT1IC1)

@@ -18,6 +18,7 @@
 #define __PSOCAPI_H
 
 #include "PSoCGPIOINT.h"
+#include "DUALADC8_1.h"
 #include "LCD_1.h"
 #include "PWM16_1.h"
 
