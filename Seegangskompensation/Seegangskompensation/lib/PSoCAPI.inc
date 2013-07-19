@@ -14,6 +14,6 @@
 ; =============================================================================
  
 include "PSoCGPIOINT.inc"
-include "DUALADC8_1.inc"
+include "DUALADC8.inc"
 include "LCD_1.inc"
 include "PWM16_1.inc"

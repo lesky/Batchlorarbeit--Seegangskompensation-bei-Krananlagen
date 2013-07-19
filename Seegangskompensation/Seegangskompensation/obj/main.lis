@@ -1,0 +1,159 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+                        .area lit(rom, con, rel, lit)
+ 0000           L2:
+ 0000 5465737400        .byte 'T,'e,'s,'t,0
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           ; pdchEntfernung -> X+6
+ 0000           ; pdchBechleunigung -> X+5
+ 0000           ;        rgchLCD -> X+0
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000 10                push X
+ 0001 4F                mov X,SP
+ 0002 3807              add SP,7
+ 0004                   .dbline 14
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; // C main line
+ 0004           ; // Programm: Seegangskompensation bei Krahnanlagen
+ 0004           ; // Version: 0.0.0.1
+ 0004           ; // Controler: CY8C27446-24PXI
+ 0004           ; // Variablenbenennung nach Apps Hungaryan
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; 
+ 0004           ; #include <m8c.h>        // part specific constants and macros
+ 0004           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0004           ; 
+ 0004           ; 
+ 0004           ; void main(void)
+ 0004           ; {
+ 0004                   .dbline 19
+ 0004           ;       // Difinition der Konstanten
+ 0004           ;       
+ 0004           ;       // Variablendeklration
+ 0004           ;       
+ 0004           ;       char rgchLCD[] = "Test";                                                // Define RAM string
+ 0004 550000            mov [__r1],<L2
+ 0007 550000            mov [__r0],>L2
+ 000A 5A00              mov [__r3],X
+ 000C 10                push X
+ 000D 550000            mov [__rX],0
+ 0010 5100              mov A,[__r0]
+ 0012 5800              mov X,[__r1]
+ 0014           X1:
+ 0014 08                push A
+ 0015 28                romx
+ 0016 3F00              mvi [__r3],A
+ 0018 18                pop A
+ 0019 75                inc X
+ 001A 0900              adc A,0
+ 001C 7600              inc [__rX]
+ 001E 3C0005            cmp [__rX],5
+ 0021 BFF2              jnz X1
+ 0023 20                pop X
+ 0024                   .dbline 24
+ 0024           ;       char pdchBechleunigung, pdchEntfernung;                 // Variablen zum Einlesen der Daten
+ 0024           ;       
+ 0024           ;       // Initialisierung des Controlers
+ 0024           ;       
+ 0024           ;       M8C_EnableGInt;                                         // Enable global interrupts     
+ 0024 7101                      or  F, 01h
+ 0026           
+ 0026                   .dbline 25
+ 0026           ;       LCD_1_Start();                                                  // Initialisieren des LCD-Displays
+ 0026 10                push X
+ 0027 7C0000            xcall _LCD_1_Start
+ 002A                   .dbline 27
+ 002A           ;    
+ 002A           ;       DUALADC8_Start(DUALADC8_HIGHPOWER);                     // Turn on Analog section
+ 002A 5003              mov A,3
+ 002C 7C0000            xcall _DUALADC8_Start
+ 002F                   .dbline 28
+ 002F           ;       DUALADC8_SetCalcTime(100);                              // Set CalcTime to 100
+ 002F 5700              mov X,0
+ 0031 5064              mov A,100
+ 0033 7C0000            xcall _DUALADC8_SetCalcTime
+ 0036                   .dbline 29
+ 0036           ;       DUALADC8_GetSamples();                                  // Start ADC
+ 0036 7C0000            xcall _DUALADC8_GetSamples
+ 0039 20                pop X
+ 003A 8033              xjmp L4
+ 003C           L6:
+ 003C                   .dbline 35
+ 003C           ;       // Endlosschleife
+ 003C           ;       while(1) {
+ 003C           ;       
+ 003C           ;       // Daten Einlesen
+ 003C           ;          
+ 003C           ;     while(DUALADC8_fIsDataAvailable == 0);                    // Auf Daten warten
+ 003C           L7:
+ 003C                   .dbline 35
+ 003C 5000              mov A,<PL_DUALADC8_fIsDataAvailable
+ 003E 10                push X
+ 003F 5800              mov X,[__r1]
+ 0041 08                push A
+ 0042 28                romx
+ 0043 5300              mov [__r0],A
+ 0045 18                pop A
+ 0046 75                inc X
+ 0047 0900              adc A,0
+ 0049 28                romx
+ 004A 20                pop X
+ 004B 3C0000            cmp [__r0],0
+ 004E AFED              jz L6
+ 0050                   .dbline 36
+ 0050           ;     pdchBechleunigung = DUALADC8_cGetData1();         // Einlesen der Beschleunigung
+ 0050 10                push X
+ 0051 7C0000            xcall _DUALADC8_cGetData1
+ 0054 20                pop X
+ 0055 5405              mov [X+5],A
+ 0057                   .dbline 37
+ 0057           ;     pdchEntfernung = DUALADC8_cGetData2ClearFlag();   // Einlesen der Entfernung
+ 0057 10                push X
+ 0058 7C0000            xcall _DUALADC8_cGetData2ClearFlag
+ 005B 20                pop X
+ 005C 5406              mov [X+6],A
+ 005E                   .dbline 46
+ 005E           ;                                                               // data ready flag zurüvksetzen
+ 005E           ;                                                  
+ 005E           ;      
+ 005E           ;       // Parameter Berechnen
+ 005E           ;               
+ 005E           ;       // Ausgang Setzen
+ 005E           ;               
+ 005E           ;       // LCD Ansteuern 
+ 005E           ;       LCD_1_Position(0,5);            
+ 005E 10                push X
+ 005F 5705              mov X,5
+ 0061 5000              mov A,0
+ 0063 7C0000            xcall _LCD_1_Position
+ 0066 20                pop X
+ 0067                   .dbline 47
+ 0067           ;       LCD_1_PrString(rgchLCD);
+ 0067 10                push X
+ 0068 5100              mov A,[__r0]
+ 006A 7C0000            xcall _LCD_1_PrString
+ 006D 20                pop X
+ 006E                   .dbline 49
+ 006E           ;       
+ 006E           ;       };
+ 006E           L4:
+ 006E                   .dbline 31
+ 006E 8FCD              xjmp L7
+ 0070           X0:
+ 0070                   .dbline -2
+ 0070           L1:
+ 0070 38F9              add SP,-7
+ 0072 20                pop X
+ 0073                   .dbline 0 ; func end
+ 0073 8FFF              jmp .
+ 0075                   .dbsym l pdchEntfernung 6 c
+ 0075                   .dbsym l pdchBechleunigung 5 c
+ 0075                   .dbsym l rgchLCD 0 A[5:5]c
+ 0075                   .dbend
+                        .area func_lit(rom, con, rel, proclab)
+ 0000 0000      PL_DUALADC8_fIsDataAvailable:   .word _DUALADC8_fIsDataAvailable
