@@ -18,10 +18,10 @@ void main(void)
 	
 	// Initialisierung des Controlers
 		
-  	LCD_Start();                  // Initialisation des LCD-Displays
+  	LCD_1_Start();                  // Initialisation des LCD-Displays
    	
 	// Endlosschleife
-	while(){
+	while(1) {
 	
 		// Daten Einlesen
 		
@@ -30,8 +30,8 @@ void main(void)
 		// Ausgang Setzen
 		
 		// LCD Ansteuern 
-		LCD_Position(0,5);            
-   		LCD_PrString(rgchLCD);        
+		LCD_1_Position(0,5);            
+   		LCD_1_PrString(rgchLCD);        
 	};
 	
 }
