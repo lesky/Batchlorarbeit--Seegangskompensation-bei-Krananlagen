@@ -14,3 +14,6 @@ Built with ICCM8C STD V7.05.00
  
 Seegangskompensation - 0 error(s) 0 warning(s) 15:36:15
 
+Performing Project Clean...
+done
+

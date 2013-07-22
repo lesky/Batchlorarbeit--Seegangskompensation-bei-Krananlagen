@@ -24,9 +24,10 @@ void main(void)
 	M8C_EnableGInt;                     			// Enable global interrupts	
   	LCD_1_Start();                 					// Initialisieren des LCD-Displays
    
-   	DUALADC8_Start(DUALADC8_HIGHPOWER); 			// Turn on Analog section
+   	DUALADC8_Start(DUALADC8_HIGHPOWER); 			// Initialisieren mdes Dualen AD-Wandlers
    	DUALADC8_SetCalcTime(100);          			// Set CalcTime to 100
    	DUALADC8_GetSamples();              			// Start ADC
+	
 	// Endlosschleife
 	while(1) {
 	
