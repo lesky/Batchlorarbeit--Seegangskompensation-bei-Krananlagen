@@ -64,27 +64,27 @@ extern void  ADCINC_1_WritePulseWidth(BYTE bPulseWidthValue);
 //-------------------------------------------------
 // Hardware Register Definitions
 //-------------------------------------------------
-#pragma ioport  ADCINC_1_PWMdr0:    0x028                 //Period reg
+#pragma ioport  ADCINC_1_PWMdr0:    0x038                 //Period reg
 BYTE            ADCINC_1_PWMdr0;
-#pragma ioport  ADCINC_1_PWMdr1:    0x029                 //1_ADDRh   ; Down count reg
+#pragma ioport  ADCINC_1_PWMdr1:    0x039                 //1_ADDRh   ; Down count reg
 BYTE            ADCINC_1_PWMdr1;               
-#pragma ioport  ADCINC_1_PWMdr2:    0x02a                 //Compare reg
+#pragma ioport  ADCINC_1_PWMdr2:    0x03a                 //Compare reg
 BYTE            ADCINC_1_PWMdr2;
-#pragma ioport  ADCINC_1_PWMcr0:    0x02b                 //Control reg
+#pragma ioport  ADCINC_1_PWMcr0:    0x03b                 //Control reg
 BYTE            ADCINC_1_PWMcr0;
-#pragma ioport  ADCINC_1_PWMfn: 0x128                  //Function reg
+#pragma ioport  ADCINC_1_PWMfn: 0x138                  //Function reg
 BYTE            ADCINC_1_PWMfn;
-#pragma ioport  ADCINC_1_PWMsl: 0x129                  //Input select reg
+#pragma ioport  ADCINC_1_PWMsl: 0x139                  //Input select reg
 BYTE            ADCINC_1_PWMsl;
-#pragma ioport  ADCINC_1_PWMos: 0x12a                  //Output select reg
+#pragma ioport  ADCINC_1_PWMos: 0x13a                  //Output select reg
 BYTE            ADCINC_1_PWMos;
-#pragma ioport  ADCINC_1_AtoDcr0:   0x080                //SC Block Control Reg 0
+#pragma ioport  ADCINC_1_AtoDcr0:   0x088                //SC Block Control Reg 0
 BYTE            ADCINC_1_AtoDcr0;
-#pragma ioport  ADCINC_1_AtoDcr1:   0x081                //SC Block Control Reg 1
+#pragma ioport  ADCINC_1_AtoDcr1:   0x089                //SC Block Control Reg 1
 BYTE            ADCINC_1_AtoDcr1;
-#pragma ioport  ADCINC_1_AtoDcr2:   0x082                //SC Block Control Reg 2
+#pragma ioport  ADCINC_1_AtoDcr2:   0x08a                //SC Block Control Reg 2
 BYTE            ADCINC_1_AtoDcr2;
-#pragma ioport  ADCINC_1_AtoDcr3:   0x083                //SC Block Control Reg 3
+#pragma ioport  ADCINC_1_AtoDcr3:   0x08b                //SC Block Control Reg 3
 BYTE            ADCINC_1_AtoDcr3;
 
 #endif
