@@ -5,7 +5,8 @@ Anutor: Benjamin Lesky
 
 I/O-Konfiguration:
 LCD -> Port 2
-PWM -> Pin 1.4
+PWM 1-> Pin 1.4
+PWM 1-> Pin 1.5
 
 ToDO:
 -Eingänge "verdraten"
