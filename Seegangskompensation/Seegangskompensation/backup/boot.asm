@@ -170,7 +170,7 @@ ENDIF
     reti
 
     org   38h                      ;PSoC Block DCB12 Interrupt Vector
-    // call	void_handler
+    ljmp	_ADCINC_1_ADConversion_ISR
     reti
 
     org   3Ch                      ;PSoC Block DCB13 Interrupt Vector

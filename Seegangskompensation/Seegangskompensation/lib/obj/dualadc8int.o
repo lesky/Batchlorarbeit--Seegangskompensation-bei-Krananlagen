@@ -1,0 +1,134 @@
+XH
+H 3 areas B global symbols
+M dualadc8int.asm
+A text size 0 flags 0
+dbfile lib/dualadc8int.asm
+dbfunc 0 ? 0 I
+dbfile DUALADC8.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/DUALADC8.inc
+dbfunc 0 ? 0 I
+dbfile lib/dualadc8int.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/dualadc8int.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 7 flags 20
+S _DUALADC8_bfStatus Def0006
+S DUALADC8_cCounter1U Def0000
+S DUALADC8_cCounter2U Def0001
+S DUALADC8_iResult1 Def0002
+S DUALADC8_iResult2 Def0004
+S DUALADC8_bfStatus Def0006
+S _DUALADC8_iResult1 Def0002
+S _DUALADC8_iResult2 Def0004
+A UserModules size 95 flags 0
+dbfile lib/dualadc8int.asm
+dbfunc 0 ? 0 I
+dbline 5A 0
+dbline 64 2
+dbline 71 3
+dbline 7B 5
+dbline 8A 6
+dbline 8B 9
+dbline 8D C
+dbline 8E F
+dbline 90 12
+dbline 91 15
+dbline 2 18
+dbline 96 1A
+dbline 2 1B
+dbline 98 1D
+dbline 9C 1E
+dbline 9D 20
+dbline 9E 22
+dbline 9F 23
+dbline A0 24
+dbline A1 26
+dbline A3 28
+dbline A4 2A
+dbline A5 2C
+dbline A8 2E
+dbline A9 30
+dbline AA 32
+dbline AB 33
+dbline AC 34
+dbline AD 36
+dbline AF 38
+dbline B0 3A
+dbline B1 3C
+dbline B5 3E
+dbline B6 41
+dbline B7 44
+dbline B8 47
+dbline BC 4A
+dbline BD 4D
+dbline D1 50
+dbline D2 53
+dbline D4 56
+dbline D5 59
+dbline E4 5C
+dbline E5 5F
+dbline E7 61
+dbline E8 63
+dbline E9 65
+dbline EB 67
+dbline F6 69
+dbline F7 6B
+dbline FA 6E
+dbline FB 70
+dbline FC 72
+dbline FD 74
+dbline 102 76
+dbline 103 79
+dbline 105 7B
+dbline 106 7D
+dbline 107 7F
+dbline 108 81
+dbline 113 83
+dbline 114 85
+dbline 117 88
+dbline 118 8A
+dbline 119 8C
+dbline 11A 8E
+dbline 11C 90
+dbline 11D 91
+dbline 130 94
+S _DUALADC8_CNT1_ISR Def0000
+S _DUALADC8_CNT2_ISR Def0003
+S _DUALADC8_PWM16_ISR Def0006
+T 00 00 76 00 00 7E 76 00 01 7E 41 2B FE 41 37 FE
+R 00 00 00 02 01 03 00 01 01 07 00 01
+T 00 0C 43 82 20 43 86 20 43 83 10 43 87 10 71 01
+R 00 00 00 02
+T 00 1A 40 70 FE 08 5D 28 5D 2A 78 73 D0 03 76
+R 00 00 00 02
+T 00 27 00 00 53 00 03 51 00 00 53
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 08 00 01
+T 00 2D 00 02 5D 34 5D 36 78 73 D0 03 76 00 01 53
+R 00 00 00 02 01 02 00 01 01 0D 00 01
+T 00 39 00 05 51 00 01 53 00 04 62 29 FF 62 35 FF
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 08 00 01
+T 00 44 62 2B 01 62 37 01 55 00 00 FE 55 00 01 FE
+R 00 00 00 02 01 09 00 01 01 0D 00 01
+T 00 50 41 83 EF 41 87 EF 41 82 DF 41 86 DF 47
+R 00 00 00 02
+T 00 5D 00 02 80 B0 0E 50 02 22 00 02 A0 08 50 01
+R 00 00 00 02 01 02 00 01 01 0A 00 01
+T 00 69 53 00 02 55 00 03 FF 68 00 02 6E
+R 00 00 00 02 01 03 00 01 01 06 00 01 01 0A 00 01
+T 00 71 00 03 68 00 02 6E 00 03 47
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 08 00 01
+T 00 77 00 04 80 B0 0E 50 02 22 00 04 A0 08 50 01
+R 00 00 00 02 01 02 00 01 01 0A 00 01
+T 00 83 53 00 04 55 00 05 FF 68 00 04 6E
+R 00 00 00 02 01 03 00 01 01 06 00 01 01 0A 00 01
+T 00 8B 00 05 68 00 04 6E 00 05 18 2E
+R 00 00 00 02 01 02 00 01 01 05 00 01 01 08 00 01
+T 00 92 00 06 10 7E
+R 00 00 00 02 01 02 00 01

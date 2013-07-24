@@ -2,29 +2,41 @@
 ./obj/boot.o : \
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8ssc.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\lib\GLOBAL~1.INC\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
-./obj/main.o :  ./lib/DUALADC8.h ./lib/LCD_1.h ./lib/PSoCAPI.h\
-   ./lib/PSOCGP~1.H ./lib/PWM16_1.h\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\lib\GLOBAL~1.INC\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
+./obj/main.o :  ./lib/ADCINC.h ./lib/DUALADC8.h ./lib/LCD_1.h\
+   ./lib/PSoCAPI.h ./lib/PSOCGP~1.H ./lib/PWM8_1.h ./lib/PWM8_2.h\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8C.h\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.h
+./lib/obj/adcinc.o :  ./lib/ADCINC.inc\
+   C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
+./lib/obj/adcincint.o :  ./lib/ADCINC.inc\
+   C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/dualadc8.o :  ./lib/DUALADC8.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/dualadc8int.o :  ./lib/DUALADC8.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/lcd_1.o :  ./lib/LCD_1.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/psocconfig.o :  ./lib/GLOBAL~1.INC\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/psocconfigtbl.o : \
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
-./lib/obj/pwm16_1.o :  ./lib/PWM16_1.inc\
+./lib/obj/pwm8_1.o :  ./lib/PWM8_1.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
-./lib/obj/pwm16_1int.o :  ./lib/PWM16_1.inc\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
+./lib/obj/pwm8_1int.o :  ./lib/PWM8_1.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
-   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\ADWAND~1\SEEGAN~1\SEEGAN~1\memory.inc
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
+./lib/obj/pwm8_2.o :  ./lib/PWM8_2.inc\
+   C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
+./lib/obj/pwm8_2int.o :  ./lib/PWM8_2.inc\
+   C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
+   C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\memory.inc
