@@ -11,4 +11,4 @@ ToDO:
 -Eingänge "verdraten"
 -Algorithmus Programmieren
 -Sollwert Programmieren
--PwM Programmieren
+-PwM Programmieren (Erledigt 22.07.13)
