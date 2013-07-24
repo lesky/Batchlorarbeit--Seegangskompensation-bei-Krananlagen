@@ -30,22 +30,22 @@ ADCINC_1_8_OR_MORE_BITS:        equ ((0eh )& 08h)
 ;--------------------------------------------------
 ; Register Address Constants for ADCINC_1
 ;--------------------------------------------------
-ADCINC_1_ISR_MASK:                     equ 04h
+ADCINC_1_ISR_MASK:                     equ 40h
 ADCINC_1_ISR_REG:                      equ 0e1h
 ADCINC_1_CLR_REG:                      equ (((ADCINC_1_ISR_REG & 038h)/8)^0dfh)
 
-ADCINC_1_PWMdr0:               equ 28h     ; Period reg
-ADCINC_1_PWMdr1:               equ 29h     ; Down count reg
-ADCINC_1_PWMdr2:               equ 2ah     ; Compare reg
-ADCINC_1_PWMcr0:               equ 2bh     ; Control reg
-ADCINC_1_PWMfn:                equ 28h     ; Function reg
-ADCINC_1_PWMsl:                equ 29h     ; Input  select reg
-ADCINC_1_PWMos:                equ 2ah     ; Output select reg
+ADCINC_1_PWMdr0:               equ 38h     ; Period reg
+ADCINC_1_PWMdr1:               equ 39h     ; Down count reg
+ADCINC_1_PWMdr2:               equ 3ah     ; Compare reg
+ADCINC_1_PWMcr0:               equ 3bh     ; Control reg
+ADCINC_1_PWMfn:                equ 38h     ; Function reg
+ADCINC_1_PWMsl:                equ 39h     ; Input  select reg
+ADCINC_1_PWMos:                equ 3ah     ; Output select reg
 
-ADCINC_1_AtoDcr0:              equ 80h     ; SC Block Control Reg 0
-ADCINC_1_AtoDcr1:              equ 81h     ; SC Block Control Reg 1
-ADCINC_1_AtoDcr2:              equ 82h     ; SC Block Control Reg 2
-ADCINC_1_AtoDcr3:              equ 83h     ; SC Block Control Reg 3
+ADCINC_1_AtoDcr0:              equ 88h     ; SC Block Control Reg 0
+ADCINC_1_AtoDcr1:              equ 89h     ; SC Block Control Reg 1
+ADCINC_1_AtoDcr2:              equ 8ah     ; SC Block Control Reg 2
+ADCINC_1_AtoDcr3:              equ 8bh     ; SC Block Control Reg 3
 
 HighByte: equ 0
 LowByte:  equ 1
