@@ -20,16 +20,16 @@ export LoadConfigTBL_seegangskompensation_Bank0
 export LoadConfigTBL_seegangskompensation_Ordered
 AREA lit(rom, rel)
 LoadConfigTBL_seegangskompensation_Bank0:
-;  Instance name ADCINC_1, User Module ADCINC
-;       Instance name ADCINC_1, Block Name ADC(ASC12)
-	db		88h, 90h		;ADCINC_1_AtoDcr0(ASC12CR0)
-	db		89h, 00h		;ADCINC_1_AtoDcr1(ASC12CR1)
-	db		8ah, 60h		;ADCINC_1_AtoDcr2(ASC12CR2)
-	db		8bh, f0h		;ADCINC_1_AtoDcr3(ASC12CR3)
-;       Instance name ADCINC_1, Block Name PWM(DCB12)
-	db		3bh, 00h		;ADCINC_1_PWMcr0(DCB12CR0)
-	db		39h, 00h		;ADCINC_1_PWMdr1(DCB12DR1)
-	db		3ah, 01h		;ADCINC_1_PWMdr2(DCB12DR2)
+;  Instance name ADCINC, User Module ADCINC
+;       Instance name ADCINC, Block Name ADC(ASC12)
+	db		88h, 90h		;ADCINC_AtoDcr0(ASC12CR0)
+	db		89h, 00h		;ADCINC_AtoDcr1(ASC12CR1)
+	db		8ah, 60h		;ADCINC_AtoDcr2(ASC12CR2)
+	db		8bh, f0h		;ADCINC_AtoDcr3(ASC12CR3)
+;       Instance name ADCINC, Block Name PWM(DCB12)
+	db		3bh, 00h		;ADCINC_PWMcr0(DCB12CR0)
+	db		39h, 00h		;ADCINC_PWMdr1(DCB12DR1)
+	db		3ah, 01h		;ADCINC_PWMdr2(DCB12DR2)
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 	db		80h, 90h		;DUALADC8_bfADC1cr0(ASC10CR0)
@@ -58,15 +58,16 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		31h, 00h		;DUALADC8_bPWM_Period_MSB(DBB10DR1)
 	db		32h, 00h		;DUALADC8_bPWM_IntTime_MSB(DBB10DR2)
 ;  Instance name LCD_1, User Module LCD
-;  Instance name PWM16_1, User Module PWM16
-;       Instance name PWM16_1, Block Name PWM16_LSB(DBB00)
-	db		23h, 00h		;PWM16_1_CONTROL_LSB_REG(DBB00CR0)
-	db		21h, 00h		;PWM16_1_PERIOD_LSB_REG(DBB00DR1)
-	db		22h, 00h		;PWM16_1_COMPARE_LSB_REG(DBB00DR2)
-;       Instance name PWM16_1, Block Name PWM16_MSB(DBB01)
-	db		27h, 00h		;PWM16_1_CONTROL_MSB_REG(DBB01CR0)
-	db		25h, 00h		;PWM16_1_PERIOD_MSB_REG(DBB01DR1)
-	db		26h, 00h		;PWM16_1_COMPARE_MSB_REG(DBB01DR2)
+;  Instance name PWM8_1, User Module PWM8
+;       Instance name PWM8_1, Block Name PWM8(DBB00)
+	db		23h, 00h		;PWM8_1_CONTROL_REG(DBB00CR0)
+	db		21h, 00h		;PWM8_1_PERIOD_REG(DBB00DR1)
+	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
+;  Instance name PWM8_2, User Module PWM8
+;       Instance name PWM8_2, Block Name PWM8(DBB01)
+	db		27h, 00h		;PWM8_2_CONTROL_REG(DBB01CR0)
+	db		25h, 00h		;PWM8_2_PERIOD_REG(DBB01DR1)
+	db		26h, 00h		;PWM8_2_COMPARE_REG(DBB01DR2)
 ;  Global Register values Bank 0
 	db		60h, 28h		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
@@ -91,12 +92,12 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		beh, 00h		; Row_1_OutputDrive_1 register (RDI1SRO1)
 	db		ffh
 LoadConfigTBL_seegangskompensation_Bank1:
-;  Instance name ADCINC_1, User Module ADCINC
-;       Instance name ADCINC_1, Block Name ADC(ASC12)
-;       Instance name ADCINC_1, Block Name PWM(DCB12)
-	db		38h, 31h		;ADCINC_1_PWMfn(DCB12FN)
-	db		39h, 10h		;ADCINC_1_PWMsl(DCB12IN)
-	db		3ah, 40h		;ADCINC_1_PWMos(DCB12OU)
+;  Instance name ADCINC, User Module ADCINC
+;       Instance name ADCINC, Block Name ADC(ASC12)
+;       Instance name ADCINC, Block Name PWM(DCB12)
+	db		38h, 31h		;ADCINC_PWMfn(DCB12FN)
+	db		39h, 10h		;ADCINC_PWMsl(DCB12IN)
+	db		3ah, 40h		;ADCINC_PWMos(DCB12OU)
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 ;       Instance name DUALADC8, Block Name ADC2(ASD11)
@@ -117,15 +118,16 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		31h, 30h		;DUALADC8_(DBB10IN)
 	db		32h, 40h		;DUALADC8_(DBB10OU)
 ;  Instance name LCD_1, User Module LCD
-;  Instance name PWM16_1, User Module PWM16
-;       Instance name PWM16_1, Block Name PWM16_LSB(DBB00)
-	db		20h, 01h		;PWM16_1_FUNC_LSB_REG(DBB00FN)
-	db		21h, 00h		;PWM16_1_INPUT_LSB_REG(DBB00IN)
-	db		22h, 00h		;PWM16_1_OUTPUT_LSB_REG(DBB00OU)
-;       Instance name PWM16_1, Block Name PWM16_MSB(DBB01)
-	db		24h, 21h		;PWM16_1_FUNC_MSB_REG(DBB01FN)
-	db		25h, 30h		;PWM16_1_INPUT_MSB_REG(DBB01IN)
-	db		26h, 04h		;PWM16_1_OUTPUT_MSB_REG(DBB01OU)
+;  Instance name PWM8_1, User Module PWM8
+;       Instance name PWM8_1, Block Name PWM8(DBB00)
+	db		20h, 21h		;PWM8_1_FUNC_REG(DBB00FN)
+	db		21h, 00h		;PWM8_1_INPUT_REG(DBB00IN)
+	db		22h, 00h		;PWM8_1_OUTPUT_REG(DBB00OU)
+;  Instance name PWM8_2, User Module PWM8
+;       Instance name PWM8_2, Block Name PWM8(DBB01)
+	db		24h, 21h		;PWM8_2_FUNC_REG(DBB01FN)
+	db		25h, 00h		;PWM8_2_INPUT_REG(DBB01IN)
+	db		26h, 00h		;PWM8_2_OUTPUT_REG(DBB01OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)

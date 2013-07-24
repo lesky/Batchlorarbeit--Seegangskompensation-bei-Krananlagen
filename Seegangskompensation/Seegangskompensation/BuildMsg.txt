@@ -1,19 +1,38 @@
 Starting MAKE...
-creating project.mk -- no changes
+creating project.mk 
+
+lib/adcinc.asm
+
+lib/adcincint.asm
+
+lib/dualadc8.asm
+
+lib/dualadc8int.asm
+
+lib/lcd_1.asm
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/pwm8_1.asm
+
+lib/pwm8_1int.asm
+
+lib/pwm8_2.asm
+
+lib/pwm8_2int.asm
 
 ./boot.asm
 
 Linking..
 
-  ROM 10% full. 1593 out of 16384 bytes used (does not include absolute areas).
+  ROM 13% full. 2086 out of 16384 bytes used (does not include absolute areas).
 
-  RAM 7% full. 16 bytes used (does not include stack usage).
+  RAM 10% full. 24 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 0 warning(s) 15:36:15
-
-Performing Project Clean...
-done
+Seegangskompensation - 0 error(s) 0 warning(s) 17:30:27
 

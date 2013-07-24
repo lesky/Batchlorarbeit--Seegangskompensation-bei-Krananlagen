@@ -10,5 +10,5 @@ PWM -> Pin 1.4
 ToDO:
 -Eingänge "verdraten"
 -Algorithmus Programmieren
--Sollwert Programmieren
--PwM Programmieren (Erledigt 22.07.13)
+-Sollwert Programmieren 	(Erledigt 22.07.13)
+-PwM Programmieren 		(Erledigt 24.07.13)
