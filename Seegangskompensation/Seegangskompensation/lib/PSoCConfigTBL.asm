@@ -81,7 +81,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		b2h, 00h		; Row_0_LogicInputAMux register (RDI0IS)
 	db		b3h, 33h		; Row_0_LogicSelect_0 register (RDI0LT0)
 	db		b4h, 33h		; Row_0_LogicSelect_1 register (RDI0LT1)
-	db		b5h, 08h		; Row_0_OutputDrive_0 register (RDI0SRO0)
+	db		b5h, 88h		; Row_0_OutputDrive_0 register (RDI0SRO0)
 	db		b6h, 00h		; Row_0_OutputDrive_1 register (RDI0SRO1)
 	db		b8h, 55h		; Row_1_InputMux register (RDI1RI)
 	db		b9h, 00h		; Row_1_InputSync register (RDI1SYN)
@@ -122,12 +122,12 @@ LoadConfigTBL_seegangskompensation_Bank1:
 ;       Instance name PWM8_1, Block Name PWM8(DBB00)
 	db		20h, 21h		;PWM8_1_FUNC_REG(DBB00FN)
 	db		21h, 00h		;PWM8_1_INPUT_REG(DBB00IN)
-	db		22h, 00h		;PWM8_1_OUTPUT_REG(DBB00OU)
+	db		22h, 04h		;PWM8_1_OUTPUT_REG(DBB00OU)
 ;  Instance name PWM8_2, User Module PWM8
 ;       Instance name PWM8_2, Block Name PWM8(DBB01)
 	db		24h, 21h		;PWM8_2_FUNC_REG(DBB01FN)
 	db		25h, 00h		;PWM8_2_INPUT_REG(DBB01IN)
-	db		26h, 00h		;PWM8_2_OUTPUT_REG(DBB01OU)
+	db		26h, 05h		;PWM8_2_OUTPUT_REG(DBB01OU)
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -165,11 +165,11 @@ LoadConfigTBL_seegangskompensation_Ordered:
 	mov	reg[01h], 00h		; Port_0_IntEn register (PRT0IE)
 	mov	reg[04h], 00h		; Port_1_Data register (PRT1DR)
 	M8C_SetBank1
-	mov	reg[04h], 10h		; Port_1_DriveMode_0 register (PRT1DM0)
-	mov	reg[05h], efh		; Port_1_DriveMode_1 register (PRT1DM1)
+	mov	reg[04h], 30h		; Port_1_DriveMode_0 register (PRT1DM0)
+	mov	reg[05h], cfh		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], efh		; Port_1_DriveMode_2 register (PRT1DM2)
-	mov	reg[06h], 10h		; Port_1_GlobalSelect register (PRT1GS)
+	mov	reg[07h], cfh		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[06h], 30h		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)
 	mov	reg[07h], 00h		; Port_1_IntCtrl_1 register (PRT1IC1)
