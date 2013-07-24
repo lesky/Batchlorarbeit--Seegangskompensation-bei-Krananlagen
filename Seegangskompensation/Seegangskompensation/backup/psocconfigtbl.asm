@@ -20,6 +20,16 @@ export LoadConfigTBL_seegangskompensation_Bank0
 export LoadConfigTBL_seegangskompensation_Ordered
 AREA lit(rom, rel)
 LoadConfigTBL_seegangskompensation_Bank0:
+;  Instance name ADCINC_1, User Module ADCINC
+;       Instance name ADCINC_1, Block Name ADC(ASC12)
+	db		88h, 90h		;ADCINC_1_AtoDcr0(ASC12CR0)
+	db		89h, 00h		;ADCINC_1_AtoDcr1(ASC12CR1)
+	db		8ah, 60h		;ADCINC_1_AtoDcr2(ASC12CR2)
+	db		8bh, f0h		;ADCINC_1_AtoDcr3(ASC12CR3)
+;       Instance name ADCINC_1, Block Name PWM(DCB12)
+	db		3bh, 00h		;ADCINC_1_PWMcr0(DCB12CR0)
+	db		39h, 00h		;ADCINC_1_PWMdr1(DCB12DR1)
+	db		3ah, 01h		;ADCINC_1_PWMdr2(DCB12DR2)
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 	db		80h, 90h		;DUALADC8_bfADC1cr0(ASC10CR0)
@@ -62,7 +72,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
 	db		63h, 05h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
-	db		e6h, 38h		; DecimatorControl_0 register (DEC_CR0)
+	db		e6h, 3dh		; DecimatorControl_0 register (DEC_CR0)
 	db		e7h, 10h		; DecimatorControl_1 register (DEC_CR1)
 	db		d6h, 00h		; I2CConfig register (I2CCFG)
 	db		b0h, 00h		; Row_0_InputMux register (RDI0RI)
@@ -81,6 +91,12 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		beh, 00h		; Row_1_OutputDrive_1 register (RDI1SRO1)
 	db		ffh
 LoadConfigTBL_seegangskompensation_Bank1:
+;  Instance name ADCINC_1, User Module ADCINC
+;       Instance name ADCINC_1, Block Name ADC(ASC12)
+;       Instance name ADCINC_1, Block Name PWM(DCB12)
+	db		38h, 31h		;ADCINC_1_PWMfn(DCB12FN)
+	db		39h, 10h		;ADCINC_1_PWMsl(DCB12IN)
+	db		3ah, 40h		;ADCINC_1_PWMos(DCB12OU)
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 ;       Instance name DUALADC8, Block Name ADC2(ASD11)
