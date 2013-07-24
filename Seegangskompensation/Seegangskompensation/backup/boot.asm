@@ -146,11 +146,11 @@ ENDIF
     reti
 
     org   20h                      ;PSoC Block DBB00 Interrupt Vector
-    // call	void_handler
+    ljmp	_PWM8_1_ISR
     reti
 
     org   24h                      ;PSoC Block DBB01 Interrupt Vector
-    ljmp	_PWM16_1_ISR
+    ljmp	_PWM8_2_ISR
     reti
 
     org   28h                      ;PSoC Block DCB02 Interrupt Vector
@@ -170,7 +170,7 @@ ENDIF
     reti
 
     org   38h                      ;PSoC Block DCB12 Interrupt Vector
-    ljmp	_ADCINC_1_ADConversion_ISR
+    ljmp	_ADCINC_ADConversion_ISR
     reti
 
     org   3Ch                      ;PSoC Block DCB13 Interrupt Vector
