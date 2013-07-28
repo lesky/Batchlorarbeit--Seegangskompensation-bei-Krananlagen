@@ -9,6 +9,7 @@ PWM 1-> Pin 1.4
 PWM 1-> Pin 1.5
 
 ToDO:
+-Korekturfaktor Einfügen 
 -Eingänge "verdraten"
 -Algorithmus Programmieren
 -Sollwert Programmieren 	(Erledigt 22.07.13)
