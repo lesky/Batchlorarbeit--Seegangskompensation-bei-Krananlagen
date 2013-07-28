@@ -19,9 +19,9 @@
 
 #include "PSoCGPIOINT.h"
 #include "ADCINC.h"
+#include "DIGITALOUT.h"
 #include "DUALADC8.h"
 #include "LCD_1.h"
 #include "PWM8_1.h"
-#include "PWM8_2.h"
 
 #endif
