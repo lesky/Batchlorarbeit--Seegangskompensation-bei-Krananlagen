@@ -3,24 +3,24 @@
 // Programm: Seegangskompensation bei Krahnanlagen
 // Version: 0.0.0.1
 // Controler: CY8C27446-24PXI
-// Variablenbenennung nach Apps Hungaryan
 //----------------------------------------------------------------------------
 
 #include <m8c.h>        // part specific constants and macros
 #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
 
-
 void main(void)
 {
 	// Difinition der Konstanten
 	char kochPeriodendauer = 50;					// Periodendauer
+	
 	// Variablendeklration
 	
-	char rgchLCD[] = "Test";   						// Define RAM string
-	char pdchBechleunigung, pdchEntfernung;			// Variablen zum Einlesen der Daten
+	char rgchLCD[] = "Test";   						
+	char pdchBechleunigung, pdchEntfernung;			
 	char pbchSollwert;								
 	char pbchPulsweite;
 	char hichAusgangswert;							
+	
 	// Initialisierung des Controlers
 	
 	M8C_EnableGInt;                     			// Enable global interrupts	
@@ -29,16 +29,16 @@ void main(void)
    	
 	PWM8_1_WritePeriod(kochPeriodendauer);        	// Initialisieren der PWM-Module                    
     PWM8_1_Start();
-	PWM8_2_WritePeriod(kochPeriodendauer);                             
-    PWM8_2_Start();
 
 	DUALADC8_Start(DUALADC8_HIGHPOWER); 			// Initialisieren des Dualen AD-Wandlers
    	DUALADC8_SetCalcTime(100);          			// für Entfernung und Beschleunigung
    	DUALADC8_GetSamples(); 
 	
 	ADCINC_Start(ADCINC_HIGHPOWER);      			// Initialisieren des AD-Wandlers
-	ADCINC_GetSamples();                 			// für den Sollwert
-		
+	ADCINC_GetSamples(0);                 			// für den Sollwert
+	
+	DIGITALOUT_Start;								//Initialisieren der Digitalen Ausgangs
+	
 	// Endlosschleife
 	while(1) {
 	
@@ -54,18 +54,18 @@ void main(void)
 		// Parameter Berechnen
 		
 		// Ausgang Setzen
+		
+		PWM8_1_WritePulseWidth(pbchPulsweite);
+		
 		// positive Drehrichtung
-		if (hichAusgangswert >= OSC_CR0){				
-			PWM8_1_WritePulseWidth(pbchPulsweite);
-			PWM8_2_WritePulseWidth(0);
+		if (hichAusgangswert >= 0){				
+			DIGITALOUT_On;
 		}
 		// negative Drehrichtung
-		if (hichAusgangswert >= OSC_CR0){				
-			PWM8_2_WritePulseWidth(pbchPulsweite);
-			PWM8_1_WritePulseWidth(0);
+		else {				
+			DIGITALOUT_Off;	
 		}
-		
-		
+				
 		// LCD Ansteuern 
 		LCD_1_Position(0,5);            
    		LCD_1_PrString(rgchLCD);
