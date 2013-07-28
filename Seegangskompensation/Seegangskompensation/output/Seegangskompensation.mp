@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Sun Jul 28 16:03:24 2013
+Date:         Sun Jul 28 18:07:53 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -167,72 +167,74 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   0843   00A8 =    168. bytes (rel,con,rom,code)
+                            text   0843   011D =    285. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
        0843  __text_start
        0843  _main
-       08EB  __text_end
+       0960  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-               virtual_registers   0000   0004 =      4. bytes (rel,con,ram)
+               virtual_registers   0000   0006 =      6. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0000  __rX
-       0001  __r3
-       0002  __r1
-       0003  __r0
-       0004  __virtual_registers_end
+       0000  __rY
+       0001  __rX
+       0002  __r3
+       0003  __r2
+       0004  __r1
+       0005  __r0
+       0006  __virtual_registers_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                    InterruptRAM   0004   0013 =     19. bytes (rel,con,ram)
+                    InterruptRAM   0006   0013 =     19. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0004  Port_1_Data_SHADE
-       0004  _Port_1_Data_SHADE
-       0004  NO_SHADOW
-       0004  _NO_SHADOW
-       0005  Port_2_Data_SHADE
-       0005  _Port_2_Data_SHADE
-       0006  Port_2_DriveMode_0_SHADE
-       0006  _Port_2_DriveMode_0_SHADE
-       0007  _Port_2_DriveMode_1_SHADE
-       0007  Port_2_DriveMode_1_SHADE
-       0008  DUALADC8_cCounter1U
-       0009  DUALADC8_cCounter2U
-       000A  DUALADC8_iResult1
-       000A  _DUALADC8_iResult1
-       000C  _DUALADC8_iResult2
-       000C  DUALADC8_iResult2
-       000E  DUALADC8_bfStatus
-       000E  _DUALADC8_bfStatus
-       000F  _ADCINC_iResult
-       000F  ADCINC_iResult
-       0013  _ADCINC_fStatus
-       0013  ADCINC_fStatus
-       0014  _ADCINC_bState
-       0014  ADCINC_bState
-       0015  ADCINC_fMode
-       0015  _ADCINC_fMode
-       0016  ADCINC_bNumSamples
-       0016  _ADCINC_bNumSamples
-       0017  __InterruptRAM_end
+       0006  Port_1_Data_SHADE
+       0006  _Port_1_Data_SHADE
+       0006  NO_SHADOW
+       0006  _NO_SHADOW
+       0007  Port_2_Data_SHADE
+       0007  _Port_2_Data_SHADE
+       0008  Port_2_DriveMode_0_SHADE
+       0008  _Port_2_DriveMode_0_SHADE
+       0009  _Port_2_DriveMode_1_SHADE
+       0009  Port_2_DriveMode_1_SHADE
+       000A  DUALADC8_cCounter1U
+       000B  DUALADC8_cCounter2U
+       000C  DUALADC8_iResult1
+       000C  _DUALADC8_iResult1
+       000E  _DUALADC8_iResult2
+       000E  DUALADC8_iResult2
+       0010  DUALADC8_bfStatus
+       0010  _DUALADC8_bfStatus
+       0011  _ADCINC_iResult
+       0011  ADCINC_iResult
+       0015  _ADCINC_fStatus
+       0015  ADCINC_fStatus
+       0016  _ADCINC_bState
+       0016  ADCINC_bState
+       0017  ADCINC_fMode
+       0017  _ADCINC_fMode
+       0018  ADCINC_bNumSamples
+       0018  _ADCINC_bNumSamples
+       0019  __InterruptRAM_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-        seegangskompensation_RAM   0017   0002 =      2. bytes (rel,con,ram)
+        seegangskompensation_RAM   0019   0002 =      2. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0017  DUALADC8_iCalcTime
-       0017  _DUALADC8_iCalcTime
-       0019  __seegangskompensation_RAM_end
-       0019  __ramareas_end
+       0019  DUALADC8_iCalcTime
+       0019  _DUALADC8_iCalcTime
+       001B  __seegangskompensation_RAM_end
+       001B  __ramareas_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -249,7 +251,8 @@ Files Linked      [ module(s) ]
 ./obj/boot.o	[ boot.asm ]
 obj/main.o	[ main.c ]
 <library>	[ pwm8_1int.asm, pwm8_1.asm, psocconfigtbl.asm, psocconfig.asm, lcd_1.asm, dualadc8int.asm, dualadc8.asm ]
-[ adcincint.asm, adcinc.asm, rX.asm, r3.asm, r1.asm, r0.asm ]
+[ adcincint.asm, adcinc.asm, rY.asm, rX.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_8x8_8_util.asm ]
+[ i_div8_block_util.asm ]
 
 Area Definitions
 

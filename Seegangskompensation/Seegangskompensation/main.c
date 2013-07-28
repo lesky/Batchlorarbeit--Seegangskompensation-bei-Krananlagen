@@ -12,6 +12,9 @@ void main(void)
 {
 	// Difinition der Konstanten
 	char kochPeriodendauer = 50;					// Periodendauer
+	char kochKP;
+	char kochKS;
+	
 	
 	// Variablendeklration
 	
@@ -20,7 +23,8 @@ void main(void)
 	char pbchSollwert;								
 	char pbchPulsweite;
 	char hichAusgangswert;							
-	
+	char hichBeschleunigungssumme;
+		
 	// Initialisierung des Controlers
 	
 	M8C_EnableGInt;                     			// Enable global interrupts	
@@ -53,17 +57,23 @@ void main(void)
                                                			// data ready flag zurüvksetzen                                    
 		// Parameter Berechnen
 		
+		hichBeschleunigungssumme = hichBeschleunigungssumme + pdchBechleunigung;
+		
+		hichAusgangswert = ( pbchSollwert - pdchBechleunigung ) * kochKP
+							- 1 / kochKS * hichBeschleunigungssumme;
+		
+		pbchPulsweite = hichAusgangswert; //TODO: Korekturfaktor Einfügen 
 		// Ausgang Setzen
-		
-		PWM8_1_WritePulseWidth(pbchPulsweite);
-		
+				
 		// positive Drehrichtung
 		if (hichAusgangswert >= 0){				
 			DIGITALOUT_On;
+			PWM8_1_WritePulseWidth(pbchPulsweite);
 		}
 		// negative Drehrichtung
 		else {				
-			DIGITALOUT_Off;	
+			DIGITALOUT_Off;
+			PWM8_1_WritePulseWidth(-pbchPulsweite);
 		}
 				
 		// LCD Ansteuern 
