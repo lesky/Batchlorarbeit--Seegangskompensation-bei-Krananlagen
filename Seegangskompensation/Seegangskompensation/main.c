@@ -34,6 +34,14 @@ void main(void)
 	PWM8_1_WritePeriod(kochPeriodendauer);        	// Initialisieren der PWM-Module                    
     PWM8_1_Start();
 
+	PGA_1_SetGain(PGA_1_G0_12);						// Initialisieren der Verstärker
+	PGA_2_SetGain(PGA_2_G0_12);
+	PGA_3_SetGain(PGA_3_G0_12);
+	
+	PGA_1_Start(PGA_1_LOWPOWER);
+	PGA_2_Start(PGA_2_LOWPOWER);
+	PGA_3_Start(PGA_3_LOWPOWER);	
+	
 	DUALADC8_Start(DUALADC8_HIGHPOWER); 			// Initialisieren des Dualen AD-Wandlers
    	DUALADC8_SetCalcTime(100);          			// für Entfernung und Beschleunigung
    	DUALADC8_GetSamples(); 
