@@ -16,4 +16,4 @@ ToDO:
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
 -PwM Programmieren 		(Erledigt 24.07.13)
--Verstärker Programmieren
+-Verstärker Programmieren	(Erledigt 15.08.13)
