@@ -22,6 +22,9 @@
 #include "DIGITALOUT.h"
 #include "DUALADC8.h"
 #include "LCD_1.h"
+#include "PGA_1.h"
+#include "PGA_2.h"
+#include "PGA_3.h"
 #include "PWM8_1.h"
 
 #endif

@@ -6,87 +6,87 @@ dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
-A lit size AE flags 0
+A lit size C6 flags 0
 S LoadConfigTBL_seegangskompensation_Bank0 Def0000
-S LoadConfigTBL_seegangskompensation_Bank1 Def0067
+S LoadConfigTBL_seegangskompensation_Bank1 Def007F
 A psoc_config size C5 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline 92 2
+dbline AA 2
 dbline 2 5
-dbline 94 7
-dbline 95 A
+dbline AC 7
+dbline AD A
 dbline 2 D
-dbline 97 F
-dbline 98 12
+dbline AF F
+dbline B0 12
 dbline 2 15
-dbline 9A 17
-dbline 9B 1A
+dbline B2 17
+dbline B3 1A
 dbline 2 1D
-dbline 9D 1F
-dbline 9E 22
+dbline B5 1F
+dbline B6 22
 dbline 2 25
-dbline A0 27
-dbline A1 2A
+dbline B8 27
+dbline B9 2A
 dbline 2 2D
-dbline A3 2F
-dbline A4 32
+dbline BB 2F
+dbline BC 32
 dbline 2 35
-dbline A6 37
-dbline A7 3A
+dbline BE 37
+dbline BF 3A
 dbline 2 3D
-dbline A9 3F
-dbline AA 42
+dbline C1 3F
+dbline C2 42
 dbline 2 45
-dbline AC 47
-dbline AD 4A
+dbline C4 47
+dbline C5 4A
 dbline 2 4D
-dbline AF 4F
-dbline B0 52
+dbline C7 4F
+dbline C8 52
 dbline 2 55
-dbline B2 57
-dbline B3 5A
+dbline CA 57
+dbline CB 5A
 dbline 2 5D
-dbline B5 5F
-dbline B6 62
+dbline CD 5F
+dbline CE 62
 dbline 2 65
-dbline B8 67
-dbline B9 6A
+dbline D0 67
+dbline D1 6A
 dbline 2 6D
-dbline BB 6F
-dbline BC 72
+dbline D3 6F
+dbline D4 72
 dbline 2 75
-dbline BE 77
-dbline BF 7A
+dbline D6 77
+dbline D7 7A
 dbline 2 7D
-dbline C1 7F
-dbline C2 82
+dbline D9 7F
+dbline DA 82
 dbline 2 85
-dbline C4 87
-dbline C5 8A
+dbline DC 87
+dbline DD 8A
 dbline 2 8D
-dbline C7 8F
-dbline C8 92
+dbline DF 8F
+dbline E0 92
 dbline 2 95
-dbline CA 97
-dbline CB 9A
+dbline E2 97
+dbline E3 9A
 dbline 2 9D
-dbline CD 9F
-dbline CE A2
+dbline E5 9F
+dbline E6 A2
 dbline 2 A5
-dbline D0 A7
-dbline D1 AA
+dbline E8 A7
+dbline E9 AA
 dbline 2 AD
-dbline D3 AF
-dbline D4 B2
+dbline EB AF
+dbline EC B2
 dbline 2 B5
-dbline D6 B7
-dbline D7 BA
+dbline EE B7
+dbline EF BA
 dbline 2 BD
-dbline D9 BF
+dbline F1 BF
 dbline 2 C2
-dbline DB C4
+dbline F3 C4
 S LoadConfigTBL_seegangskompensation_Ordered Def0000
 T 00 00 88 90 89 00 8A 60 8B F0 3B 00 39 00 3A 01
 R 00 00 00 01
@@ -94,25 +94,29 @@ T 00 0E 80 90 81 00 82 60 83 F0 84 90 85 00 86 60
 R 00 00 00 01
 T 00 1C 87 F0 2B 00 29 00 2A 00 37 00 35 00 36 00
 R 00 00 00 01
-T 00 2A 2F 00 2D 00 2E 00 33 00 31 00 32 00 23 00
+T 00 2A 2F 00 2D 00 2E 00 33 00 31 00 32 00 71 0C
 R 00 00 00 01
-T 00 38 21 00 22 00 60 28 66 00 63 05 65 00 E6 3D
+T 00 38 72 21 73 20 70 00 75 0C 76 21 77 20 74 00
 R 00 00 00 01
-T 00 46 E7 10 D6 00 B0 00 B1 00 B2 00 B3 33 B4 33
+T 00 46 79 0C 7A 21 7B 20 78 00 23 00 21 00 22 00
 R 00 00 00 01
-T 00 54 B5 08 B6 00 B8 55 B9 00 BA 10 BB 33 BC 33
+T 00 54 60 28 66 00 63 05 65 00 E6 3D E7 10 D6 00
 R 00 00 00 01
-T 00 62 BD 00 BE 00 FF 38 31 39 10 3A 40 28 21 29
+T 00 62 B0 00 B1 00 B2 00 B3 33 B4 33 B5 08 B6 00
 R 00 00 00 01
-T 00 70 40 2A 40 34 21 35 50 36 40 2C 01 2D 10 2E
+T 00 70 B8 55 B9 00 BA 10 BB 33 BC 33 BD 00 BE 00
 R 00 00 00 01
-T 00 7E 40 30 21 31 30 32 40 20 21 21 00 22 04 61
+T 00 7E FF 38 31 39 10 3A 40 28 21 29 40 2A 40 34
 R 00 00 00 01
-T 00 8C 00 69 00 60 00 62 00 67 33 68 33 63 00 66
+T 00 8C 21 35 50 36 40 2C 01 2D 10 2E 40 30 21 31
 R 00 00 00 01
-T 00 9A 00 D1 00 D3 00 D0 00 D2 00 E1 FF E2 00 DF
+T 00 9A 30 32 40 20 21 21 00 22 04 61 00 69 00 60
 R 00 00 00 01
-T 00 A8 FF DE 02 DD 00 FF
+T 00 A8 00 62 00 67 33 68 33 63 00 66 00 D1 00 D3
+R 00 00 00 01
+T 00 B6 00 D0 00 D2 00 E1 FF E2 00 DF FF DE 02 DD
+R 00 00 00 01
+T 00 C4 00 FF
 R 00 00 00 01
 T 00 00 70 EF 62 00 00 71 10 62 00 00 62 01 FE 70
 R 00 00 00 02

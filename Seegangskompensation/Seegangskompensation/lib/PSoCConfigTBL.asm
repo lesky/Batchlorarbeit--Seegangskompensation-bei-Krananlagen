@@ -59,6 +59,24 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		31h, 00h		;DUALADC8_bPWM_Period_MSB(DBB10DR1)
 	db		32h, 00h		;DUALADC8_bPWM_IntTime_MSB(DBB10DR2)
 ;  Instance name LCD_1, User Module LCD
+;  Instance name PGA_1, User Module PGA
+;       Instance name PGA_1, Block Name GAIN(ACB00)
+	db		71h, 0ch		;PGA_1_GAIN_CR0(ACB00CR0)
+	db		72h, 21h		;PGA_1_GAIN_CR1(ACB00CR1)
+	db		73h, 20h		;PGA_1_GAIN_CR2(ACB00CR2)
+	db		70h, 00h		;PGA_1_GAIN_CR3(ACB00CR3)
+;  Instance name PGA_2, User Module PGA
+;       Instance name PGA_2, Block Name GAIN(ACB01)
+	db		75h, 0ch		;PGA_2_GAIN_CR0(ACB01CR0)
+	db		76h, 21h		;PGA_2_GAIN_CR1(ACB01CR1)
+	db		77h, 20h		;PGA_2_GAIN_CR2(ACB01CR2)
+	db		74h, 00h		;PGA_2_GAIN_CR3(ACB01CR3)
+;  Instance name PGA_3, User Module PGA
+;       Instance name PGA_3, Block Name GAIN(ACB02)
+	db		79h, 0ch		;PGA_3_GAIN_CR0(ACB02CR0)
+	db		7ah, 21h		;PGA_3_GAIN_CR1(ACB02CR1)
+	db		7bh, 20h		;PGA_3_GAIN_CR2(ACB02CR2)
+	db		78h, 00h		;PGA_3_GAIN_CR3(ACB02CR3)
 ;  Instance name PWM8_1, User Module PWM8
 ;       Instance name PWM8_1, Block Name PWM8(DBB00)
 	db		23h, 00h		;PWM8_1_CONTROL_REG(DBB00CR0)
@@ -115,6 +133,12 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		31h, 30h		;DUALADC8_(DBB10IN)
 	db		32h, 40h		;DUALADC8_(DBB10OU)
 ;  Instance name LCD_1, User Module LCD
+;  Instance name PGA_1, User Module PGA
+;       Instance name PGA_1, Block Name GAIN(ACB00)
+;  Instance name PGA_2, User Module PGA
+;       Instance name PGA_2, Block Name GAIN(ACB01)
+;  Instance name PGA_3, User Module PGA
+;       Instance name PGA_3, Block Name GAIN(ACB02)
 ;  Instance name PWM8_1, User Module PWM8
 ;       Instance name PWM8_1, Block Name PWM8(DBB00)
 	db		20h, 21h		;PWM8_1_FUNC_REG(DBB00FN)
