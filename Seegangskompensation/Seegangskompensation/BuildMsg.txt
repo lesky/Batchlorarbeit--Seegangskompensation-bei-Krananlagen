@@ -1,25 +1,54 @@
 Starting MAKE...
-creating project.mk -- no changes
+creating project.mk 
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(52):[warning] expression with no effect elided
+lib/adcinc.asm
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(78):[warning] expression with no effect elided
+lib/adcincint.asm
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(83):[warning] expression with no effect elided
+lib/digitalout.asm
 
-./boot.asm
+lib/dualadc8.asm
 
-Linking..
+lib/dualadc8int.asm
 
-  ROM 14% full. 2274 out of 16384 bytes used (does not include absolute areas).
+lib/lcd_1.asm
 
-  RAM 11% full. 27 bytes used (does not include stack usage).
+lib/pga_1.asm
 
-Built with ICCM8C STD V7.05.00
+lib/pga_2.asm
+
+lib/pga_3.asm
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/pwm8_1.asm
+
+lib/pwm8_1int.asm
+
+lib/selbsttest.asm
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(49):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(55):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(105):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(109):[warning] expression with no effect elided
+
+!E C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(109): syntax error; found `SELBSTTEST_On' expecting `;'
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(110):[warning] expression with no effect elided
+
+!E C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(110): syntax error; found `Dateneinlesen' expecting `;'
+
+!E C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(113): operands of = have illegal types `array 15 of char' and `pointer to __flash char'
+
+!E C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\neu\SEEGAN~1\SEEGAN~1\main.c(113): lvalue required
+
+make: *** [obj/main.o] Error 1
 
  
-Seegangskompensation - 0 error(s) 3 warning(s) 21:21:10
-
-Performing Project Clean...
-done
+Seegangskompensation - 5 error(s) 5 warning(s) 12:06:56
 

@@ -7,21 +7,67 @@
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 
+// structur der Prozessdaten
+struct 
+   {	
+	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
+	char pdchBechleunigung, pdchEntfernung;			
+	char pdchSollwert;								
+	char pdchPulsweite;
+    } prozess;
+
+void LCDansteuern(void)
+	{
+	// LCD Ansteuern 
+	LCD_1_Position(0,5);            
+   	LCD_1_PrString(prozess.rgchLCD);
+	}
+	
+void Dateneinlesen(void)
+	{	
+	// Wenn Sollwertdaten bereit sind
+	if(ADCINC_fIsDataAvailable() != 0)
+			
+		// Einlesen des Sollwertes
+       	// data ready flag zurüvksetzen	
+		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+              	   
+    // Auf Entfernung und Position Warten
+	while(DUALADC8_fIsDataAvailable == 0);    		
+   		// Einlesen der Beschleunigung
+		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+    	
+		// Einlesen der Entfernung
+        // data ready flag zurüvksetzen         
+		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+	}
+
+void Ausgangansteuern(char hichAusgangswert)
+	{
+		// linksdrehend 
+		if (hichAusgangswert >= 0){				
+			DIGITALOUT_On;
+			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+		}
+		
+		// rechtsdrehend
+		else {				
+			DIGITALOUT_Off;
+			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+		}
+	}	
+		
 void main(void)
-{
+	{
 	// Difinition der Konstanten
 	char kochPeriodendauer = 50;					
 	char kochKP;
 	char kochKS;
-	char kochNULLG;
+	char kochNullG;
 		
 	// Variablendeklration
-	char rgchLCD[] = "Test";   						
-	char pdchBechleunigung, pdchEntfernung;			
-	char pbchSollwert;								
-	char pbchPulsweite;
 	char hichAusgangswert;							
-	char hichBeschleunigungssumme;
+	char hichBeschleunigungssumme;  
 		
 	// Initialisierung des Controlers
 	
@@ -57,69 +103,35 @@ void main(void)
 	
 	//Initialisieren der Digitalen Ausgangs
 	DIGITALOUT_Start;								
-	/* Grobentwurf Selbsttest
-	// Selbsttest
-	SELFTEST_Start;
-	SELFTEST_ON;
 	
-	while(pdchBechleunigung <= kochNULLG){
-	    // Auf Entfernung und Position Warten
-		while(DUALADC8_fIsDataAvailable == 0);    		
-   		
-		// Einlesen der Beschleunigung
-		pdchBechleunigung = DUALADC8_cGetData1();      	
-    	
-        // data ready flag zurüvksetzen         
-		DUALADC8_ClearFlag();
+	// Selbsttest
+	SELBSTTEST_Start
+	SELBSTTEST_On
+	Dateneinlesen();
+	while (prozess.pdchBechleunigung <= kochNullG)
+		{
+		prozess.rgchLCD = "Fehler!!";
+		LCDansteuern();
+		}		
+			
 		
-		char rgchLCD[] = "Fehler";
-		LCD_1_Position(0,5);            
-   		LCD_1_PrString(rgchLCD);
-	}
-	*/
 	// Endlosschleife
 	while(1) {
 	
 		// Daten Einlesen
 		
-		// Wenn Sollwertdaten bereit sind
-		if(ADCINC_fIsDataAvailable() != 0)
-			
-		// Einlesen des Sollwertes
-        // data ready flag zurüvksetzen	
-		pbchSollwert = ADCINC_cClearFlagGetData();		
-              	   
-    	// Auf Entfernung und Position Warten
-		while(DUALADC8_fIsDataAvailable == 0);    		
-   		// Einlesen der Beschleunigung
-		pdchBechleunigung = DUALADC8_cGetData1();      	
-    	
-		// Einlesen der Entfernung
-        // data ready flag zurüvksetzen         
-		pdchEntfernung = DUALADC8_cGetData2ClearFlag();	                           
+		                         
 		// Parameter Berechnen
 		
-		hichBeschleunigungssumme = hichBeschleunigungssumme + pdchBechleunigung;
+		hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
 		
-		hichAusgangswert = ( pbchSollwert - pdchBechleunigung ) * kochKP
+		hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
 							- 1 / kochKS * hichBeschleunigungssumme;
 		//TODO: Korekturfaktor Einfügen 
-		pbchPulsweite = hichAusgangswert; 
-		// Ausgang Setzen
-				
-		// positive Drehrichtung
-		if (hichAusgangswert >= 0){				
-			DIGITALOUT_On;
-			PWM8_1_WritePulseWidth(pbchPulsweite);
-		}
-		// negative Drehrichtung
-		else {				
-			DIGITALOUT_Off;
-			PWM8_1_WritePulseWidth(-pbchPulsweite);
-		}
-				
-		// LCD Ansteuern 
-		LCD_1_Position(0,5);            
-   		LCD_1_PrString(rgchLCD);
+		prozess.pdchPulsweite = hichAusgangswert; 
+		
+		Ausgangansteuern(hichAusgangswert);
+		LCDansteuern();
+		
 	};
 }
