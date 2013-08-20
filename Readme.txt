@@ -6,7 +6,7 @@ Anutor: Benjamin Lesky
 I/O-Konfiguration:
 LCD -> Port 2
 PWM 1-> Pin 1.4
-PWM 1-> Pin 1.5
+Drehrichtung -> Pin 1.5
 Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5
