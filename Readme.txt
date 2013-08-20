@@ -7,6 +7,7 @@ I/O-Konfiguration:
 LCD -> Port 2
 PWM 1-> Pin 1.4
 Drehrichtung -> Pin 1.5
+Selbsttest -> Pin 1.3
 Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5

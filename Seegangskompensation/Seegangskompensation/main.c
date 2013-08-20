@@ -13,6 +13,7 @@ void main(void)
 	char kochPeriodendauer = 50;					
 	char kochKP;
 	char kochKS;
+	char kochNULLG;
 		
 	// Variablendeklration
 	char rgchLCD[] = "Test";   						
@@ -56,7 +57,26 @@ void main(void)
 	
 	//Initialisieren der Digitalen Ausgangs
 	DIGITALOUT_Start;								
+	/* Grobentwurf Selbsttest
+	// Selbsttest
+	SELFTEST_Start;
+	SELFTEST_ON;
 	
+	while(pdchBechleunigung <= kochNULLG){
+	    // Auf Entfernung und Position Warten
+		while(DUALADC8_fIsDataAvailable == 0);    		
+   		
+		// Einlesen der Beschleunigung
+		pdchBechleunigung = DUALADC8_cGetData1();      	
+    	
+        // data ready flag zurüvksetzen         
+		DUALADC8_ClearFlag();
+		
+		char rgchLCD[] = "Fehler";
+		LCD_1_Position(0,5);            
+   		LCD_1_PrString(rgchLCD);
+	}
+	*/
 	// Endlosschleife
 	while(1) {
 	
