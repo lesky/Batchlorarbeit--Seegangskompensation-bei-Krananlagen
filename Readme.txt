@@ -11,7 +11,10 @@ Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5
 ToDO:
+-Datenübergabe auf Pointer umstellen
 -Korekturfaktor Einfügen 
+-Arraygröße anpassen 
+-Selbsttest  
 -Eingänge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
