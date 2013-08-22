@@ -19,12 +19,14 @@
 
 #include "PSoCGPIOINT.h"
 #include "ADCINC.h"
-#include "DIGITALOUT.h"
 #include "DUALADC8.h"
+#include "IN1.h"
+#include "IN2.h"
 #include "LCD_1.h"
 #include "PGA_1.h"
 #include "PGA_2.h"
 #include "PGA_3.h"
 #include "PWM8_1.h"
+#include "SELBSTTEST.h"
 
 #endif

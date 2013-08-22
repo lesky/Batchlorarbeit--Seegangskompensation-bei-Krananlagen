@@ -64,7 +64,7 @@ _LoadConfigInit:
  LoadConfigInit:
     RAM_PROLOGUE RAM_USE_CLASS_4
     
-	mov		[Port_1_Data_SHADE], 8h
+	mov		[Port_1_Data_SHADE], 0h
 	mov		[Port_2_Data_SHADE], 0h
 	mov		[Port_2_DriveMode_0_SHADE], 7fh
 	mov		[Port_2_DriveMode_1_SHADE], 80h

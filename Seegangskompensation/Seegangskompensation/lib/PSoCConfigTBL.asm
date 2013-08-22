@@ -30,7 +30,6 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		3bh, 00h		;ADCINC_PWMcr0(DCB12CR0)
 	db		39h, 00h		;ADCINC_PWMdr1(DCB12DR1)
 	db		3ah, 01h		;ADCINC_PWMdr2(DCB12DR2)
-;  Instance name DIGITALOUT, User Module LED
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 	db		80h, 90h		;DUALADC8_bfADC1cr0(ASC10CR0)
@@ -58,6 +57,8 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		33h, 00h		;DUALADC8_fPWM_MSB_CR0(DBB10CR0)
 	db		31h, 00h		;DUALADC8_bPWM_Period_MSB(DBB10DR1)
 	db		32h, 00h		;DUALADC8_bPWM_IntTime_MSB(DBB10DR2)
+;  Instance name IN1, User Module LED
+;  Instance name IN2, User Module LED
 ;  Instance name LCD_1, User Module LCD
 ;  Instance name PGA_1, User Module PGA
 ;       Instance name PGA_1, Block Name GAIN(ACB00)
@@ -82,6 +83,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		23h, 00h		;PWM8_1_CONTROL_REG(DBB00CR0)
 	db		21h, 00h		;PWM8_1_PERIOD_REG(DBB00DR1)
 	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
+;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 0
 	db		60h, 28h		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
@@ -112,7 +114,6 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		38h, 31h		;ADCINC_PWMfn(DCB12FN)
 	db		39h, 10h		;ADCINC_PWMsl(DCB12IN)
 	db		3ah, 40h		;ADCINC_PWMos(DCB12OU)
-;  Instance name DIGITALOUT, User Module LED
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)
 ;       Instance name DUALADC8, Block Name ADC2(ASD11)
@@ -132,6 +133,8 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		30h, 21h		;DUALADC8_bfPWM_MSB_FN(DBB10FN)
 	db		31h, 30h		;DUALADC8_(DBB10IN)
 	db		32h, 40h		;DUALADC8_(DBB10OU)
+;  Instance name IN1, User Module LED
+;  Instance name IN2, User Module LED
 ;  Instance name LCD_1, User Module LCD
 ;  Instance name PGA_1, User Module PGA
 ;       Instance name PGA_1, Block Name GAIN(ACB00)
@@ -144,6 +147,7 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		20h, 21h		;PWM8_1_FUNC_REG(DBB00FN)
 	db		21h, 00h		;PWM8_1_INPUT_REG(DBB00IN)
 	db		22h, 04h		;PWM8_1_OUTPUT_REG(DBB00OU)
+;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -179,12 +183,12 @@ LoadConfigTBL_seegangskompensation_Ordered:
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
 	M8C_SetBank0
 	mov	reg[01h], 00h		; Port_0_IntEn register (PRT0IE)
-	mov	reg[04h], 08h		; Port_1_Data register (PRT1DR)
+	mov	reg[04h], 00h		; Port_1_Data register (PRT1DR)
 	M8C_SetBank1
-	mov	reg[04h], 38h		; Port_1_DriveMode_0 register (PRT1DM0)
-	mov	reg[05h], cfh		; Port_1_DriveMode_1 register (PRT1DM1)
+	mov	reg[04h], 1eh		; Port_1_DriveMode_0 register (PRT1DM0)
+	mov	reg[05h], e1h		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], c7h		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[07h], e1h		; Port_1_DriveMode_2 register (PRT1DM2)
 	mov	reg[06h], 10h		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)

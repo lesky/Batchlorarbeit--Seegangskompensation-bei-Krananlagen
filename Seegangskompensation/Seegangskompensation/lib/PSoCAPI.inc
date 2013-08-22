@@ -15,10 +15,12 @@
  
 include "PSoCGPIOINT.inc"
 include "ADCINC.inc"
-include "DIGITALOUT.inc"
 include "DUALADC8.inc"
+include "IN1.inc"
+include "IN2.inc"
 include "LCD_1.inc"
 include "PGA_1.inc"
 include "PGA_2.inc"
 include "PGA_3.inc"
 include "PWM8_1.inc"
+include "SELBSTTEST.inc"

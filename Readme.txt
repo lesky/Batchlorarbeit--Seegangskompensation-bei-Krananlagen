@@ -5,8 +5,10 @@ Anutor: Benjamin Lesky
 
 I/O-Konfiguration:
 LCD -> Port 2
+Selbsttest ->1.1
+IN1 ->1.2
+IN2->1.3
 PWM 1-> Pin 1.4
-Drehrichtung -> Pin 1.5
 Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5
@@ -15,6 +17,7 @@ ToDO:
 -Korekturfaktor Einfügen 
 -Arraygröße anpassen 
 -Selbsttest  
+-Pause bei Drehrichtungsumkehr
 -Eingänge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
