@@ -1,0 +1,172 @@
+XH
+H 3 areas 33 global symbols
+M dualadc8.asm
+S DUALADC8_cCounter1U Ref0000
+S DUALADC8_cCounter2U Ref0000
+S DUALADC8_iResult1 Ref0000
+S DUALADC8_iResult2 Ref0000
+S DUALADC8_bfStatus Ref0000
+A text size 0 flags 0
+dbfile lib/dualadc8.asm
+dbfunc 0 ? 0 I
+dbfile DUALADC8.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/DUALADC8.inc
+dbfunc 0 ? 0 I
+dbfile lib/dualadc8.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/dualadc8.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+A seegangskompensation_RAM size 2 flags 20
+S _DUALADC8_iCalcTime Def0000
+S DUALADC8_iCalcTime Def0000
+A UserModules size 9F flags 0
+dbfile lib/dualadc8.asm
+dbfunc 0 ? 0 I
+dbline 63 0
+dbline 64 2
+dbline 65 3
+dbline 68 4
+dbline 69 6
+dbline 6A 8
+dbline 6B A
+dbline 6C C
+dbline 6F E
+dbline 70 10
+dbline 71 12
+dbline 72 14
+dbline 73 16
+dbline 75 18
+dbline 77 19
+dbline 92 1A
+dbline 93 1D
+dbline 95 20
+dbline B5 21
+dbline B8 23
+dbline B9 26
+dbline BC 29
+dbline BD 2B
+dbline BE 2D
+dbline BF 2F
+dbline C0 31
+dbline C8 33
+dbline C9 36
+dbline CE 39
+dbline CF 3B
+dbline D0 3E
+dbline D2 41
+dbline D3 44
+dbline D5 47
+dbline D6 4A
+dbline DA 4D
+dbline DB 50
+dbline DC 53
+dbline DD 56
+dbline DE 59
+dbline DF 5C
+dbline E1 5F
+dbline FC 60
+dbline FE 63
+dbline FF 66
+dbline 102 69
+dbline 103 6C
+dbline 106 6F
+dbline 107 72
+dbline 109 75
+dbline 10A 78
+dbline 10B 7B
+dbline 10D 7E
+dbline 130 7F
+dbline 131 81
+dbline 133 83
+dbline 154 84
+dbline 155 87
+dbline 157 89
+dbline 15D 8A
+dbline 15F 8C
+dbline 183 8D
+dbline 184 90
+dbline 186 92
+dbline 18C 93
+dbline 18E 95
+dbline 1AF 96
+dbline 1B1 99
+dbline 1D3 9A
+dbline 1D4 9C
+dbline 1D6 9E
+S _DUALADC8_fIsDataAvailable Def007F
+S $sb$DUALADC8_ClearFlag Def0096
+S $se$DUALADC8_ClearFlag Def009A
+S _DUALADC8_StopAD Def0060
+S _DUALADC8_SetCalcTime Def009A
+S _DUALADC8_cGetData1 Def008A
+S _DUALADC8_cGetData2 Def0093
+S DUALADC8_cGetData1ClearFlag Def0084
+S DUALADC8_cGetData2ClearFlag Def008D
+S _DUALADC8_SetPower Def0000
+S DUALADC8_fIsData Def007F
+S DUALADC8_Stop Def001A
+S $sb$DUALADC8_cGetData1ClearFlag Def0084
+S $sb$DUALADC8_cGetData2ClearFlag Def008D
+S $se$DUALADC8_cGetData1ClearFlag Def008D
+S $se$DUALADC8_cGetData2ClearFlag Def0096
+S $sb$DUALADC8_fIsData Def007F
+S $se$DUALADC8_fIsData Def0084
+S _DUALADC8_ClearFlag Def0096
+S $sb$DUALADC8_Stop Def001A
+S $se$DUALADC8_Stop Def0021
+S _DUALADC8_cGetData1ClearFlag Def0084
+S _DUALADC8_cGetData2ClearFlag Def008D
+S DUALADC8_GetSamples Def0021
+S _DUALADC8_fIsData Def007F
+S _DUALADC8_Stop Def001A
+S DUALADC8_Start Def0000
+S $sb$DUALADC8_GetSamples Def0021
+S $se$DUALADC8_GetSamples Def0060
+S DUALADC8_fIsDataAvailable Def007F
+S $sb$DUALADC8_Start Def0000
+S DUALADC8_StopAD Def0060
+S $se$DUALADC8_Start Def001A
+S DUALADC8_SetCalcTime Def009A
+S DUALADC8_cGetData1 Def008A
+S DUALADC8_cGetData2 Def0093
+S DUALADC8_SetPower Def0000
+S $sb$DUALADC8_StopAD Def0060
+S $sb$DUALADC8_SetCalcTime Def009A
+S $se$DUALADC8_StopAD Def007F
+S $se$DUALADC8_SetCalcTime Def009F
+S _DUALADC8_GetSamples Def0021
+S DUALADC8_ClearFlag Def0096
+S _DUALADC8_Start Def0000
+T 00 00 21 03 4F 08 5D 83 21 FC 2B 00 29 F0 60 83
+R 00 00 00 02
+T 00 0E 5D 87 21 FC 2B 00 29 F0 60 87 18 7F 41 83
+R 00 00 00 02
+T 00 1C FC 41 87 FC 7F 90 3D 62 2E 00 62 32 04 51
+R 00 00 00 02
+T 00 2A 00 01 60 2D 50 04 02 00 00 60 31 55 00 00
+R 00 00 00 02 01 02 00 01 01 09 00 01 03 0E 00 00
+T 00 35 FE 55 00 00 FE 5D 2E 62 29 FF 62 35 FF 41
+R 00 00 00 02 03 04 00 01
+T 00 42 83 EF 41 87 EF 41 82 DF 41 86 DF 43 2B 05
+R 00 00 00 02
+T 00 50 43 37 05 43 2F 01 43 E1 10 43 E1 04 43 E1
+R 00 00 00 02
+T 00 5E 20 7F 41 2F FE 41 2B FE 41 37 FE 43 82 20
+R 00 00 00 02
+T 00 6C 43 86 20 43 83 10 43 87 10 41 E1 EF 41 E1
+R 00 00 00 02
+T 00 7A FB 41 E1 DF 7F 51 00 00 21 10 7F 26 00 00
+R 00 00 00 02 03 08 00 04 03 0E 00 04
+T 00 86 EF 51 00 01 7F 51 00 01 7F 26 00 00 EF 51
+R 00 00 00 02 03 04 00 02 03 08 00 02 03 0C 00 04
+T 00 91 00 01 7F 51 00 01 7F 26 00 00 EF 7F 53
+R 00 00 00 02 03 02 00 03 03 06 00 03 03 0A 00 04
+T 00 9B 00 01 5A 00 00 7F
+R 00 00 00 02 01 02 00 01 01 05 00 01
