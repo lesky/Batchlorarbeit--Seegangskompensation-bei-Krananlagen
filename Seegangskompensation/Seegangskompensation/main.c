@@ -1,75 +1,125 @@
 //----------------------------------------------------------------------------
-// C main line
+// C main-Funktion
 // Programm: Seegangskompensation bei Krahnanlagen
-// Version: 0.0.0.1
 // Controler: CY8C27446-24PXI
 //----------------------------------------------------------------------------
 
-#include <m8c.h>        // part specific constants and macros
-#include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+#include <m8c.h>        
+#include "PSoCAPI.h"    
 
-void main(void)
-{
-	// Difinition der Konstanten
-	char kochPeriodendauer = 50;					// Periodendauer
-	
-	// Variablendeklration
-	
-	char rgchLCD[] = "Test";   						
+// structur der Prozessdaten
+struct 
+   {	
+	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
 	char pdchBechleunigung, pdchEntfernung;			
-	char pbchSollwert;								
-	char pbchPulsweite;
-	char hichAusgangswert;							
+	char pdchSollwert;								
+	char pdchPulsweite;
+    } prozess;
+
+void LCDansteuern(void)
+	{
+	// LCD Ansteuern 
+	LCD_1_Position(0,5);            
+   	LCD_1_PrString(prozess.rgchLCD);
+	}
 	
+void Dateneinlesen(void)
+	{	
+	// Wenn Sollwertdaten bereit sind
+	if(ADCINC_fIsDataAvailable() != 0)
+			
+		// Einlesen des Sollwertes
+       	// data ready flag zurüvksetzen	
+		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+              	   
+    // Auf Entfernung und Position Warten
+	while(DUALADC8_fIsDataAvailable == 0);    		
+   		// Einlesen der Beschleunigung
+		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+    	
+		// Einlesen der Entfernung
+        // data ready flag zurüvksetzen         
+		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+	}
+
+void Ausgangansteuern(char hichAusgangswert)
+	{
+		// linksdrehend 
+		if (hichAusgangswert >= 0){				
+			DIGITALOUT_On;
+			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+		}
+		
+		// rechtsdrehend
+		else {				
+			DIGITALOUT_Off;
+			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+		}
+	}	
+		
+void main(void)
+	{
+	// Difinition der Konstanten
+	char kochPeriodendauer = 50;					
+	char kochKP;
+	char kochKS;
+		
+	// Variablendeklration
+	char hichAusgangswert;							
+	char hichBeschleunigungssumme;  
+		
 	// Initialisierung des Controlers
 	
-	M8C_EnableGInt;                     			// Enable global interrupts	
+	//globale Interrupts Freigeben
+	M8C_EnableGInt;                     				
   	
-	LCD_1_Start();                 					// Initialisieren des LCD-Displays
+	// Initialisieren des LCD-Displays
+	LCD_1_Start();                 					
    	
-	PWM8_1_WritePeriod(kochPeriodendauer);        	// Initialisieren der PWM-Module                    
+	// Initialisieren des PWM-Moduls
+	PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
-
-	DUALADC8_Start(DUALADC8_HIGHPOWER); 			// Initialisieren des Dualen AD-Wandlers
-   	DUALADC8_SetCalcTime(100);          			// für Entfernung und Beschleunigung
+	
+	// Initialisieren der Verstärker
+	PGA_1_SetGain(PGA_1_G0_12);						
+	PGA_2_SetGain(PGA_2_G0_12);
+	PGA_3_SetGain(PGA_3_G0_12);
+	
+	PGA_1_Start(PGA_1_LOWPOWER);
+	PGA_2_Start(PGA_2_LOWPOWER);
+	PGA_3_Start(PGA_3_LOWPOWER);	
+	
+	// Initialisieren des Dualen AD-Wandlers
+	// für Entfernung und Beschleunigung
+	DUALADC8_Start(DUALADC8_HIGHPOWER); 			
+   	DUALADC8_SetCalcTime(100);          			
    	DUALADC8_GetSamples(); 
 	
-	ADCINC_Start(ADCINC_HIGHPOWER);      			// Initialisieren des AD-Wandlers
-	ADCINC_GetSamples(0);                 			// für den Sollwert
+	// Initialisieren des AD-Wandlers
+	// für den Sollwert
+	ADCINC_Start(ADCINC_HIGHPOWER);      			
+	ADCINC_GetSamples(0);                 			
 	
-	DIGITALOUT_Start;								//Initialisieren der Digitalen Ausgangs
+	//Initialisieren der Digitalen Ausgangs
+	DIGITALOUT_Start;								
 	
 	// Endlosschleife
 	while(1) {
 	
 		// Daten Einlesen
-		if(ADCINC_fIsDataAvailable() != 0)   			// Wenn Sollwertdaten bereit sind
-		pbchSollwert = ADCINC_cClearFlagGetData();		// Einlesen des Sollwertes
-                                               			// data ready flag zurüvksetzen
-              	   
-    	while(DUALADC8_fIsDataAvailable == 0);    		// Auf Entfernung und Position Warten
-   		pdchBechleunigung = DUALADC8_cGetData1();      	// Einlesen der Beschleunigung
-    	pdchEntfernung = DUALADC8_cGetData2ClearFlag();	// Einlesen der Entfernung
-                                               			// data ready flag zurüvksetzen                                    
+		Dateneinlesen();
+		                         
 		// Parameter Berechnen
 		
-		// Ausgang Setzen
+		hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
 		
-		PWM8_1_WritePulseWidth(pbchPulsweite);
+		hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
+							- 1 / kochKS * hichBeschleunigungssumme;
+		//TODO: Korekturfaktor Einfügen 
+		prozess.pdchPulsweite = hichAusgangswert; 
 		
-		// positive Drehrichtung
-		if (hichAusgangswert >= 0){				
-			DIGITALOUT_On;
-		}
-		// negative Drehrichtung
-		else {				
-			DIGITALOUT_Off;	
-		}
-				
-		// LCD Ansteuern 
-		LCD_1_Position(0,5);            
-   		LCD_1_PrString(rgchLCD);
-	
+		Ausgangansteuern(hichAusgangswert);
+		LCDansteuern();
+		
 	};
-	
 }
