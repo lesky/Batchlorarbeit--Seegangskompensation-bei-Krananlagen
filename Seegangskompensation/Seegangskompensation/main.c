@@ -2,23 +2,31 @@
 * C main-Funktion										*
 * Programm: Seegangskompensation bei Krahnanlagen		*
 * Controler: CY8C27446-24PXI							*
-* I/O-Konfiguration:									*
-* LCD -> Port 2											*
-* Selbsttest ->1.1										*
-* IN1 ->1.2												*
-* IN2->1.3												*
-* PWM 1-> Pin 1.4										*
+* 														*
+*I/O-Konfiguration:										*
+* LCD 			-> Port 2								*
+* Selbsttest 	->1.1			 						*
+* IN1		 	->1.2									*
+* IN2			->1.3									*
+* PWM 1			-> Pin 1.4								*
 * Beschleunigung-> 0.1									*
-* Entfernung -> 0.4										*
-* Sollwert-> 0.5										*
+* Entfernung 	-> 0.4									*
+* Sollwert		-> 0.5									*
 ********************************************************/
 
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 
-// Für testzwecke #defein Test nicht auskomentieren
+// Präprozessor:Für testzwecke 
+// #defein Test nicht auskomentieren:
 // #define TEST
-// globale Structur zur Übergabe der Prozessdaten
+
+// Funktionsprototypen:
+void LCDansteuern(void);
+void Dateneinlesen(void);
+void Ausgangansteuern(char);
+
+// globale Structur zur Übergabe der Prozessdaten:
 struct 
    {	
 	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
@@ -26,63 +34,6 @@ struct
 	char pdchSollwert;								
 	char pdchPulsweite;
     } prozess;
-
-void LCDansteuern(void)
-	{
-	// LCD Ansteuern 
-	LCD_1_Position(0,5);            
-   	LCD_1_PrString(prozess.rgchLCD);
-	}
-	
-void Dateneinlesen(void)
-	{	
-	// Wenn Sollwertdaten bereit sind
-	if(ADCINC_fIsDataAvailable() != 0)
-			
-		// Einlesen des Sollwertes
-       	// data ready flag zurüvksetzen	
-		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
-              	   
-    	// Auf Entfernung und Position Warten
-		while(DUALADC8_fIsDataAvailable == 0);    		
-   		// Einlesen der Beschleunigung
-		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
-    	
-		// Einlesen der Entfernung
-        // data ready flag zurüvksetzen         
-		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
-	}
-
-void Ausgangansteuern(char hichAusgangswert)
-	{
-		// linksdrehend 
-		if (hichAusgangswert > 0){				
-			IN1_On;
-			IN2_Off;
-			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
-		}
-		// rechtsdrehend
-		else if (hichAusgangswert < 0){				
-			IN1_On;
-			IN2_Off;
-			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
-		}
-		// Bremsen durch Kurzschluss
-		else{				
-			IN1_On;
-			IN2_On;
-			PWM8_1_WritePulseWidth(0);
-		}
-	}	
-//Präprozessor: kompiliere testmain wenn Test
-#ifdef TEST
-// Testmain
-void main(void)
-	{
-	}
-	
-//Präprozessor: kompiliere main wenn kein Test
-#else
 
 // Reguläre mani Funktion
 void main(void)
@@ -153,5 +104,53 @@ void main(void)
 		
 	};
 }
-//Präprozessor: Ende der Präprozessor anweisungen
-#endif 
+
+// Funktionen:
+	
+void LCDansteuern(void)
+	{
+	// LCD Ansteuern 
+	LCD_1_Position(0,5);            
+   	LCD_1_PrString(prozess.rgchLCD);
+	}
+	
+void Dateneinlesen(void)
+	{	
+	// Wenn Sollwertdaten bereit sind
+	if(ADCINC_fIsDataAvailable() != 0)
+			
+		// Einlesen des Sollwertes
+       	// data ready flag zurüvksetzen	
+		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+              	   
+    	// Auf Entfernung und Position Warten
+		while(DUALADC8_fIsDataAvailable == 0);    		
+   		// Einlesen der Beschleunigung
+		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+    	
+		// Einlesen der Entfernung
+        // data ready flag zurüvksetzen         
+		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+	}
+
+void Ausgangansteuern(char hichAusgangswert)
+	{
+		// linksdrehend 
+		if (hichAusgangswert > 0){				
+			IN1_On;
+			IN2_Off;
+			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+		}
+		// rechtsdrehend
+		else if (hichAusgangswert < 0){				
+			IN1_On;
+			IN2_Off;
+			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+		}
+		// Bremsen durch Kurzschluss
+		else{				
+			IN1_On;
+			IN2_On;
+			PWM8_1_WritePulseWidth(0);
+		}
+	}	
