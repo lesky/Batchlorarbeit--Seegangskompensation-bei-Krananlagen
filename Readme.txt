@@ -2,7 +2,6 @@ Batchlorarbeit Seegangskompensation bei Krananlagen
 Version: 0.0.0.1
 Controler: CY8C27446-24PXI
 Anutor: Benjamin Lesky
-
 I/O-Konfiguration:
 LCD -> Port 2
 Selbsttest ->1.1
@@ -12,7 +11,9 @@ PWM 1-> Pin 1.4
 Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5
+
 ToDO:
+-Testroutine programmieren
 -Datenübergabe auf Pointer umstellen
 -Korekturfaktor Einfügen 
 -Arraygröße anpassen 
