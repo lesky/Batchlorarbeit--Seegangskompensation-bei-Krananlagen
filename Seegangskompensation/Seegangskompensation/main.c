@@ -5,15 +5,16 @@
 * 														*
 *I/O-Konfiguration:										*
 * LCD 			-> Port 2								*
-* Selbsttest 	->1.1			 						*
-* IN1		 	->1.2									*
-* IN2			->1.3									*
-* PWM 1			-> Pin 1.4								*
+* Selbsttest 	-> 1.1			 						*
+* IN1		 	-> 1.2									*
+* IN2			-> 1.3									*
+* PWM 1			-> 1.4									*
 * Beschleunigung-> 0.1									*
 * Entfernung 	-> 0.4									*
 * Sollwert		-> 0.5									*
 ********************************************************/
 
+#include <stdio.h>
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 
@@ -22,13 +23,13 @@
 // #define TEST
 
 // Funktionsprototypen:
-void LCDansteuern(void);
+void LCDansteuern(char);
 void Dateneinlesen(void);
 void Ausgangansteuern(char);
 
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
-	void wait(void);
+	void test(char);
 #endif 
 
 // globale Structur zur Übergabe der Prozessdaten:
@@ -107,7 +108,7 @@ void main(void)
 			prozess.pdchPulsweite = hichAusgangswert; 
 			
 			Ausgangansteuern(hichAusgangswert);
-			LCDansteuern();
+			LCDansteuern(prozess.pdchEntfernung);
 			
 		};
 	// Präprozessor: kompiliere whileschleife wenn test;
@@ -121,12 +122,9 @@ void main(void)
 				// Daten Einlesen
 				void Dateneinlesen(void);
 				// Daten Nacheinander auf LCD Ausgeeben
-				prozess.rgchLCD = "%C",prozess.pdchBechleunigung;
-				wait();
-				prozess.rgchLCD = "%C",prozess.pdchEntfernung;
-				wait();
-				prozess.rgchLCD = "%C",prozess.pdchSollwert;
-				wait();			
+				test(prozess.pdchBechleunigung);
+				test(prozess.pdchEntfernung);
+				test(prozess.pdchSollwert);			
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -135,11 +133,13 @@ void main(void)
 
 // Funktionen:
 	
-void LCDansteuern(void)
+void LCDansteuern(char hichdata)
 	{
+	char rgchErstzeile[12];
 	// LCD Ansteuern 
-	LCD_1_Position(0,5);            
-   	LCD_1_PrString(prozess.rgchLCD);
+	csprintf(rgchErstzeile,"Abstand:%c",hichdata);
+	LCD_1_Position(1,0);
+	LCD_1_PrString(rgchErstzeile);
 	}
 	
 void Dateneinlesen(void)
@@ -185,13 +185,13 @@ void Ausgangansteuern(char hichAusgangswert)
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
 	// Ausgabe der Testdaten auf LCD-Display
-	void wait(void)
+	void test(char hichdata)
 		{
 		// gibt 99999 mal LCD Aus
 		int i;
 		for (i = 0; i <= 99999; i ++)
 			{
-			LCDansteuern();	
+			LCDansteuern(hichdata);	
 			}
 		}
 #endif 

@@ -13,8 +13,7 @@ Entfernung -> 0.4
 Sollwert-> 0.5
 
 ToDO:
--Testroutine programmieren
--Datenübergabe auf Pointer umstellen
+-Testroutine programmieren	(Erledigt 28.08.13)	
 -Korekturfaktor Einfügen 
 -Arraygröße anpassen 
 -Selbsttest  
