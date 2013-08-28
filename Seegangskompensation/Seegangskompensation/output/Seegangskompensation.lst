@@ -5140,21 +5140,23 @@ __UserModules_end|__text_start|_main|_main:
 (0084) 	IN2_Start;
 (0085) 	SELBSTTEST_Start;
     0941: 80 44    JMP   0x0986
-(0086) 	
-(0087) 	// Endlosschleife
-(0088) 	while(1) {
-(0089) 	
-(0090) 		// Daten Einlesen
-(0091) 		Dateneinlesen();
+(0086) 	// Präprozessor: kompiliere whileschleife wenn kein test
+(0087) 	#ifndef TEST
+(0088) 		
+(0089) 		// Endlosschleife
+(0090) 		while(1) 
+(0091) 			{
+(0092) 			// Daten Einlesen
+(0093) 			Dateneinlesen();
     0943: 90 5C    CALL  _Dateneinlesen
-(0092) 		                         
-(0093) 		// Parameter Berechnen
-(0094) 		
-(0095) 		hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
+(0094) 			                         
+(0095) 			// Parameter Berechnen
+(0096) 			
+(0097) 			hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
     0945: 51 27    MOV   A,[prozess+15]
     0947: 05 01    ADD   [X+1],A
-(0096) 		
-(0097) 		hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
+(0098) 			
+(0099) 			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
     0949: 52 03    MOV   A,[X+3]
     094B: 08       PUSH  A
     094C: 50 01    MOV   A,0x1
@@ -5181,39 +5183,49 @@ __UserModules_end|__text_start|_main|_main:
     0973: 5D EB    MOV   A,REG[0xEB]
     0975: 12 04    SUB   A,[__r0]
     0977: 54 00    MOV   [X+0],A
-(0098) 							- 1 / kochKS * hichBeschleunigungssumme;
-(0099) 		//TODO: Korekturfaktor Einfügen 
-(0100) 		prozess.pdchPulsweite = hichAusgangswert; 
+(0100) 								- 1 / kochKS * hichBeschleunigungssumme;
+(0101) 			//TODO: Korekturfaktor Einfügen 
+(0102) 			prozess.pdchPulsweite = hichAusgangswert; 
     0979: 52 00    MOV   A,[X+0]
     097B: 53 2A    MOV   [prozess+18],A
-(0101) 		
-(0102) 		Ausgangansteuern(hichAusgangswert);
+(0103) 			
+(0104) 			Ausgangansteuern(hichAusgangswert);
     097D: 52 00    MOV   A,[X+0]
     097F: 08       PUSH  A
     0980: 90 52    CALL  _Ausgangansteuern
     0982: 38 FF    ADD   SP,0xFF
-(0103) 		LCDansteuern();
+(0105) 			LCDansteuern();
     0984: 90 07    CALL  _LCDansteuern
-(0104) 		
-(0105) 	};
+(0106) 			
+(0107) 		};
     0986: 8F BC    JMP   0x0943
     0988: 38 FB    ADD   SP,0xFB
     098A: 20       POP   X
     098B: 8F FF    JMP   0x098B
-(0106) }
-(0107) 
-(0108) // Funktionen:
-(0109) 	
-(0110) void LCDansteuern(void)
-(0111) 	{
-(0112) 	// LCD Ansteuern 
-(0113) 	LCD_1_Position(0,5);            
+(0108) 	// Präprozessor: kompiliere whileschleife wenn test;
+(0109) 	#else
+(0110) 		// whileschleife zu testzwecken
+(0111) 		while (1)
+(0112) 			{
+(0113) 				//TODO: Testroutine
+(0114) 			};
+(0115) 			
+(0116) 	// Präprozessor: Ende der Verzweifung
+(0117) 	#endif 
+(0118) }
+(0119) 
+(0120) // Funktionen:
+(0121) 	
+(0122) void LCDansteuern(void)
+(0123) 	{
+(0124) 	// LCD Ansteuern 
+(0125) 	LCD_1_Position(0,5);            
 _LCDansteuern:
     098D: 10       PUSH  X
     098E: 57 05    MOV   X,0x5
     0990: 50 00    MOV   A,0x0
     0992: 7C 05 97 LCALL _LCD_1_Position
-(0114)    	LCD_1_PrString(prozess.rgchLCD);
+(0126)    	LCD_1_PrString(prozess.rgchLCD);
     0995: 50 00    MOV   A,0x0
     0997: 08       PUSH  A
     0998: 50 18    MOV   A,0x18
@@ -5222,29 +5234,29 @@ _LCDansteuern:
     099C: 7C 04 62 LCALL _LCD_1_PrString
     099F: 20       POP   X
     09A0: 7F       RET   
-(0115) 	}
-(0116) 	
-(0117) void Dateneinlesen(void)
-(0118) 	{	
-(0119) 	// Wenn Sollwertdaten bereit sind
-(0120) 	if(ADCINC_fIsDataAvailable() != 0)
+(0127) 	}
+(0128) 	
+(0129) void Dateneinlesen(void)
+(0130) 	{	
+(0131) 	// Wenn Sollwertdaten bereit sind
+(0132) 	if(ADCINC_fIsDataAvailable() != 0)
 _Dateneinlesen:
     09A1: 10       PUSH  X
     09A2: 7C 08 CB LCALL _ADCINC_fIsDataAvailable
     09A5: 20       POP   X
     09A6: 39 00    CMP   A,0x0
     09A8: A0 08    JZ    0x09B1
-(0121) 			
-(0122) 		// Einlesen des Sollwertes
-(0123)        	// data ready flag zurüvksetzen	
-(0124) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+(0133) 			
+(0134) 		// Einlesen des Sollwertes
+(0135)        	// data ready flag zurüvksetzen	
+(0136) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
     09AA: 10       PUSH  X
     09AB: 7C 08 DB LCALL _ADCINC_bClearFlagGetData|ADCINC_cClearFlagGetData|_ADCINC_cClearFlagGetData|ADCINC_bClearFlagGetData
     09AE: 20       POP   X
     09AF: 53 29    MOV   [prozess+17],A
-(0125)               	   
-(0126)     	// Auf Entfernung und Position Warten
-(0127) 		while(DUALADC8_fIsDataAvailable == 0);    		
+(0137)               	   
+(0138)     	// Auf Entfernung und Position Warten
+(0139) 		while(DUALADC8_fIsDataAvailable == 0);    		
     09B1: 50 16    MOV   A,0x16
     09B3: 10       PUSH  X
     09B4: 58 03    MOV   X,[__r1]
@@ -5258,66 +5270,66 @@ _Dateneinlesen:
     09BF: 20       POP   X
     09C0: 3C 04 00 CMP   [__r0],0x0
     09C3: AF ED    JZ    0x09B1
-(0128)    		// Einlesen der Beschleunigung
-(0129) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+(0140)    		// Einlesen der Beschleunigung
+(0141) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
     09C5: 10       PUSH  X
     09C6: 7C 07 FB LCALL _DUALADC8_cGetData1
     09C9: 20       POP   X
     09CA: 53 27    MOV   [prozess+15],A
-(0130)     	
-(0131) 		// Einlesen der Entfernung
-(0132)         // data ready flag zurüvksetzen         
-(0133) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+(0142)     	
+(0143) 		// Einlesen der Entfernung
+(0144)         // data ready flag zurüvksetzen         
+(0145) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
     09CC: 10       PUSH  X
     09CD: 7C 07 FE LCALL _DUALADC8_cGetData2ClearFlag
     09D0: 20       POP   X
     09D1: 53 28    MOV   [prozess+16],A
     09D3: 7F       RET   
-(0134) 	}
-(0135) 
-(0136) void Ausgangansteuern(char hichAusgangswert)
-(0137) 	{
+(0146) 	}
+(0147) 
+(0148) void Ausgangansteuern(char hichAusgangswert)
+(0149) 	{
 _Ausgangansteuern:
   hichAusgangswert     --> X-4
     09D4: 10       PUSH  X
     09D5: 4F       MOV   X,SP
-(0138) 		// linksdrehend 
-(0139) 		if (hichAusgangswert > 0){				
+(0150) 		// linksdrehend 
+(0151) 		if (hichAusgangswert > 0){				
     09D6: 50 00    MOV   A,0x0
     09D8: 3B FC    CMP   A,[X-4]
     09DA: D0 0A    JNC   0x09E5
-(0140) 			IN1_On;
-(0141) 			IN2_Off;
-(0142) 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+(0152) 			IN1_On;
+(0153) 			IN2_Off;
+(0154) 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
     09DC: 10       PUSH  X
     09DD: 51 2A    MOV   A,[prozess+18]
     09DF: 7C 03 5B LCALL _PWM8_1_WritePulseWidth
     09E2: 20       POP   X
-(0143) 		}
+(0155) 		}
     09E3: 80 19    JMP   0x09FD
-(0144) 		// rechtsdrehend
-(0145) 		else if (hichAusgangswert < 0){				
+(0156) 		// rechtsdrehend
+(0157) 		else if (hichAusgangswert < 0){				
     09E5: 3D FC 00 CMP   [X-4],0x0
     09E8: D0 0D    JNC   0x09F6
-(0146) 			IN1_On;
-(0147) 			IN2_Off;
-(0148) 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+(0158) 			IN1_On;
+(0159) 			IN2_Off;
+(0160) 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
     09EA: 51 2A    MOV   A,[prozess+18]
     09EC: 73       CPL   A
     09ED: 11 FF    SUB   A,0xFF
     09EF: 10       PUSH  X
     09F0: 7C 03 5B LCALL _PWM8_1_WritePulseWidth
     09F3: 20       POP   X
-(0149) 		}
+(0161) 		}
     09F4: 80 08    JMP   0x09FD
-(0150) 		// Bremsen durch Kurzschluss
-(0151) 		else{				
-(0152) 			IN1_On;
-(0153) 			IN2_On;
-(0154) 			PWM8_1_WritePulseWidth(0);
+(0162) 		// Bremsen durch Kurzschluss
+(0163) 		else{				
+(0164) 			IN1_On;
+(0165) 			IN2_On;
+(0166) 			PWM8_1_WritePulseWidth(0);
     09F6: 10       PUSH  X
     09F7: 50 00    MOV   A,0x0
     09F9: 7C 03 5B LCALL _PWM8_1_WritePulseWidth
     09FC: 20       POP   X
-(0155) 		}
+(0167) 		}
     09FD: 20       POP   X

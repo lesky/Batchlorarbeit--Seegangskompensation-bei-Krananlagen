@@ -7,17 +7,17 @@ creating project.mk -- no changes
 
 !W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(85):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(140):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(141):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(146):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(147):[warning] expression with no effect elided
-
 !W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(152):[warning] expression with no effect elided
 
 !W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(153):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(158):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(159):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(164):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(165):[warning] expression with no effect elided
 
 Linking..
 
@@ -28,5 +28,5 @@ Linking..
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 9 warning(s) 10:02:48
+Seegangskompensation - 0 error(s) 9 warning(s) 10:09:45
 

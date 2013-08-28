@@ -83,26 +83,38 @@ void main(void)
 	IN1_Start;	
 	IN2_Start;
 	SELBSTTEST_Start;
-	
-	// Endlosschleife
-	while(1) {
-	
-		// Daten Einlesen
-		Dateneinlesen();
-		                         
-		// Parameter Berechnen
+	// Präprozessor: kompiliere whileschleife wenn kein test
+	#ifndef TEST
 		
-		hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
-		
-		hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
-							- 1 / kochKS * hichBeschleunigungssumme;
-		//TODO: Korekturfaktor Einfügen 
-		prozess.pdchPulsweite = hichAusgangswert; 
-		
-		Ausgangansteuern(hichAusgangswert);
-		LCDansteuern();
-		
-	};
+		// Endlosschleife
+		while(1) 
+			{
+			// Daten Einlesen
+			Dateneinlesen();
+			                         
+			// Parameter Berechnen
+			
+			hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
+			
+			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
+								- 1 / kochKS * hichBeschleunigungssumme;
+			//TODO: Korekturfaktor Einfügen 
+			prozess.pdchPulsweite = hichAusgangswert; 
+			
+			Ausgangansteuern(hichAusgangswert);
+			LCDansteuern();
+			
+		};
+	// Präprozessor: kompiliere whileschleife wenn test;
+	#else
+		// whileschleife zu testzwecken
+		while (1)
+			{
+				//TODO: Testroutine
+			};
+			
+	// Präprozessor: Ende der Verzweifung
+	#endif 
 }
 
 // Funktionen:
