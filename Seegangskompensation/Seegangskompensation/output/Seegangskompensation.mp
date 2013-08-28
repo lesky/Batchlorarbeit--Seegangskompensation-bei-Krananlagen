@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Wed Aug 28 11:36:40 2013
+Date:         Wed Aug 28 11:54:48 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -268,24 +268,24 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             bss   001C   002E =     46. bytes (rel,con,ram)
+                             bss   001C   001F =     31. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
        001C  _prozess
        001C  __bss_start
-       004A  __bss_end
+       003B  __bss_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-        seegangskompensation_RAM   004A   0002 =      2. bytes (rel,con,ram)
+        seegangskompensation_RAM   003B   0002 =      2. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       004A  DUALADC8_iCalcTime
-       004A  _DUALADC8_iCalcTime
-       004C  __seegangskompensation_RAM_end
-       004C  __ramareas_end
+       003B  DUALADC8_iCalcTime
+       003B  _DUALADC8_iCalcTime
+       003D  __seegangskompensation_RAM_end
+       003D  __ramareas_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------

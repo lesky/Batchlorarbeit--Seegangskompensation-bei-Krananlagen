@@ -38,93 +38,92 @@ dbsym l kochKP 2 c
 dbsym l hichBeschleunigungssumme 1 c
 dbsym l hichAusgangswert 0 c
 dbline FFFFFFFF 0
-dbline 2E 4
-dbline 30 4
-dbline 3B 7
-dbline 3E 9
-dbline 41 E
-dbline 42 14
-dbline 45 17
-dbline 46 1C
-dbline 47 21
-dbline 49 26
-dbline 4A 2B
-dbline 4B 30
-dbline 4F 35
-dbline 50 3A
-dbline 51 41
-dbline 55 44
-dbline 56 49
-dbline 59 4F
-dbline 5A 4F
-dbline 5B 4F
-dbline 61 51
-dbline 63 51
-dbline 67 53
-dbline 69 57
-dbline 6C 87
-dbline 6E 8B
-dbline 6F 90
-dbline 71 97
-dbline 60 97
+dbline 34 4
+dbline 36 4
+dbline 41 7
+dbline 44 9
+dbline 47 E
+dbline 48 14
+dbline 4B 17
+dbline 4C 1C
+dbline 4D 21
+dbline 4F 26
+dbline 50 2B
+dbline 51 30
+dbline 55 35
+dbline 56 3A
+dbline 57 41
+dbline 5B 44
+dbline 5C 49
+dbline 5F 4F
+dbline 60 4F
+dbline 61 4F
+dbline 67 51
+dbline 69 51
+dbline 6D 53
+dbline 6F 57
+dbline 72 87
+dbline 74 8B
+dbline 75 90
+dbline 77 97
+dbline 66 97
 dbline FFFFFFFE 99
 dbline 0 9C
 dbfunc e LCDansteuern 9E fV
 dbsym l rgchErstzeile 0 A[12:12]c
 dbsym l hichdata FFFFFFFC c
 dbline FFFFFFFF 9E
-dbline 89 A2
-dbline 8C A2
-dbline 8D BB
-dbline 8E C4
+dbline 8F A2
+dbline 92 A2
+dbline 93 BB
+dbline 94 C4
 dbline FFFFFFFE CB
 dbline 0 CE
 dbfunc e Dateneinlesen CF fV
 dbline FFFFFFFF CF
-dbline 92 CF
-dbline 94 CF
-dbline 98 D8
-dbline 9B DF
-dbline 9B DF
-dbline 9D F3
-dbline A1 FA
+dbline 98 CF
+dbline 9A CF
+dbline 9E D8
+dbline A1 DF
+dbline A1 DF
+dbline A3 F3
+dbline A7 FA
 dbline FFFFFFFE 101
 dbline 0 101
 dbfunc e Ausgangansteuern 102 fV
 dbsym l hichAusgangswert FFFFFFFC c
 dbline FFFFFFFF 102
-dbline A5 104
-dbline A7 104
-dbline A8 10A
-dbline A8 10A
-dbline A9 10A
-dbline AA 10A
-dbline AB 111
-dbline AD 113
-dbline AE 118
-dbline AE 118
-dbline AF 118
-dbline B0 118
-dbline B1 122
-dbline B3 124
-dbline B4 124
-dbline B5 124
-dbline B6 124
-dbline B7 12B
+dbline AB 104
+dbline AD 104
+dbline AE 10A
+dbline AE 10A
+dbline AF 10A
+dbline B0 10A
+dbline B1 111
+dbline B3 113
+dbline B4 118
+dbline B4 118
+dbline B5 118
+dbline B6 118
+dbline B7 122
+dbline B9 124
+dbline BA 124
+dbline BB 124
+dbline BC 124
+dbline BD 12B
 dbline FFFFFFFE 12B
 dbline 0 12C
 S _main Def0000
 S _LCDansteuern Def009E
 S _Dateneinlesen Def00CF
 S _Ausgangansteuern Def0102
-A bss size 13 flags 20
+A bss size 4 flags 20
 dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c
-dbstruct 19 .1
-dbfield 0 rgchLCD A[15:15]c
-dbfield 15 pdchBechleunigung c
-dbfield 16 pdchEntfernung c
-dbfield 17 pdchSollwert c
-dbfield 18 pdchPulsweite c
+dbstruct 4 .1
+dbfield 0 pdchBechleunigung c
+dbfield 1 pdchEntfernung c
+dbfield 2 pdchSollwert c
+dbfield 3 pdchPulsweite c
 dbend
 dbsym e prozess 0 S[.1]
 S _prozess Def0000
@@ -142,17 +141,17 @@ T 00 37 7C 00 00 57 00 50 64 7C 00 00 7C 00 00 50
 R 00 00 00 00 02 03 00 1A 02 0A 00 02 02 0D 00 18
 T 00 45 03 7C 00 00 50 00 7C 00 00 20 80 47 90 7C
 R 00 00 00 00 02 04 00 0C 02 09 00 07
-T 00 53 51 00 0F 05 01 52 03 08 50 01 08 7C 00 00
+T 00 53 51 00 00 05 01 52 03 08 50 01 08 7C 00 00
 R 00 00 00 00 01 03 00 01 02 0E 00 0E
 T 00 60 18 53 00 00 38 FF 52 01 60 E8 51 00 00 60
 R 00 00 00 00 03 04 00 09 03 0D 00 09
-T 00 6C E9 40 5D EB 53 00 00 51 00 11 12 00 0F 53
+T 00 6C E9 40 5D EB 53 00 00 51 00 02 12 00 00 53
 R 00 00 00 00 03 07 00 09 01 0A 00 01 01 0D 00 01
 T 00 77 00 00 52 02 60 E8 51 00 00 60 E9 40 5D EB
 R 00 00 00 00 03 02 00 0B 03 09 00 0B
-T 00 83 12 00 00 54 00 52 00 53 00 12 52 00 08 90
+T 00 83 12 00 00 54 00 52 00 53 00 03 52 00 08 90
 R 00 00 00 00 03 03 00 09 01 0A 00 01
-T 00 8F 72 51 00 10 08 90 09 38 FE 8F B9 38 FB 20
+T 00 8F 72 51 00 01 08 90 09 38 FE 8F B9 38 FB 20
 R 00 00 00 00 01 04 00 01
 T 00 9C 8F FF 10 4F 38 0C 52 FC 53 00 00 50 00 08
 R 00 00 00 00 03 0B 00 0A
@@ -164,17 +163,17 @@ T 00 C1 00 00 20 10 51 00 00 7C 00 00 20 38 F4 20
 R 00 00 00 00 02 02 00 0F 03 07 00 09 02 0A 00 08
 T 00 CE 7F 10 7C 00 00 20 39 00 A0 08 10 7C 00 00
 R 00 00 00 00 02 05 00 10 02 0E 00 13
-T 00 DC 20 53 00 11 50 00 00 10 58 00 00 08 28 53
+T 00 DC 20 53 00 02 50 00 00 10 58 00 00 08 28 53
 R 00 00 00 00 01 04 00 01 01 07 00 03 03 0B 00 0A
 T 00 E7 00 00 18 75 09 00 28 20 3C 00 00 00 AF ED
 R 00 00 00 00 03 02 00 09 03 0B 00 09
-T 00 F3 10 7C 00 00 20 53 00 0F 10 7C 00 00 20 53
+T 00 F3 10 7C 00 00 20 53 00 00 10 7C 00 00 20 53
 R 00 00 00 00 02 04 00 01 01 08 00 01 02 0C 00 0D
-T 01 00 00 10 7F 10 4F 50 00 3B FC D0 0A 10 51
+T 01 00 00 01 7F 10 4F 50 00 3B FC D0 0A 10 51
 R 00 00 00 00 01 02 00 01
-T 01 0C 00 12 7C 00 00 20 80 19 3D FC 00 D0 0D 51
+T 01 0C 00 03 7C 00 00 20 80 19 3D FC 00 D0 0D 51
 R 00 00 00 00 01 02 00 01 02 05 00 12
-T 01 19 00 12 73 11 FF 10 7C 00 00 20 80 08 10 50
+T 01 19 00 03 73 11 FF 10 7C 00 00 20 80 08 10 50
 R 00 00 00 00 01 02 00 01 02 09 00 12
 T 01 26 00 7C 00 00 20 20 7F
 R 00 00 00 00 02 04 00 12

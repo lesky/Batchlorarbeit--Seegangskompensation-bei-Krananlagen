@@ -12,6 +12,13 @@
 * Beschleunigung-> 0.1									*
 * Entfernung 	-> 0.4									*
 * Sollwert		-> 0.5									*
+* 														*
+*Zusätzlich definierte Prüfixe zur Variablenbenennung	*
+*Mittels Ungaricher Notation nach Charles Simonyi:		*
+*pd	-> Prozessbezogene Daten							*
+*ko	-> Konstanten										*
+*hi	-> Interne Hilfsgrößen								*
+*in	-> Datentyp Integer									*
 ********************************************************/
 
 #include <stdio.h>
@@ -34,8 +41,7 @@ void Ausgangansteuern(char);
 
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
-   {	
-	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
+   {	  						
 	char pdchBechleunigung, pdchEntfernung;			
 	char pdchSollwert;								
 	char pdchPulsweite;
@@ -188,8 +194,8 @@ void Ausgangansteuern(char hichAusgangswert)
 	void test(char hichdata)
 		{
 		// gibt 99999 mal LCD Aus
-		int i;
-		for (i = 0; i <= 99999; i ++)
+		int iin;
+		for (iin = 0; iin <= 99999; iin ++)
 			{
 			LCDansteuern(hichdata);	
 			}
