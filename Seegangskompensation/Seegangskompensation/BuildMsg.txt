@@ -1,26 +1,68 @@
 Starting MAKE...
-creating project.mk -- no changes
+creating project.mk 
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\main\SEEGAN~1\SEEGAN~1\main.c(49):[warning] expression with no effect elided
+mkdepend.exe: error:  cannot rename project.dep to project.dep.bak
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\main\SEEGAN~1\SEEGAN~1\main.c(55):[warning] expression with no effect elided
+make: *** [depend] Error 1
 
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\main\SEEGAN~1\SEEGAN~1\main.c(104):[warning] expression with no effect elided
+lib/adcinc.asm
+
+lib/adcincint.asm
+
+lib/dualadc8.asm
+
+lib/dualadc8int.asm
+
+lib/in1.asm
+
+lib/in2.asm
+
+lib/lcd_1.asm
+
+lib/pga_1.asm
+
+lib/pga_2.asm
+
+lib/pga_3.asm
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/pwm8_1.asm
+
+lib/pwm8_1int.asm
+
+lib/selbsttest.asm
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(49):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(50):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(55):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(56):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(61):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(62):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(111):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(112):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(113):[warning] expression with no effect elided
+
+./boot.asm
 
 Linking..
 
-  ROM 14% full. 2244 out of 16384 bytes used (does not include absolute areas).
+  ROM 14% full. 2259 out of 16384 bytes used (does not include absolute areas).
 
   RAM 18% full. 45 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 3 warning(s) 10:44:58
-
-Performing Project Clean...
-done
-
-Performing Project Clean...
-done
+Seegangskompensation - 1 error(s) 9 warning(s) 09:59:34
 

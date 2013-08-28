@@ -32,8 +32,8 @@ void Dateneinlesen(void)
        	// data ready flag zurüvksetzen	
 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
               	   
-    // Auf Entfernung und Position Warten
-	while(DUALADC8_fIsDataAvailable == 0);    		
+    	// Auf Entfernung und Position Warten
+		while(DUALADC8_fIsDataAvailable == 0);    		
    		// Einlesen der Beschleunigung
 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
     	
@@ -45,15 +45,22 @@ void Dateneinlesen(void)
 void Ausgangansteuern(char hichAusgangswert)
 	{
 		// linksdrehend 
-		if (hichAusgangswert >= 0){				
-			DIGITALOUT_On;
+		if (hichAusgangswert > 0){				
+			IN1_On;
+			IN2_Off;
 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
 		}
-		
 		// rechtsdrehend
-		else {				
-			DIGITALOUT_Off;
+		else if (hichAusgangswert < 0){				
+			IN1_On;
+			IN2_Off;
 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+		}
+		// Bremsen durch Kurzschluss
+		else{				
+			IN1_On;
+			IN2_On;
+			PWM8_1_WritePulseWidth(0);
 		}
 	}	
 		
@@ -100,8 +107,10 @@ void main(void)
 	ADCINC_Start(ADCINC_HIGHPOWER);      			
 	ADCINC_GetSamples(0);                 			
 	
-	//Initialisieren der Digitalen Ausgangs
-	DIGITALOUT_Start;								
+	//Initialisieren der Digitalen Ausgänge
+	IN1_Start;	
+	IN2_Start;
+	SELBSTTEST_Start;
 	
 	// Endlosschleife
 	while(1) {
