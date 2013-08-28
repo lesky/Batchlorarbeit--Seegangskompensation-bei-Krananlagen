@@ -26,6 +26,11 @@ void LCDansteuern(void);
 void Dateneinlesen(void);
 void Ausgangansteuern(char);
 
+// Präprozessor: kompiliere Funktion nur wenn Test
+#ifdef TEST
+	void wait(void);
+#endif 
+
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
    {	
@@ -107,10 +112,21 @@ void main(void)
 		};
 	// Präprozessor: kompiliere whileschleife wenn test;
 	#else
+		
+			
 		// whileschleife zu testzwecken
+		// Konstante zur verweildauer in der schleife
 		while (1)
 			{
-				//TODO: Testroutine
+				// Daten Einlesen
+				void Dateneinlesen(void);
+				// Daten Nacheinander auf LCD Ausgeeben
+				prozess.rgchLCD = "%C",prozess.pdchBechleunigung;
+				wait();
+				prozess.rgchLCD = "%C",prozess.pdchEntfernung;
+				wait();
+				prozess.rgchLCD = "%C",prozess.pdchSollwert;
+				wait();			
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -166,3 +182,16 @@ void Ausgangansteuern(char hichAusgangswert)
 			PWM8_1_WritePulseWidth(0);
 		}
 	}	
+// Präprozessor: kompiliere Funktion nur wenn Test
+#ifdef TEST
+	// Ausgabe der Testdaten auf LCD-Display
+	void wait(void)
+		{
+		// gibt 99999 mal LCD Aus
+		int i;
+		for (i = 0; i <= 99999; i ++)
+			{
+			LCDansteuern();	
+			}
+		}
+#endif 
