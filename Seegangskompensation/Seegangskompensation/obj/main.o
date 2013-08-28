@@ -29,46 +29,46 @@ S _PWM8_1_WritePeriod Ref0000
 S _DUALADC8_Start Ref0000
 A text size 10D flags 0
 dbfile ./main.c
-dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c
 dbfunc e LCDansteuern 0 fV
 dbline FFFFFFFF 0
-dbline 14 0
-dbline 16 0
-dbline 17 8
+dbline 1F 0
+dbline 21 0
+dbline 22 8
 dbline FFFFFFFE 13
 dbline 0 13
 dbfunc e Dateneinlesen 14 fV
 dbline FFFFFFFF 14
-dbline 1B 14
-dbline 1D 14
-dbline 21 1D
-dbline 24 24
-dbline 24 24
-dbline 26 38
-dbline 2A 3F
+dbline 26 14
+dbline 28 14
+dbline 2C 1D
+dbline 2F 24
+dbline 2F 24
+dbline 31 38
+dbline 35 3F
 dbline FFFFFFFE 46
 dbline 0 46
 dbfunc e Ausgangansteuern 47 fV
 dbsym l hichAusgangswert FFFFFFFC c
 dbline FFFFFFFF 47
-dbline 2E 49
-dbline 30 49
-dbline 31 4F
-dbline 31 4F
-dbline 32 4F
-dbline 33 4F
-dbline 34 56
-dbline 36 58
-dbline 37 5D
-dbline 37 5D
-dbline 38 5D
-dbline 39 5D
-dbline 3A 67
-dbline 3C 69
-dbline 3D 69
-dbline 3E 69
-dbline 3F 69
-dbline 40 70
+dbline 39 49
+dbline 3B 49
+dbline 3C 4F
+dbline 3C 4F
+dbline 3D 4F
+dbline 3E 4F
+dbline 3F 56
+dbline 41 58
+dbline 42 5D
+dbline 42 5D
+dbline 43 5D
+dbline 44 5D
+dbline 45 67
+dbline 47 69
+dbline 48 69
+dbline 49 69
+dbline 4A 69
+dbline 4B 70
 dbline FFFFFFFE 70
 dbline 0 71
 dbfunc e main 72 fV
@@ -78,35 +78,35 @@ dbsym l kochKP 2 c
 dbsym l hichBeschleunigungssumme 1 c
 dbsym l hichAusgangswert 0 c
 dbline FFFFFFFF 72
-dbline 44 76
-dbline 46 76
-dbline 51 79
-dbline 54 7B
-dbline 57 80
-dbline 58 86
-dbline 5B 89
-dbline 5C 8E
-dbline 5D 93
-dbline 5F 98
-dbline 60 9D
-dbline 61 A2
-dbline 65 A7
-dbline 66 AC
-dbline 67 B3
-dbline 6B B6
-dbline 6C BB
-dbline 6F C1
-dbline 70 C1
-dbline 71 C1
-dbline 74 C3
-dbline 77 C3
-dbline 7B C5
-dbline 7D C9
-dbline 80 F9
-dbline 82 FD
-dbline 83 104
-dbline 85 106
-dbline 74 106
+dbline 59 76
+dbline 5B 76
+dbline 66 79
+dbline 69 7B
+dbline 6C 80
+dbline 6D 86
+dbline 70 89
+dbline 71 8E
+dbline 72 93
+dbline 74 98
+dbline 75 9D
+dbline 76 A2
+dbline 7A A7
+dbline 7B AC
+dbline 7C B3
+dbline 80 B6
+dbline 81 BB
+dbline 84 C1
+dbline 85 C1
+dbline 86 C1
+dbline 89 C3
+dbline 8C C3
+dbline 90 C5
+dbline 92 C9
+dbline 95 F9
+dbline 97 FD
+dbline 98 104
+dbline 9A 106
+dbline 89 106
 dbline FFFFFFFE 108
 dbline 0 10B
 S _main Def0072
@@ -114,7 +114,7 @@ S _LCDansteuern Def0000
 S _Dateneinlesen Def0014
 S _Ausgangansteuern Def0047
 A bss size 13 flags 20
-dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c
 dbstruct 19 .1
 dbfield 0 rgchLCD A[15:15]c
 dbfield 15 pdchBechleunigung c

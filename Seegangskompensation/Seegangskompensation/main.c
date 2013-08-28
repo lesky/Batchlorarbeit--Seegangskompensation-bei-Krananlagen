@@ -1,13 +1,24 @@
-//----------------------------------------------------------------------------
-// C main-Funktion
-// Programm: Seegangskompensation bei Krahnanlagen
-// Controler: CY8C27446-24PXI
-//----------------------------------------------------------------------------
+/********************************************************
+* C main-Funktion										*
+* Programm: Seegangskompensation bei Krahnanlagen		*
+* Controler: CY8C27446-24PXI							*
+* I/O-Konfiguration:									*
+* LCD -> Port 2											*
+* Selbsttest ->1.1										*
+* IN1 ->1.2												*
+* IN2->1.3												*
+* PWM 1-> Pin 1.4										*
+* Beschleunigung-> 0.1									*
+* Entfernung -> 0.4										*
+* Sollwert-> 0.5										*
+********************************************************/
 
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 
-// structur der Prozessdaten
+// Für testzwecke #defein Test nicht auskomentieren
+// #define TEST
+// globale Structur zur Übergabe der Prozessdaten
 struct 
    {	
 	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
@@ -63,7 +74,17 @@ void Ausgangansteuern(char hichAusgangswert)
 			PWM8_1_WritePulseWidth(0);
 		}
 	}	
-		
+//Präprozessor: kompiliere testmain wenn Test
+#ifdef TEST
+// Testmain
+void main(void)
+	{
+	}
+	
+//Präprozessor: kompiliere main wenn kein Test
+#else
+
+// Reguläre mani Funktion
 void main(void)
 	{
 	// Difinition der Konstanten
@@ -132,3 +153,5 @@ void main(void)
 		
 	};
 }
+//Präprozessor: Ende der Präprozessor anweisungen
+#endif 

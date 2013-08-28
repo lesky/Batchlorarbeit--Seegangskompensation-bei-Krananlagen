@@ -1,59 +1,23 @@
 Starting MAKE...
-creating project.mk 
+creating project.mk -- no changes
 
-mkdepend.exe: error:  cannot rename project.dep to project.dep.bak
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(60):[warning] expression with no effect elided
 
-make: *** [depend] Error 1
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(61):[warning] expression with no effect elided
 
-lib/adcinc.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(66):[warning] expression with no effect elided
 
-lib/adcincint.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(67):[warning] expression with no effect elided
 
-lib/dualadc8.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(72):[warning] expression with no effect elided
 
-lib/dualadc8int.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(73):[warning] expression with no effect elided
 
-lib/in1.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(132):[warning] expression with no effect elided
 
-lib/in2.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(133):[warning] expression with no effect elided
 
-lib/lcd_1.asm
-
-lib/pga_1.asm
-
-lib/pga_2.asm
-
-lib/pga_3.asm
-
-lib/psocconfig.asm
-
-lib/psocconfigtbl.asm
-
-lib/pwm8_1.asm
-
-lib/pwm8_1int.asm
-
-lib/selbsttest.asm
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(49):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(50):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(55):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(56):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(61):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(62):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(111):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(112):[warning] expression with no effect elided
-
-!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\PWM\SEEGAN~1\SEEGAN~1\main.c(113):[warning] expression with no effect elided
-
-./boot.asm
+!W C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c(134):[warning] expression with no effect elided
 
 Linking..
 
@@ -64,5 +28,5 @@ Linking..
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 1 error(s) 9 warning(s) 09:59:34
+Seegangskompensation - 0 error(s) 9 warning(s) 09:32:05
 
