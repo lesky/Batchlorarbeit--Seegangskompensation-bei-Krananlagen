@@ -120,6 +120,8 @@ void main(void)
 	// Präprozessor: kompiliere whileschleife wenn test;
 	#else
 		
+		// Selbsttest des Beshleunigungssensoers anschalten
+		SELBSTTEST_On;
 			
 		// whileschleife zu testzwecken
 		// Konstante zur verweildauer in der schleife
