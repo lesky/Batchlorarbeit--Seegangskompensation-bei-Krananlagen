@@ -3,7 +3,7 @@
 * Programm: Seegangskompensation bei Krahnanlagen		*
 * Controler: CY8C27446-24PXI							*
 * 														*
-*I/O-Konfiguration:										*
+* I/O-Konfiguration:										*
 * LCD 			-> Port 2								*
 * Selbsttest 	-> 1.1			 						*
 * IN1		 	-> 1.2									*
@@ -13,12 +13,12 @@
 * Entfernung 	-> 0.4									*
 * Sollwert		-> 0.5									*
 * 														*
-*Zusätzlich definierte Prüfixe zur Variablenbenennung	*
-*Mittels Ungaricher Notation nach Charles Simonyi:		*
-*pd	-> Prozessbezogene Daten							*
-*ko	-> Konstanten										*
-*hi	-> Interne Hilfsgrößen								*
-*in	-> Datentyp Integer									*
+* Zusätzlich definierte Prüfixe zur Variablenbenennung	*
+* Mittels Ungaricher Notation nach Charles Simonyi:		*
+* pd	-> Prozessbezogene Daten						*
+* ko	-> Konstanten									*
+* hi	-> Interne Hilfsgrößen							*
+* in	-> Datentyp Integer								*
 ********************************************************/
 
 #include <stdio.h>
@@ -117,7 +117,15 @@ void main(void)
 			LCDansteuern(prozess.pdchEntfernung);
 			
 		};
-	// Präprozessor: kompiliere whileschleife wenn test;
+			
+	/********************************************************
+	* Achtung die Folgenden Zeilen dienen nur zu Testzwecken*
+	* und sind für das Fertige Prokramm nicht relevant.		*
+	* Sie werden anstelle der Regulären while Schleife 		*
+	* Kompiliert, wenn die Bedingung #ifndef TEST nicht 	*
+	* erfüllt ist.											*
+	********************************************************/
+
 	#else
 		
 		// Selbsttest des Beshleunigungssensoers anschalten
