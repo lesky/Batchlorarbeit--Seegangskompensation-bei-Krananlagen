@@ -114,7 +114,7 @@ void main(void)
 			prozess.pdchPulsweite = hichAusgangswert; 
 			
 			Ausgangansteuern(hichAusgangswert);
-			LCDansteuern(prozess.pdchEntfernung);
+			LCDansteuern(prozess.pdchEntfernung, 0);
 			
 		};
 	// Präprozessor: kompiliere whileschleife wenn test;
@@ -141,11 +141,21 @@ void main(void)
 
 // Funktionen:
 	
-void LCDansteuern(char hichdata)
+void LCDansteuern(char hichdata, char hichfehler)
 	{
-	char rgchErstzeile[12];
-	// LCD Ansteuern 
+	char rgchErstezeile[16];
+	char rgchZweitezeile[16];
+	
+	// Text in Variablen Schreiben
 	csprintf(rgchErstzeile,"Abstand:%c",hichdata);
+	
+		// ist ein Fehler aufgetreten
+	// dann ist hichFehler != 0
+	if (hichfehler != 0)
+		{
+		csprintf(rgchZweitezeile,"Achtung Fehler",hichdata);
+		};
+	// LCD Ansteuern 
 	LCD_1_Position(1,0);
 	LCD_1_PrString(rgchErstzeile);
 	}
@@ -199,7 +209,7 @@ void Ausgangansteuern(char hichAusgangswert)
 		int iin;
 		for (iin = 0; iin <= 99999; iin ++)
 			{
-			LCDansteuern(hichdata);	
+			LCDansteuern(hichdata, 0);	
 			}
 		}
 #endif 
