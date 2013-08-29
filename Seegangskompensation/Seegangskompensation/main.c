@@ -149,15 +149,18 @@ void LCDansteuern(char hichdata, char hichfehler)
 	// Text in Variablen Schreiben
 	csprintf(rgchErstzeile,"Abstand:%c",hichdata);
 	
-		// ist ein Fehler aufgetreten
+	// ist ein Fehler aufgetreten
 	// dann ist hichFehler != 0
 	if (hichfehler != 0)
 		{
 		csprintf(rgchZweitezeile,"Achtung Fehler",hichdata);
 		};
+		
 	// LCD Ansteuern 
 	LCD_1_Position(1,0);
 	LCD_1_PrString(rgchErstzeile);
+	LCD_1_Position(2,0);
+	LCD_1_PrString(rgchZweitezeile);	
 	}
 	
 void Dateneinlesen(void)
