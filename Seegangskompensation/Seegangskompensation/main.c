@@ -5,15 +5,23 @@
 * 														*
 *I/O-Konfiguration:										*
 * LCD 			-> Port 2								*
-* Selbsttest 	->1.1			 						*
-* IN1		 	->1.2									*
-* IN2			->1.3									*
-* PWM 1			-> Pin 1.4								*
+* Selbsttest 	-> 1.1			 						*
+* IN1		 	-> 1.2									*
+* IN2			-> 1.3									*
+* PWM 1			-> 1.4									*
 * Beschleunigung-> 0.1									*
 * Entfernung 	-> 0.4									*
 * Sollwert		-> 0.5									*
+* 														*
+*Zusätzlich definierte Prüfixe zur Variablenbenennung	*
+*Mittels Ungaricher Notation nach Charles Simonyi:		*
+*pd	-> Prozessbezogene Daten							*
+*ko	-> Konstanten										*
+*hi	-> Interne Hilfsgrößen								*
+*in	-> Datentyp Integer									*
 ********************************************************/
 
+#include <stdio.h>
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 
@@ -22,14 +30,18 @@
 // #define TEST
 
 // Funktionsprototypen:
-void LCDansteuern(void);
+void LCDansteuern(char);
 void Dateneinlesen(void);
 void Ausgangansteuern(char);
 
+// Präprozessor: kompiliere Funktion nur wenn Test
+#ifdef TEST
+	void test(char);
+#endif 
+
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
-   {	
-	char rgchLCD[15];	//TODO: Arraygröße anpassen   						
+   {	  						
 	char pdchBechleunigung, pdchEntfernung;			
 	char pdchSollwert;								
 	char pdchPulsweite;
@@ -102,15 +114,25 @@ void main(void)
 			prozess.pdchPulsweite = hichAusgangswert; 
 			
 			Ausgangansteuern(hichAusgangswert);
-			LCDansteuern();
+			LCDansteuern(prozess.pdchEntfernung);
 			
 		};
 	// Präprozessor: kompiliere whileschleife wenn test;
 	#else
+		
+		// Selbsttest des Beshleunigungssensoers anschalten
+		SELBSTTEST_On;
+			
 		// whileschleife zu testzwecken
+		// Konstante zur verweildauer in der schleife
 		while (1)
 			{
-				//TODO: Testroutine
+				// Daten Einlesen
+				void Dateneinlesen(void);
+				// Daten Nacheinander auf LCD Ausgeeben
+				test(prozess.pdchBechleunigung);
+				test(prozess.pdchEntfernung);
+				test(prozess.pdchSollwert);			
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -119,11 +141,13 @@ void main(void)
 
 // Funktionen:
 	
-void LCDansteuern(void)
+void LCDansteuern(char hichdata)
 	{
+	char rgchErstzeile[12];
 	// LCD Ansteuern 
-	LCD_1_Position(0,5);            
-   	LCD_1_PrString(prozess.rgchLCD);
+	csprintf(rgchErstzeile,"Abstand:%c",hichdata);
+	LCD_1_Position(1,0);
+	LCD_1_PrString(rgchErstzeile);
 	}
 	
 void Dateneinlesen(void)
@@ -166,3 +190,16 @@ void Ausgangansteuern(char hichAusgangswert)
 			PWM8_1_WritePulseWidth(0);
 		}
 	}	
+// Präprozessor: kompiliere Funktion nur wenn Test
+#ifdef TEST
+	// Ausgabe der Testdaten auf LCD-Display
+	void test(char hichdata)
+		{
+		// gibt 99999 mal LCD Aus
+		int iin;
+		for (iin = 0; iin <= 99999; iin ++)
+			{
+			LCDansteuern(hichdata);	
+			}
+		}
+#endif 
