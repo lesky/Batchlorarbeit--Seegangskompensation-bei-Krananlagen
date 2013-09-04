@@ -3,7 +3,7 @@
 * Programm: Seegangskompensation bei Krahnanlagen		*
 * Controler: CY8C27446-24PXI							*
 * 														*
-* I/O-Konfiguration:										*
+* I/O-Konfiguration:									*
 * LCD 			-> Port 2								*
 * Selbsttest 	-> 1.1			 						*
 * IN1		 	-> 1.2									*
@@ -47,19 +47,26 @@ struct
 	char pdchPulsweite;
     } prozess;
 
-// Reguläre mani Funktion
+
 void main(void)
 	{
-	// Difinition der Konstanten
+	
+	/********************************************************
+	* 			Deffinitionen und Deklarationen				*
+	********************************************************/	
+		
+	// Konstanten
 	char kochPeriodendauer = 50;					
 	char kochKP;
 	char kochKS;
 		
-	// Variablendeklration
+	// Variablen
 	char hichAusgangswert;							
 	char hichBeschleunigungssumme;  
 		
-	// Initialisierung des Controlers
+	/********************************************************
+	* 			Initialisierung des Controllers				*
+	********************************************************/
 	
 	//globale Interrupts Freigeben
 	M8C_EnableGInt;                     				
@@ -95,10 +102,14 @@ void main(void)
 	IN1_Start;	
 	IN2_Start;
 	SELBSTTEST_Start;
+	
 	// Präprozessor: kompiliere whileschleife wenn kein test
 	#ifndef TEST
 		
-		// Endlosschleife
+		/********************************************************
+		* 			Endlosschleife für Dauerbetrieb				*
+		********************************************************/
+		
 		while(1) 
 			{
 			// Daten Einlesen
@@ -115,12 +126,11 @@ void main(void)
 			
 			Ausgangansteuern(hichAusgangswert);
 			LCDansteuern(prozess.pdchEntfernung, 0);
-			
-		};
+			};
 			
 	/********************************************************
 	* Achtung die Folgenden Zeilen dienen nur zu Testzwecken*
-	* und sind für das Fertige Prokramm nicht relevant.		*
+	* und sind für das Fertige Programm nicht relevant.		*
 	* Sie werden anstelle der Regulären while Schleife 		*
 	* Kompiliert, wenn die Bedingung #ifndef TEST nicht 	*
 	* erfüllt ist.											*
@@ -146,8 +156,10 @@ void main(void)
 	// Präprozessor: Ende der Verzweifung
 	#endif 
 }
-
-// Funktionen:
+	
+/********************************************************
+* 			Funktionsdeklarationen						*
+********************************************************/
 	
 void LCDansteuern(char hichdata, char hichfehler)
 	{
@@ -210,7 +222,8 @@ void Ausgangansteuern(char hichAusgangswert)
 			IN2_On;
 			PWM8_1_WritePulseWidth(0);
 		}
-	}	
+	}
+	
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
 	// Ausgabe der Testdaten auf LCD-Display
