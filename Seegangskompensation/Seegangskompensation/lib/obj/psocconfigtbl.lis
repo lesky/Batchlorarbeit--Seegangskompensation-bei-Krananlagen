@@ -682,19 +682,19 @@
  0036           ;  Instance name LCD_1, User Module LCD
  0036           ;  Instance name PGA_1, User Module PGA
  0036           ;       Instance name PGA_1, Block Name GAIN(ACB00)
- 0036 710C              db              71h, 0ch                ;PGA_1_GAIN_CR0(ACB00CR0)
+ 0036 71FD              db              71h, fdh                ;PGA_1_GAIN_CR0(ACB00CR0)
  0038 7221              db              72h, 21h                ;PGA_1_GAIN_CR1(ACB00CR1)
  003A 7320              db              73h, 20h                ;PGA_1_GAIN_CR2(ACB00CR2)
  003C 7000              db              70h, 00h                ;PGA_1_GAIN_CR3(ACB00CR3)
  003E           ;  Instance name PGA_2, User Module PGA
  003E           ;       Instance name PGA_2, Block Name GAIN(ACB01)
- 003E 750C              db              75h, 0ch                ;PGA_2_GAIN_CR0(ACB01CR0)
+ 003E 75FD              db              75h, fdh                ;PGA_2_GAIN_CR0(ACB01CR0)
  0040 7621              db              76h, 21h                ;PGA_2_GAIN_CR1(ACB01CR1)
  0042 7720              db              77h, 20h                ;PGA_2_GAIN_CR2(ACB01CR2)
  0044 7400              db              74h, 00h                ;PGA_2_GAIN_CR3(ACB01CR3)
  0046           ;  Instance name PGA_3, User Module PGA
  0046           ;       Instance name PGA_3, Block Name GAIN(ACB02)
- 0046 790C              db              79h, 0ch                ;PGA_3_GAIN_CR0(ACB02CR0)
+ 0046 79FD              db              79h, fdh                ;PGA_3_GAIN_CR0(ACB02CR0)
  0048 7A21              db              7ah, 21h                ;PGA_3_GAIN_CR1(ACB02CR1)
  004A 7B20              db              7bh, 20h                ;PGA_3_GAIN_CR2(ACB02CR2)
  004C 7800              db              78h, 00h                ;PGA_3_GAIN_CR3(ACB02CR3)
@@ -732,26 +732,26 @@
  007F           ;       Instance name ADCINC, Block Name ADC(ASC12)
  007F           ;       Instance name ADCINC, Block Name PWM(DCB12)
  007F 3831              db              38h, 31h                ;ADCINC_PWMfn(DCB12FN)
- 0081 3910              db              39h, 10h                ;ADCINC_PWMsl(DCB12IN)
+ 0081 3917              db              39h, 17h                ;ADCINC_PWMsl(DCB12IN)
  0083 3A40              db              3ah, 40h                ;ADCINC_PWMos(DCB12OU)
  0085           ;  Instance name DUALADC8, User Module DUALADC8
  0085           ;       Instance name DUALADC8, Block Name ADC1(ASC10)
  0085           ;       Instance name DUALADC8, Block Name ADC2(ASD11)
  0085           ;       Instance name DUALADC8, Block Name CNT1(DCB02)
  0085 2821              db              28h, 21h                ;DUALADC8_fCounter1FN(DCB02FN)
- 0087 2940              db              29h, 40h                ;DUALADC8_fCounter1SL(DCB02IN)
+ 0087 2947              db              29h, 47h                ;DUALADC8_fCounter1SL(DCB02IN)
  0089 2A40              db              2ah, 40h                ;DUALADC8_fCounter1OS(DCB02OU)
  008B           ;       Instance name DUALADC8, Block Name CNT2(DBB11)
  008B 3421              db              34h, 21h                ;DUALADC8_fCounter2FN(DBB11FN)
- 008D 3550              db              35h, 50h                ;DUALADC8_fCounter2SL(DBB11IN)
+ 008D 3557              db              35h, 57h                ;DUALADC8_fCounter2SL(DBB11IN)
  008F 3640              db              36h, 40h                ;DUALADC8_fCounter2OS(DBB11OU)
  0091           ;       Instance name DUALADC8, Block Name PWM16_LSB(DCB03)
  0091 2C01              db              2ch, 01h                ;DUALADC8_bfPWM_LSB_FN(DCB03FN)
- 0093 2D10              db              2dh, 10h                ;DUALADC8_(DCB03IN)
+ 0093 2D17              db              2dh, 17h                ;DUALADC8_(DCB03IN)
  0095 2E40              db              2eh, 40h                ;DUALADC8_(DCB03OU)
  0097           ;       Instance name DUALADC8, Block Name PWM16_MSB(DBB10)
  0097 3021              db              30h, 21h                ;DUALADC8_bfPWM_MSB_FN(DBB10FN)
- 0099 3130              db              31h, 30h                ;DUALADC8_(DBB10IN)
+ 0099 3137              db              31h, 37h                ;DUALADC8_(DBB10IN)
  009B 3240              db              32h, 40h                ;DUALADC8_(DBB10OU)
  009D           ;  Instance name IN1, User Module LED
  009D           ;  Instance name IN2, User Module LED
@@ -765,8 +765,8 @@
  009D           ;  Instance name PWM8_1, User Module PWM8
  009D           ;       Instance name PWM8_1, Block Name PWM8(DBB00)
  009D 2021              db              20h, 21h                ;PWM8_1_FUNC_REG(DBB00FN)
- 009F 2100              db              21h, 00h                ;PWM8_1_INPUT_REG(DBB00IN)
- 00A1 2204              db              22h, 04h                ;PWM8_1_OUTPUT_REG(DBB00OU)
+ 009F 2117              db              21h, 17h                ;PWM8_1_INPUT_REG(DBB00IN)
+ 00A1 2244              db              22h, 44h                ;PWM8_1_OUTPUT_REG(DBB00OU)
  00A3           ;  Instance name SELBSTTEST, User Module LED
  00A3           ;  Global Register values Bank 1
  00A3 6100              db              61h, 00h                ; AnalogClockSelect1 register (CLK_CR1)

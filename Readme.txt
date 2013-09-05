@@ -15,7 +15,13 @@ Sollwert-> 0.5
 Bugs:
 
 Anzeige der Zahlen auf dem Display
-LED Ausgänge funktionieren nicht
+
+-H-Brücke braucht zu viel spannung
+-Ausgang 1.3 gibt keine Spannung aus
+-Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
+-Ausgang 1.5 gibt keine Spannung aus
+-Merkwürdige ausgabe von Zahlen am LCD
+-Eingänge werden nicht eingelesen
 
 ToDO:
 -Testroutine programmieren	(Erledigt 28.08.13)	

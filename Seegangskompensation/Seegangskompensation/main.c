@@ -146,12 +146,12 @@ void main(void)
 		while (1)
 			{
 				// Daten Einlesen
-				//void Dateneinlesen(void);
+				void Dateneinlesen(void);
 				// Daten Nacheinander auf LCD Ausgeeben
 				prozess.pdchPulsweite = 50;
-				prozess.pdchBechleunigung = 1;
-				prozess.pdchEntfernung =2;
-				prozess.pdchSollwert =3;
+				//prozess.pdchBechleunigung = 1;
+				//prozess.pdchEntfernung =2;
+				//prozess.pdchSollwert =3;
 				Ausgangansteuern(100);
 				test(prozess.pdchBechleunigung);
 				test(prozess.pdchEntfernung);

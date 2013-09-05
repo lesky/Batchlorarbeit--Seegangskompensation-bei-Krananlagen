@@ -59,12 +59,12 @@ lib/selbsttest.asm
 
 Linking..
 
-  ROM 30% full. 4850 out of 16384 bytes used (does not include absolute areas).
+  ROM 28% full. 4562 out of 16384 bytes used (does not include absolute areas).
 
   RAM 24% full. 61 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 12 warning(s) 10:29:40
+Seegangskompensation - 0 error(s) 12 warning(s) 11:45:07
 
