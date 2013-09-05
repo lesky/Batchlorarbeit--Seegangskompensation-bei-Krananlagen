@@ -1,0 +1,221 @@
+XH
+H 4 areas 22 global symbols
+M main.c
+S _DUALADC8_fIsDataAvailable Ref0000
+S _DUALADC8_cGetData1 Ref0000
+S _DUALADC8_SetCalcTime Ref0000
+S _LCD_1_Start Ref0000
+S _PGA_1_Start Ref0000
+S _PGA_2_Start Ref0000
+S _PGA_3_Start Ref0000
+S _ADCINC_GetSamples Ref0000
+S _LCD_1_PrString Ref0000
+S __r0 Ref0000
+S __r1 Ref0000
+S __r2 Ref0000
+S __r3 Ref0000
+S _ADCINC_Start Ref0000
+S _DUALADC8_cGetData2ClearFlag Ref0000
+S _LCD_1_Position Ref0000
+S _ADCINC_fIsDataAvailable Ref0000
+S __rX Ref0000
+S _PWM8_1_Start Ref0000
+S _PWM8_1_WritePulseWidth Ref0000
+S _ADCINC_cClearFlagGetData Ref0000
+S _csprintf Ref0000
+S _PGA_1_SetGain Ref0000
+S _PGA_2_SetGain Ref0000
+S _PGA_3_SetGain Ref0000
+S _DUALADC8_GetSamples Ref0000
+S _PWM8_1_WritePeriod Ref0000
+S _DUALADC8_Start Ref0000
+A text size 17F flags 0
+dbfile ./main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c
+dbfunc e main 0 fV
+dbsym l hichBeschleunigungssumme 4 c
+dbsym l hichAusgangswert 3 c
+dbsym l kochKS 2 c
+dbsym l kochKP 1 c
+dbsym l kochPeriodendauer 0 c
+dbline FFFFFFFF 0
+dbline 34 4
+dbline 3B 4
+dbline 48 7
+dbline 4B 9
+dbline 4E E
+dbline 4F 14
+dbline 52 17
+dbline 53 1C
+dbline 54 21
+dbline 56 26
+dbline 57 2B
+dbline 58 30
+dbline 5C 35
+dbline 5D 3A
+dbline 5E 41
+dbline 62 44
+dbline 63 49
+dbline 66 4F
+dbline 67 4F
+dbline 68 4F
+dbline 8E 4F
+dbline 93 51
+dbline 97 51
+dbline 98 58
+dbline 99 5D
+dbline 9A 64
+dbline 92 64
+dbline FFFFFFFE 66
+dbline 0 69
+dbfunc e LCDansteuern 6B fV
+dbsym l rgchZweitezeile 10 A[16:16]c
+dbsym l rgchErstezeile 0 A[16:16]c
+dbsym l hichfehler FFFFFFFB c
+dbsym l hichdata FFFFFFFC c
+dbline FFFFFFFF 6B
+dbline A5 6F
+dbline AA 6F
+dbline AE 88
+dbline B0 8D
+dbline B0 8D
+dbline B1 A3
+dbline B1 A3
+dbline B4 A3
+dbline B5 AC
+dbline B6 B2
+dbline B7 BA
+dbline FFFFFFFE CB
+dbline 0 CE
+dbfunc e Dateneinlesen CF fV
+dbline FFFFFFFF CF
+dbline BB CF
+dbline BD CF
+dbline C1 D8
+dbline C4 DF
+dbline C4 DF
+dbline C6 F3
+dbline CA FA
+dbline FFFFFFFE 101
+dbline 0 101
+dbfunc e Ausgangansteuern 102 fV
+dbsym l hichAusgangswert FFFFFFFC c
+dbline FFFFFFFF 102
+dbline CE 104
+dbline D0 104
+dbline D1 10A
+dbline D1 10A
+dbline D2 10A
+dbline D3 10A
+dbline D4 111
+dbline D6 113
+dbline D7 118
+dbline D7 118
+dbline D8 118
+dbline D9 118
+dbline DA 122
+dbline DC 124
+dbline DD 124
+dbline DE 124
+dbline DF 124
+dbline E0 12B
+dbline FFFFFFFE 12B
+dbline 0 12C
+dbfunc e test 12D fV
+dbsym l iin 0 I
+dbsym l hichdata FFFFFFFC c
+dbline FFFFFFFF 12D
+dbline E7 131
+dbline EA 131
+dbline EB 139
+dbline EC 139
+dbline ED 143
+dbline EA 143
+dbline EA 148
+dbline FFFFFFFE 17B
+dbline 0 17E
+S _main Def0000
+S _LCDansteuern Def006B
+S _test Def012D
+S _Dateneinlesen Def00CF
+S _Ausgangansteuern Def0102
+A bss size 4 flags 20
+dbfile C:\Users\Lesky\Desktop\Dropbox\Studium\Bechlor\SOFTWA~1\master\SEEGAN~1\SEEGAN~1\main.c
+dbstruct 4 .1
+dbfield 0 pdchBechleunigung c
+dbfield 1 pdchEntfernung c
+dbfield 2 pdchSollwert c
+dbfield 3 pdchPulsweite c
+dbend
+dbsym e prozess 0 S[.1]
+S _prozess Def0000
+A lit size 1B flags 1
+A func_lit size 2 flags 2
+T 00 00 10 4F 38 05 56 00 32 71 01 10 7C 00 00 20
+R 00 00 00 00 02 0D 00 03
+T 00 0E 10 52 00 7C 00 00 7C 00 00 50 10 7C 00 00
+R 00 00 00 00 02 06 00 1A 02 09 00 12 02 0E 00 16
+T 00 1C 50 10 7C 00 00 50 10 7C 00 00 50 01 7C
+R 00 00 00 00 02 05 00 17 02 0A 00 18
+T 00 29 00 00 50 01 7C 00 00 50 01 7C 00 00 50 03
+R 00 00 00 00 02 02 00 04 02 07 00 05 02 0C 00 06
+T 00 37 7C 00 00 57 00 50 64 7C 00 00 7C 00 00 50
+R 00 00 00 00 02 03 00 1B 02 0A 00 02 02 0D 00 19
+T 00 45 03 7C 00 00 50 00 7C 00 00 20 80 14 51
+R 00 00 00 00 02 04 00 0D 02 09 00 07
+T 00 52 00 00 08 90 D7 38 FF 51 00 01 08 90 D0 51
+R 00 00 00 00 01 02 00 01 01 0A 00 01
+T 00 5E 00 02 08 90 CB 38 FE 8F EC 38 FB 20 8F FF
+R 00 00 00 00 01 02 00 01
+T 00 6B 10 4F 38 20 52 FC 53 00 00 50 00 08 51
+R 00 00 00 00 03 09 00 0A
+T 00 77 00 00 08 50 00 0F 08 50 00 0F 08 50 00 08
+R 00 00 00 00 03 02 00 0A 41 06 00 02 01 0A 00 02
+T 00 82 10 7C 00 00 38 FA 3D FB 00 A0 17 50 00 00
+R 00 00 00 00 02 04 00 15 41 0E 00 02
+T 00 8F 08 50 00 00 08 5A 00 00 06 00 00 10 51
+R 00 00 00 00 01 04 00 02 03 08 00 0A 03 0B 00 0A
+T 00 99 00 00 08 51 00 00 08 7C 00 00 38 FC 10 57
+R 00 00 00 00 03 02 00 09 03 06 00 0A 02 0A 00 15
+T 00 A5 00 50 01 7C 00 00 20 10 51 00 00 7C 00 00
+R 00 00 00 00 02 06 00 0F 03 0B 00 09 02 0E 00 08
+T 00 B2 57 00 50 02 7C 00 00 20 5A 00 00 06 00 00
+R 00 00 00 00 02 07 00 0F 03 0B 00 0A 03 0E 00 0A
+T 00 BE 10 10 51 00 00 08 51 00 00 5C 18 7C 00 00
+R 00 00 00 00 03 05 00 09 03 09 00 0A 02 0E 00 08
+T 00 CA 20 38 E0 20 7F 10 7C 00 00 20 39 00 A0 08
+R 00 00 00 00 02 09 00 10
+T 00 D8 10 7C 00 00 20 53 00 02 50 00 00 10 58
+R 00 00 00 00 02 04 00 14 01 08 00 01 01 0B 00 03
+T 00 E3 00 00 08 28 53 00 00 18 75 09 00 28 20 3C
+R 00 00 00 00 03 02 00 0A 03 07 00 09
+T 00 EF 00 00 00 AF ED 10 7C 00 00 20 53 00 00 10
+R 00 00 00 00 03 02 00 09 02 09 00 01 01 0D 00 01
+T 00 FB 7C 00 00 20 53 00 01 7F 10 4F 50 00 3B FC
+R 00 00 00 00 02 03 00 0E 01 07 00 01
+T 01 08 D0 0A 10 51 00 03 7C 00 00 20 80 19 3D FC
+R 00 00 00 00 01 06 00 01 02 09 00 13
+T 01 15 00 D0 0D 51 00 03 73 11 FF 10 7C 00 00 20
+R 00 00 00 00 01 06 00 01 02 0D 00 13
+T 01 22 80 08 10 50 00 7C 00 00 20 20 7F 10 4F 38
+R 00 00 00 00 02 08 00 13
+T 01 30 02 56 01 00 56 00 00 80 10 50 00 08 52 FC
+R 00 00 00 00
+T 01 3E 08 9F 2A 38 FE 77 01 0F 00 00 52 01 53
+R 00 00 00 00
+T 01 4B 00 00 52 00 53 00 00 47 00 00 80 A0 09 55
+R 00 00 00 00 03 02 00 0C 03 07 00 0B 03 0A 00 0B
+T 01 56 00 00 FF 55 00 00 FF 80 07 55 00 00 00 55
+R 00 00 00 00 03 02 00 0A 03 06 00 09 03 0C 00 0A
+T 01 61 00 00 00 50 9F 12 00 00 50 86 1A 00 00 50
+R 00 00 00 00 03 02 00 09 03 08 00 0C 03 0D 00 0B
+T 01 6C 01 1A 00 00 51 00 00 31 80 53 00 00 50 80
+R 00 00 00 00 03 04 00 0A 03 07 00 09 03 0C 00 11
+T 01 77 1A 00 00 DF BF 38 FE 20 7F
+R 00 00 00 00 03 03 00 11
+T 00 00 41 63 68 74 75 6E 67 20 46 65 68 6C 65 72
+R 00 00 00 02
+T 00 0E 00 41 62 73 74 61 6E 64 3A 20 25 63 00
+R 00 00 00 02
+T 00 00 00 00
+R 00 00 00 03 02 02 00 00

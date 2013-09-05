@@ -41,7 +41,7 @@ BYTE			IN1Pin_IntCtrl_0_ADDR;
 BYTE			IN1Pin_IntCtrl_1_ADDR;
 #pragma	ioport	IN1Pin_IntEn_ADDR:	0x5
 BYTE			IN1Pin_IntEn_ADDR;
-#define IN1Pin_MASK 0x4
+#define IN1Pin_MASK 0x8
 // IN1Pin Shadow defines
 //   IN1Pin_DataShadow define
 extern BYTE Port_1_Data_SHADE;

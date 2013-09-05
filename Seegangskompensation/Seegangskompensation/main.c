@@ -27,10 +27,10 @@
 
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-// #define TEST
+#define TEST
 
 // Funktionsprototypen:
-void LCDansteuern(char);
+void LCDansteuern(char, char );
 void Dateneinlesen(void);
 void Ausgangansteuern(char);
 
@@ -167,18 +167,18 @@ void LCDansteuern(char hichdata, char hichfehler)
 	char rgchZweitezeile[16];
 	
 	// Text in Variablen Schreiben
-	csprintf(rgchErstzeile,"Abstand:%c",hichdata);
+	csprintf(rgchErstezeile,"Abstand: %c",hichdata);
 	
 	// ist ein Fehler aufgetreten
 	// dann ist hichFehler != 0
 	if (hichfehler != 0)
 		{
-		csprintf(rgchZweitezeile,"Achtung Fehler",hichdata);
+		csprintf(rgchZweitezeile,"Achtung Fehler");
 		};
 		
 	// LCD Ansteuern 
 	LCD_1_Position(1,0);
-	LCD_1_PrString(rgchErstzeile);
+	LCD_1_PrString(rgchErstezeile);
 	LCD_1_Position(2,0);
 	LCD_1_PrString(rgchZweitezeile);	
 	}
