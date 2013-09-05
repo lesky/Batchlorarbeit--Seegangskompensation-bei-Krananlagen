@@ -92,28 +92,28 @@ _IN2_Switch:
  IN2_Switch:
    RAM_PROLOGUE RAM_USE_CLASS_4
    RAM_PROLOGUE RAM_USE_CLASS_2
-   RAM_SETPAGE_CUR >NO_SHADOW
+   RAM_SETPAGE_CUR >Port_1_Data_SHADE
 
    or   A,0x00                                   ; Check mode
    jz   .Turn_Off_LED
 
 .Turn_On_LED:
 IF(0)                                            ; Active High Digit Drive
-   or   [NO_SHADOW],IN2_PinMask
+   or   [Port_1_Data_SHADE],IN2_PinMask
 ELSE                                             ; Active Low Digit Drive
-   and  [NO_SHADOW],~IN2_PinMask
+   and  [Port_1_Data_SHADE],~IN2_PinMask
 ENDIF
    jmp  .Switch_LED
 
 .Turn_Off_LED:
 IF(0)                      ; Active High Digit Drive
-   and  [NO_SHADOW],~IN2_PinMask
+   and  [Port_1_Data_SHADE],~IN2_PinMask
 ELSE                              ; Active Low Digit Drive
-   or   [NO_SHADOW],IN2_PinMask
+   or   [Port_1_Data_SHADE],IN2_PinMask
 ENDIF
 
 .Switch_LED:
-   mov  A,[NO_SHADOW]
+   mov  A,[Port_1_Data_SHADE]
    mov  reg[IN2_PortDR],A
 
    RAM_EPILOGUE RAM_USE_CLASS_2
@@ -144,10 +144,10 @@ _IN2_Invert:
  IN2_Invert:
    RAM_PROLOGUE RAM_USE_CLASS_4
    RAM_PROLOGUE RAM_USE_CLASS_2
-   RAM_SETPAGE_CUR >NO_SHADOW
+   RAM_SETPAGE_CUR >Port_1_Data_SHADE
 
-   xor  [NO_SHADOW],IN2_PinMask
-   mov  A,[NO_SHADOW]
+   xor  [Port_1_Data_SHADE],IN2_PinMask
+   mov  A,[Port_1_Data_SHADE]
    mov  reg[IN2_PortDR],A
 
    RAM_EPILOGUE RAM_USE_CLASS_2
@@ -177,9 +177,9 @@ _IN2_GetState:
  IN2_GetState:
    RAM_PROLOGUE RAM_USE_CLASS_4
    RAM_PROLOGUE RAM_USE_CLASS_2
-   RAM_SETPAGE_CUR >NO_SHADOW
+   RAM_SETPAGE_CUR >Port_1_Data_SHADE
 
-   mov   A,[NO_SHADOW]                 ; Get shade value
+   mov   A,[Port_1_Data_SHADE]         ; Get shade value
 IF(0)                                  ; Active High Digit Drive
    // Nothing for now
 ELSE                                   ; Active Low Digit Drive

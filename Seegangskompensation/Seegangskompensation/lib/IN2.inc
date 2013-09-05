@@ -17,7 +17,7 @@ IN2_Port:      equ   0x1
 
 IN2_PortDR:    equ   PRT1DR
 
-IN2_PinMask:   equ  0x8
+IN2_PinMask:   equ  0x20
 
 IN2_Drive:     equ   0
 

@@ -67,22 +67,22 @@ IN2Pin_GlobalSelect_ADDR:	equ	6h
 IN2Pin_IntCtrl_0_ADDR:	equ	106h
 IN2Pin_IntCtrl_1_ADDR:	equ	107h
 IN2Pin_IntEn_ADDR:	equ	5h
-IN2Pin_MASK:	equ	8h
+IN2Pin_MASK:	equ	20h
 ; IN2Pin_Data access macros
 ;   GetIN2Pin_Data macro, return in a
 macro GetIN2Pin_Data
 	mov		a,[Port_1_Data_SHADE]
-	and		a, 8h
+	and		a, 20h
 endm
 ;   SetIN2Pin_Data macro
 macro SetIN2Pin_Data
-	or		[Port_1_Data_SHADE], 8h
+	or		[Port_1_Data_SHADE], 20h
 	mov		a, [Port_1_Data_SHADE]
 	mov		reg[IN2Pin_Data_ADDR], a
 endm
 ;   ClearIN2Pin_Data macro
 macro ClearIN2Pin_Data
-	and		[Port_1_Data_SHADE], ~8h
+	and		[Port_1_Data_SHADE], ~20h
 	mov		a, [Port_1_Data_SHADE]
 	mov		reg[IN2Pin_Data_ADDR], a
 endm

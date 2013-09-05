@@ -63,7 +63,7 @@ BYTE			IN2Pin_IntCtrl_0_ADDR;
 BYTE			IN2Pin_IntCtrl_1_ADDR;
 #pragma	ioport	IN2Pin_IntEn_ADDR:	0x5
 BYTE			IN2Pin_IntEn_ADDR;
-#define IN2Pin_MASK 0x8
+#define IN2Pin_MASK 0x20
 // IN2Pin Shadow defines
 //   IN2Pin_DataShadow define
 extern BYTE Port_1_Data_SHADE;
