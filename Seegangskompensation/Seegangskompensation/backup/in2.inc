@@ -12,12 +12,12 @@
 
 include "m8c.inc"
 
-IN2_Port:      equ   0x0
+IN2_Port:      equ   0x1
 
 
-IN2_PortDR:    equ   PRT0DR
+IN2_PortDR:    equ   PRT1DR
 
-IN2_PinMask:   equ  0x1
+IN2_PinMask:   equ  0x20
 
 IN2_Drive:     equ   0
 
