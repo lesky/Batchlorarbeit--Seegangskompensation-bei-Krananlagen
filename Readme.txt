@@ -12,6 +12,11 @@ Beschleunigung-> 0.1
 Entfernung -> 0.4
 Sollwert-> 0.5
 
+Bugs:
+
+Anzeige der Zahlen auf dem Display
+LED Ausgänge funktionieren nicht
+
 ToDO:
 -Testroutine programmieren	(Erledigt 28.08.13)	
 -Korekturfaktor Einfügen 
