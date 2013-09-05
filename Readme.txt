@@ -14,9 +14,8 @@ Sollwert-> 0.5
 
 Bugs:
 
-Anzeige der Zahlen auf dem Display
-
--H-Brücke braucht zu viel spannung
+-H-Brücke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
+				     später mit 9V Versorgen)
 -Ausgang 1.3 gibt keine Spannung aus
 -Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
 -Ausgang 1.5 gibt keine Spannung aus
