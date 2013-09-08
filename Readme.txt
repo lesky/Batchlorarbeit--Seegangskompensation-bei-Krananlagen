@@ -1,7 +1,11 @@
 Batchlorarbeit Seegangskompensation bei Krananlagen
+
 Version: 0.0.0.1
+
 Controler: CY8C27446-24PXI
+
 Anutor: Benjamin Lesky
+
 I/O-Konfiguration:
 LCD -> Port 2
 Selbsttest ->1.1
@@ -14,36 +18,37 @@ Sollwert-> 0.5
 
 Bugs:
 
--H-Brücke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
-				     später mit 9V Versorgen)
+-H-Brï¿½cke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
+				     spï¿½ter mit 9V Versorgen)
 -Ausgang 1.3 gibt keine Spannung aus
 -Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
 -Ausgang 1.5 gibt keine Spannung aus
--Merkwürdige ausgabe von Zahlen am LCD
--Eingänge werden nicht eingelesen
+-Merkwï¿½rdige ausgabe von Zahlen am LCD
+-Eingï¿½nge werden nicht eingelesen
 
 ToDO:
 
+-eigene prÃ¤fixe in Komentar einfÃ¼gen
 -Testroutine programmieren	(Erledigt 28.08.13)	
--Korekturfaktor Einfügen 
--Arraygröße anpassen 
+-Korekturfaktor Einfï¿½gen 
+-Arraygrï¿½ï¿½e anpassen 
 -Selbsttest  
 -Pause bei Drehrichtungsumkehr
--Eingänge "verdraten"		(Erledigt 14.08.13)
+-Eingï¿½nge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
 -PwM Programmieren 		(Erledigt 24.07.13)
--Verstärker Programmieren	(Erledigt 15.08.13)
+-Verstï¿½rker Programmieren	(Erledigt 15.08.13)
 
 Lizenzbedingungen
 
 Copyright (c) 2013 Benjamin Lesky 
 
 Hiermit wird unentgeltlich, jeder Person, die eine Kopie 
-der Software und der zugehörigen Dokumentationen 
-(die "Software") erhält, die Erlaubnis erteilt, 
-sie uneingeschränkt zu benutzen, inklusive und ohne Ausnahme,
-dem Recht, sie zu verwenden, kopieren, ändern, fusionieren,
+der Software und der zugehï¿½rigen Dokumentationen 
+(die "Software") erhï¿½lt, die Erlaubnis erteilt, 
+sie uneingeschrï¿½nkt zu benutzen, inklusive und ohne Ausnahme,
+dem Recht, sie zu verwenden, kopieren, ï¿½ndern, fusionieren,
 verlegen, verbreiten, unterlizenzieren und/oder zu verkaufen,
 und Personen, die diese Software erhalten, diese Rechte zu 
 geben, unter den folgenden Bedingungen:
@@ -51,13 +56,13 @@ geben, unter den folgenden Bedingungen:
 Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk 
 sind in allen Kopien oder Teilkopien der Software beizulegen.
 
-DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE 
+DIE SOFTWARE WIRD OHNE JEDE AUSDRï¿½CKLICHE ODER IMPLIZIERTE 
 GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR 
-BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK 
+BENUTZUNG Fï¿½R DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK 
 SOWIE JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF 
-BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
-COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE 
-ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG 
+BESCHRï¿½NKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
+COPYRIGHTINHABER Fï¿½R JEGLICHEN SCHADEN ODER SONSTIGE 
+ANSPRï¿½CHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFï¿½LLUNG 
 EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG 
 MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE 
 ENTSTANDEN.
