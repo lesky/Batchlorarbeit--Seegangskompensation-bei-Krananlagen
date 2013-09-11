@@ -1,4 +1,4 @@
-Batchlorarbeit Seegangskompensation bei Krananlagen
+﻿Batchlorarbeit Seegangskompensation bei Krananlagen
 
 Version: 0.0.0.1
 
@@ -18,37 +18,37 @@ Sollwert-> 0.5
 
 Bugs:
 
--H-Br�cke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
-				     sp�ter mit 9V Versorgen)
+-H-Bruecke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
+				     spaeter mit 9V Versorgen)
 -Ausgang 1.3 gibt keine Spannung aus
 -Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
 -Ausgang 1.5 gibt keine Spannung aus
--Merkw�rdige ausgabe von Zahlen am LCD
--Eing�nge werden nicht eingelesen
+-Merkwuerdige ausgabe von Zahlen am LCD
+-Eingaenge werden nicht eingelesen
 
 ToDO:
 
 -eigene präfixe in Komentar einfügen
 -Testroutine programmieren	(Erledigt 28.08.13)	
 -Korekturfaktor Einf�gen 
--Arraygr��e anpassen 
+-Arraygroee anpassen 
 -Selbsttest  
 -Pause bei Drehrichtungsumkehr
--Eing�nge "verdraten"		(Erledigt 14.08.13)
+-Eingaenge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
 -PwM Programmieren 		(Erledigt 24.07.13)
--Verst�rker Programmieren	(Erledigt 15.08.13)
+-Verstaerker Programmieren	(Erledigt 15.08.13)
 
 Lizenzbedingungen
 
 Copyright (c) 2013 Benjamin Lesky 
 
 Hiermit wird unentgeltlich, jeder Person, die eine Kopie 
-der Software und der zugeh�rigen Dokumentationen 
-(die "Software") erh�lt, die Erlaubnis erteilt, 
-sie uneingeschr�nkt zu benutzen, inklusive und ohne Ausnahme,
-dem Recht, sie zu verwenden, kopieren, �ndern, fusionieren,
+der Software und der zugehoerigen Dokumentationen 
+(die "Software") erhaelt, die Erlaubnis erteilt, 
+sie uneingeschraenkt zu benutzen, inklusive und ohne Ausnahme,
+dem Recht, sie zu verwenden, kopieren, aendern, fusionieren,
 verlegen, verbreiten, unterlizenzieren und/oder zu verkaufen,
 und Personen, die diese Software erhalten, diese Rechte zu 
 geben, unter den folgenden Bedingungen:
@@ -61,7 +61,7 @@ GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR
 BENUTZUNG F�R DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK 
 SOWIE JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF 
 BESCHR�NKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
-COPYRIGHTINHABER F�R JEGLICHEN SCHADEN ODER SONSTIGE 
+COPYRIGHTINHABER FUER JEGLICHEN SCHADEN ODER SONSTIGE 
 ANSPR�CHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERF�LLUNG 
 EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG 
 MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE 
