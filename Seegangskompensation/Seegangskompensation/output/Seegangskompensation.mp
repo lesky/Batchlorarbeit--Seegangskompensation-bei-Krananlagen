@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Thu Sep 05 11:45:06 2013
+Date:         Wed Sep 11 10:17:35 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -182,27 +182,26 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   096D   09B5 =   2485. bytes (rel,con,rom,code)
+                            text   096D   09C2 =   2498. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
        096D  _main
        096D  __text_start
-       09F8  _LCDansteuern
-       0A5C  _Dateneinlesen
-       0A8F  _Ausgangansteuern
-       0ABA  _test
-       0B1E  __plcall
-       0B2A  _itoa
-       0CA7  _utoa
-       0DA5  _isdigit
-       0DC3  _islower
-       0DE1  _isspace
-       0DFF  _toupper
-       0E34  __csdepi
-       0E4E  _csprintf
-       0E8D  __cprint
-       1322  __text_end
+       0A0E  _LCDansteuern
+       0A72  _Dateneinlesen
+       0AA5  _Ausgangansteuern
+       0B2B  __plcall
+       0B37  _itoa
+       0CB4  _utoa
+       0DB2  _isdigit
+       0DD0  _islower
+       0DEE  _isspace
+       0E0C  _toupper
+       0E41  __csdepi
+       0E5B  _csprintf
+       0E9A  __cprint
+       132F  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -294,8 +293,9 @@ Files Linked      [ module(s) ]
 obj/main.o	[ main.c ]
 <library>	[ pwm8_1int.asm, pwm8_1.asm, psocconfigtbl.asm, psocconfig.asm, pga_3.asm, pga_2.asm, pga_1.asm ]
 [ lcd_1.asm, dualadc8int.asm, dualadc8.asm, adcincint.asm, adcinc.asm, rZ.asm, rY.asm, rX.asm, r5.asm ]
-[ r4.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, i_div16_block_util.asm, plcall.s ]
-[ itoa.s, utoa.s, isdigit.s, islower.s, isspace.s, ctype.s, toupper.s, sprintf.s, _printf.s ]
+[ r4.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, divmodu_8x8_8_util.asm, i_div16_block_util.asm ]
+[ i_div8_block_util.asm, plcall.s, itoa.s, utoa.s, isdigit.s, islower.s, isspace.s, ctype.s, toupper.s ]
+[ sprintf.s, _printf.s ]
 
 Area Definitions
 

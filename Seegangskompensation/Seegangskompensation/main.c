@@ -27,7 +27,7 @@
 
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-#define TEST
+// #define TEST
 
 // Funktionsprototypen:
 void LCDansteuern(char, char );
@@ -224,7 +224,7 @@ void Ausgangansteuern(char hichAusgangswert)
 		// rechtsdrehend
 		else if (hichAusgangswert < 0){				
 			IN1_On;
-			IN2_Off;
+			IN2_OFF;
 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
 		}
 		// Bremsen durch Kurzschluss
