@@ -30,9 +30,9 @@ ToDO:
 
 -eigene präfixe in Komentar einfügen
 -Testroutine programmieren	(Erledigt 28.08.13)	
--Korekturfaktor Einf�gen 
--Arraygroee anpassen 
--Selbsttest  
+-Korekturfaktor Einfuegen 
+-Arraygroee anpassen 		(Erledigt 29.08.13)
+-Selbsttest  			
 -Pause bei Drehrichtungsumkehr
 -Eingaenge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
