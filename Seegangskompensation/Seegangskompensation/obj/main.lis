@@ -42,7 +42,7 @@
  0004           ; #include <stdlib.h>
  0004           ; // Präprozessor:Für testzwecke 
  0004           ; // #defein Test nicht auskomentieren:
- 0004           ; //#define TEST
+ 0004           ; // #define TEST
  0004           ; 
  0004           ; // Funktionsprototypen:
  0004           ; void LCDansteuern(char);
@@ -487,16 +487,16 @@
  0135 8012              xjmp L24
  0137           L23:
  0137                   .dbline 219
- 0137           ;               // Bremsen durch Kurzschluss
+ 0137           ;               // Bremsen durch Leerlauf
  0137           ;               else{                           
  0137                   .dbline 220
- 0137           ;                       IN1_Switch(1);
+ 0137           ;                       IN1_Switch(0);
  0137 10                push X
- 0138 5001              mov A,1
+ 0138 5000              mov A,0
  013A 7C0000            xcall _IN1_Switch
  013D                   .dbline 221
- 013D           ;                       IN2_Switch(1);
- 013D 5001              mov A,1
+ 013D           ;                       IN2_Switch(0);
+ 013D 5000              mov A,0
  013F 7C0000            xcall _IN2_Switch
  0142                   .dbline 222
  0142           ;                       PWM8_1_WritePulseWidth(0);

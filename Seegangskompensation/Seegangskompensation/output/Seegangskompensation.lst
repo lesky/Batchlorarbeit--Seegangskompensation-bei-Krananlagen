@@ -5626,7 +5626,7 @@ FILE: C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c
 (0026) #include <stdlib.h>
 (0027) // Präprozessor:Für testzwecke 
 (0028) // #defein Test nicht auskomentieren:
-(0029) //#define TEST
+(0029) // #define TEST
 (0030) 
 (0031) // Funktionsprototypen:
 (0032) void LCDansteuern(char);
@@ -5995,14 +5995,14 @@ _Ausgangansteuern:
     0990: 20       POP   X
 (0217) 		}
     0991: 80 12    JMP   0x09A4
-(0218) 		// Bremsen durch Kurzschluss
+(0218) 		// Bremsen durch Leerlauf
 (0219) 		else{				
-(0220) 			IN1_Switch(1);
+(0220) 			IN1_Switch(0);
     0993: 10       PUSH  X
-    0994: 50 01    MOV   A,0x1
+    0994: 50 00    MOV   A,0x0
     0996: 7C 06 23 LCALL _IN1_Switch
-(0221) 			IN2_Switch(1);
-    0999: 50 01    MOV   A,0x1
+(0221) 			IN2_Switch(0);
+    0999: 50 00    MOV   A,0x0
     099B: 7C 05 FA LCALL _IN2_Switch
 (0222) 			PWM8_1_WritePulseWidth(0);
     099E: 50 00    MOV   A,0x0
@@ -6021,7 +6021,7 @@ _Ausgangansteuern:
 (0232) 		int iin;
 (0233) 		for (iin = 0; iin <= 999; iin ++)
 (0234) 			{
-(0235) 			LCDansteuern(hichdata, 0);	
+(0235) 			LCDansteuern(hichdata);	
 (0236) 			}
 (0237) 		}
 (0238) #endif     09A5: 7F       RET   

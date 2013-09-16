@@ -26,7 +26,7 @@
 #include <stdlib.h>
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-//#define TEST
+// #define TEST
 
 // Funktionsprototypen:
 void LCDansteuern(char);
@@ -215,10 +215,10 @@ void Ausgangansteuern(char hichAusgangswert)
 			IN2_Switch(0);
 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
 		}
-		// Bremsen durch Kurzschluss
+		// Bremsen durch Leerlauf
 		else{				
-			IN1_Switch(1);
-			IN2_Switch(1);
+			IN1_Switch(0);
+			IN2_Switch(0);
 			PWM8_1_WritePulseWidth(0);
 		}
 	}
@@ -232,7 +232,7 @@ void Ausgangansteuern(char hichAusgangswert)
 		int iin;
 		for (iin = 0; iin <= 999; iin ++)
 			{
-			LCDansteuern(hichdata, 0);	
+			LCDansteuern(hichdata);	
 			}
 		}
 #endif 
