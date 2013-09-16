@@ -21,7 +21,6 @@
 * in	-> Datentyp Integer								*
 ********************************************************/
 
-#include <stdio.h>
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 #include <stdlib.h>
@@ -78,19 +77,13 @@ void main(void)
 	PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
 	
-	// Initialisieren der Verstärker
-//	PGA_1_SetGain(PGA_1_G0_12);						
-//	PGA_2_SetGain(PGA_2_G0_12);
-//	PGA_3_SetGain(PGA_3_G0_12);
-	
 	PGA_1_Start(PGA_1_LOWPOWER);
 	PGA_2_Start(PGA_2_LOWPOWER);
 	PGA_3_Start(PGA_3_LOWPOWER);	
 	
 	// Initialisieren des Dualen AD-Wandlers
 	// für Entfernung und Beschleunigung
-	DUALADC8_Start(DUALADC8_HIGHPOWER); 			
-//   	DUALADC8_SetCalcTime(100);          			
+	DUALADC8_Start(DUALADC8_HIGHPOWER); 			    			
    	DUALADC8_GetSamples(); 
 	
 	// Initialisieren des AD-Wandlers
@@ -125,6 +118,7 @@ void main(void)
 			prozess.pdchPulsweite = hichAusgangswert; 
 			
 			Ausgangansteuern(hichAusgangswert);
+			
 			LCDansteuern(prozess.pdchEntfernung, 0);
 
 				
@@ -177,29 +171,16 @@ void main(void)
 ********************************************************/
 	
 void LCDansteuern(char hichdata, char hichfehler)
-	{		char xyz[5];
+	{		
+			//TODO: Variablen Umbenennen 
+			// Funktion umbauen
+			// Komentieren
+			char xyz[5]; 
 				 LCD_1_Position(0,5);    
 			LCD_1_PrCString("Wert:");				
 			itoa(xyz,prozess.pdchEntfernung,10);
 			LCD_1_PrString(xyz);		
-//	char rgchErstezeile[16];
-//	char rgchZweitezeile[16];
-//	
-//	// Text in Variablen Schreiben
-//	csprintf(rgchErstezeile,"Abstand: %c",hichdata);
-//	
-//	// ist ein Fehler aufgetreten
-//	// dann ist hichFehler != 0
-//	if (hichfehler != 0)
-//		{
-//		csprintf(rgchZweitezeile,"Achtung Fehler");
-//		};
-//		
-//	// LCD Ansteuern 
-//	LCD_1_Position(1,0);
-//	LCD_1_PrString(rgchErstezeile);
-//	LCD_1_Position(2,0);
-//	LCD_1_PrString(rgchZweitezeile);	
+
 	}
 	
 void Dateneinlesen(void)

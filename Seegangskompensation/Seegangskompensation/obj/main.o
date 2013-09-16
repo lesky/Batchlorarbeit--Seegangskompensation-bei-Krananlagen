@@ -32,7 +32,7 @@ S _IN1_Switch Ref0000
 S _IN2_Switch Ref0000
 A text size 14C flags 0
 dbfile ./main.c
-dbfile C:\Users\tilab\Desktop\BATCHL~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c
 dbfunc e main 0 fV
 dbsym l kochPeriodendauer 4 c
 dbsym l kochKS 3 c
@@ -40,31 +40,31 @@ dbsym l kochKP 2 c
 dbsym l hichBeschleunigungssumme 1 c
 dbsym l hichAusgangswert 0 c
 dbline FFFFFFFF 0
-dbline 34 4
-dbline 3B 4
-dbline 48 7
-dbline 4B 9
-dbline 4E E
-dbline 4F 14
-dbline 56 17
-dbline 57 1C
-dbline 58 21
-dbline 5C 26
-dbline 5E 2B
-dbline 62 2E
-dbline 63 33
-dbline 66 38
-dbline 67 3B
-dbline 68 3E
-dbline 72 44
-dbline 74 44
-dbline 78 46
-dbline 7A 4A
-dbline 7D 7A
-dbline 7F 7E
-dbline 80 83
-dbline 83 8D
-dbline 71 8D
+dbline 33 4
+dbline 3A 4
+dbline 47 7
+dbline 4A 9
+dbline 4D E
+dbline 4E 14
+dbline 50 17
+dbline 51 1C
+dbline 52 21
+dbline 56 26
+dbline 57 2B
+dbline 5B 2E
+dbline 5C 33
+dbline 5F 38
+dbline 60 3B
+dbline 61 3E
+dbline 6B 44
+dbline 6D 44
+dbline 71 46
+dbline 73 4A
+dbline 76 7A
+dbline 78 7E
+dbline 7A 83
+dbline 7D 8D
+dbline 6A 8D
 dbline FFFFFFFE 8F
 dbline 0 92
 dbfunc e LCDansteuern 94 fV
@@ -72,45 +72,45 @@ dbsym l xyz 0 A[5:5]c
 dbsym l hichfehler FFFFFFFB c
 dbsym l hichdata FFFFFFFC c
 dbline FFFFFFFF 94
-dbline B4 98
-dbline B5 98
-dbline B6 A0
-dbline B7 AB
-dbline B8 C3
+dbline AE 98
+dbline B3 98
+dbline B4 A0
+dbline B5 AB
+dbline B6 C3
 dbline FFFFFFFE CA
 dbline 0 CD
 dbfunc e Dateneinlesen CE fV
 dbline FFFFFFFF CE
-dbline CE CE
-dbline D0 CE
-dbline D4 D7
-dbline D7 DE
-dbline D7 DE
-dbline D9 F2
-dbline DD F9
+dbline BB CE
+dbline BD CE
+dbline C1 D7
+dbline C4 DE
+dbline C4 DE
+dbline C6 F2
+dbline CA F9
 dbline FFFFFFFE 100
 dbline 0 100
 dbfunc e Ausgangansteuern 101 fV
 dbsym l hichAusgangswert FFFFFFFC c
 dbline FFFFFFFF 101
-dbline E1 103
-dbline E3 103
-dbline E4 109
-dbline E4 109
-dbline E5 10F
-dbline E6 114
-dbline E7 11A
-dbline E9 11C
-dbline EA 121
-dbline EA 121
-dbline EB 127
-dbline EC 12D
-dbline ED 137
-dbline EF 139
-dbline F0 139
-dbline F1 13F
-dbline F2 144
-dbline F3 14A
+dbline CE 103
+dbline D0 103
+dbline D1 109
+dbline D1 109
+dbline D2 10F
+dbline D3 114
+dbline D4 11A
+dbline D6 11C
+dbline D7 121
+dbline D7 121
+dbline D8 127
+dbline D9 12D
+dbline DA 137
+dbline DC 139
+dbline DD 139
+dbline DE 13F
+dbline DF 144
+dbline E0 14A
 dbline FFFFFFFE 14A
 dbline 0 14B
 S _main Def0000
@@ -118,7 +118,7 @@ S _LCDansteuern Def0094
 S _Dateneinlesen Def00CE
 S _Ausgangansteuern Def0101
 A bss size 4 flags 20
-dbfile C:\Users\tilab\Desktop\BATCHL~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c
 dbstruct 4 .1
 dbfield 0 pdchBechleunigung c
 dbfield 1 pdchEntfernung c
