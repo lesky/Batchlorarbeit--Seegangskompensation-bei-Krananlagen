@@ -24,7 +24,8 @@ Bugs:
 -Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
 -Ausgang 1.5 gibt keine Spannung aus
 -Merkwuerdige ausgabe von Zahlen am LCD
--Eingaenge werden nicht eingelesen
+-Eingaenge werden nicht eingelesen 
+ bzw gewandelte ergebnisse nicht am lcd ausgegeben
 
 ToDO:
 
