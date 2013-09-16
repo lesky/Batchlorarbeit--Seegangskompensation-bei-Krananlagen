@@ -12,7 +12,7 @@ dbfile lib/selbsttest.asm
 dbfunc 0 ? 0 I
 dbfile SELBSTTEST.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/SELBSTTEST.inc
 dbfunc 0 ? 0 I
@@ -82,13 +82,13 @@ dbfile lib/pwm8_1int.asm
 dbfunc 0 ? 0 I
 dbfile PWM8_1.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWM8_1.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwm8_1int.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
@@ -112,13 +112,13 @@ dbfile lib/pwm8_1.asm
 dbfunc 0 ? 0 I
 dbfile PWM8_1.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/PWM8_1.inc
 dbfunc 0 ? 0 I
 dbfile lib/pwm8_1.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A seegangskompensation_RAM size 0 flags 20
 A UserModules size 42 flags 0
@@ -214,7 +214,7 @@ M psocconfigtbl.asm
 A text size 0 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A lit size C6 flags 0
 S LoadConfigTBL_seegangskompensation_Bank0 Def0000
@@ -310,7 +310,7 @@ T 00 38 72 21 73 20 70 00 75 FD 76 21 77 20 74 00
 R 00 00 00 01
 T 00 46 79 FD 7A 21 7B 20 78 00 23 00 21 00 22 00
 R 00 00 00 01
-T 00 54 60 28 66 00 63 05 65 00 E6 3D E7 10 D6 00
+T 00 54 60 28 66 00 63 15 65 00 E6 3D E7 10 D6 00
 R 00 00 00 01
 T 00 62 B0 00 B1 00 B2 00 B3 33 B4 33 B5 08 B6 00
 R 00 00 00 01
@@ -377,7 +377,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/psocconfig.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A psoc_config size 6A flags 0
 dbfile lib/psocconfig.asm
@@ -487,7 +487,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_3.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_3.asm
 dbfunc 0 ? 0 I
@@ -559,7 +559,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_2.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_2.asm
 dbfunc 0 ? 0 I
@@ -631,7 +631,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_1.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile lib/pga_1.asm
 dbfunc 0 ? 0 I
@@ -704,7 +704,7 @@ dbfile lib/lcd_1.asm
 dbfunc 0 ? 0 I
 dbfile LCD_1.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/LCD_1.inc
 dbfunc 0 ? 0 I
@@ -714,7 +714,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/lcd_1.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A UserModules size 19F flags 0
 dbfile lib/lcd_1.asm
@@ -1084,7 +1084,7 @@ dbfile lib/in2.asm
 dbfunc 0 ? 0 I
 dbfile IN2.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/IN2.inc
 dbfunc 0 ? 0 I
@@ -1155,7 +1155,7 @@ dbfile lib/in1.asm
 dbfunc 0 ? 0 I
 dbfile IN1.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/IN1.inc
 dbfunc 0 ? 0 I
@@ -1221,7 +1221,7 @@ dbfile lib/dualadc8int.asm
 dbfunc 0 ? 0 I
 dbfile DUALADC8.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/DUALADC8.inc
 dbfunc 0 ? 0 I
@@ -1231,7 +1231,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/dualadc8int.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 7 flags 20
 S _DUALADC8_bfStatus Def0006
@@ -1362,7 +1362,7 @@ dbfile lib/dualadc8.asm
 dbfunc 0 ? 0 I
 dbfile DUALADC8.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/DUALADC8.inc
 dbfunc 0 ? 0 I
@@ -1372,7 +1372,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/dualadc8.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A seegangskompensation_RAM size 2 flags 20
 S _DUALADC8_iCalcTime Def0000
@@ -1535,7 +1535,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile ADCINC.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/ADCINC.inc
 dbfunc 0 ? 0 I
@@ -1545,7 +1545,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/adcincint.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 8 flags 20
 S _ADCINC_iResult Def0000
@@ -1651,7 +1651,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile ADCINC.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/ADCINC.inc
 dbfunc 0 ? 0 I
@@ -1661,7 +1661,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/adcinc.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A bss size 0 flags 20
 A UserModules size 77 flags 0

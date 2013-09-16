@@ -1,13 +1,13 @@
                         .module main.c
                         .area text(rom, con, rel)
  0000                   .dbfile ./main.c
- 0000                   .dbfile C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c
+ 0000                   .dbfile C:\Users\tilab\Desktop\BATCHL~1\SEEGAN~1\SEEGAN~1\main.c
  0000                   .dbfunc e main _main fV
- 0000           ; hichBeschleunigungssumme -> X+4
- 0000           ; hichAusgangswert -> X+3
- 0000           ;         kochKS -> X+2
- 0000           ;         kochKP -> X+1
- 0000           ; kochPeriodendauer -> X+0
+ 0000           ; kochPeriodendauer -> X+4
+ 0000           ;         kochKS -> X+3
+ 0000           ;         kochKP -> X+2
+ 0000           ; hichBeschleunigungssumme -> X+1
+ 0000           ; hichAusgangswert -> X+0
  0000           _main::
  0000                   .dbline -1
  0000 10                push X
@@ -40,10 +40,10 @@
  0004           ; #include <stdio.h>
  0004           ; #include <m8c.h>        
  0004           ; #include "PSoCAPI.h"    
- 0004           ; 
+ 0004           ; #include <stdlib.h>
  0004           ; // Präprozessor:Für testzwecke 
  0004           ; // #defein Test nicht auskomentieren:
- 0004           ; #define TEST
+ 0004           ; //#define TEST
  0004           ; 
  0004           ; // Funktionsprototypen:
  0004           ; void LCDansteuern(char, char );
@@ -74,7 +74,7 @@
  0004           ;               
  0004           ;       // Konstanten
  0004           ;       char kochPeriodendauer = 50;                                    
- 0004 560032            mov [X+0],50
+ 0004 560432            mov [X+4],50
  0007                   .dbline 72
  0007           ;       char kochKP;
  0007           ;       char kochKS;
@@ -103,508 +103,442 @@
  000E           ;       // Initialisieren des PWM-Moduls
  000E           ;       PWM8_1_WritePeriod(kochPeriodendauer);                              
  000E 10                push X
- 000F 5200              mov A,[X+0]
+ 000F 5204              mov A,[X+4]
  0011 7C0000            xcall _PWM8_1_WritePeriod
  0014                   .dbline 79
  0014           ;     PWM8_1_Start();
  0014 7C0000            xcall _PWM8_1_Start
- 0017                   .dbline 82
+ 0017                   .dbline 86
  0017           ;       
  0017           ;       // Initialisieren der Verstärker
- 0017           ;       PGA_1_SetGain(PGA_1_G0_12);                                             
- 0017 5010              mov A,16
- 0019 7C0000            xcall _PGA_1_SetGain
- 001C                   .dbline 83
- 001C           ;       PGA_2_SetGain(PGA_2_G0_12);
- 001C 5010              mov A,16
- 001E 7C0000            xcall _PGA_2_SetGain
- 0021                   .dbline 84
- 0021           ;       PGA_3_SetGain(PGA_3_G0_12);
- 0021 5010              mov A,16
- 0023 7C0000            xcall _PGA_3_SetGain
- 0026                   .dbline 86
+ 0017           ; //    PGA_1_SetGain(PGA_1_G0_12);                                             
+ 0017           ; //    PGA_2_SetGain(PGA_2_G0_12);
+ 0017           ; //    PGA_3_SetGain(PGA_3_G0_12);
+ 0017           ;       
+ 0017           ;       PGA_1_Start(PGA_1_LOWPOWER);
+ 0017 5001              mov A,1
+ 0019 7C0000            xcall _PGA_1_Start
+ 001C                   .dbline 87
+ 001C           ;       PGA_2_Start(PGA_2_LOWPOWER);
+ 001C 5001              mov A,1
+ 001E 7C0000            xcall _PGA_2_Start
+ 0021                   .dbline 88
+ 0021           ;       PGA_3_Start(PGA_3_LOWPOWER);    
+ 0021 5001              mov A,1
+ 0023 7C0000            xcall _PGA_3_Start
+ 0026                   .dbline 92
  0026           ;       
- 0026           ;       PGA_1_Start(PGA_1_LOWPOWER);
- 0026 5001              mov A,1
- 0028 7C0000            xcall _PGA_1_Start
- 002B                   .dbline 87
- 002B           ;       PGA_2_Start(PGA_2_LOWPOWER);
- 002B 5001              mov A,1
- 002D 7C0000            xcall _PGA_2_Start
- 0030                   .dbline 88
- 0030           ;       PGA_3_Start(PGA_3_LOWPOWER);    
- 0030 5001              mov A,1
- 0032 7C0000            xcall _PGA_3_Start
- 0035                   .dbline 92
- 0035           ;       
- 0035           ;       // Initialisieren des Dualen AD-Wandlers
- 0035           ;       // für Entfernung und Beschleunigung
- 0035           ;       DUALADC8_Start(DUALADC8_HIGHPOWER);                     
- 0035 5003              mov A,3
- 0037 7C0000            xcall _DUALADC8_Start
- 003A                   .dbline 93
- 003A           ;       DUALADC8_SetCalcTime(100);                              
- 003A 5700              mov X,0
- 003C 5064              mov A,100
- 003E 7C0000            xcall _DUALADC8_SetCalcTime
- 0041                   .dbline 94
- 0041           ;       DUALADC8_GetSamples(); 
- 0041 7C0000            xcall _DUALADC8_GetSamples
- 0044                   .dbline 98
+ 0026           ;       // Initialisieren des Dualen AD-Wandlers
+ 0026           ;       // für Entfernung und Beschleunigung
+ 0026           ;       DUALADC8_Start(DUALADC8_HIGHPOWER);                     
+ 0026 5003              mov A,3
+ 0028 7C0000            xcall _DUALADC8_Start
+ 002B                   .dbline 94
+ 002B           ; //    DUALADC8_SetCalcTime(100);                              
+ 002B           ;       DUALADC8_GetSamples(); 
+ 002B 7C0000            xcall _DUALADC8_GetSamples
+ 002E                   .dbline 98
+ 002E           ;       
+ 002E           ;       // Initialisieren des AD-Wandlers
+ 002E           ;       // für den Sollwert
+ 002E           ;       ADCINC_Start(ADCINC_HIGHPOWER);                         
+ 002E 5003              mov A,3
+ 0030 7C0000            xcall _ADCINC_Start
+ 0033                   .dbline 99
+ 0033           ;       ADCINC_GetSamples(0);                                   
+ 0033 5000              mov A,0
+ 0035 7C0000            xcall _ADCINC_GetSamples
+ 0038                   .dbline 102
+ 0038           ;       
+ 0038           ;       //Initialisieren der Digitalen Ausgänge
+ 0038           ;       IN1_Start();    
+ 0038 7C0000            xcall _IN1_Start
+ 003B                   .dbline 103
+ 003B           ;       IN2_Start();
+ 003B 7C0000            xcall _IN2_Start
+ 003E                   .dbline 104
+ 003E           ;       SELBSTTEST_Start();
+ 003E 7C0000            xcall _SELBSTTEST_Start
+ 0041 20                pop X
+ 0042 804A              xjmp L4
+ 0044           L3:
+ 0044                   .dbline 114
  0044           ;       
- 0044           ;       // Initialisieren des AD-Wandlers
- 0044           ;       // für den Sollwert
- 0044           ;       ADCINC_Start(ADCINC_HIGHPOWER);                         
- 0044 5003              mov A,3
- 0046 7C0000            xcall _ADCINC_Start
- 0049                   .dbline 99
- 0049           ;       ADCINC_GetSamples(0);                                   
- 0049 5000              mov A,0
- 004B 7C0000            xcall _ADCINC_GetSamples
- 004E 20                pop X
- 004F                   .dbline 102
- 004F           ;       
- 004F           ;       //Initialisieren der Digitalen Ausgänge
- 004F           ;       IN1_Start;      
- 004F                   .dbline 103
- 004F           ;       IN2_Start;
- 004F                   .dbline 104
- 004F           ;       SELBSTTEST_Start;
- 004F                   .dbline 142
- 004F           ;       
- 004F           ;       // Präprozessor: kompiliere whileschleife wenn kein test
- 004F           ;       #ifndef TEST
- 004F           ;               
- 004F           ;               /********************************************************
- 004F           ;               *                       Endlosschleife für Dauerbetrieb                                *
- 004F           ;               ********************************************************/
- 004F           ;               
- 004F           ;               while(1) 
- 004F           ;                       {
- 004F           ;                       // Daten Einlesen
- 004F           ;                       Dateneinlesen();
- 004F           ;                                                
- 004F           ;                       // Parameter Berechnen
- 004F           ;                       
- 004F           ;                       hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
- 004F           ;                       
- 004F           ;                       hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
- 004F           ;                                                               - 1 / kochKS * hichBeschleunigungssumme;
- 004F           ;                       //TODO: Korekturfaktor Einfügen 
- 004F           ;                       prozess.pdchPulsweite = hichAusgangswert; 
- 004F           ;                       
- 004F           ;                       Ausgangansteuern(hichAusgangswert);
- 004F           ;                       LCDansteuern(prozess.pdchEntfernung, 0);
- 004F           ;                       };
- 004F           ;                       
- 004F           ;       /********************************************************
- 004F           ;       * Achtung die Folgenden Zeilen dienen nur zu Testzwecken*
- 004F           ;       * und sind für das Fertige Programm nicht relevant.            *
- 004F           ;       * Sie werden anstelle der Regulären while Schleife             *
- 004F           ;       * Kompiliert, wenn die Bedingung #ifndef TEST nicht     *
- 004F           ;       * erfüllt ist.                                                                                 *
- 004F           ;       ********************************************************/
- 004F           ; 
- 004F           ;       #else
- 004F           ;               
- 004F           ;               // Selbsttest des Beshleunigungssensoers anschalten
- 004F           ;               SELBSTTEST_On;
- 004F 802C              xjmp L4
- 0051           L3:
- 0051                   .dbline 147
- 0051           ;                       
- 0051           ;               // whileschleife zu testzwecken
- 0051           ;               // Konstante zur verweildauer in der schleife
- 0051           ;               while (1)
- 0051           ;                       {
- 0051                   .dbline 157
- 0051           ;                               //konstanten definiren
- 0051           ;                               
- 0051           ;                               // Daten Einlesen
- 0051           ;                               void Dateneinlesen(void);
- 0051           ;                               // Daten Nacheinander auf LCD Ausgeeben
- 0051           ;                               //prozess.pdchPulsweite = 50;
- 0051           ;                               //prozess.pdchBechleunigung = 1;
- 0051           ;                               //prozess.pdchEntfernung =2;
- 0051           ;                               //prozess.pdchSollwert =3;
- 0051           ;                               Ausgangansteuern(50);
- 0051 5032              mov A,50
- 0053 08                push A
- 0054 90C4              xcall _Ausgangansteuern
+ 0044           ;       // Präprozessor: kompiliere whileschleife wenn kein test
+ 0044           ;       #ifndef TEST
+ 0044           ;               
+ 0044           ;               /********************************************************
+ 0044           ;               *                       Endlosschleife für Dauerbetrieb                                *
+ 0044           ;               ********************************************************/
+ 0044           ; 
+ 0044           ;               while(1) 
+ 0044           ;                       {
+ 0044                   .dbline 116
+ 0044           ;                       // Daten Einlesen
+ 0044           ;                       Dateneinlesen();
+ 0044 9088              xcall _Dateneinlesen
+ 0046                   .dbline 120
+ 0046           ;                                                
+ 0046           ;                       // Parameter Berechnen
+ 0046           ;                       
+ 0046           ;                       hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
+ 0046 5100              mov A,[_prozess]
+ 0048 0501              add [X+1],A
+ 004A                   .dbline 122
+ 004A           ;                       
+ 004A           ;                       hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
+ 004A 5203              mov A,[X+3]
+ 004C 08                push A
+ 004D 5001              mov A,1
+ 004F 08                push A
+ 0050 7C0000            xcall __divmodu_8X8_8
+ 0053 18                pop A
+ 0054 5300              mov [__r0],A
  0056 38FF              add SP,-1
- 0058                   .dbline 158
- 0058           ;                               test(prozess.pdchBechleunigung);
- 0058 5100              mov A,[_prozess]
- 005A 08                push A
- 005B 90E8              xcall _test
- 005D                   .dbline 159
- 005D           ;                               test(prozess.pdchEntfernung);
- 005D 5101              mov A,[_prozess+1]
- 005F 08                push A
- 0060 90E3              xcall _test
- 0062 38FE              add SP,-2
- 0064                   .dbline 160
- 0064           ;                               test(prozess.pdchSollwert);
- 0064 5102              mov A,[_prozess+2]
- 0066 08                push A
- 0067 90DC              xcall _test
- 0069                   .dbline 162
- 0069           ;                               // Ausgangansteuern(-50);
- 0069           ;                               test(prozess.pdchBechleunigung);
- 0069 5100              mov A,[_prozess]
- 006B 08                push A
- 006C 90D7              xcall _test
- 006E 38FE              add SP,-2
- 0070                   .dbline 163
- 0070           ;                               test(prozess.pdchEntfernung);
- 0070 5101              mov A,[_prozess+1]
- 0072 08                push A
- 0073 90D0              xcall _test
- 0075                   .dbline 164
- 0075           ;                               test(prozess.pdchSollwert);
- 0075 5102              mov A,[_prozess+2]
- 0077 08                push A
- 0078 90CB              xcall _test
- 007A 38FE              add SP,-2
- 007C                   .dbline 167
- 007C           ;                               
- 007C           ;                               
- 007C           ;                       };
- 007C           L4:
- 007C                   .dbline 146
- 007C 8FD4              xjmp L3
- 007E           X0:
- 007E                   .dbline -2
- 007E           L2:
- 007E 38FB              add SP,-5
- 0080 20                pop X
- 0081                   .dbline 0 ; func end
- 0081 8FFF              jmp .
- 0083                   .dbsym l hichBeschleunigungssumme 4 c
- 0083                   .dbsym l hichAusgangswert 3 c
- 0083                   .dbsym l kochKS 2 c
- 0083                   .dbsym l kochKP 1 c
- 0083                   .dbsym l kochPeriodendauer 0 c
- 0083                   .dbend
- 0083                   .dbfunc e LCDansteuern _LCDansteuern fV
- 0083           ; rgchZweitezeile -> X+16
- 0083           ; rgchErstezeile -> X+0
- 0083           ;     hichfehler -> X-5
- 0083           ;       hichdata -> X-4
- 0083           _LCDansteuern::
- 0083                   .dbline -1
- 0083 10                push X
- 0084 4F                mov X,SP
- 0085 3820              add SP,32
- 0087                   .dbline 178
- 0087           ;                       
- 0087           ;       // Präprozessor: Ende der Verzweifung
- 0087           ;       #endif 
- 0087           ; }
- 0087           ;       
- 0087           ; /********************************************************
- 0087           ; *                     Funktionsdeklarationen                                          *
- 0087           ; ********************************************************/
- 0087           ;       
- 0087           ; void LCDansteuern(char hichdata, char hichfehler)
- 0087           ;       {
- 0087                   .dbline 183
- 0087           ;       char rgchErstezeile[16];
- 0087           ;       char rgchZweitezeile[16];
- 0087           ;       
- 0087           ;       // Text in Variablen Schreiben
- 0087           ;       csprintf(rgchErstezeile,"Abstand: %c",hichdata);
- 0087 52FC              mov A,[X-4]
- 0089 5300              mov [__r1],A
- 008B 5000              mov A,0
- 008D 08                push A
- 008E 5100              mov A,[__r1]
- 0090 08                push A
- 0091 500F              mov A,>L11
- 0093 08                push A
- 0094 500F              mov A,<L11
- 0096 08                push A
- 0097 5000              mov A,0
- 0099 08                push A
- 009A 10                push X
- 009B 7C0000            xcall _csprintf
- 009E 38FA              add SP,-6
- 00A0                   .dbline 187
- 00A0           ;       
- 00A0           ;       // ist ein Fehler aufgetreten
- 00A0           ;       // dann ist hichFehler != 0
- 00A0           ;       if (hichfehler != 0)
- 00A0 3DFB00            cmp [X-5],0
- 00A3 A017              jz L12
- 00A5                   .dbline 189
- 00A5           ;               {
- 00A5           ;               csprintf(rgchZweitezeile,"Achtung Fehler");
- 00A5                   .dbline 189
- 00A5 5000              mov A,>L14
- 00A7 08                push A
- 00A8 5000              mov A,<L14
- 00AA 08                push A
- 00AB 5A00              mov [__r1],X
- 00AD 060010            add [__r1],16
- 00B0 5100              mov A,[__r0]
- 00B2 08                push A
- 00B3 5100              mov A,[__r1]
- 00B5 08                push A
- 00B6 7C0000            xcall _csprintf
- 00B9 38FC              add SP,-4
- 00BB                   .dbline 190
- 00BB           ;               };
- 00BB           L12:
- 00BB                   .dbline 190
- 00BB                   .dbline 193
- 00BB           ;               
- 00BB           ;       // LCD Ansteuern 
- 00BB           ;       LCD_1_Position(1,0);
- 00BB 10                push X
- 00BC 5700              mov X,0
- 00BE 5001              mov A,1
- 00C0 7C0000            xcall _LCD_1_Position
- 00C3 20                pop X
- 00C4                   .dbline 194
- 00C4           ;       LCD_1_PrString(rgchErstezeile);
- 00C4 10                push X
- 00C5 5100              mov A,[__r0]
- 00C7 7C0000            xcall _LCD_1_PrString
- 00CA                   .dbline 195
- 00CA           ;       LCD_1_Position(2,0);
- 00CA 5700              mov X,0
- 00CC 5002              mov A,2
- 00CE 7C0000            xcall _LCD_1_Position
- 00D1 20                pop X
- 00D2                   .dbline 196
- 00D2           ;       LCD_1_PrString(rgchZweitezeile);        
- 00D2 5A00              mov [__r1],X
- 00D4 060010            add [__r1],16
+ 0058 5201              mov A,[X+1]
+ 005A 60E8              mov REG[0xe8],A
+ 005C 5100              mov A,[__r0]
+ 005E 60E9              mov REG[0xe9],A
+ 0060 40                nop
+ 0061 5DEB              mov A,REG[0xeb]
+ 0063 5300              mov [__r0],A
+ 0065 5102              mov A,[_prozess+2]
+ 0067 1200              sub A,[_prozess]
+ 0069 5300              mov [__r2],A
+ 006B 5202              mov A,[X+2]
+ 006D 60E8              mov REG[0xe8],A
+ 006F 5100              mov A,[__r2]
+ 0071 60E9              mov REG[0xe9],A
+ 0073 40                nop
+ 0074 5DEB              mov A,REG[0xeb]
+ 0076 1200              sub A,[__r0]
+ 0078 5400              mov [X+0],A
+ 007A                   .dbline 125
+ 007A           ;                                                               - 1 / kochKS * hichBeschleunigungssumme;
+ 007A           ;                       //TODO: Korekturfaktor Einfügen 
+ 007A           ;                       prozess.pdchPulsweite = hichAusgangswert; 
+ 007A 5200              mov A,[X+0]
+ 007C 5303              mov [_prozess+3],A
+ 007E                   .dbline 127
+ 007E           ;                       
+ 007E           ;                       Ausgangansteuern(hichAusgangswert);
+ 007E 5200              mov A,[X+0]
+ 0080 08                push A
+ 0081 907E              xcall _Ausgangansteuern
+ 0083                   .dbline 128
+ 0083           ;                       LCDansteuern(prozess.pdchEntfernung, 0);
+ 0083 5000              mov A,0
+ 0085 08                push A
+ 0086 5101              mov A,[_prozess+1]
+ 0088 08                push A
+ 0089 9009              xcall _LCDansteuern
+ 008B 38FD              add SP,-3
+ 008D                   .dbline 131
+ 008D           ; 
+ 008D           ;                               
+ 008D           ;                       };
+ 008D           L4:
+ 008D                   .dbline 113
+ 008D 8FB6              xjmp L3
+ 008F           X0:
+ 008F                   .dbline -2
+ 008F           L2:
+ 008F 38FB              add SP,-5
+ 0091 20                pop X
+ 0092                   .dbline 0 ; func end
+ 0092 8FFF              jmp .
+ 0094                   .dbsym l kochPeriodendauer 4 c
+ 0094                   .dbsym l kochKS 3 c
+ 0094                   .dbsym l kochKP 2 c
+ 0094                   .dbsym l hichBeschleunigungssumme 1 c
+ 0094                   .dbsym l hichAusgangswert 0 c
+ 0094                   .dbend
+ 0094                   .dbfunc e LCDansteuern _LCDansteuern fV
+ 0094           ;            xyz -> X+0
+ 0094           ;     hichfehler -> X-5
+ 0094           ;       hichdata -> X-4
+ 0094           _LCDansteuern::
+ 0094                   .dbline -1
+ 0094 10                push X
+ 0095 4F                mov X,SP
+ 0096 3805              add SP,5
+ 0098                   .dbline 180
+ 0098           ;                       
+ 0098           ;       /********************************************************
+ 0098           ;       * Achtung die Folgenden Zeilen dienen nur zu Testzwecken*
+ 0098           ;       * und sind für das Fertige Programm nicht relevant.            *
+ 0098           ;       * Sie werden anstelle der Regulären while Schleife             *
+ 0098           ;       * Kompiliert, wenn die Bedingung #ifndef TEST nicht     *
+ 0098           ;       * erfüllt ist.                                                                                 *
+ 0098           ;       ********************************************************/
+ 0098           ; 
+ 0098           ;       #else
+ 0098           ;               
+ 0098           ;               // Selbsttest des Beshleunigungssensoers anschalten
+ 0098           ;               SELBSTTEST_Switch(1);
+ 0098           ;                       
+ 0098           ;               // whileschleife zu testzwecken
+ 0098           ;               // Konstante zur verweildauer in der schleife
+ 0098           ;               while (1)
+ 0098           ;                       {
+ 0098           ;                               //konstanten definiren
+ 0098           ;                               
+ 0098           ;                               // Daten Einlesen
+ 0098           ;                               void Dateneinlesen(void);
+ 0098           ;                               // Daten Nacheinander auf LCD Ausgeeben
+ 0098           ;                               //prozess.pdchPulsweite = 50;
+ 0098           ;                               //prozess.pdchBechleunigung = 1;
+ 0098           ;                               //prozess.pdchEntfernung =2;
+ 0098           ;                               //prozess.pdchSollwert =3;
+ 0098           ;                               Ausgangansteuern(50);
+ 0098           ;                               test(prozess.pdchBechleunigung);
+ 0098           ;                               test(prozess.pdchEntfernung);
+ 0098           ;                               test(prozess.pdchSollwert);
+ 0098           ;                               // Ausgangansteuern(-50);
+ 0098           ;                               test(prozess.pdchBechleunigung);
+ 0098           ;                               test(prozess.pdchEntfernung);
+ 0098           ;                               test(prozess.pdchSollwert);
+ 0098           ;                               
+ 0098           ;                               
+ 0098           ;                       };
+ 0098           ;                       
+ 0098           ;       // Präprozessor: Ende der Verzweifung
+ 0098           ;       #endif 
+ 0098           ; }
+ 0098           ;       
+ 0098           ; /********************************************************
+ 0098           ; *                     Funktionsdeklarationen                                          *
+ 0098           ; ********************************************************/
+ 0098           ;       
+ 0098           ; void LCDansteuern(char hichdata, char hichfehler)
+ 0098           ;       {               char xyz[5];
+ 0098                   .dbline 181
+ 0098           ;                                LCD_1_Position(0,5);    
+ 0098 10                push X
+ 0099 5705              mov X,5
+ 009B 5000              mov A,0
+ 009D 7C0000            xcall _LCD_1_Position
+ 00A0                   .dbline 182
+ 00A0           ;                       LCD_1_PrCString("Wert:");                               
+ 00A0 5000              mov A,>L10
+ 00A2 08                push A
+ 00A3 5000              mov A,<L10
+ 00A5 5C                mov X,A
+ 00A6 18                pop A
+ 00A7 7C0000            xcall _LCD_1_PrCString
+ 00AA 20                pop X
+ 00AB                   .dbline 183
+ 00AB           ;                       itoa(xyz,prozess.pdchEntfernung,10);
+ 00AB 5000              mov A,0
+ 00AD 08                push A
+ 00AE 500A              mov A,10
+ 00B0 08                push A
+ 00B1 5F0001            mov [__r1],[_prozess+1]
+ 00B4 5000              mov A,0
+ 00B6 08                push A
+ 00B7 5100              mov A,[__r1]
+ 00B9 08                push A
+ 00BA 5000              mov A,0
+ 00BC 08                push A
+ 00BD 10                push X
+ 00BE 7C0000            xcall _itoa
+ 00C1 38FA              add SP,-6
+ 00C3                   .dbline 184
+ 00C3           ;                       LCD_1_PrString(xyz);            
+ 00C3 10                push X
+ 00C4 5100              mov A,[__r0]
+ 00C6 7C0000            xcall _LCD_1_PrString
+ 00C9 20                pop X
+ 00CA                   .dbline -2
+ 00CA           L9:
+ 00CA 38FB              add SP,-5
+ 00CC 20                pop X
+ 00CD                   .dbline 0 ; func end
+ 00CD 7F                ret
+ 00CE                   .dbsym l xyz 0 A[5:5]c
+ 00CE                   .dbsym l hichfehler -5 c
+ 00CE                   .dbsym l hichdata -4 c
+ 00CE                   .dbend
+ 00CE                   .dbfunc e Dateneinlesen _Dateneinlesen fV
+ 00CE           _Dateneinlesen::
+ 00CE                   .dbline -1
+ 00CE                   .dbline 206
+ 00CE           ; //    char rgchErstezeile[16];
+ 00CE           ; //    char rgchZweitezeile[16];
+ 00CE           ; //    
+ 00CE           ; //    // Text in Variablen Schreiben
+ 00CE           ; //    csprintf(rgchErstezeile,"Abstand: %c",hichdata);
+ 00CE           ; //    
+ 00CE           ; //    // ist ein Fehler aufgetreten
+ 00CE           ; //    // dann ist hichFehler != 0
+ 00CE           ; //    if (hichfehler != 0)
+ 00CE           ; //            {
+ 00CE           ; //            csprintf(rgchZweitezeile,"Achtung Fehler");
+ 00CE           ; //            };
+ 00CE           ; //            
+ 00CE           ; //    // LCD Ansteuern 
+ 00CE           ; //    LCD_1_Position(1,0);
+ 00CE           ; //    LCD_1_PrString(rgchErstezeile);
+ 00CE           ; //    LCD_1_Position(2,0);
+ 00CE           ; //    LCD_1_PrString(rgchZweitezeile);        
+ 00CE           ;       }
+ 00CE           ;       
+ 00CE           ; void Dateneinlesen(void)
+ 00CE           ;       {       
+ 00CE                   .dbline 208
+ 00CE           ;       // Wenn Sollwertdaten bereit sind
+ 00CE           ;       if(ADCINC_fIsDataAvailable() != 0)
+ 00CE 10                push X
+ 00CF 7C0000            xcall _ADCINC_fIsDataAvailable
+ 00D2 20                pop X
+ 00D3 3900              cmp A,0
+ 00D5 A008              jz L17
+ 00D7                   .dbline 212
+ 00D7           ;                       
+ 00D7           ;               // Einlesen des Sollwertes
+ 00D7           ;               // data ready flag zurüvksetzen        
+ 00D7           ;               prozess.pdchSollwert = ADCINC_cClearFlagGetData();              
  00D7 10                push X
- 00D8 5100              mov A,[__r0]
- 00DA 08                push A
- 00DB 5100              mov A,[__r1]
- 00DD 5C                mov X,A
- 00DE 18                pop A
- 00DF 7C0000            xcall _LCD_1_PrString
- 00E2 20                pop X
- 00E3                   .dbline -2
- 00E3           L10:
- 00E3 38E0              add SP,-32
- 00E5 20                pop X
- 00E6                   .dbline 0 ; func end
- 00E6 7F                ret
- 00E7                   .dbsym l rgchZweitezeile 16 A[16:16]c
- 00E7                   .dbsym l rgchErstezeile 0 A[16:16]c
- 00E7                   .dbsym l hichfehler -5 c
- 00E7                   .dbsym l hichdata -4 c
- 00E7                   .dbend
- 00E7                   .dbfunc e Dateneinlesen _Dateneinlesen fV
- 00E7           _Dateneinlesen::
- 00E7                   .dbline -1
- 00E7                   .dbline 200
- 00E7           ;       }
- 00E7           ;       
- 00E7           ; void Dateneinlesen(void)
- 00E7           ;       {       
- 00E7                   .dbline 202
- 00E7           ;       // Wenn Sollwertdaten bereit sind
- 00E7           ;       if(ADCINC_fIsDataAvailable() != 0)
- 00E7 10                push X
- 00E8 7C0000            xcall _ADCINC_fIsDataAvailable
- 00EB 20                pop X
- 00EC 3900              cmp A,0
- 00EE A008              jz L20
- 00F0                   .dbline 206
- 00F0           ;                       
- 00F0           ;               // Einlesen des Sollwertes
- 00F0           ;               // data ready flag zurüvksetzen        
- 00F0           ;               prozess.pdchSollwert = ADCINC_cClearFlagGetData();              
- 00F0 10                push X
- 00F1 7C0000            xcall _ADCINC_cClearFlagGetData
- 00F4 20                pop X
- 00F5 5302              mov [_prozess+2],A
- 00F7           L19:
- 00F7                   .dbline 209
- 00F7           ;                          
- 00F7           ;       // Auf Entfernung und Position Warten
- 00F7           ;               while(DUALADC8_fIsDataAvailable == 0);                  
- 00F7           L20:
- 00F7                   .dbline 209
- 00F7 5000              mov A,<PL_DUALADC8_fIsDataAvailable
+ 00D8 7C0000            xcall _ADCINC_cClearFlagGetData
+ 00DB 20                pop X
+ 00DC 5302              mov [_prozess+2],A
+ 00DE           L16:
+ 00DE                   .dbline 215
+ 00DE           ;                          
+ 00DE           ;       // Auf Entfernung und Position Warten
+ 00DE           ;               while(DUALADC8_fIsDataAvailable == 0);                  
+ 00DE           L17:
+ 00DE                   .dbline 215
+ 00DE 5000              mov A,<PL_DUALADC8_fIsDataAvailable
+ 00E0 10                push X
+ 00E1 5800              mov X,[__r1]
+ 00E3 08                push A
+ 00E4 28                romx
+ 00E5 5300              mov [__r0],A
+ 00E7 18                pop A
+ 00E8 75                inc X
+ 00E9 0900              adc A,0
+ 00EB 28                romx
+ 00EC 20                pop X
+ 00ED 3C0000            cmp [__r0],0
+ 00F0 AFED              jz L16
+ 00F2                   .dbline 217
+ 00F2           ;               // Einlesen der Beschleunigung
+ 00F2           ;               prozess.pdchBechleunigung = DUALADC8_cGetData1();       
+ 00F2 10                push X
+ 00F3 7C0000            xcall _DUALADC8_cGetData1
+ 00F6 20                pop X
+ 00F7 5300              mov [_prozess],A
+ 00F9                   .dbline 221
+ 00F9           ;       
+ 00F9           ;               // Einlesen der Entfernung
+ 00F9           ;         // data ready flag zurüvksetzen         
+ 00F9           ;               prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();         
  00F9 10                push X
- 00FA 5800              mov X,[__r1]
- 00FC 08                push A
- 00FD 28                romx
- 00FE 5300              mov [__r0],A
- 0100 18                pop A
- 0101 75                inc X
- 0102 0900              adc A,0
- 0104 28                romx
- 0105 20                pop X
- 0106 3C0000            cmp [__r0],0
- 0109 AFED              jz L19
- 010B                   .dbline 211
- 010B           ;               // Einlesen der Beschleunigung
- 010B           ;               prozess.pdchBechleunigung = DUALADC8_cGetData1();       
- 010B 10                push X
- 010C 7C0000            xcall _DUALADC8_cGetData1
- 010F 20                pop X
- 0110 5300              mov [_prozess],A
- 0112                   .dbline 215
- 0112           ;       
- 0112           ;               // Einlesen der Entfernung
- 0112           ;         // data ready flag zurüvksetzen         
- 0112           ;               prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();         
- 0112 10                push X
- 0113 7C0000            xcall _DUALADC8_cGetData2ClearFlag
- 0116 20                pop X
- 0117 5301              mov [_prozess+1],A
- 0119                   .dbline -2
- 0119           L15:
- 0119                   .dbline 0 ; func end
- 0119 7F                ret
- 011A                   .dbend
- 011A                   .dbfunc e Ausgangansteuern _Ausgangansteuern fV
- 011A           ; hichAusgangswert -> X-4
- 011A           _Ausgangansteuern::
- 011A                   .dbline -1
- 011A 10                push X
- 011B 4F                mov X,SP
- 011C                   .dbline 219
- 011C           ;       }
- 011C           ; 
- 011C           ; void Ausgangansteuern(char hichAusgangswert)
- 011C           ;       {
- 011C                   .dbline 221
- 011C           ;               // linksdrehend 
- 011C           ;               if (hichAusgangswert > 0){                              
- 011C 5000              mov A,0
- 011E 3BFC              cmp A,[X-4]
- 0120 D00A              jnc L24
- 0122           X1:
- 0122                   .dbline 222
- 0122           ;                       IN1_On;
- 0122                   .dbline 222
- 0122                   .dbline 223
- 0122           ;                       IN2_Off;
- 0122                   .dbline 224
- 0122           ;                       PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
- 0122 10                push X
- 0123 5103              mov A,[_prozess+3]
- 0125 7C0000            xcall _PWM8_1_WritePulseWidth
- 0128 20                pop X
- 0129                   .dbline 225
- 0129           ;               }
- 0129 8019              xjmp L25
- 012B           L24:
- 012B                   .dbline 227
- 012B           ;               // rechtsdrehend
- 012B           ;               else if (hichAusgangswert < 0){                         
- 012B 3DFC00            cmp [X-4],0
- 012E D00D              jnc L27
- 0130           X2:
- 0130                   .dbline 228
- 0130           ;                       IN1_On;
- 0130                   .dbline 228
- 0130                   .dbline 229
- 0130           ;                       IN2_OFF;
- 0130                   .dbline 230
- 0130           ;                       PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
- 0130 5103              mov A,[_prozess+3]
- 0132 73                cpl A
- 0133 11FF              sub A,-1
- 0135 10                push X
- 0136 7C0000            xcall _PWM8_1_WritePulseWidth
- 0139 20                pop X
- 013A                   .dbline 231
- 013A           ;               }
- 013A 8008              xjmp L28
- 013C           L27:
- 013C                   .dbline 233
- 013C           ;               // Bremsen durch Kurzschluss
- 013C           ;               else{                           
- 013C                   .dbline 234
- 013C           ;                       IN1_On;
- 013C                   .dbline 235
- 013C           ;                       IN2_On;
- 013C                   .dbline 236
- 013C           ;                       PWM8_1_WritePulseWidth(0);
- 013C 10                push X
- 013D 5000              mov A,0
- 013F 7C0000            xcall _PWM8_1_WritePulseWidth
- 0142 20                pop X
- 0143                   .dbline 237
- 0143           ;               }
- 0143           L28:
- 0143           L25:
- 0143                   .dbline -2
- 0143           L23:
- 0143 20                pop X
- 0144                   .dbline 0 ; func end
- 0144 7F                ret
- 0145                   .dbsym l hichAusgangswert -4 c
- 0145                   .dbend
- 0145                   .dbfunc e test _test fV
- 0145           ;            iin -> X+0
- 0145           ;       hichdata -> X-4
- 0145           _test::
- 0145                   .dbline -1
- 0145 10                push X
- 0146 4F                mov X,SP
- 0147 3802              add SP,2
- 0149                   .dbline 244
- 0149           ;       }
- 0149           ;       
- 0149           ; // Präprozessor: kompiliere Funktion nur wenn Test
- 0149           ; #ifdef TEST
- 0149           ;       // Ausgabe der Testdaten auf LCD-Display
- 0149           ;       void test(char hichdata)
- 0149           ;               {
- 0149                   .dbline 247
- 0149           ;               // gibt 99999 mal LCD Aus
- 0149           ;               int iin;
- 0149           ;               for (iin = 0; iin <= 999; iin ++)
- 0149 560100            mov [X+1],0
- 014C 560000            mov [X+0],0
- 014F           L31:
- 014F                   .dbline 248
- 014F           ;                       {
- 014F                   .dbline 249
- 014F           ;                       LCDansteuern(hichdata, 0);      
- 014F 5000              mov A,0
- 0151 08                push A
- 0152 52FC              mov A,[X-4]
- 0154 08                push A
- 0155 9F2C              xcall _LCDansteuern
- 0157 38FE              add SP,-2
- 0159                   .dbline 250
- 0159           ;                       }
- 0159           L32:
- 0159                   .dbline 247
- 0159 7701              inc [X+1]
- 015B 0F0000            adc [X+0],0
- 015E                   .dbline 247
- 015E 50E7              mov A,-25
- 0160 1301              sub A,[X+1]
- 0162 5200              mov A,[X+0]
- 0164 3180              xor A,-128
- 0166 5300              mov [__rX],A
- 0168 5083              mov A,(3 ^ 0x80)
- 016A 1A00              sbb A,[__rX]
- 016C DFE2              jnc L31
- 016E           X3:
- 016E                   .dbline -2
- 016E           L30:
- 016E 38FE              add SP,-2
- 0170 20                pop X
- 0171                   .dbline 0 ; func end
- 0171 7F                ret
- 0172                   .dbsym l iin 0 I
- 0172                   .dbsym l hichdata -4 c
- 0172                   .dbend
+ 00FA 7C0000            xcall _DUALADC8_cGetData2ClearFlag
+ 00FD 20                pop X
+ 00FE 5301              mov [_prozess+1],A
+ 0100                   .dbline -2
+ 0100           L12:
+ 0100                   .dbline 0 ; func end
+ 0100 7F                ret
+ 0101                   .dbend
+ 0101                   .dbfunc e Ausgangansteuern _Ausgangansteuern fV
+ 0101           ; hichAusgangswert -> X-4
+ 0101           _Ausgangansteuern::
+ 0101                   .dbline -1
+ 0101 10                push X
+ 0102 4F                mov X,SP
+ 0103                   .dbline 225
+ 0103           ;       }
+ 0103           ; 
+ 0103           ; void Ausgangansteuern(char hichAusgangswert)
+ 0103           ;       {
+ 0103                   .dbline 227
+ 0103           ;               // linksdrehend 
+ 0103           ;               if (hichAusgangswert > 0){                              
+ 0103 5000              mov A,0
+ 0105 3BFC              cmp A,[X-4]
+ 0107 D014              jnc L21
+ 0109           X1:
+ 0109                   .dbline 228
+ 0109           ;                       IN1_Switch(1);
+ 0109                   .dbline 228
+ 0109 10                push X
+ 010A 5001              mov A,1
+ 010C 7C0000            xcall _IN1_Switch
+ 010F                   .dbline 229
+ 010F           ;                       IN2_Switch(0);
+ 010F 5000              mov A,0
+ 0111 7C0000            xcall _IN2_Switch
+ 0114                   .dbline 230
+ 0114           ;                       PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+ 0114 5103              mov A,[_prozess+3]
+ 0116 7C0000            xcall _PWM8_1_WritePulseWidth
+ 0119 20                pop X
+ 011A                   .dbline 231
+ 011A           ;               }
+ 011A 802F              xjmp L22
+ 011C           L21:
+ 011C                   .dbline 233
+ 011C           ;               // rechtsdrehend
+ 011C           ;               else if (hichAusgangswert < 0){                         
+ 011C 3DFC00            cmp [X-4],0
+ 011F D019              jnc L24
+ 0121           X2:
+ 0121                   .dbline 234
+ 0121           ;                       IN1_Switch(1);
+ 0121                   .dbline 234
+ 0121 10                push X
+ 0122 5001              mov A,1
+ 0124 7C0000            xcall _IN1_Switch
+ 0127                   .dbline 235
+ 0127           ;                       IN2_Switch(0);
+ 0127 5000              mov A,0
+ 0129 7C0000            xcall _IN2_Switch
+ 012C 20                pop X
+ 012D                   .dbline 236
+ 012D           ;                       PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+ 012D 5103              mov A,[_prozess+3]
+ 012F 73                cpl A
+ 0130 11FF              sub A,-1
+ 0132 10                push X
+ 0133 7C0000            xcall _PWM8_1_WritePulseWidth
+ 0136 20                pop X
+ 0137                   .dbline 237
+ 0137           ;               }
+ 0137 8012              xjmp L25
+ 0139           L24:
+ 0139                   .dbline 239
+ 0139           ;               // Bremsen durch Kurzschluss
+ 0139           ;               else{                           
+ 0139                   .dbline 240
+ 0139           ;                       IN1_Switch(1);
+ 0139 10                push X
+ 013A 5001              mov A,1
+ 013C 7C0000            xcall _IN1_Switch
+ 013F                   .dbline 241
+ 013F           ;                       IN2_Switch(1);
+ 013F 5001              mov A,1
+ 0141 7C0000            xcall _IN2_Switch
+ 0144                   .dbline 242
+ 0144           ;                       PWM8_1_WritePulseWidth(0);
+ 0144 5000              mov A,0
+ 0146 7C0000            xcall _PWM8_1_WritePulseWidth
+ 0149 20                pop X
+ 014A                   .dbline 243
+ 014A           ;               }
+ 014A           L25:
+ 014A           L22:
+ 014A                   .dbline -2
+ 014A           L20:
+ 014A 20                pop X
+ 014B                   .dbline 0 ; func end
+ 014B 7F                ret
+ 014C                   .dbsym l hichAusgangswert -4 c
+ 014C                   .dbend
                         .area bss(ram, con, rel)
- 0000                   .dbfile C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c
+ 0000                   .dbfile C:\Users\tilab\Desktop\BATCHL~1\SEEGAN~1\SEEGAN~1\main.c
  0000           _prozess::
  0000                   .blkb 4
  0004                   .dbstruct 0 4 .1
@@ -615,9 +549,7 @@
  0004                   .dbend
  0004                   .dbsym e prozess _prozess S[.1]
                         .area lit(rom, con, rel, lit)
- 0000           L14:
- 0000 41636874756E67204665686C657200    .byte 'A,'c,'h,'t,'u,'n,'g,32,'F,'e,'h,'l,'e,'r,0
- 000F           L11:
- 000F 41627374616E643A20256300  .byte 'A,'b,'s,'t,'a,'n,'d,58,32,37,'c,0
+ 0000           L10:
+ 0000 576572743A00      .byte 'W,'e,'r,'t,58,0
                         .area func_lit(rom, con, rel, proclab)
  0000 0000      PL_DUALADC8_fIsDataAvailable:   .word _DUALADC8_fIsDataAvailable

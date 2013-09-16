@@ -9,7 +9,7 @@ dbfile lib/lcd_1.asm
 dbfunc 0 ? 0 I
 dbfile LCD_1.inc
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 dbfile ./lib/LCD_1.inc
 dbfunc 0 ? 0 I
@@ -19,7 +19,7 @@ dbfile memory.inc
 dbfunc 0 ? 0 I
 dbfile lib/lcd_1.asm
 dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 dbfunc 0 ? 0 I
 A UserModules size 19F flags 0
 dbfile lib/lcd_1.asm

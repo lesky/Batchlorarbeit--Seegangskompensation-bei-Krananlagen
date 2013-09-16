@@ -1,6 +1,4 @@
-﻿Batchlorarbeit Seegangskompensation bei Krananlagen
-
-Version: 0.0.0.1
+﻿ersion: 0.0.0.1
 
 Controler: CY8C27446-24PXI
 

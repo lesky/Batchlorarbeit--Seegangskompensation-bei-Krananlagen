@@ -87,7 +87,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 ;  Global Register values Bank 0
 	db		60h, 28h		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
-	db		63h, 05h		; AnalogReferenceControl register (ARF_CR)
+	db		63h, 15h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
 	db		e6h, 3dh		; DecimatorControl_0 register (DEC_CR0)
 	db		e7h, 10h		; DecimatorControl_1 register (DEC_CR1)
@@ -112,7 +112,7 @@ LoadConfigTBL_seegangskompensation_Bank1:
 ;       Instance name ADCINC, Block Name ADC(ASC12)
 ;       Instance name ADCINC, Block Name PWM(DCB12)
 	db		38h, 31h		;ADCINC_PWMfn(DCB12FN)
-	db		39h, 17h		;ADCINC_PWMsl(DCB12IN)
+	db		39h, 15h		;ADCINC_PWMsl(DCB12IN)
 	db		3ah, 40h		;ADCINC_PWMos(DCB12OU)
 ;  Instance name DUALADC8, User Module DUALADC8
 ;       Instance name DUALADC8, Block Name ADC1(ASC10)

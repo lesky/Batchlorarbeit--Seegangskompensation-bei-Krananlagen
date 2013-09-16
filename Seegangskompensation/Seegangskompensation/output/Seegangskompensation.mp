@@ -1,282 +1,311 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Mon Sep 16 09:22:39 2013
+Date:         Mon Sep 16 10:50:45 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             lit   0150   0256 =    598. bytes (rel,con,rom,lit)
+                             lit   0150   00CC =    204. bytes (rel,con,rom,lit)
 
        Addr  Global Symbol
       -----  --------------------------------
-       016B  LoadConfigTBL_seegangskompensation_Bank0
-       01EA  LoadConfigTBL_seegangskompensation_Bank1
-       0231  __ctype
-       03A6  __lit_end
+       0156  LoadConfigTBL_seegangskompensation_Bank0
+       01D5  LoadConfigTBL_seegangskompensation_Bank1
+       021C  __lit_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                        func_lit   03A6   0004 =      4. bytes (rel,con,rom,proclab)
+                        func_lit   021C   0002 =      2. bytes (rel,con,rom,proclab)
 
        Addr  Global Symbol
       -----  --------------------------------
-       03A6  __func_lit_start
-       03AA  __func_lit_end
+       021C  __func_lit_start
+       021E  __func_lit_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     psoc_config   03AA   012F =    303. bytes (rel,con,rom,code)
+                     psoc_config   021E   012F =    303. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       03AA  LoadConfigTBL_seegangskompensation_Ordered
-       046F  _LoadConfigInit
-       046F  LoadConfigInit
-       0482  _LoadConfig_seegangskompensation
-       0482  LoadConfig_seegangskompensation
-       04D9  __psoc_config_end
+       021E  LoadConfigTBL_seegangskompensation_Ordered
+       02E3  _LoadConfigInit
+       02E3  LoadConfigInit
+       02F6  _LoadConfig_seegangskompensation
+       02F6  LoadConfig_seegangskompensation
+       034D  __psoc_config_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     UserModules   04D9   0494 =   1172. bytes (rel,con,rom,code)
+                     UserModules   034D   050F =   1295. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       04D9  _PWM8_1_ISR
-       04DA  _PWM8_1_EnableInt
-       04DA  PWM8_1_EnableInt
-       04DE  _PWM8_1_DisableInt
-       04DE  PWM8_1_DisableInt
-       04E2  _PWM8_1_Start
-       04E2  PWM8_1_Start
-       04E6  _PWM8_1_Stop
-       04E6  PWM8_1_Stop
-       04EA  _PWM8_1_WritePeriod
-       04EA  PWM8_1_WritePeriod
-       04ED  _PWM8_1_WritePulseWidth
-       04ED  PWM8_1_WritePulseWidth
-       04F0  bPWM8_1_ReadPulseWidth
-       04F0  _bPWM8_1_ReadPulseWidth
-       04F0  PWM8_1_bReadPulseWidth
-       04F0  _PWM8_1_bReadPulseWidth
-       04F3  _PWM8_1_bReadCounter
-       04F3  bPWM8_1_ReadCounter
-       04F3  PWM8_1_bReadCounter
-       04F3  _bPWM8_1_ReadCounter
-       051C  PGA_3_SetPower
-       051C  _PGA_3_Start
-       051C  PGA_3_Start
-       051C  _PGA_3_SetPower
-       052A  _PGA_3_SetGain
-       052A  PGA_3_SetGain
-       054C  _PGA_3_Stop
-       054C  PGA_3_Stop
-       0550  PGA_2_SetPower
-       0550  _PGA_2_Start
-       0550  _PGA_2_SetPower
-       0550  PGA_2_Start
-       055E  _PGA_2_SetGain
-       055E  PGA_2_SetGain
-       0580  _PGA_2_Stop
-       0580  PGA_2_Stop
-       0584  PGA_1_SetPower
-       0584  PGA_1_Start
-       0584  _PGA_1_Start
-       0584  _PGA_1_SetPower
-       0592  _PGA_1_SetGain
-       0592  PGA_1_SetGain
-       05B4  _PGA_1_Stop
-       05B4  PGA_1_Stop
-       05B8  _LCD_1_PrCString
-       05B8  LCD_1_PrCString
-       05CA  LCD_1_HEX_STR
-       05DA  LCD_1_PrHexByte
-       05DA  _LCD_1_PrHexByte
-       05ED  LCD_1_PrHexInt
-       05ED  _LCD_1_PrHexInt
-       05F4  LCD_1_PrString
-       05F4  _LCD_1_PrString
-       05FE  LCD_1_WriteData
-       05FE  _LCD_1_Write_Data
-       05FE  _LCD_1_WriteData
-       05FE  LCD_1_Write_Data
-       0612  _LCD_1_Control
-       0612  LCD_1_Control
-       06B9  LCD_1_Init
-       06B9  LCD_1_Start
-       06B9  _LCD_1_Init
-       06B9  _LCD_1_Start
-       0725  LCD_1_ROW_OFFSET
-       0729  LCD_1_Position
-       0729  _LCD_1_Position
-       0735  LCD_1_Delay50uTimes
-       0735  _LCD_1_Delay50uTimes
-       073B  LCD_1_Delay50u_Table
-       0743  _LCD_1_Delay50u
-       0743  LCD_1_Delay50u
-       0757  _DUALADC8_CNT1_ISR
-       075A  _DUALADC8_CNT2_ISR
-       075D  _DUALADC8_PWM16_ISR
-       07EC  DUALADC8_SetPower
-       07EC  _DUALADC8_Start
-       07EC  DUALADC8_Start
-       07EC  _DUALADC8_SetPower
-       0806  _DUALADC8_Stop
-       0806  DUALADC8_Stop
-       080D  _DUALADC8_GetSamples
-       080D  DUALADC8_GetSamples
-       084C  DUALADC8_StopAD
-       084C  _DUALADC8_StopAD
-       086B  _DUALADC8_fIsDataAvailable
-       086B  DUALADC8_fIsDataAvailable
-       086B  DUALADC8_fIsData
-       086B  _DUALADC8_fIsData
-       0870  _DUALADC8_cGetData1ClearFlag
-       0870  DUALADC8_cGetData1ClearFlag
-       0876  DUALADC8_cGetData1
-       0876  _DUALADC8_cGetData1
-       0879  _DUALADC8_cGetData2ClearFlag
-       0879  DUALADC8_cGetData2ClearFlag
-       087F  DUALADC8_cGetData2
-       087F  _DUALADC8_cGetData2
-       0882  DUALADC8_ClearFlag
-       0882  _DUALADC8_ClearFlag
-       0886  _DUALADC8_SetCalcTime
-       0886  DUALADC8_SetCalcTime
-       088B  _ADCINC_ADConversion_ISR
-       08F6  ADCINC_Start
-       08F6  _ADCINC_Start
-       0908  _ADCINC_SetPower
-       0908  ADCINC_SetPower
-       0916  _ADCINC_Stop
-       0916  ADCINC_Stop
-       0920  _ADCINC_GetSamples
-       0920  ADCINC_GetSamples
-       093C  _ADCINC_StopADC
-       093C  ADCINC_StopADC
-       0946  ADCINC_fIsDataAvailable
-       0946  _ADCINC_fIsDataAvailable
-       0949  ADCINC_iClearFlagGetData
-       0949  _ADCINC_wClearFlagGetData
-       0949  _ADCINC_iClearFlagGetData
-       0949  ADCINC_wClearFlagGetData
-       0956  _ADCINC_cClearFlagGetData
-       0956  _ADCINC_bClearFlagGetData
-       0956  ADCINC_cClearFlagGetData
-       0956  ADCINC_bClearFlagGetData
-       095C  _ADCINC_wGetData
-       095C  ADCINC_iGetData
-       095C  _ADCINC_iGetData
-       095C  ADCINC_wGetData
-       0961  ADCINC_cGetData
-       0961  _ADCINC_bGetData
-       0961  ADCINC_bGetData
-       0961  _ADCINC_cGetData
-       0964  ADCINC_fClearFlag
-       0964  _ADCINC_fClearFlag
-       096A  ADCINC_WritePulseWidth
-       096A  _ADCINC_WritePulseWidth
-       096D  __UserModules_end
+       034D  _SELBSTTEST_On
+       034D  SELBSTTEST_On
+       0351  _SELBSTTEST_Stop
+       0351  SELBSTTEST_Start
+       0351  SELBSTTEST_Stop
+       0351  _SELBSTTEST_Off
+       0351  SELBSTTEST_Off
+       0351  _SELBSTTEST_Start
+       0353  _SELBSTTEST_Switch
+       0353  SELBSTTEST_Switch
+       0364  _SELBSTTEST_Invert
+       0364  SELBSTTEST_Invert
+       036C  SELBSTTEST_GetState
+       036C  _SELBSTTEST_GetState
+       0376  _PWM8_1_ISR
+       0377  _PWM8_1_EnableInt
+       0377  PWM8_1_EnableInt
+       037B  _PWM8_1_DisableInt
+       037B  PWM8_1_DisableInt
+       037F  _PWM8_1_Start
+       037F  PWM8_1_Start
+       0383  _PWM8_1_Stop
+       0383  PWM8_1_Stop
+       0387  PWM8_1_WritePeriod
+       0387  _PWM8_1_WritePeriod
+       038A  _PWM8_1_WritePulseWidth
+       038A  PWM8_1_WritePulseWidth
+       038D  PWM8_1_bReadPulseWidth
+       038D  bPWM8_1_ReadPulseWidth
+       038D  _bPWM8_1_ReadPulseWidth
+       038D  _PWM8_1_bReadPulseWidth
+       0390  _bPWM8_1_ReadCounter
+       0390  _PWM8_1_bReadCounter
+       0390  PWM8_1_bReadCounter
+       0390  bPWM8_1_ReadCounter
+       03B9  _PGA_3_SetPower
+       03B9  PGA_3_Start
+       03B9  _PGA_3_Start
+       03B9  PGA_3_SetPower
+       03C7  PGA_3_SetGain
+       03C7  _PGA_3_SetGain
+       03E9  _PGA_3_Stop
+       03E9  PGA_3_Stop
+       03ED  _PGA_2_Start
+       03ED  PGA_2_SetPower
+       03ED  PGA_2_Start
+       03ED  _PGA_2_SetPower
+       03FB  PGA_2_SetGain
+       03FB  _PGA_2_SetGain
+       041D  _PGA_2_Stop
+       041D  PGA_2_Stop
+       0421  _PGA_1_SetPower
+       0421  _PGA_1_Start
+       0421  PGA_1_SetPower
+       0421  PGA_1_Start
+       042F  PGA_1_SetGain
+       042F  _PGA_1_SetGain
+       0451  PGA_1_Stop
+       0451  _PGA_1_Stop
+       0455  LCD_1_PrCString
+       0455  _LCD_1_PrCString
+       0467  LCD_1_HEX_STR
+       0477  LCD_1_PrHexByte
+       0477  _LCD_1_PrHexByte
+       048A  LCD_1_PrHexInt
+       048A  _LCD_1_PrHexInt
+       0491  LCD_1_PrString
+       0491  _LCD_1_PrString
+       049B  LCD_1_WriteData
+       049B  LCD_1_Write_Data
+       049B  _LCD_1_WriteData
+       049B  _LCD_1_Write_Data
+       04AF  LCD_1_Control
+       04AF  _LCD_1_Control
+       0556  _LCD_1_Init
+       0556  LCD_1_Init
+       0556  LCD_1_Start
+       0556  _LCD_1_Start
+       05C2  LCD_1_ROW_OFFSET
+       05C6  LCD_1_Position
+       05C6  _LCD_1_Position
+       05D2  _LCD_1_Delay50uTimes
+       05D2  LCD_1_Delay50uTimes
+       05D8  LCD_1_Delay50u_Table
+       05E0  LCD_1_Delay50u
+       05E0  _LCD_1_Delay50u
+       05F4  _IN2_On
+       05F4  IN2_On
+       05F8  IN2_Start
+       05F8  _IN2_Off
+       05F8  IN2_Stop
+       05F8  IN2_Off
+       05F8  _IN2_Start
+       05F8  _IN2_Stop
+       05FA  IN2_Switch
+       05FA  _IN2_Switch
+       060B  _IN2_Invert
+       060B  IN2_Invert
+       0613  _IN2_GetState
+       0613  IN2_GetState
+       061D  IN1_On
+       061D  _IN1_On
+       0621  IN1_Start
+       0621  _IN1_Start
+       0621  _IN1_Stop
+       0621  IN1_Off
+       0621  _IN1_Off
+       0621  IN1_Stop
+       0623  IN1_Switch
+       0623  _IN1_Switch
+       0634  IN1_Invert
+       0634  _IN1_Invert
+       063C  IN1_GetState
+       063C  _IN1_GetState
+       0646  _DUALADC8_CNT1_ISR
+       0649  _DUALADC8_CNT2_ISR
+       064C  _DUALADC8_PWM16_ISR
+       06DB  DUALADC8_Start
+       06DB  _DUALADC8_SetPower
+       06DB  _DUALADC8_Start
+       06DB  DUALADC8_SetPower
+       06F5  _DUALADC8_Stop
+       06F5  DUALADC8_Stop
+       06FC  DUALADC8_GetSamples
+       06FC  _DUALADC8_GetSamples
+       073B  _DUALADC8_StopAD
+       073B  DUALADC8_StopAD
+       075A  DUALADC8_fIsDataAvailable
+       075A  DUALADC8_fIsData
+       075A  _DUALADC8_fIsData
+       075A  _DUALADC8_fIsDataAvailable
+       075F  DUALADC8_cGetData1ClearFlag
+       075F  _DUALADC8_cGetData1ClearFlag
+       0765  DUALADC8_cGetData1
+       0765  _DUALADC8_cGetData1
+       0768  _DUALADC8_cGetData2ClearFlag
+       0768  DUALADC8_cGetData2ClearFlag
+       076E  DUALADC8_cGetData2
+       076E  _DUALADC8_cGetData2
+       0771  _DUALADC8_ClearFlag
+       0771  DUALADC8_ClearFlag
+       0775  DUALADC8_SetCalcTime
+       0775  _DUALADC8_SetCalcTime
+       077A  _ADCINC_ADConversion_ISR
+       07E5  ADCINC_Start
+       07E5  _ADCINC_Start
+       07F7  _ADCINC_SetPower
+       07F7  ADCINC_SetPower
+       0805  _ADCINC_Stop
+       0805  ADCINC_Stop
+       080F  ADCINC_GetSamples
+       080F  _ADCINC_GetSamples
+       082B  ADCINC_StopADC
+       082B  _ADCINC_StopADC
+       0835  _ADCINC_fIsDataAvailable
+       0835  ADCINC_fIsDataAvailable
+       0838  ADCINC_wClearFlagGetData
+       0838  _ADCINC_wClearFlagGetData
+       0838  ADCINC_iClearFlagGetData
+       0838  _ADCINC_iClearFlagGetData
+       0845  ADCINC_bClearFlagGetData
+       0845  _ADCINC_bClearFlagGetData
+       0845  ADCINC_cClearFlagGetData
+       0845  _ADCINC_cClearFlagGetData
+       084B  _ADCINC_iGetData
+       084B  ADCINC_iGetData
+       084B  ADCINC_wGetData
+       084B  _ADCINC_wGetData
+       0850  _ADCINC_cGetData
+       0850  _ADCINC_bGetData
+       0850  ADCINC_cGetData
+       0850  ADCINC_bGetData
+       0853  ADCINC_fClearFlag
+       0853  _ADCINC_fClearFlag
+       0859  _ADCINC_WritePulseWidth
+       0859  ADCINC_WritePulseWidth
+       085C  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   096D   09AD =   2477. bytes (rel,con,rom,code)
+                            text   085C   0324 =    804. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       096D  _main
-       096D  __text_start
-       09F0  _LCDansteuern
-       0A54  _Dateneinlesen
-       0A87  _Ausgangansteuern
-       0AB2  _test
-       0B16  __plcall
-       0B22  _itoa
-       0C9F  _utoa
-       0D9D  _isdigit
-       0DBB  _islower
-       0DD9  _isspace
-       0DF7  _toupper
-       0E2C  __csdepi
-       0E46  _csprintf
-       0E85  __cprint
-       131A  __text_end
+       085C  _main
+       085C  __text_start
+       08F0  _LCDansteuern
+       092A  _Dateneinlesen
+       095D  _Ausgangansteuern
+       0A03  _itoa
+       0B80  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-               virtual_registers   0000   0009 =      9. bytes (rel,con,ram)
+               virtual_registers   0000   0007 =      7. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
        0000  __rZ
        0001  __rY
        0002  __rX
-       0003  __r5
-       0004  __r4
-       0005  __r3
-       0006  __r2
-       0007  __r1
-       0008  __r0
-       0009  __virtual_registers_end
+       0003  __r3
+       0004  __r2
+       0005  __r1
+       0006  __r0
+       0007  __virtual_registers_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                    InterruptRAM   0009   0013 =     19. bytes (rel,con,ram)
+                    InterruptRAM   0007   0013 =     19. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0009  Port_1_Data_SHADE
-       0009  _Port_1_Data_SHADE
-       0009  NO_SHADOW
-       0009  _NO_SHADOW
-       000A  Port_2_Data_SHADE
-       000A  _Port_2_Data_SHADE
-       000B  Port_2_DriveMode_0_SHADE
-       000B  _Port_2_DriveMode_0_SHADE
-       000C  _Port_2_DriveMode_1_SHADE
-       000C  Port_2_DriveMode_1_SHADE
-       000D  DUALADC8_cCounter1U
-       000E  DUALADC8_cCounter2U
-       000F  DUALADC8_iResult1
-       000F  _DUALADC8_iResult1
-       0011  _DUALADC8_iResult2
-       0011  DUALADC8_iResult2
-       0013  DUALADC8_bfStatus
-       0013  _DUALADC8_bfStatus
-       0014  _ADCINC_iResult
-       0014  ADCINC_iResult
-       0018  _ADCINC_fStatus
-       0018  ADCINC_fStatus
-       0019  _ADCINC_bState
-       0019  ADCINC_bState
-       001A  ADCINC_fMode
-       001A  _ADCINC_fMode
-       001B  ADCINC_bNumSamples
-       001B  _ADCINC_bNumSamples
-       001C  __InterruptRAM_end
+       0007  Port_1_Data_SHADE
+       0007  _Port_1_Data_SHADE
+       0007  NO_SHADOW
+       0007  _NO_SHADOW
+       0008  Port_2_Data_SHADE
+       0008  _Port_2_Data_SHADE
+       0009  Port_2_DriveMode_0_SHADE
+       0009  _Port_2_DriveMode_0_SHADE
+       000A  _Port_2_DriveMode_1_SHADE
+       000A  Port_2_DriveMode_1_SHADE
+       000B  DUALADC8_cCounter1U
+       000C  DUALADC8_cCounter2U
+       000D  DUALADC8_iResult1
+       000D  _DUALADC8_iResult1
+       000F  _DUALADC8_iResult2
+       000F  DUALADC8_iResult2
+       0011  DUALADC8_bfStatus
+       0011  _DUALADC8_bfStatus
+       0012  _ADCINC_iResult
+       0012  ADCINC_iResult
+       0016  _ADCINC_fStatus
+       0016  ADCINC_fStatus
+       0017  _ADCINC_bState
+       0017  ADCINC_bState
+       0018  ADCINC_fMode
+       0018  _ADCINC_fMode
+       0019  ADCINC_bNumSamples
+       0019  _ADCINC_bNumSamples
+       001A  __InterruptRAM_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             bss   001C   001F =     31. bytes (rel,con,ram)
+                             bss   001A   0004 =      4. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       001C  _prozess
-       001C  __bss_start
-       003B  __bss_end
+       001A  _prozess
+       001A  __bss_start
+       001E  __bss_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-        seegangskompensation_RAM   003B   0002 =      2. bytes (rel,con,ram)
+        seegangskompensation_RAM   001E   0002 =      2. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       003B  DUALADC8_iCalcTime
-       003B  _DUALADC8_iCalcTime
-       003D  __seegangskompensation_RAM_end
-       003D  __ramareas_end
+       001E  DUALADC8_iCalcTime
+       001E  _DUALADC8_iCalcTime
+       0020  __seegangskompensation_RAM_end
+       0020  __ramareas_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -292,10 +321,10 @@ Files Linked      [ module(s) ]
 
 ./obj/boot.o	[ boot.asm ]
 obj/main.o	[ main.c ]
-<library>	[ pwm8_1int.asm, pwm8_1.asm, psocconfigtbl.asm, psocconfig.asm, pga_3.asm, pga_2.asm, pga_1.asm ]
-[ lcd_1.asm, dualadc8int.asm, dualadc8.asm, adcincint.asm, adcinc.asm, rZ.asm, rY.asm, rX.asm, r5.asm ]
-[ r4.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, i_div16_block_util.asm, plcall.s ]
-[ itoa.s, utoa.s, isdigit.s, islower.s, isspace.s, ctype.s, toupper.s, sprintf.s, _printf.s ]
+<library>	[ selbsttest.asm, pwm8_1int.asm, pwm8_1.asm, psocconfigtbl.asm, psocconfig.asm, pga_3.asm, pga_2.asm ]
+[ pga_1.asm, lcd_1.asm, in2.asm, in1.asm, dualadc8int.asm, dualadc8.asm, adcincint.asm, adcinc.asm ]
+[ rZ.asm, rY.asm, rX.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, divmodu_8x8_8_util.asm ]
+[ i_div16_block_util.asm, i_div8_block_util.asm, itoa.s ]
 
 Area Definitions
 

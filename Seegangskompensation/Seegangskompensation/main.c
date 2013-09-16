@@ -24,10 +24,10 @@
 #include <stdio.h>
 #include <m8c.h>        
 #include "PSoCAPI.h"    
-
+#include <stdlib.h>
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-#define TEST
+//#define TEST
 
 // Funktionsprototypen:
 void LCDansteuern(char, char );
@@ -79,9 +79,9 @@ void main(void)
     PWM8_1_Start();
 	
 	// Initialisieren der Verstärker
-	PGA_1_SetGain(PGA_1_G0_12);						
-	PGA_2_SetGain(PGA_2_G0_12);
-	PGA_3_SetGain(PGA_3_G0_12);
+//	PGA_1_SetGain(PGA_1_G0_12);						
+//	PGA_2_SetGain(PGA_2_G0_12);
+//	PGA_3_SetGain(PGA_3_G0_12);
 	
 	PGA_1_Start(PGA_1_LOWPOWER);
 	PGA_2_Start(PGA_2_LOWPOWER);
@@ -90,7 +90,7 @@ void main(void)
 	// Initialisieren des Dualen AD-Wandlers
 	// für Entfernung und Beschleunigung
 	DUALADC8_Start(DUALADC8_HIGHPOWER); 			
-   	DUALADC8_SetCalcTime(100);          			
+//   	DUALADC8_SetCalcTime(100);          			
    	DUALADC8_GetSamples(); 
 	
 	// Initialisieren des AD-Wandlers
@@ -99,9 +99,9 @@ void main(void)
 	ADCINC_GetSamples(0);                 			
 	
 	//Initialisieren der Digitalen Ausgänge
-	IN1_Start;	
-	IN2_Start;
-	SELBSTTEST_Start;
+	IN1_Start();	
+	IN2_Start();
+	SELBSTTEST_Start();
 	
 	// Präprozessor: kompiliere whileschleife wenn kein test
 	#ifndef TEST
@@ -109,7 +109,7 @@ void main(void)
 		/********************************************************
 		* 			Endlosschleife für Dauerbetrieb				*
 		********************************************************/
-		
+
 		while(1) 
 			{
 			// Daten Einlesen
@@ -126,6 +126,8 @@ void main(void)
 			
 			Ausgangansteuern(hichAusgangswert);
 			LCDansteuern(prozess.pdchEntfernung, 0);
+
+				
 			};
 			
 	/********************************************************
@@ -139,7 +141,7 @@ void main(void)
 	#else
 		
 		// Selbsttest des Beshleunigungssensoers anschalten
-		SELBSTTEST_On;
+		SELBSTTEST_Switch(1);
 			
 		// whileschleife zu testzwecken
 		// Konstante zur verweildauer in der schleife
@@ -175,25 +177,29 @@ void main(void)
 ********************************************************/
 	
 void LCDansteuern(char hichdata, char hichfehler)
-	{
-	char rgchErstezeile[16];
-	char rgchZweitezeile[16];
-	
-	// Text in Variablen Schreiben
-	csprintf(rgchErstezeile,"Abstand: %c",hichdata);
-	
-	// ist ein Fehler aufgetreten
-	// dann ist hichFehler != 0
-	if (hichfehler != 0)
-		{
-		csprintf(rgchZweitezeile,"Achtung Fehler");
-		};
-		
-	// LCD Ansteuern 
-	LCD_1_Position(1,0);
-	LCD_1_PrString(rgchErstezeile);
-	LCD_1_Position(2,0);
-	LCD_1_PrString(rgchZweitezeile);	
+	{		char xyz[5];
+				 LCD_1_Position(0,5);    
+			LCD_1_PrCString("Wert:");				
+			itoa(xyz,prozess.pdchEntfernung,10);
+			LCD_1_PrString(xyz);		
+//	char rgchErstezeile[16];
+//	char rgchZweitezeile[16];
+//	
+//	// Text in Variablen Schreiben
+//	csprintf(rgchErstezeile,"Abstand: %c",hichdata);
+//	
+//	// ist ein Fehler aufgetreten
+//	// dann ist hichFehler != 0
+//	if (hichfehler != 0)
+//		{
+//		csprintf(rgchZweitezeile,"Achtung Fehler");
+//		};
+//		
+//	// LCD Ansteuern 
+//	LCD_1_Position(1,0);
+//	LCD_1_PrString(rgchErstezeile);
+//	LCD_1_Position(2,0);
+//	LCD_1_PrString(rgchZweitezeile);	
 	}
 	
 void Dateneinlesen(void)
@@ -219,20 +225,20 @@ void Ausgangansteuern(char hichAusgangswert)
 	{
 		// linksdrehend 
 		if (hichAusgangswert > 0){				
-			IN1_On;
-			IN2_Off;
+			IN1_Switch(1);
+			IN2_Switch(0);
 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
 		}
 		// rechtsdrehend
 		else if (hichAusgangswert < 0){				
-			IN1_On;
-			IN2_OFF;
+			IN1_Switch(1);
+			IN2_Switch(0);
 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
 		}
 		// Bremsen durch Kurzschluss
 		else{				
-			IN1_On;
-			IN2_On;
+			IN1_Switch(1);
+			IN2_Switch(1);
 			PWM8_1_WritePulseWidth(0);
 		}
 	}
