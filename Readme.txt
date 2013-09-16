@@ -16,18 +16,18 @@ Sollwert-> 0.5
 
 Bugs:
 
--H-Bruecke braucht zu viel spannung (Fixd 05.09.2013: Vs und Vss 
-				     spaeter mit 9V Versorgen)
--Ausgang 1.3 gibt keine Spannung aus
--Ausgang 1.4 gibt keine Spannung aus (Fixd 05.09.2013)
--Ausgang 1.5 gibt keine Spannung aus
--Merkwuerdige ausgabe von Zahlen am LCD
--Eingaenge werden nicht eingelesen 
+-H-Bruecke braucht zu viel spannung 	(Fixd 05.09.2013: Vs und Vss 
+				     	spaeter mit 9V Versorgen)
+-Ausgang 1.3 gibt keine Spannung aus 	(Fixd 16.09.2013)		
+-Ausgang 1.4 gibt keine Spannung aus 	(Fixd 05.09.2013)
+-Ausgang 1.5 gibt keine Spannung aus 	(Fixd 16.09.2013)
+-Merkwuerdige ausgabe von Zahlen am LCD	(Fixd 16.09.2013)
+-Eingaenge werden nicht eingelesen 	(Fixd 16.09.2013)
  bzw gewandelte ergebnisse nicht am lcd ausgegeben
 
 ToDO:
 
--eigene präfixe in Komentar einfügen
+-eigene präfixe in Komentar einfügen (Erledigt)
 -Testroutine programmieren	(Erledigt 28.08.13)	
 -Korekturfaktor Einfuegen 
 -Arraygroee anpassen 		(Erledigt 29.08.13)
