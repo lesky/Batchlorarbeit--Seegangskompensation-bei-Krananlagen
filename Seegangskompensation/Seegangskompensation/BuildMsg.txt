@@ -1,5 +1,35 @@
 Starting MAKE...
-creating project.mk -- no changes
+creating project.mk 
+
+lib/adcinc.asm
+
+lib/adcincint.asm
+
+lib/dualadc8.asm
+
+lib/dualadc8int.asm
+
+lib/in1.asm
+
+lib/in2.asm
+
+lib/lcd_1.asm
+
+lib/pga_1.asm
+
+lib/pga_2.asm
+
+lib/pga_3.asm
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/pwm8_1.asm
+
+lib/pwm8_1int.asm
+
+lib/selbsttest.asm
 
 !W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(102):[warning] expression with no effect elided
 
@@ -7,26 +37,30 @@ creating project.mk -- no changes
 
 !W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(104):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(220):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(142):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(221):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(222):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(226):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(223):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(227):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(228):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(232):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(229):[warning] expression with no effect elided
 
-!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(233):[warning] expression with no effect elided
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(234):[warning] expression with no effect elided
+
+!W C:\Users\Lesky\Desktop\Dropbox\Git\SEEGAN~1\SEEGAN~1\main.c(235):[warning] expression with no effect elided
+
+./boot.asm
 
 Linking..
 
-  ROM 28% full. 4575 out of 16384 bytes used (does not include absolute areas).
+  ROM 28% full. 4554 out of 16384 bytes used (does not include absolute areas).
 
   RAM 24% full. 61 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 9 warning(s) 10:17:35
+Seegangskompensation - 0 error(s) 10 warning(s) 09:22:39
 

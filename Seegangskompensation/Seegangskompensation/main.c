@@ -27,7 +27,7 @@
 
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-// #define TEST
+#define TEST
 
 // Funktionsprototypen:
 void LCDansteuern(char, char );
@@ -145,18 +145,20 @@ void main(void)
 		// Konstante zur verweildauer in der schleife
 		while (1)
 			{
+				//konstanten definiren
+				
 				// Daten Einlesen
 				void Dateneinlesen(void);
 				// Daten Nacheinander auf LCD Ausgeeben
-				prozess.pdchPulsweite = 50;
+				//prozess.pdchPulsweite = 50;
 				//prozess.pdchBechleunigung = 1;
 				//prozess.pdchEntfernung =2;
 				//prozess.pdchSollwert =3;
-				Ausgangansteuern(100);
+				Ausgangansteuern(50);
 				test(prozess.pdchBechleunigung);
 				test(prozess.pdchEntfernung);
 				test(prozess.pdchSollwert);
-				Ausgangansteuern(-100);
+				// Ausgangansteuern(-50);
 				test(prozess.pdchBechleunigung);
 				test(prozess.pdchEntfernung);
 				test(prozess.pdchSollwert);
