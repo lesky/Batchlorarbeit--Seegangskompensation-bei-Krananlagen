@@ -29,7 +29,7 @@
 //#define TEST
 
 // Funktionsprototypen:
-void LCDansteuern(char, char );
+void LCDansteuern(char);
 void Dateneinlesen(void);
 void Ausgangansteuern(char);
 
@@ -119,7 +119,7 @@ void main(void)
 			
 			Ausgangansteuern(hichAusgangswert);
 			
-			LCDansteuern(prozess.pdchEntfernung, 0);
+			LCDansteuern(prozess.pdchEntfernung);
 
 				
 			};
@@ -170,15 +170,14 @@ void main(void)
 * 			Funktionsdeklarationen						*
 ********************************************************/
 	
-void LCDansteuern(char hichdata, char hichfehler)
+void LCDansteuern(char hichdata)
 	{		
 			//TODO: Variablen Umbenennen 
-			// Funktion umbauen
 			// Komentieren
 			char xyz[5]; 
 				 LCD_1_Position(0,5);    
 			LCD_1_PrCString("Wert:");				
-			itoa(xyz,prozess.pdchEntfernung,10);
+			itoa(xyz,hichdata,10);
 			LCD_1_PrString(xyz);		
 
 	}
