@@ -174,11 +174,11 @@ void LCDansteuern(char hichdata)
 	{		
 			//TODO: Variablen Umbenennen 
 			// Komentieren
-			char xyz[5]; 
-				 LCD_1_Position(0,5);    
+			char rgch[5]; 
+			LCD_1_Position(0,5);    
 			LCD_1_PrCString("Wert:");				
-			itoa(xyz,hichdata,10);
-			LCD_1_PrString(xyz);		
+			itoa(rgch,hichdata,10);
+			LCD_1_PrString(rgch);		
 
 	}
 	
