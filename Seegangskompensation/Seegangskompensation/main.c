@@ -204,6 +204,9 @@ void Dateneinlesen(void)
 
 void Ausgangansteuern(char hichAusgangswert)
 	{
+		// Schleifenzähler
+		int iin;
+		
 		// Bremsen durch Leerlauf
 		if (hichAusgangswert == 0){				
 			// Ausgänge ansteuern
@@ -219,7 +222,7 @@ void Ausgangansteuern(char hichAusgangswert)
 			if (IN2_GetState() == 1){
 				for (iin = 0; iin < 100; iin ++)
 					{
-						Ausgangansteuern(0)
+						Ausgangansteuern(0);
 					}
 				}
 			
@@ -234,7 +237,7 @@ void Ausgangansteuern(char hichAusgangswert)
 			//vorher 100 mal Bremsen
 			for (iin = 0; iin < 100; iin ++)
 					{
-						Ausgangansteuern(0)
+						Ausgangansteuern(0);
 					}
 				}
 			
@@ -244,15 +247,17 @@ void Ausgangansteuern(char hichAusgangswert)
 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
 		}
 		
-	}
+	
 	
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
 	// Ausgabe der Testdaten auf LCD-Display
 	void test(char hichdata)
 		{
-		// gibt 99999 mal LCD Aus
+		// Schleifenzähler
 		int iin;
+			
+		// gibt 99999 mal LCD Aus
 		for (iin = 0; iin <= 999; iin ++)
 			{
 			LCDansteuern(hichdata);	

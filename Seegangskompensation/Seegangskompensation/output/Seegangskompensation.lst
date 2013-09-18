@@ -5756,7 +5756,7 @@ __UserModules_end|_main|__text_start|_main:
     08A8: 08       PUSH  A
     08A9: 50 01    MOV   A,0x1
     08AB: 08       PUSH  A
-    08AC: 7C 09 AD LCALL 0x09AD
+    08AC: 7C 09 F9 LCALL 0x09F9
     08AF: 18       POP   A
     08B0: 53 06    MOV   [__r0],A
     08B2: 38 FF    ADD   SP,0xFF
@@ -5851,20 +5851,19 @@ __UserModules_end|_main|__text_start|_main:
 (0173) void LCDansteuern(char hichdata)
 (0174) 	{		
 _LCDansteuern:
-  xyz                  --> X+0
+  rgch                 --> X+0
   hichdata             --> X-4
     08ED: 10       PUSH  X
     08EE: 4F       MOV   X,SP
     08EF: 38 05    ADD   SP,0x5
-(0175) 			//TODO: Variablen Umbenennen 
-(0176) 			// Komentieren
-(0177) 			char xyz[5]; 
-(0178) 				 LCD_1_Position(0,5);    
+(0175) 			char rgch[5];
+(0176) 			// Text auf LCD ausgeben
+(0177) 			LCD_1_Position(0,5);    
     08F1: 10       PUSH  X
     08F2: 57 05    MOV   X,0x5
     08F4: 50 00    MOV   A,0x0
     08F6: 7C 05 C6 LCALL _LCD_1_Position
-(0179) 			LCD_1_PrCString("Wert:");				
+(0178) 			LCD_1_PrCString("Wert:");
     08F9: 50 01    MOV   A,0x1
     08FB: 08       PUSH  A
     08FC: 50 50    MOV   A,0x50
@@ -5872,7 +5871,9 @@ _LCDansteuern:
     08FF: 18       POP   A
     0900: 7C 04 55 LCALL _LCD_1_PrCString
     0903: 20       POP   X
-(0180) 			itoa(xyz,hichdata,10);
+(0179) 			
+(0180) 			// Zahl Auf LCD ausgeben
+(0181) 			itoa(rgch,hichdata,10);
     0904: 50 00    MOV   A,0x0
     0906: 08       PUSH  A
     0907: 50 0A    MOV   A,0xA
@@ -5886,9 +5887,9 @@ _LCDansteuern:
     0914: 50 00    MOV   A,0x0
     0916: 08       PUSH  A
     0917: 10       PUSH  X
-    0918: 7C 0A 01 LCALL _itoa
+    0918: 7C 0A 4D LCALL _itoa
     091B: 38 FA    ADD   SP,0xFA
-(0181) 			LCD_1_PrString(xyz);		
+(0182) 			LCD_1_PrString(rgch);		
     091D: 10       PUSH  X
     091E: 51 06    MOV   A,[__r0]
     0920: 7C 04 91 LCALL _LCD_1_PrString
@@ -5896,30 +5897,30 @@ _LCDansteuern:
     0924: 38 FB    ADD   SP,0xFB
     0926: 20       POP   X
     0927: 7F       RET   
-(0182) 
-(0183) 	}
-(0184) 	
-(0185) void Dateneinlesen(void)
-(0186) 	{	
-(0187) 	// Wenn Sollwertdaten bereit sind
-(0188) 	if(ADCINC_fIsDataAvailable() != 0)
+(0183) 
+(0184) 	}
+(0185) 	
+(0186) void Dateneinlesen(void)
+(0187) 	{	
+(0188) 	// Wenn Sollwertdaten bereit sind
+(0189) 	if(ADCINC_fIsDataAvailable() != 0)
 _Dateneinlesen:
     0928: 10       PUSH  X
     0929: 7C 08 35 LCALL _ADCINC_fIsDataAvailable
     092C: 20       POP   X
     092D: 39 00    CMP   A,0x0
     092F: A0 08    JZ    0x0938
-(0189) 			
-(0190) 		// Einlesen des Sollwertes
-(0191)        	// data ready flag zurüvksetzen	
-(0192) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+(0190) 			
+(0191) 		// Einlesen des Sollwertes
+(0192)        	// data ready flag zurüvksetzen	
+(0193) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
     0931: 10       PUSH  X
     0932: 7C 08 45 LCALL _ADCINC_bClearFlagGetData|ADCINC_cClearFlagGetData|_ADCINC_cClearFlagGetData
     0935: 20       POP   X
     0936: 53 1C    MOV   [prozess+2],A
-(0193)               	   
-(0194)     	// Auf Entfernung und Position Warten
-(0195) 		while(DUALADC8_fIsDataAvailable == 0);    		
+(0194)               	   
+(0195)     	// Auf Entfernung und Position Warten
+(0196) 		while(DUALADC8_fIsDataAvailable == 0);    		
     0938: 50 1C    MOV   A,0x1C
     093A: 10       PUSH  X
     093B: 58 05    MOV   X,[__r1]
@@ -5933,290 +5934,354 @@ _Dateneinlesen:
     0946: 20       POP   X
     0947: 3C 06 00 CMP   [__r0],0x0
     094A: AF ED    JZ    0x0938
-(0196)    		// Einlesen der Beschleunigung
-(0197) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+(0197)    		// Einlesen der Beschleunigung
+(0198) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
     094C: 10       PUSH  X
     094D: 7C 07 65 LCALL _DUALADC8_cGetData1
     0950: 20       POP   X
     0951: 53 1A    MOV   [prozess],A
-(0198)     	
-(0199) 		// Einlesen der Entfernung
-(0200)         // data ready flag zurüvksetzen         
-(0201) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+(0199)     	
+(0200) 		// Einlesen der Entfernung
+(0201)         // data ready flag zurüvksetzen         
+(0202) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
     0953: 10       PUSH  X
     0954: 7C 07 68 LCALL _DUALADC8_cGetData2ClearFlag
     0957: 20       POP   X
     0958: 53 1B    MOV   [prozess+1],A
     095A: 7F       RET   
-(0202) 	}
-(0203) 
-(0204) void Ausgangansteuern(char hichAusgangswert)
-(0205) 	{
+(0203) 	}
+(0204) 
+(0205) void Ausgangansteuern(char hichAusgangswert)
+(0206) 	{
 _Ausgangansteuern:
+  iin                  --> X+0
   hichAusgangswert     --> X-4
     095B: 10       PUSH  X
     095C: 4F       MOV   X,SP
-(0206) 		// linksdrehend 
-(0207) 		if (hichAusgangswert > 0){				
-    095D: 50 00    MOV   A,0x0
-    095F: 3B FC    CMP   A,[X-4]
-    0961: D0 14    JNC   0x0976
-(0208) 			IN1_Switch(1);
-    0963: 10       PUSH  X
-    0964: 50 01    MOV   A,0x1
-    0966: 7C 06 23 LCALL _IN1_Switch
-(0209) 			IN2_Switch(0);
-    0969: 50 00    MOV   A,0x0
-    096B: 7C 05 FA LCALL _IN2_Switch
-(0210) 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
-    096E: 51 1D    MOV   A,[prozess+3]
-    0970: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
-    0973: 20       POP   X
-(0211) 		}
-    0974: 80 2F    JMP   0x09A4
-(0212) 		// rechtsdrehend
-(0213) 		else if (hichAusgangswert < 0){				
-    0976: 3D FC 00 CMP   [X-4],0x0
-    0979: D0 19    JNC   0x0993
-(0214) 			IN1_Switch(1);
+    095D: 38 02    ADD   SP,0x2
+(0207) 		// Schleifenzähler
+(0208) 		int iin;
+(0209) 		
+(0210) 		// Bremsen durch Leerlauf
+(0211) 		if (hichAusgangswert == 0){				
+    095F: 3D FC 00 CMP   [X-4],0x0
+    0962: B0 12    JNZ   0x0975
+(0212) 			// Ausgänge ansteuern
+(0213) 			IN1_Switch(0);
+    0964: 10       PUSH  X
+    0965: 50 00    MOV   A,0x0
+    0967: 7C 06 23 LCALL _IN1_Switch
+(0214) 			IN2_Switch(0);
+    096A: 50 00    MOV   A,0x0
+    096C: 7C 05 FA LCALL _IN2_Switch
+(0215) 			PWM8_1_WritePulseWidth(0);
+    096F: 50 00    MOV   A,0x0
+    0971: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
+    0974: 20       POP   X
+(0216) 		}
+(0217) 		
+(0218) 		// Seil Abwickeln 
+(0219) 		if (hichAusgangswert > 0){				
+    0975: 50 00    MOV   A,0x0
+    0977: 3B FC    CMP   A,[X-4]
+    0979: D0 3B    JNC   0x09B5
+(0220) 			//wenn sich die Drehrichtung ändert:
+(0221) 			//vorher 100 mal Bremsen
+(0222) 			if (IN2_GetState() == 1){
     097B: 10       PUSH  X
-    097C: 50 01    MOV   A,0x1
-    097E: 7C 06 23 LCALL _IN1_Switch
-(0215) 			IN2_Switch(0);
-    0981: 50 00    MOV   A,0x0
-    0983: 7C 05 FA LCALL _IN2_Switch
-    0986: 20       POP   X
-(0216) 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
-    0987: 51 1D    MOV   A,[prozess+3]
-    0989: 73       CPL   A
-    098A: 11 FF    SUB   A,0xFF
-    098C: 10       PUSH  X
-    098D: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
-    0990: 20       POP   X
-(0217) 		}
-    0991: 80 12    JMP   0x09A4
-(0218) 		// Bremsen durch Leerlauf
-(0219) 		else{				
-(0220) 			IN1_Switch(0);
-    0993: 10       PUSH  X
-    0994: 50 00    MOV   A,0x0
-    0996: 7C 06 23 LCALL _IN1_Switch
-(0221) 			IN2_Switch(0);
-    0999: 50 00    MOV   A,0x0
-    099B: 7C 05 FA LCALL _IN2_Switch
-(0222) 			PWM8_1_WritePulseWidth(0);
-    099E: 50 00    MOV   A,0x0
-    09A0: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
-    09A3: 20       POP   X
-(0223) 		}
-    09A4: 20       POP   X
-(0224) 	}
-(0225) 	
-(0226) // Präprozessor: kompiliere Funktion nur wenn Test
-(0227) #ifdef TEST
-(0228) 	// Ausgabe der Testdaten auf LCD-Display
-(0229) 	void test(char hichdata)
-(0230) 		{
-(0231) 		// gibt 99999 mal LCD Aus
-(0232) 		int iin;
-(0233) 		for (iin = 0; iin <= 999; iin ++)
-(0234) 			{
-(0235) 			LCDansteuern(hichdata);	
-(0236) 			}
-(0237) 		}
-(0238) #endif     09A5: 7F       RET   
+    097C: 7C 06 13 LCALL _IN2_GetState
+    097F: 20       POP   X
+    0980: 39 01    CMP   A,0x1
+    0982: B0 1F    JNZ   0x09A2
+(0223) 				for (iin = 0; iin < 100; iin ++)
+    0984: 56 01 00 MOV   [X+1],0x0
+    0987: 56 00 00 MOV   [X+0],0x0
+(0224) 					{
+(0225) 						Ausgangansteuern(0);
+    098A: 50 00    MOV   A,0x0
+    098C: 08       PUSH  A
+    098D: 9F CC    CALL  _Ausgangansteuern
+    098F: 38 FF    ADD   SP,0xFF
+(0226) 					}
+    0991: 77 01    INC   [X+1]
+    0993: 0F 00 00 ADC   [X+0],0x0
+    0996: 52 01    MOV   A,[X+1]
+    0998: 11 64    SUB   A,0x64
+    099A: 52 00    MOV   A,[X+0]
+    099C: 31 80    XOR   A,0x80
+    099E: 19 80    SBB   A,0x80
+    09A0: CF E9    JC    0x098A
+(0227) 				}
+(0228) 			
+(0229) 			// Ausgänge ansteuern
+(0230) 			IN1_Switch(1);
+    09A2: 10       PUSH  X
+    09A3: 50 01    MOV   A,0x1
+    09A5: 7C 06 23 LCALL _IN1_Switch
+(0231) 			IN2_Switch(0);
+    09A8: 50 00    MOV   A,0x0
+    09AA: 7C 05 FA LCALL _IN2_Switch
+(0232) 			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+    09AD: 51 1D    MOV   A,[prozess+3]
+    09AF: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
+    09B2: 20       POP   X
+(0233) 		}
+    09B3: 80 24    JMP   0x09D8
+(0234) 		// Seil Aufwickeln
+(0235) 		else if (hichAusgangswert < 0){				
+    09B5: 3D FC 00 CMP   [X-4],0x0
+    09B8: D0 1F    JNC   0x09D8
+(0236) 			//wenn sich die Drehrichtung ändert:
+(0237) 			//vorher 100 mal Bremsen
+(0238) 			for (iin = 0; iin < 100; iin ++)
+    09BA: 56 01 00 MOV   [X+1],0x0
+    09BD: 56 00 00 MOV   [X+0],0x0
+(0239) 					{
+(0240) 						Ausgangansteuern(0);
+    09C0: 50 00    MOV   A,0x0
+    09C2: 08       PUSH  A
+    09C3: 9F 96    CALL  _Ausgangansteuern
+    09C5: 38 FF    ADD   SP,0xFF
+(0241) 					}
+    09C7: 77 01    INC   [X+1]
+    09C9: 0F 00 00 ADC   [X+0],0x0
+    09CC: 52 01    MOV   A,[X+1]
+    09CE: 11 64    SUB   A,0x64
+    09D0: 52 00    MOV   A,[X+0]
+    09D2: 31 80    XOR   A,0x80
+    09D4: 19 80    SBB   A,0x80
+    09D6: CF E9    JC    0x09C0
+(0242) 				}
+(0243) 			
+(0244) 			// Ausgänge ansteuern
+(0245) 			IN1_Switch(0);
+    09D8: 10       PUSH  X
+    09D9: 50 00    MOV   A,0x0
+    09DB: 7C 06 23 LCALL _IN1_Switch
+(0246) 			IN2_Switch(1);
+    09DE: 50 01    MOV   A,0x1
+    09E0: 7C 05 FA LCALL _IN2_Switch
+    09E3: 20       POP   X
+(0247) 			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+    09E4: 51 1D    MOV   A,[prozess+3]
+(0248) 		}
+(0249) 		
+(0250) 	
+(0251) 	
+(0252) // Präprozessor: kompiliere Funktion nur wenn Test
+(0253) #ifdef TEST
+(0254) 	// Ausgabe der Testdaten auf LCD-Display
+(0255) 	void test(char hichdata)
+(0256) 		{
+(0257) 		// Schleifenzähler
+(0258) 		int iin;
+(0259) 			
+(0260) 		// gibt 99999 mal LCD Aus
+(0261) 		for (iin = 0; iin <= 999; iin ++)
+(0262) 			{
+(0263) 			LCDansteuern(hichdata);	
+(0264) 			}
+(0265) 		}
+(0266) #endif     09E6: 73       CPL   A
+    09E7: 11 FF    SUB   A,0xFF
+    09E9: 10       PUSH  X
+    09EA: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
+    09ED: 20       POP   X
+    09EE: 38 FE    ADD   SP,0xFE
+    09F0: 20       POP   X
+    09F1: 7F       RET   
 _itoa:
-    0A01: 10       PUSH  X
-    0A02: 4F       MOV   X,SP
-    0A03: 38 09    ADD   SP,0x9
-    0A05: 52 FA    MOV   A,[X-6]
-    0A07: 54 03    MOV   [X+3],A
-    0A09: 52 F9    MOV   A,[X-7]
-    0A0B: 54 02    MOV   [X+2],A
-    0A0D: 3D F9 00 CMP   [X-7],0x0
-    0A10: B0 22    JNZ   0x0A33
-    0A12: 3D FA 00 CMP   [X-6],0x0
-    0A15: B0 1D    JNZ   0x0A33
-    0A17: 52 FC    MOV   A,[X-4]
-    0A19: 53 05    MOV   [__r1],A
-    0A1B: 50 30    MOV   A,0x30
-    0A1D: 3F 05    MVI   [__r1],A
-    0A1F: 52 FC    MOV   A,[X-4]
-    0A21: 01 01    ADD   A,0x1
-    0A23: 53 05    MOV   [__r1],A
-    0A25: 50 00    MOV   A,0x0
-    0A27: 3F 05    MVI   [__r1],A
-    0A29: 52 FC    MOV   A,[X-4]
-    0A2B: 53 05    MOV   [__r1],A
-    0A2D: 52 FB    MOV   A,[X-5]
-    0A2F: 53 06    MOV   [__r0],A
-    0A31: 81 48    JMP   0x0B7A
-    0A33: 52 FA    MOV   A,[X-6]
-    0A35: 11 00    SUB   A,0x0
-    0A37: 52 F9    MOV   A,[X-7]
-    0A39: 31 80    XOR   A,0x80
-    0A3B: 19 80    SBB   A,0x80
-    0A3D: D0 26    JNC   0x0A64
-    0A3F: 3D F7 00 CMP   [X-9],0x0
-    0A42: B0 21    JNZ   0x0A64
-    0A44: 3D F8 0A CMP   [X-8],0xA
-    0A47: B0 1C    JNZ   0x0A64
-    0A49: 56 06 01 MOV   [X+6],0x1
-    0A4C: 52 03    MOV   A,[X+3]
-    0A4E: 73       CPL   A
-    0A4F: 53 05    MOV   [__r1],A
-    0A51: 52 02    MOV   A,[X+2]
-    0A53: 73       CPL   A
-    0A54: 53 06    MOV   [__r0],A
-    0A56: 51 05    MOV   A,[__r1]
-    0A58: 01 01    ADD   A,0x1
-    0A5A: 54 03    MOV   [X+3],A
-    0A5C: 51 06    MOV   A,[__r0]
-    0A5E: 09 00    ADC   A,0x0
-    0A60: 54 02    MOV   [X+2],A
-    0A62: 80 04    JMP   0x0A67
-    0A64: 56 06 00 MOV   [X+6],0x0
-    0A67: 52 FC    MOV   A,[X-4]
-    0A69: 54 01    MOV   [X+1],A
-    0A6B: 52 F7    MOV   A,[X-9]
-    0A6D: 08       PUSH  A
-    0A6E: 52 F8    MOV   A,[X-8]
-    0A70: 08       PUSH  A
-    0A71: 52 02    MOV   A,[X+2]
-    0A73: 08       PUSH  A
-    0A74: 52 03    MOV   A,[X+3]
-    0A76: 08       PUSH  A
-    0A77: 7C 09 A6 LCALL 0x09A6
-    0A7A: 38 FE    ADD   SP,0xFE
-    0A7C: 18       POP   A
-    0A7D: 53 05    MOV   [__r1],A
-    0A7F: 18       POP   A
-    0A80: 53 06    MOV   [__r0],A
-    0A82: 51 05    MOV   A,[__r1]
-    0A84: 54 08    MOV   [X+8],A
-    0A86: 51 06    MOV   A,[__r0]
-    0A88: 54 07    MOV   [X+7],A
-    0A8A: 50 09    MOV   A,0x9
-    0A8C: 13 08    SUB   A,[X+8]
-    0A8E: 52 07    MOV   A,[X+7]
-    0A90: 31 80    XOR   A,0x80
-    0A92: 53 02    MOV   [__rX],A
-    0A94: 50 80    MOV   A,0x80
-    0A96: 1A 02    SBB   A,[__rX]
-    0A98: C0 1D    JC    0x0AB6
-    0A9A: 52 01    MOV   A,[X+1]
-    0A9C: 53 05    MOV   [__r1],A
-    0A9E: 52 00    MOV   A,[X+0]
+    0A4D: 10       PUSH  X
+    0A4E: 4F       MOV   X,SP
+    0A4F: 38 09    ADD   SP,0x9
+    0A51: 52 FA    MOV   A,[X-6]
+    0A53: 54 03    MOV   [X+3],A
+    0A55: 52 F9    MOV   A,[X-7]
+    0A57: 54 02    MOV   [X+2],A
+    0A59: 3D F9 00 CMP   [X-7],0x0
+    0A5C: B0 22    JNZ   0x0A7F
+    0A5E: 3D FA 00 CMP   [X-6],0x0
+    0A61: B0 1D    JNZ   0x0A7F
+    0A63: 52 FC    MOV   A,[X-4]
+    0A65: 53 05    MOV   [__r1],A
+    0A67: 50 30    MOV   A,0x30
+    0A69: 3F 05    MVI   [__r1],A
+    0A6B: 52 FC    MOV   A,[X-4]
+    0A6D: 01 01    ADD   A,0x1
+    0A6F: 53 05    MOV   [__r1],A
+    0A71: 50 00    MOV   A,0x0
+    0A73: 3F 05    MVI   [__r1],A
+    0A75: 52 FC    MOV   A,[X-4]
+    0A77: 53 05    MOV   [__r1],A
+    0A79: 52 FB    MOV   A,[X-5]
+    0A7B: 53 06    MOV   [__r0],A
+    0A7D: 81 48    JMP   0x0BC6
+    0A7F: 52 FA    MOV   A,[X-6]
+    0A81: 11 00    SUB   A,0x0
+    0A83: 52 F9    MOV   A,[X-7]
+    0A85: 31 80    XOR   A,0x80
+    0A87: 19 80    SBB   A,0x80
+    0A89: D0 26    JNC   0x0AB0
+    0A8B: 3D F7 00 CMP   [X-9],0x0
+    0A8E: B0 21    JNZ   0x0AB0
+    0A90: 3D F8 0A CMP   [X-8],0xA
+    0A93: B0 1C    JNZ   0x0AB0
+    0A95: 56 06 01 MOV   [X+6],0x1
+    0A98: 52 03    MOV   A,[X+3]
+    0A9A: 73       CPL   A
+    0A9B: 53 05    MOV   [__r1],A
+    0A9D: 52 02    MOV   A,[X+2]
+    0A9F: 73       CPL   A
     0AA0: 53 06    MOV   [__r0],A
     0AA2: 51 05    MOV   A,[__r1]
     0AA4: 01 01    ADD   A,0x1
-    0AA6: 54 01    MOV   [X+1],A
+    0AA6: 54 03    MOV   [X+3],A
     0AA8: 51 06    MOV   A,[__r0]
     0AAA: 09 00    ADC   A,0x0
-    0AAC: 54 00    MOV   [X+0],A
-    0AAE: 52 08    MOV   A,[X+8]
-    0AB0: 01 30    ADD   A,0x30
-    0AB2: 3F 05    MVI   [__r1],A
-    0AB4: 80 1B    JMP   0x0AD0
-    0AB6: 52 01    MOV   A,[X+1]
-    0AB8: 53 05    MOV   [__r1],A
-    0ABA: 52 00    MOV   A,[X+0]
-    0ABC: 53 06    MOV   [__r0],A
-    0ABE: 51 05    MOV   A,[__r1]
-    0AC0: 01 01    ADD   A,0x1
-    0AC2: 54 01    MOV   [X+1],A
-    0AC4: 51 06    MOV   A,[__r0]
-    0AC6: 09 00    ADC   A,0x0
-    0AC8: 54 00    MOV   [X+0],A
-    0ACA: 52 08    MOV   A,[X+8]
-    0ACC: 01 57    ADD   A,0x57
-    0ACE: 3F 05    MVI   [__r1],A
-    0AD0: 52 F7    MOV   A,[X-9]
-    0AD2: 08       PUSH  A
-    0AD3: 52 F8    MOV   A,[X-8]
-    0AD5: 08       PUSH  A
-    0AD6: 52 02    MOV   A,[X+2]
-    0AD8: 08       PUSH  A
-    0AD9: 52 03    MOV   A,[X+3]
-    0ADB: 08       PUSH  A
-    0ADC: 7C 09 A6 LCALL 0x09A6
-    0ADF: 18       POP   A
-    0AE0: 54 03    MOV   [X+3],A
-    0AE2: 18       POP   A
-    0AE3: 54 02    MOV   [X+2],A
-    0AE5: 38 FE    ADD   SP,0xFE
-    0AE7: 3D 02 00 CMP   [X+2],0x0
-    0AEA: BF 80    JNZ   0x0A6B
-    0AEC: 3D 03 00 CMP   [X+3],0x0
-    0AEF: BF 7B    JNZ   0x0A6B
-    0AF1: 3D 06 00 CMP   [X+6],0x0
-    0AF4: A0 19    JZ    0x0B0E
-    0AF6: 52 01    MOV   A,[X+1]
-    0AF8: 53 05    MOV   [__r1],A
-    0AFA: 52 00    MOV   A,[X+0]
-    0AFC: 53 06    MOV   [__r0],A
-    0AFE: 51 05    MOV   A,[__r1]
-    0B00: 01 01    ADD   A,0x1
-    0B02: 54 01    MOV   [X+1],A
-    0B04: 51 06    MOV   A,[__r0]
-    0B06: 09 00    ADC   A,0x0
-    0B08: 54 00    MOV   [X+0],A
-    0B0A: 50 2D    MOV   A,0x2D
-    0B0C: 3F 05    MVI   [__r1],A
-    0B0E: 52 01    MOV   A,[X+1]
-    0B10: 53 05    MOV   [__r1],A
-    0B12: 52 00    MOV   A,[X+0]
-    0B14: 53 06    MOV   [__r0],A
-    0B16: 51 05    MOV   A,[__r1]
-    0B18: 01 FF    ADD   A,0xFF
-    0B1A: 54 01    MOV   [X+1],A
-    0B1C: 51 06    MOV   A,[__r0]
-    0B1E: 09 FF    ADC   A,0xFF
-    0B20: 54 00    MOV   [X+0],A
-    0B22: 50 00    MOV   A,0x0
-    0B24: 3F 05    MVI   [__r1],A
-    0B26: 52 FC    MOV   A,[X-4]
-    0B28: 54 05    MOV   [X+5],A
-    0B2A: 80 3D    JMP   0x0B68
-    0B2C: 52 05    MOV   A,[X+5]
-    0B2E: 53 05    MOV   [__r1],A
-    0B30: 3E 05    MVI   A,[__r1]
-    0B32: 54 06    MOV   [X+6],A
-    0B34: 52 05    MOV   A,[X+5]
-    0B36: 53 05    MOV   [__r1],A
-    0B38: 52 04    MOV   A,[X+4]
-    0B3A: 53 06    MOV   [__r0],A
-    0B3C: 51 05    MOV   A,[__r1]
-    0B3E: 01 01    ADD   A,0x1
-    0B40: 54 05    MOV   [X+5],A
-    0B42: 51 06    MOV   A,[__r0]
-    0B44: 09 00    ADC   A,0x0
-    0B46: 54 04    MOV   [X+4],A
-    0B48: 52 01    MOV   A,[X+1]
-    0B4A: 53 03    MOV   [__r3],A
-    0B4C: 3E 03    MVI   A,[__r3]
-    0B4E: 3F 05    MVI   [__r1],A
-    0B50: 52 01    MOV   A,[X+1]
-    0B52: 53 05    MOV   [__r1],A
-    0B54: 52 00    MOV   A,[X+0]
-    0B56: 53 06    MOV   [__r0],A
-    0B58: 51 05    MOV   A,[__r1]
-    0B5A: 01 FF    ADD   A,0xFF
-    0B5C: 54 01    MOV   [X+1],A
-    0B5E: 51 06    MOV   A,[__r0]
-    0B60: 09 FF    ADC   A,0xFF
-    0B62: 54 00    MOV   [X+0],A
-    0B64: 52 06    MOV   A,[X+6]
-    0B66: 3F 05    MVI   [__r1],A
-    0B68: 52 01    MOV   A,[X+1]
-    0B6A: 53 06    MOV   [__r0],A
-    0B6C: 52 05    MOV   A,[X+5]
-    0B6E: 3A 06    CMP   A,[__r0]
-    0B70: CF BB    JC    0x0B2C
+    0AAC: 54 02    MOV   [X+2],A
+    0AAE: 80 04    JMP   0x0AB3
+    0AB0: 56 06 00 MOV   [X+6],0x0
+    0AB3: 52 FC    MOV   A,[X-4]
+    0AB5: 54 01    MOV   [X+1],A
+    0AB7: 52 F7    MOV   A,[X-9]
+    0AB9: 08       PUSH  A
+    0ABA: 52 F8    MOV   A,[X-8]
+    0ABC: 08       PUSH  A
+    0ABD: 52 02    MOV   A,[X+2]
+    0ABF: 08       PUSH  A
+    0AC0: 52 03    MOV   A,[X+3]
+    0AC2: 08       PUSH  A
+    0AC3: 7C 09 F2 LCALL 0x09F2
+    0AC6: 38 FE    ADD   SP,0xFE
+    0AC8: 18       POP   A
+    0AC9: 53 05    MOV   [__r1],A
+    0ACB: 18       POP   A
+    0ACC: 53 06    MOV   [__r0],A
+    0ACE: 51 05    MOV   A,[__r1]
+    0AD0: 54 08    MOV   [X+8],A
+    0AD2: 51 06    MOV   A,[__r0]
+    0AD4: 54 07    MOV   [X+7],A
+    0AD6: 50 09    MOV   A,0x9
+    0AD8: 13 08    SUB   A,[X+8]
+    0ADA: 52 07    MOV   A,[X+7]
+    0ADC: 31 80    XOR   A,0x80
+    0ADE: 53 02    MOV   [__rX],A
+    0AE0: 50 80    MOV   A,0x80
+    0AE2: 1A 02    SBB   A,[__rX]
+    0AE4: C0 1D    JC    0x0B02
+    0AE6: 52 01    MOV   A,[X+1]
+    0AE8: 53 05    MOV   [__r1],A
+    0AEA: 52 00    MOV   A,[X+0]
+    0AEC: 53 06    MOV   [__r0],A
+    0AEE: 51 05    MOV   A,[__r1]
+    0AF0: 01 01    ADD   A,0x1
+    0AF2: 54 01    MOV   [X+1],A
+    0AF4: 51 06    MOV   A,[__r0]
+    0AF6: 09 00    ADC   A,0x0
+    0AF8: 54 00    MOV   [X+0],A
+    0AFA: 52 08    MOV   A,[X+8]
+    0AFC: 01 30    ADD   A,0x30
+    0AFE: 3F 05    MVI   [__r1],A
+    0B00: 80 1B    JMP   0x0B1C
+    0B02: 52 01    MOV   A,[X+1]
+    0B04: 53 05    MOV   [__r1],A
+    0B06: 52 00    MOV   A,[X+0]
+    0B08: 53 06    MOV   [__r0],A
+    0B0A: 51 05    MOV   A,[__r1]
+    0B0C: 01 01    ADD   A,0x1
+    0B0E: 54 01    MOV   [X+1],A
+    0B10: 51 06    MOV   A,[__r0]
+    0B12: 09 00    ADC   A,0x0
+    0B14: 54 00    MOV   [X+0],A
+    0B16: 52 08    MOV   A,[X+8]
+    0B18: 01 57    ADD   A,0x57
+    0B1A: 3F 05    MVI   [__r1],A
+    0B1C: 52 F7    MOV   A,[X-9]
+    0B1E: 08       PUSH  A
+    0B1F: 52 F8    MOV   A,[X-8]
+    0B21: 08       PUSH  A
+    0B22: 52 02    MOV   A,[X+2]
+    0B24: 08       PUSH  A
+    0B25: 52 03    MOV   A,[X+3]
+    0B27: 08       PUSH  A
+    0B28: 7C 09 F2 LCALL 0x09F2
+    0B2B: 18       POP   A
+    0B2C: 54 03    MOV   [X+3],A
+    0B2E: 18       POP   A
+    0B2F: 54 02    MOV   [X+2],A
+    0B31: 38 FE    ADD   SP,0xFE
+    0B33: 3D 02 00 CMP   [X+2],0x0
+    0B36: BF 80    JNZ   0x0AB7
+    0B38: 3D 03 00 CMP   [X+3],0x0
+    0B3B: BF 7B    JNZ   0x0AB7
+    0B3D: 3D 06 00 CMP   [X+6],0x0
+    0B40: A0 19    JZ    0x0B5A
+    0B42: 52 01    MOV   A,[X+1]
+    0B44: 53 05    MOV   [__r1],A
+    0B46: 52 00    MOV   A,[X+0]
+    0B48: 53 06    MOV   [__r0],A
+    0B4A: 51 05    MOV   A,[__r1]
+    0B4C: 01 01    ADD   A,0x1
+    0B4E: 54 01    MOV   [X+1],A
+    0B50: 51 06    MOV   A,[__r0]
+    0B52: 09 00    ADC   A,0x0
+    0B54: 54 00    MOV   [X+0],A
+    0B56: 50 2D    MOV   A,0x2D
+    0B58: 3F 05    MVI   [__r1],A
+    0B5A: 52 01    MOV   A,[X+1]
+    0B5C: 53 05    MOV   [__r1],A
+    0B5E: 52 00    MOV   A,[X+0]
+    0B60: 53 06    MOV   [__r0],A
+    0B62: 51 05    MOV   A,[__r1]
+    0B64: 01 FF    ADD   A,0xFF
+    0B66: 54 01    MOV   [X+1],A
+    0B68: 51 06    MOV   A,[__r0]
+    0B6A: 09 FF    ADC   A,0xFF
+    0B6C: 54 00    MOV   [X+0],A
+    0B6E: 50 00    MOV   A,0x0
+    0B70: 3F 05    MVI   [__r1],A
     0B72: 52 FC    MOV   A,[X-4]
-    0B74: 53 05    MOV   [__r1],A
-    0B76: 52 FB    MOV   A,[X-5]
-    0B78: 53 06    MOV   [__r0],A
-    0B7A: 38 F7    ADD   SP,0xF7
-    0B7C: 20       POP   X
-    0B7D: 7F       RET   
+    0B74: 54 05    MOV   [X+5],A
+    0B76: 80 3D    JMP   0x0BB4
+    0B78: 52 05    MOV   A,[X+5]
+    0B7A: 53 05    MOV   [__r1],A
+    0B7C: 3E 05    MVI   A,[__r1]
+    0B7E: 54 06    MOV   [X+6],A
+    0B80: 52 05    MOV   A,[X+5]
+    0B82: 53 05    MOV   [__r1],A
+    0B84: 52 04    MOV   A,[X+4]
+    0B86: 53 06    MOV   [__r0],A
+    0B88: 51 05    MOV   A,[__r1]
+    0B8A: 01 01    ADD   A,0x1
+    0B8C: 54 05    MOV   [X+5],A
+    0B8E: 51 06    MOV   A,[__r0]
+    0B90: 09 00    ADC   A,0x0
+    0B92: 54 04    MOV   [X+4],A
+    0B94: 52 01    MOV   A,[X+1]
+    0B96: 53 03    MOV   [__r3],A
+    0B98: 3E 03    MVI   A,[__r3]
+    0B9A: 3F 05    MVI   [__r1],A
+    0B9C: 52 01    MOV   A,[X+1]
+    0B9E: 53 05    MOV   [__r1],A
+    0BA0: 52 00    MOV   A,[X+0]
+    0BA2: 53 06    MOV   [__r0],A
+    0BA4: 51 05    MOV   A,[__r1]
+    0BA6: 01 FF    ADD   A,0xFF
+    0BA8: 54 01    MOV   [X+1],A
+    0BAA: 51 06    MOV   A,[__r0]
+    0BAC: 09 FF    ADC   A,0xFF
+    0BAE: 54 00    MOV   [X+0],A
+    0BB0: 52 06    MOV   A,[X+6]
+    0BB2: 3F 05    MVI   [__r1],A
+    0BB4: 52 01    MOV   A,[X+1]
+    0BB6: 53 06    MOV   [__r0],A
+    0BB8: 52 05    MOV   A,[X+5]
+    0BBA: 3A 06    CMP   A,[__r0]
+    0BBC: CF BB    JC    0x0B78
+    0BBE: 52 FC    MOV   A,[X-4]
+    0BC0: 53 05    MOV   [__r1],A
+    0BC2: 52 FB    MOV   A,[X-5]
+    0BC4: 53 06    MOV   [__r0],A
+    0BC6: 38 F7    ADD   SP,0xF7
+    0BC8: 20       POP   X
+    0BC9: 7F       RET   
