@@ -27,6 +27,7 @@ Bugs:
 
 ToDO:
 
+-Pulzweitenmudulationszeile beim Bremsen löschen
 -eigene präfixe in Komentar einfügen (Erledigt)
 -Testroutine programmieren	(Erledigt 28.08.13)	
 -Korekturfaktor Einfuegen 
