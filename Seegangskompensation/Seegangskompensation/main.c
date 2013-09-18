@@ -172,13 +172,14 @@ void main(void)
 	
 void LCDansteuern(char hichdata)
 	{		
-			//TODO: Variablen Umbenennen 
-			// Komentieren
-			char xyz[5]; 
-				 LCD_1_Position(0,5);    
-			LCD_1_PrCString("Wert:");				
-			itoa(xyz,hichdata,10);
-			LCD_1_PrString(xyz);		
+			char rgch[5];
+			// Text auf LCD ausgeben
+			LCD_1_Position(0,5);    
+			LCD_1_PrCString("Wert:");
+			
+			// Zahl Auf LCD ausgeben
+			itoa(rgch,hichdata,10);
+			LCD_1_PrString(rgch);		
 
 	}
 	
@@ -203,24 +204,46 @@ void Dateneinlesen(void)
 
 void Ausgangansteuern(char hichAusgangswert)
 	{
-		// linksdrehend 
-		if (hichAusgangswert > 0){				
-			IN1_Switch(1);
-			IN2_Switch(0);
-			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
-		}
-		// rechtsdrehend
-		else if (hichAusgangswert < 0){				
-			IN1_Switch(1);
-			IN2_Switch(0);
-			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
-		}
 		// Bremsen durch Leerlauf
-		else{				
+		if (hichAusgangswert == 0){				
+			// Ausgänge ansteuern
 			IN1_Switch(0);
 			IN2_Switch(0);
 			PWM8_1_WritePulseWidth(0);
 		}
+		
+		// Seil Abwickeln 
+		if (hichAusgangswert > 0){				
+			//wenn sich die Drehrichtung ändert:
+			//vorher 100 mal Bremsen
+			if (IN2_GetState() == 1){
+				for (iin = 0; iin < 100; iin ++)
+					{
+						Ausgangansteuern(0)
+					}
+				}
+			
+			// Ausgänge ansteuern
+			IN1_Switch(1);
+			IN2_Switch(0);
+			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+		}
+		// Seil Aufwickeln
+		else if (hichAusgangswert < 0){				
+			//wenn sich die Drehrichtung ändert:
+			//vorher 100 mal Bremsen
+			for (iin = 0; iin < 100; iin ++)
+					{
+						Ausgangansteuern(0)
+					}
+				}
+			
+			// Ausgänge ansteuern
+			IN1_Switch(0);
+			IN2_Switch(1);
+			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+		}
+		
 	}
 	
 // Präprozessor: kompiliere Funktion nur wenn Test
