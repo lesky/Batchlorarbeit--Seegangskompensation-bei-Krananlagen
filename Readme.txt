@@ -32,7 +32,7 @@ ToDO:
 -Korekturfaktor Einfuegen 
 -Arraygroee anpassen 		(Erledigt 29.08.13)
 -Selbsttest  			
--Pause bei Drehrichtungsumkehr
+-Pause bei Drehrichtungsumkehr	(Erledigt 28.09.13)
 -Eingaenge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
 -Sollwert Programmieren 	(Erledigt 22.07.13)
