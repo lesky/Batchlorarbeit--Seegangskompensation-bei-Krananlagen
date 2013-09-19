@@ -16,6 +16,7 @@ Sollwert-> 0.5
 
 Bugs:
 
+-P 0.1 Defekt?
 -H-Bruecke braucht zu viel spannung 	(Fixd 05.09.2013: Vs und Vss 
 				     	spaeter mit 9V Versorgen)
 -Ausgang 1.3 gibt keine Spannung aus 	(Fixd 16.09.2013)		

@@ -85,7 +85,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
 ;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 0
-	db		60h, 28h		; AnalogColumnInputSelect register (AMX_IN)
+	db		60h, 2bh		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
 	db		63h, 15h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)

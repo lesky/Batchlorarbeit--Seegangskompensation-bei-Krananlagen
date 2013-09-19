@@ -24,9 +24,10 @@
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 #include <stdlib.h>
+
 // Präprozessor:Für testzwecke 
 // #defein Test nicht auskomentieren:
-// #define TEST
+#define TEST
 
 // Funktionsprototypen:
 void LCDansteuern(char);
@@ -43,8 +44,7 @@ struct
    {	  						
 	char pdchBechleunigung, pdchEntfernung;			
 	char pdchSollwert;								
-	char pdchPulsweite;
-    } prozess;
+	} prozess;
 
 
 void main(void)
@@ -106,6 +106,7 @@ void main(void)
 		while(1) 
 			{
 			// Daten Einlesen
+			
 			Dateneinlesen();
 			                         
 			// Parameter Berechnen
@@ -114,9 +115,9 @@ void main(void)
 			
 			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
 								- 1 / kochKS * hichBeschleunigungssumme;
-			//TODO: Korekturfaktor Einfügen 
-			prozess.pdchPulsweite = hichAusgangswert; 
 			
+			// Daten Ausgeben:
+				
 			Ausgangansteuern(hichAusgangswert);
 			
 			LCDansteuern(prozess.pdchEntfernung);
@@ -141,24 +142,13 @@ void main(void)
 		// Konstante zur verweildauer in der schleife
 		while (1)
 			{
-				//konstanten definiren
-				
-				// Daten Einlesen
-				void Dateneinlesen(void);
-				// Daten Nacheinander auf LCD Ausgeeben
-				//prozess.pdchPulsweite = 50;
-				//prozess.pdchBechleunigung = 1;
-				//prozess.pdchEntfernung =2;
-				//prozess.pdchSollwert =3;
+				Dateneinlesen();
 				Ausgangansteuern(50);
-				test(prozess.pdchBechleunigung);
-				test(prozess.pdchEntfernung);
-				test(prozess.pdchSollwert);
-				// Ausgangansteuern(-50);
-				test(prozess.pdchBechleunigung);
-				test(prozess.pdchEntfernung);
-				test(prozess.pdchSollwert);
 				
+				// Testfunktionen Aufrufen:
+				test(prozess.pdchBechleunigung);
+				// test(prozess.pdchEntfernung);
+				// test(prozess.pdchSollwert);
 				
 			};
 			
@@ -204,8 +194,10 @@ void Dateneinlesen(void)
 
 void Ausgangansteuern(char hichAusgangswert)
 	{
-		// Schleifenzähler
 		int iin;
+		// Korekturfaktor zur 
+		// bestimmung der Pulsweite:
+		char kochKorekturfaktor = 1;
 		
 		// Bremsen durch Leerlauf
 		if (hichAusgangswert == 0){				
@@ -216,9 +208,12 @@ void Ausgangansteuern(char hichAusgangswert)
 		}
 		
 		// Seil Abwickeln 
+		
 		if (hichAusgangswert > 0){				
+			
 			//wenn sich die Drehrichtung ändert:
 			//vorher 100 mal Bremsen
+			
 			if (IN2_GetState() == 1){
 				for (iin = 0; iin < 100; iin ++)
 					{
@@ -229,10 +224,13 @@ void Ausgangansteuern(char hichAusgangswert)
 			// Ausgänge ansteuern
 			IN1_Switch(1);
 			IN2_Switch(0);
-			PWM8_1_WritePulseWidth(prozess.pdchPulsweite);
+			PWM8_1_WritePulseWidth(hichAusgangswert * kochKorekturfaktor);
 		}
+		
 		// Seil Aufwickeln
+		
 		else if (hichAusgangswert < 0){				
+			
 			//wenn sich die Drehrichtung ändert:
 			//vorher 100 mal Bremsen
 			for (iin = 0; iin < 100; iin ++)
@@ -244,7 +242,7 @@ void Ausgangansteuern(char hichAusgangswert)
 			// Ausgänge ansteuern
 			IN1_Switch(0);
 			IN2_Switch(1);
-			PWM8_1_WritePulseWidth(-prozess.pdchPulsweite);
+			PWM8_1_WritePulseWidth(- hichAusgangswert * kochKorekturfaktor);
 		}
 		
 	
@@ -254,11 +252,9 @@ void Ausgangansteuern(char hichAusgangswert)
 	// Ausgabe der Testdaten auf LCD-Display
 	void test(char hichdata)
 		{
-		// Schleifenzähler
-		int iin;
-			
 		// gibt 99999 mal LCD Aus
-		for (iin = 0; iin <= 999; iin ++)
+		int iin;
+		for (iin = 0; iin <= 500; iin ++)
 			{
 			LCDansteuern(hichdata);	
 			}

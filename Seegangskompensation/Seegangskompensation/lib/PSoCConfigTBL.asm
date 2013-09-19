@@ -62,10 +62,10 @@ LoadConfigTBL_seegangskompensation_Bank0:
 ;  Instance name LCD_1, User Module LCD
 ;  Instance name PGA_1, User Module PGA
 ;       Instance name PGA_1, Block Name GAIN(ACB00)
-	db		71h, fch		;PGA_1_GAIN_CR0(ACB00CR0)
+	db		71h, 0ch		;PGA_1_GAIN_CR0(ACB00CR0)
 	db		72h, 21h		;PGA_1_GAIN_CR1(ACB00CR1)
 	db		73h, 20h		;PGA_1_GAIN_CR2(ACB00CR2)
-	db		70h, 00h		;PGA_1_GAIN_CR3(ACB00CR3)
+	db		70h, 01h		;PGA_1_GAIN_CR3(ACB00CR3)
 ;  Instance name PGA_2, User Module PGA
 ;       Instance name PGA_2, Block Name GAIN(ACB01)
 	db		75h, fdh		;PGA_2_GAIN_CR0(ACB01CR0)
@@ -85,7 +85,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
 ;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 0
-	db		60h, 28h		; AnalogColumnInputSelect register (AMX_IN)
+	db		60h, 2bh		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
 	db		63h, 15h		; AnalogReferenceControl register (ARF_CR)
 	db		65h, 00h		; AnalogSyncControl register (ASY_CR)
