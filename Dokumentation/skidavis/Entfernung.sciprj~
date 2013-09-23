@@ -120,7 +120,7 @@ TicksLength	5	9
 DrawAxesBackbone	1
 AxesLineWidth	1
 LabelsRotation	0	0
-<legend>	20.890868596882	1.36996996996997	MS Shell Dlg 2	6	50	0	0	0	#000000	1	0	#ffffff	0	\c{1}Abstandsmessung	\c{2}PolynomAnpassung1	\c{3}LinearAnpassung1	</legend>
+<legend>	20.890868596882	1.36996996996997	MS Shell Dlg 2	6	50	0	0	0	#000000	1	0	#ffffff	0	\c{1}Tabelle1_2	\c{2}PolynomAnpassung1	\c{3}LinearAnpassung1	</legend>
 </graph>
 </multiLayer>
 <log>
