@@ -1263,7 +1263,7 @@
  0000           ; Constants for PWM8_1 user defined values
  0000           ;--------------------------------------------------
  0000           
- 0000           PWM8_1_PERIOD:                             equ 0x00
+ 00FF           PWM8_1_PERIOD:                             equ 0xff
  0000           PWM8_1_PULSE_WIDTH:                        equ 0x00
  0000           
  0000           

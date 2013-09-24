@@ -701,7 +701,7 @@
  004E           ;  Instance name PWM8_1, User Module PWM8
  004E           ;       Instance name PWM8_1, Block Name PWM8(DBB00)
  004E 2300              db              23h, 00h                ;PWM8_1_CONTROL_REG(DBB00CR0)
- 0050 2100              db              21h, 00h                ;PWM8_1_PERIOD_REG(DBB00DR1)
+ 0050 21FF              db              21h, ffh                ;PWM8_1_PERIOD_REG(DBB00DR1)
  0052 2200              db              22h, 00h                ;PWM8_1_COMPARE_REG(DBB00DR2)
  0054           ;  Instance name SELBSTTEST, User Module LED
  0054           ;  Global Register values Bank 0

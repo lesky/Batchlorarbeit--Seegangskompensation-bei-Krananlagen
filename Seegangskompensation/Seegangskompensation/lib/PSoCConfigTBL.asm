@@ -81,7 +81,7 @@ LoadConfigTBL_seegangskompensation_Bank0:
 ;  Instance name PWM8_1, User Module PWM8
 ;       Instance name PWM8_1, Block Name PWM8(DBB00)
 	db		23h, 00h		;PWM8_1_CONTROL_REG(DBB00CR0)
-	db		21h, 00h		;PWM8_1_PERIOD_REG(DBB00DR1)
+	db		21h, ffh		;PWM8_1_PERIOD_REG(DBB00DR1)
 	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
 ;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 0

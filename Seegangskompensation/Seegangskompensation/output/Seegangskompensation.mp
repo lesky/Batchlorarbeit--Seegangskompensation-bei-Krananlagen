@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Thu Sep 19 11:23:55 2013
+Date:         Tue Sep 24 12:11:41 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -223,18 +223,18 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   085C   035C =    860. bytes (rel,con,rom,code)
+                            text   085C   036A =    874. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
        085C  _main
        085C  __text_start
-       08BA  _LCDansteuern
-       08F5  _Dateneinlesen
-       0928  _Ausgangansteuern
-       09DA  _test
-       0A3B  _itoa
-       0BB8  __text_end
+       08B6  _LCDansteuern
+       08F1  _Dateneinlesen
+       0924  _Ausgangansteuern
+       09E8  _test
+       0A49  _itoa
+       0BC6  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------

@@ -32,7 +32,8 @@
 // Funktionsprototypen:
 void LCDansteuern(char);
 void Dateneinlesen(void);
-void Ausgangansteuern(char);
+void Ausgangansteuern(char, char);
+
 
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
@@ -74,7 +75,7 @@ void main(void)
 	LCD_1_Start();                 					
    	
 	// Initialisieren des PWM-Moduls
-	PWM8_1_WritePeriod(kochPeriodendauer);        	                    
+	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
 	
 	PGA_1_Start(PGA_1_LOWPOWER);
@@ -143,10 +144,10 @@ void main(void)
 		while (1)
 			{
 				Dateneinlesen();
-				Ausgangansteuern(50);
+				Ausgangansteuern(10, 1);
 				
 				// Testfunktionen Aufrufen:
-				test(prozess.pdchBechleunigung);
+				 test(prozess.pdchBechleunigung);
 				// test(prozess.pdchEntfernung);
 				// test(prozess.pdchSollwert);
 				
@@ -192,24 +193,16 @@ void Dateneinlesen(void)
 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
 	}
 
-void Ausgangansteuern(char hichAusgangswert)
+void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 	{
 		int iin;
 		// Korekturfaktor zur 
 		// bestimmung der Pulsweite:
 		char kochKorekturfaktor = 1;
 		
-		// Bremsen durch Leerlauf
-		if (hichAusgangswert == 0){				
-			// Ausgänge ansteuern
-			IN1_Switch(0);
-			IN2_Switch(0);
-			PWM8_1_WritePulseWidth(0);
-		}
-		
 		// Seil Abwickeln 
 		
-		if (hichAusgangswert > 0){				
+		if (hichRichtung == 1){
 			
 			//wenn sich die Drehrichtung ändert:
 			//vorher 100 mal Bremsen
@@ -217,34 +210,51 @@ void Ausgangansteuern(char hichAusgangswert)
 			if (IN2_GetState() == 1){
 				for (iin = 0; iin < 100; iin ++)
 					{
-						Ausgangansteuern(0);
+						Ausgangansteuern(0, 0);
 					}
-				}
-			
+				
+			}
 			// Ausgänge ansteuern
 			IN1_Switch(1);
 			IN2_Switch(0);
+			PWM8_1_Stop();
 			PWM8_1_WritePulseWidth(hichAusgangswert * kochKorekturfaktor);
+			PWM8_1_Start();
 		}
 		
 		// Seil Aufwickeln
 		
-		else if (hichAusgangswert < 0){				
-			
+		else if (hichRichtung == 2){
+					
 			//wenn sich die Drehrichtung ändert:
 			//vorher 100 mal Bremsen
-			for (iin = 0; iin < 100; iin ++)
-					{
-						Ausgangansteuern(0);
-					}
-				}
-			
+			if (IN1_GetState() == 1){
+					for (iin = 0; iin < 100; iin ++)
+						{
+							Ausgangansteuern(0, 0);
+						}
+						
+				} 
+			// Klammer zu Fiel Warum
 			// Ausgänge ansteuern
 			IN1_Switch(0);
 			IN2_Switch(1);
-			PWM8_1_WritePulseWidth(- hichAusgangswert * kochKorekturfaktor);
-		}
+			PWM8_1_Stop();
+			PWM8_1_WritePulseWidth(hichAusgangswert * kochKorekturfaktor);
+			PWM8_1_Start();
+			}
+	
+		// Bremsen durch Leerlauf
+		else {				
+			// Ausgänge ansteuern
+			IN1_Switch(1);
+			IN2_Switch(1);
+			PWM8_1_Stop();
+			PWM8_1_WritePulseWidth(0);
+			PWM8_1_Start();
+			}
 		
+	}
 	
 	
 // Präprozessor: kompiliere Funktion nur wenn Test
