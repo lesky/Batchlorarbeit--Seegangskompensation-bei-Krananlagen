@@ -144,7 +144,7 @@ LoadConfigTBL_seegangskompensation_Bank1:
 ;       Instance name PGA_3, Block Name GAIN(ACB02)
 ;  Instance name PWM8_1, User Module PWM8
 ;       Instance name PWM8_1, Block Name PWM8(DBB00)
-	db		20h, 21h		;PWM8_1_FUNC_REG(DBB00FN)
+	db		20h, 31h		;PWM8_1_FUNC_REG(DBB00FN)
 	db		21h, 17h		;PWM8_1_INPUT_REG(DBB00IN)
 	db		22h, 44h		;PWM8_1_OUTPUT_REG(DBB00OU)
 ;  Instance name SELBSTTEST, User Module LED

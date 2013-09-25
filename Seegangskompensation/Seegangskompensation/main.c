@@ -9,7 +9,7 @@
 * IN1		 	-> 1.2									*
 * IN2			-> 1.3									*
 * PWM 1			-> 1.4									*
-* Beschleunigung-> 0.1									*
+* Beschleunigung-> 0.7									*
 * Entfernung 	-> 0.4									*
 * Sollwert		-> 0.5									*
 * 														*
@@ -77,9 +77,9 @@ void main(void)
 	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
 	
-	PGA_1_Start(PGA_1_LOWPOWER);
-	PGA_2_Start(PGA_2_LOWPOWER);
-	PGA_3_Start(PGA_3_LOWPOWER);	
+	PGA_1_Start(PGA_1_HIGHPOWER);
+	PGA_2_Start(PGA_2_HIGHPOWER);
+	PGA_3_Start(PGA_3_HIGHPOWER);	
 	
 	// Initialisieren des Dualen AD-Wandlers
 	// für Entfernung und Beschleunigung
@@ -134,7 +134,7 @@ void main(void)
 	********************************************************/
 
 	#else
-		
+			
 		// Selbsttest des Beshleunigungssensoers anschalten
 		SELBSTTEST_Switch(1);
 			
@@ -143,13 +143,20 @@ void main(void)
 		while (1)
 			{
 				Dateneinlesen();
-				Ausgangansteuern(255, 2);
-				Ausgangansteuern(255, 1);
+				Ausgangansteuern(0, 2);
+				
 				// Testfunktionen Aufrufen:
-				 test(prozess.pdchBechleunigung);
+				// test(prozess.pdchBechleunigung);
 				// test(prozess.pdchEntfernung);
 				// test(prozess.pdchSollwert);
-				
+				LCDansteuern(1);
+				if (PRT0DR & 0x01)
+				{LCDansteuern(1);}
+				else {LCDansteuern(0);}
+					
+{
+ // Pin is set. Add code to process
+}
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -199,19 +206,9 @@ void Dateneinlesen(void)
 		
 		// Drehrichtung Auswählen
 		switch(hichRichtung) {
+			
 			// Linkslauf
 			case 1: 
-				
-				//wenn sich die Drehrichtung ändert:
-				//vorher 50 mal Bremsen
-			
-				if (IN2_GetState() == 1){
-					for (iin = 0; iin < 50; iin ++)
-						{
-							Ausgangansteuern(0, 0);
-						}
-					}
-						
 				// IN1 und IN2 Ansteuern
 				IN1_Switch(0);
 				IN2_Switch(1);
@@ -220,16 +217,11 @@ void Dateneinlesen(void)
 			// Rechtslauf
 			case 2:
 				
-				if (IN2_GetState() == 1){
-					for (iin = 0; iin < 50; iin ++)
-						{
-							Ausgangansteuern(0, 0);
-						}
-					}
-				
+				// IN1 und IN2 Ansteuern
 				IN1_Switch(1);
 				IN2_Switch(0);
 				break;
+				
 			// Ungültiger Wert
 			default:
 				// Pulsweite auf 0 setzen
@@ -242,76 +234,7 @@ void Dateneinlesen(void)
 		// Pulsweite auf hichAusgangswert setzen 		
 		PWM8_1_WritePulseWidth(hichAusgangswert);
 	}
-	
-	
-	
-	
-	
-	/*
-void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
-	{
-		int iin;
-		// Korekturfaktor zur 
-		// bestimmung der Pulsweite:
-		char kochKorekturfaktor = 1;
 		
-		// Seil Abwickeln 
-		
-		if (hichRichtung == 1){
-			
-			//wenn sich die Drehrichtung ändert:
-			//vorher 100 mal Bremsen
-			
-			if (IN2_GetState() == 1){
-				for (iin = 0; iin < 100; iin ++)
-					{
-						Ausgangansteuern(0, 0);
-					}
-				
-			}
-			// Ausgänge ansteuern
-			IN1_Switch(1);
-			IN2_Switch(0);
-			PWM8_1_Stop();
-			PWM8_1_WritePulseWidth(hichAusgangswert * kochKorekturfaktor);
-			PWM8_1_Start();
-		}
-		
-		// Seil Aufwickeln
-		
-		else if (hichRichtung == 2){
-					
-			//wenn sich die Drehrichtung ändert:
-			//vorher 100 mal Bremsen
-			if (IN1_GetState() == 1){
-					for (iin = 0; iin < 100; iin ++)
-						{
-							Ausgangansteuern(0, 0);
-						}
-						
-				} 
-			// Klammer zu Fiel Warum
-			// Ausgänge ansteuern
-			IN1_Switch(0);
-			IN2_Switch(1);
-			PWM8_1_Stop();
-			PWM8_1_WritePulseWidth(hichAusgangswert * kochKorekturfaktor);
-			PWM8_1_Start();
-			}
-	
-		// Bremsen durch Leerlauf
-		else {				
-			// Ausgänge ansteuern
-			IN1_Switch(1);
-			IN2_Switch(1);
-			PWM8_1_Stop();
-			PWM8_1_WritePulseWidth(0);
-			PWM8_1_Start();
-			}
-		
-	}
-	*/
-	
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST
 	// Ausgabe der Testdaten auf LCD-Display
