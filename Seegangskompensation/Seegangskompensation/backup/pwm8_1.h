@@ -63,7 +63,7 @@ extern BYTE bPWM8_1_ReadPulseWidth(void);         // Deprecated
 // Constants for PWM8_1 user defined values
 //--------------------------------------------------
 
-#define PWM8_1_PERIOD                          ( 0x00 )
+#define PWM8_1_PERIOD                          ( 0xff )
 #define PWM8_1_PULSE_WIDTH                     ( 0x00 )
 
 

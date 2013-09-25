@@ -55,8 +55,7 @@ void main(void)
 	* 			Deffinitionen und Deklarationen				*
 	********************************************************/	
 		
-	// Konstanten
-	char kochPeriodendauer = 50;					
+	// Konstanten					
 	char kochKP;
 	char kochKS;
 		
@@ -144,8 +143,8 @@ void main(void)
 		while (1)
 			{
 				Dateneinlesen();
-				Ausgangansteuern(10, 1);
-				
+				Ausgangansteuern(255, 2);
+				Ausgangansteuern(255, 1);
 				// Testfunktionen Aufrufen:
 				 test(prozess.pdchBechleunigung);
 				// test(prozess.pdchEntfernung);
@@ -193,6 +192,62 @@ void Dateneinlesen(void)
 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
 	}
 
+	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
+	{
+		// Variablendeklaration
+		int iin;
+		
+		// Drehrichtung Auswählen
+		switch(hichRichtung) {
+			// Linkslauf
+			case 1: 
+				
+				//wenn sich die Drehrichtung ändert:
+				//vorher 50 mal Bremsen
+			
+				if (IN2_GetState() == 1){
+					for (iin = 0; iin < 50; iin ++)
+						{
+							Ausgangansteuern(0, 0);
+						}
+					}
+						
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(0);
+				IN2_Switch(1);
+				break;
+			
+			// Rechtslauf
+			case 2:
+				
+				if (IN2_GetState() == 1){
+					for (iin = 0; iin < 50; iin ++)
+						{
+							Ausgangansteuern(0, 0);
+						}
+					}
+				
+				IN1_Switch(1);
+				IN2_Switch(0);
+				break;
+			// Ungültiger Wert
+			default:
+				// Pulsweite auf 0 setzen
+				PWM8_1_WritePulseWidth(0);
+				// Funktion verlassen
+				return ;
+				
+			}
+		
+		// Pulsweite auf hichAusgangswert setzen 		
+		PWM8_1_WritePulseWidth(hichAusgangswert);
+	}
+	
+	
+	
+	
+	
+	/*
 void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 	{
 		int iin;
@@ -255,7 +310,7 @@ void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 			}
 		
 	}
-	
+	*/
 	
 // Präprozessor: kompiliere Funktion nur wenn Test
 #ifdef TEST

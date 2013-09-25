@@ -764,7 +764,7 @@
  009D           ;       Instance name PGA_3, Block Name GAIN(ACB02)
  009D           ;  Instance name PWM8_1, User Module PWM8
  009D           ;       Instance name PWM8_1, Block Name PWM8(DBB00)
- 009D 2021              db              20h, 21h                ;PWM8_1_FUNC_REG(DBB00FN)
+ 009D 2031              db              20h, 31h                ;PWM8_1_FUNC_REG(DBB00FN)
  009F 2117              db              21h, 17h                ;PWM8_1_INPUT_REG(DBB00IN)
  00A1 2244              db              22h, 44h                ;PWM8_1_OUTPUT_REG(DBB00OU)
  00A3           ;  Instance name SELBSTTEST, User Module LED
