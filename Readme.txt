@@ -16,9 +16,11 @@ Sollwert-> 0.5
 
 Bugs:
 
+-A/D Wandler geben merkwürdige
+ werte aus
+-Drehrichtung Funktioniert nicht	(Fixt 15.09.2013)
 -P 0.1 Defekt?
--H-Bruecke braucht zu viel spannung 	(Fixd 05.09.2013: Vs und Vss 
-				     	spaeter mit 9V Versorgen)
+-H-Bruecke braucht zu viel spannung 	(Fixd 05.09.2013)
 -Ausgang 1.3 gibt keine Spannung aus 	(Fixd 16.09.2013)		
 -Ausgang 1.4 gibt keine Spannung aus 	(Fixd 05.09.2013)
 -Ausgang 1.5 gibt keine Spannung aus 	(Fixd 16.09.2013)
@@ -28,11 +30,12 @@ Bugs:
 
 ToDO:
 
+-Initialisierungen auslagern
 -eigene präfixe in Komentar einfügen (Erledigt)
 -Testroutine programmieren	(Erledigt 28.08.13)	
--Korekturfaktor Einfuegen 
+-Korekturfaktor Einfuegen 	(nicht mehr nötig 25.09.2013)
 -Arraygroee anpassen 		(Erledigt 29.08.13)
--Selbsttest  			
+-Selbsttest  			(nicht mehr nötig 25.09.2013)
 -Pause bei Drehrichtungsumkehr	(Erledigt 28.09.13)
 -Eingaenge "verdraten"		(Erledigt 14.08.13)
 -Algorithmus Programmieren	(Erledigt 28.07.13)
