@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Wed Sep 25 12:22:09 2013
+Date:         Mon Sep 30 09:16:00 2013
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -223,18 +223,19 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   085C   030D =    781. bytes (rel,con,rom,code)
+                            text   085C   02F7 =    759. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
        085C  _main
        085C  __text_start
-       08CC  _LCDansteuern
-       0907  _Dateneinlesen
-       093A  _Ausgangansteuern
-       098B  _test
-       09EC  _itoa
-       0B69  __text_end
+       08B5  _LCDansteuern
+       08F0  _Dateneinlesen
+       0923  _Ausgangansteuern
+       0974  _test
+       099E  PSoC_GPIO_ISR
+       09D6  _itoa
+       0B53  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -321,9 +322,9 @@ Files Linked      [ module(s) ]
 
 ./obj/boot.o	[ boot.asm ]
 obj/main.o	[ main.c ]
-<library>	[ selbsttest.asm, pwm8_1int.asm, pwm8_1.asm, psocconfigtbl.asm, psocconfig.asm, pga_3.asm, pga_2.asm ]
-[ pga_1.asm, lcd_1.asm, in2.asm, in1.asm, dualadc8int.asm, dualadc8.asm, adcincint.asm, adcinc.asm ]
-[ rZ.asm, rY.asm, rX.asm, r3.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, i_div16_block_util.asm ]
+<library>	[ selbsttest.asm, pwm8_1int.asm, pwm8_1.asm, psocgpioint.asm, psocconfigtbl.asm, psocconfig.asm ]
+[ pga_3.asm, pga_2.asm, pga_1.asm, lcd_1.asm, in2.asm, in1.asm, dualadc8int.asm, dualadc8.asm, adcincint.asm ]
+[ adcinc.asm, rZ.asm, rY.asm, rX.asm, r3.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, i_div16_block_util.asm ]
 [ itoa.s ]
 
 Area Definitions

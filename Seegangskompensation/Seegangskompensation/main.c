@@ -149,11 +149,11 @@ void main(void)
 				// test(prozess.pdchBechleunigung);
 				// test(prozess.pdchEntfernung);
 				// test(prozess.pdchSollwert);
-				LCDansteuern(1);
-				if (PRT0DR & 0x01)
-				{LCDansteuern(1);}
-				else {LCDansteuern(0);}
-					
+				// LCDansteuern(1);
+				//if (PRT0DR & 0x01)
+				//{LCDansteuern(1);}
+				//else {LCDansteuern(PRT0DR & 0x01);}
+					LCDansteuern(PRT0DR & 0x01);
 {
  // Pin is set. Add code to process
 }

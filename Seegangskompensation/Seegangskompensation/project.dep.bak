@@ -49,6 +49,8 @@
    C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\memory.inc
 ./lib/obj/psocconfigtbl.o : \
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
+./lib/obj/psocgpioint.o :  ./lib/PSOCGP~1.INC\
+   C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
 ./lib/obj/pwm8_1.o :  ./lib/PWM8_1.inc\
    C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc\
    C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\memory.inc
