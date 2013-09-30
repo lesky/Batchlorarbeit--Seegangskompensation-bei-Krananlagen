@@ -153,10 +153,16 @@ void main(void)
 				//if (PRT0DR & 0x01)
 				//{LCDansteuern(1);}
 				//else {LCDansteuern(PRT0DR & 0x01);}
-					LCDansteuern(PRT0DR & 0x01);
-{
- // Pin is set. Add code to process
-}
+					//LCDansteuern(PRT0DR & 0x01);
+				
+				// Erkennen von eingangssignalen über A/D-Wandler
+				if (prozess.pdchEntfernung <= 110)
+				{LCDansteuern(4);}
+				else if (prozess.pdchBechleunigung <= 110)
+				{LCDansteuern(5);}
+				else {
+				LCDansteuern(0);	
+				}
 			};
 			
 	// Präprozessor: Ende der Verzweifung
