@@ -157,11 +157,11 @@ void main(void)
 				
 				// Erkennen von eingangssignalen über A/D-Wandler
 				if (prozess.pdchEntfernung <= 110)
-				{LCDansteuern(4);}
+				{Ausgangansteuern(250,1);}
 				else if (prozess.pdchBechleunigung <= 110)
-				{LCDansteuern(5);}
+				{Ausgangansteuern(250,2);}
 				else {
-				LCDansteuern(0);	
+				Ausgangansteuern(0,0);	
 				}
 			};
 			

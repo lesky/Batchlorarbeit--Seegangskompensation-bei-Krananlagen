@@ -29,9 +29,9 @@ S _DUALADC8_GetSamples Ref0000
 S _DUALADC8_Start Ref0000
 S _IN1_Switch Ref0000
 S _IN2_Switch Ref0000
-A text size 160 flags 0
+A text size 167 flags 0
 dbfile ./main.c
-dbfile C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
 dbfunc e main 0 fV
 dbsym l hichBeschleunigungssumme 3 c
 dbsym l hichAusgangswert 2 c
@@ -59,78 +59,78 @@ dbline 92 41
 dbline 9F 4B
 dbline A0 51
 dbline A0 51
-dbline A0 58
-dbline A1 5A
-dbline A2 60
-dbline A2 60
-dbline A2 67
-dbline A3 69
-dbline A4 69
-dbline A5 70
-dbline A6 70
-dbline 8F 70
-dbline FFFFFFFE 72
-dbline 0 75
-dbfunc e LCDansteuern 77 fV
+dbline A0 5B
+dbline A1 5D
+dbline A2 63
+dbline A2 63
+dbline A2 6D
+dbline A3 6F
+dbline A4 6F
+dbline A5 77
+dbline A6 77
+dbline 8F 77
+dbline FFFFFFFE 79
+dbline 0 7C
+dbfunc e LCDansteuern 7E fV
 dbsym l rgch 0 A[5:5]c
 dbsym l hichdata FFFFFFFC c
-dbline FFFFFFFF 77
-dbline B1 7B
-dbline B4 7B
-dbline B5 83
-dbline B8 8E
-dbline B9 A7
-dbline FFFFFFFE AE
-dbline 0 B1
-dbfunc e Dateneinlesen B2 fV
-dbline FFFFFFFF B2
-dbline BE B2
-dbline C0 B2
-dbline C4 BB
-dbline C7 C2
-dbline C7 C2
-dbline C9 D6
-dbline CD DD
-dbline FFFFFFFE E4
-dbline 0 E4
-dbfunc e Ausgangansteuern E5 fV
+dbline FFFFFFFF 7E
+dbline B1 82
+dbline B4 82
+dbline B5 8A
+dbline B8 95
+dbline B9 AE
+dbline FFFFFFFE B5
+dbline 0 B8
+dbfunc e Dateneinlesen B9 fV
+dbline FFFFFFFF B9
+dbline BE B9
+dbline C0 B9
+dbline C4 C2
+dbline C7 C9
+dbline C7 C9
+dbline C9 DD
+dbline CD E4
+dbline FFFFFFFE EB
+dbline 0 EB
+dbfunc e Ausgangansteuern EC fV
 dbsym l iin 0 I
 dbsym l hichRichtung FFFFFFFB c
 dbsym l hichAusgangswert FFFFFFFC c
-dbline FFFFFFFF E5
-dbline D1 E9
-dbline D6 E9
-dbline DB 106
-dbline DC 10C
-dbline DD 112
-dbline E3 114
-dbline E4 11A
-dbline E5 120
-dbline EA 122
-dbline EC 129
-dbline F1 12B
-dbline FFFFFFFE 132
-dbline 0 135
-dbfunc e test 136 fV
+dbline FFFFFFFF EC
+dbline D1 F0
+dbline D6 F0
+dbline DB 10D
+dbline DC 113
+dbline DD 119
+dbline E3 11B
+dbline E4 121
+dbline E5 127
+dbline EA 129
+dbline EC 130
+dbline F1 132
+dbline FFFFFFFE 139
+dbline 0 13C
+dbfunc e test 13D fV
 dbsym l iin 0 I
 dbsym l hichdata FFFFFFFC c
-dbline FFFFFFFF 136
-dbline F8 13A
-dbline FB 13A
-dbline FC 140
-dbline FD 140
-dbline FE 147
-dbline FB 147
-dbline FB 14C
-dbline FFFFFFFE 15C
-dbline 0 15F
+dbline FFFFFFFF 13D
+dbline F8 141
+dbline FB 141
+dbline FC 147
+dbline FD 147
+dbline FE 14E
+dbline FB 14E
+dbline FB 153
+dbline FFFFFFFE 163
+dbline 0 166
 S _main Def0000
-S _LCDansteuern Def0077
-S _test Def0136
-S _Dateneinlesen Def00B2
-S _Ausgangansteuern Def00E5
+S _LCDansteuern Def007E
+S _test Def013D
+S _Dateneinlesen Def00B9
+S _Ausgangansteuern Def00EC
 A bss size 3 flags 20
-dbfile C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\Dropbox\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
 dbstruct 3 .1
 dbfield 0 pdchBechleunigung c
 dbfield 1 pdchEntfernung c
@@ -148,52 +148,54 @@ T 00 1C 50 03 7C 00 00 7C 00 00 50 03 7C 00 00 50
 R 00 00 00 00 02 05 00 19 02 08 00 18 02 0D 00 0C
 T 00 2A 00 7C 00 00 7C 00 00 7C 00 00 7C
 R 00 00 00 00 02 04 00 08 02 07 00 13 02 0A 00 14
-T 00 35 00 00 50 01 7C 00 00 20 80 32 90 71 50 02
+T 00 35 00 00 50 01 7C 00 00 20 80 39 90 78 50 02
 R 00 00 00 00 02 02 00 17 02 07 00 07
-T 00 43 08 50 00 08 90 9C 38 FE 50 6E 3A 00 01 C0
+T 00 43 08 50 00 08 90 A3 38 FE 50 6E 3A 00 01 C0
 R 00 00 00 00 01 0D 00 01
-T 00 50 0A 50 04 08 90 21 38 FF 80 17 50 6E 3A
+T 00 50 0D 50 01 08 50 FA 08 90 93 38 FE 80 1B 50
 R 00 00 00 00
-T 00 5D 00 00 C0 0A 50 05 08 90 12 38 FF 80 08 50
+T 00 5E 6E 3A 00 00 C0 0D 50 02 08 50 FA 08 90 81
+R 00 00 00 00 01 04 00 01
+T 00 6B 38 FE 80 09 50 00 08 08 90 77 38 FE 8F C7
+R 00 00 00 00
+T 00 79 38 FC 20 8F FF 10 4F 38 05 10 57 05 50 00
+R 00 00 00 00
+T 00 87 7C 00 00 50 00 00 08 50 00 00 5C 18 7C
+R 00 00 00 00 02 03 00 0E 41 06 00 02 01 0A 00 02
+T 00 92 00 00 20 50 00 08 50 0A 08 52 FC 53 00 00
+R 00 00 00 00 02 02 00 15 03 0E 00 0B
+T 00 9F 50 00 08 51 00 00 08 50 00 08 10 7C 00 00
+R 00 00 00 00 03 06 00 0B 02 0E 00 01
+T 00 AC 38 FA 10 51 00 00 7C 00 00 20 38 FB 20 7F
+R 00 00 00 00 03 06 00 0A 02 09 00 09
+T 00 B9 10 7C 00 00 20 39 00 A0 08 10 7C 00 00 20
+R 00 00 00 00 02 04 00 0F 02 0D 00 16
+T 00 C7 53 00 02 50 00 00 10 58 00 00 08 28 53
+R 00 00 00 00 01 03 00 01 01 06 00 03 03 0A 00 0B
+T 00 D1 00 00 18 75 09 00 28 20 3C 00 00 00 AF ED
+R 00 00 00 00 03 02 00 0A 03 0B 00 0A
+T 00 DD 10 7C 00 00 20 53 00 00 10 7C 00 00 20 53
+R 00 00 00 00 02 04 00 02 01 08 00 01 02 0C 00 0D
+T 00 EA 00 01 7F 10 4F 38 04 52 FB 54 03 56 02 00
 R 00 00 00 00 01 02 00 01
-T 00 6A 00 08 90 09 38 FF 8F CE 38 FC 20 8F FF 10
+T 00 F7 3D 02 00 B0 06 3D 03 01 A0 0D 3D 02 00 B0
 R 00 00 00 00
-T 00 78 4F 38 05 10 57 05 50 00 7C 00 00 50 00 00
-R 00 00 00 00 02 0B 00 0E 41 0E 00 02
-T 00 85 08 50 00 00 5C 18 7C 00 00 20 50 00 08 50
-R 00 00 00 00 01 04 00 02 02 09 00 15
-T 00 92 0A 08 52 FC 53 00 00 50 00 08 51 00 00 08
-R 00 00 00 00 03 07 00 0B 03 0D 00 0B
-T 00 9E 50 00 08 10 7C 00 00 38 FA 10 51 00 00 7C
-R 00 00 00 00 02 07 00 01 03 0D 00 0A
-T 00 AB 00 00 20 38 FB 20 7F 10 7C 00 00 20 39 00
-R 00 00 00 00 02 02 00 09 02 0B 00 0F
-T 00 B9 A0 08 10 7C 00 00 20 53 00 02 50 00 00 10
-R 00 00 00 00 02 06 00 16 01 0A 00 01 01 0D 00 03
-T 00 C5 58 00 00 08 28 53 00 00 18 75 09 00 28 20
-R 00 00 00 00 03 03 00 0B 03 08 00 0A
-T 00 D1 3C 00 00 00 AF ED 10 7C 00 00 20 53 00 00
-R 00 00 00 00 03 03 00 0A 02 0A 00 02 01 0E 00 01
-T 00 DD 10 7C 00 00 20 53 00 01 7F 10 4F 38 04 52
-R 00 00 00 00 02 04 00 0D 01 08 00 01
-T 00 EA FB 54 03 56 02 00 3D 02 00 B0 06 3D 03 01
+T 01 05 06 3D 03 02 A0 11 80 1D 10 50 00 7C 00 00
+R 00 00 00 00 02 0E 00 1A
+T 01 13 50 01 7C 00 00 20 80 18 10 50 01 7C 00 00
+R 00 00 00 00 02 05 00 1B 02 0E 00 1A
+T 01 21 50 00 7C 00 00 20 80 0A 10 50 00 7C 00 00
+R 00 00 00 00 02 05 00 1B 02 0E 00 12
+T 01 2F 20 80 08 10 52 FC 7C 00 00 20 38 FC 20 7F
+R 00 00 00 00 02 09 00 12
+T 01 3D 10 4F 38 02 56 01 00 56 00 00 52 FC 08 9F
 R 00 00 00 00
-T 00 F8 A0 0D 3D 02 00 B0 06 3D 03 02 A0 11 80 1D
+T 01 4B 32 38 FF 77 01 0F 00 00 50 F4 13 01 52 00
 R 00 00 00 00
-T 01 06 10 50 00 7C 00 00 50 01 7C 00 00 20 80 18
-R 00 00 00 00 02 06 00 1A 02 0B 00 1B
-T 01 14 10 50 01 7C 00 00 50 00 7C 00 00 20 80 0A
-R 00 00 00 00 02 06 00 1A 02 0B 00 1B
-T 01 22 10 50 00 7C 00 00 20 80 08 10 52 FC 7C
-R 00 00 00 00 02 06 00 12
-T 01 2F 00 00 20 38 FC 20 7F 10 4F 38 02 56 01 00
-R 00 00 00 00 02 02 00 12
-T 01 3D 56 00 00 52 FC 08 9F 32 38 FF 77 01 0F 00
+T 01 59 31 80 53 00 00 50 81 1A 00 00 DF E5 38 FE
+R 00 00 00 00 03 05 00 10 03 0A 00 10
+T 01 65 20 7F
 R 00 00 00 00
-T 01 4B 00 50 F4 13 01 52 00 31 80 53 00 00 50 81
-R 00 00 00 00 03 0C 00 10
-T 01 58 1A 00 00 DF E5 38 FE 20 7F
-R 00 00 00 00 03 03 00 10
 T 00 00 57 65 72 74 3A 00
 R 00 00 00 02
 T 00 00 00 00
