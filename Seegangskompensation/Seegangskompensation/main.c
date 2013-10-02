@@ -1,4 +1,4 @@
-/********************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /********************************************************
 * C main-Funktion										*
 * Programm: Seegangskompensation bei Krahnanlagen		*
 * Controler: CY8C27446-24PXI							*
@@ -143,7 +143,7 @@ void main(void)
 		while (1)
 			{
 				Dateneinlesen();
-				Ausgangansteuern(0, 2);
+				//Ausgangansteuern(250, 2);
 				
 				// Testfunktionen Aufrufen:
 				// test(prozess.pdchBechleunigung);
@@ -157,9 +157,12 @@ void main(void)
 				
 				// Erkennen von eingangssignalen über A/D-Wandler
 				if (prozess.pdchEntfernung <= 110)
-				{Ausgangansteuern(250,1);}
+				{
+					LCDansteuern(1);
+					Ausgangansteuern(250,1);}
 				else if (prozess.pdchBechleunigung <= 110)
-				{Ausgangansteuern(250,2);}
+				{	LCDansteuern(2);
+					Ausgangansteuern(250,2);}
 				else {
 				Ausgangansteuern(0,0);	
 				}

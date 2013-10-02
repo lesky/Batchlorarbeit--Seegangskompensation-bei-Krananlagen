@@ -5597,8 +5597,8 @@ FILE: lib\adcinc.asm                    (0001) ;;*******************************
                                         (0396) .ENDSECTION
                                         (0397) 
                                         (0398) ; End of File ADCINC.asm
-FILE: C:\Users\Lesky\Desktop\Dropbox\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
-(0001) /********************************************************
+FILE: C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
+(0001)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /********************************************************
 (0002) * C main-Funktion										*
 (0003) * Programm: Seegangskompensation bei Krahnanlagen		*
 (0004) * Controler: CY8C27446-24PXI							*
@@ -5776,13 +5776,7 @@ __UserModules_end|_main|__text_start|_main:
 (0144) 			{
 (0145) 				Dateneinlesen();
     089B: 90 78    CALL  _Dateneinlesen
-(0146) 				Ausgangansteuern(0, 2);
-    089D: 50 02    MOV   A,0x2
-    089F: 08       PUSH  A
-    08A0: 50 00    MOV   A,0x0
-    08A2: 08       PUSH  A
-    08A3: 90 A3    CALL  _Ausgangansteuern
-    08A5: 38 FE    ADD   SP,0xFE
+(0146) 				//Ausgangansteuern(250, 2);
 (0147) 				
 (0148) 				// Testfunktionen Aufrufen:
 (0149) 				// test(prozess.pdchBechleunigung);
@@ -5796,67 +5790,76 @@ __UserModules_end|_main|__text_start|_main:
 (0157) 				
 (0158) 				// Erkennen von eingangssignalen über A/D-Wandler
 (0159) 				if (prozess.pdchEntfernung <= 110)
-    08A7: 50 6E    MOV   A,0x6E
-    08A9: 3A 1A    CMP   A,[prozess+1]
-    08AB: C0 0D    JC    0x08B9
-(0160) 				{Ausgangansteuern(250,1);}
-    08AD: 50 01    MOV   A,0x1
-    08AF: 08       PUSH  A
-    08B0: 50 FA    MOV   A,0xFA
-    08B2: 08       PUSH  A
-    08B3: 90 93    CALL  _Ausgangansteuern
-    08B5: 38 FE    ADD   SP,0xFE
-    08B7: 80 1B    JMP   0x08D3
-(0161) 				else if (prozess.pdchBechleunigung <= 110)
-    08B9: 50 6E    MOV   A,0x6E
-    08BB: 3A 19    CMP   A,[prozess]
-    08BD: C0 0D    JC    0x08CB
-(0162) 				{Ausgangansteuern(250,2);}
+    089D: 50 6E    MOV   A,0x6E
+    089F: 3A 1A    CMP   A,[prozess+1]
+    08A1: C0 12    JC    0x08B4
+(0160) 				{
+(0161) 					LCDansteuern(1);
+    08A3: 50 01    MOV   A,0x1
+    08A5: 08       PUSH  A
+    08A6: 90 32    CALL  _LCDansteuern
+(0162) 					Ausgangansteuern(250,1);}
+    08A8: 50 01    MOV   A,0x1
+    08AA: 08       PUSH  A
+    08AB: 50 FA    MOV   A,0xFA
+    08AD: 08       PUSH  A
+    08AE: 90 98    CALL  _Ausgangansteuern
+    08B0: 38 FD    ADD   SP,0xFD
+    08B2: 80 20    JMP   0x08D3
+(0163) 				else if (prozess.pdchBechleunigung <= 110)
+    08B4: 50 6E    MOV   A,0x6E
+    08B6: 3A 19    CMP   A,[prozess]
+    08B8: C0 12    JC    0x08CB
+(0164) 				{	LCDansteuern(2);
+    08BA: 50 02    MOV   A,0x2
+    08BC: 08       PUSH  A
+    08BD: 90 1B    CALL  _LCDansteuern
+(0165) 					Ausgangansteuern(250,2);}
     08BF: 50 02    MOV   A,0x2
     08C1: 08       PUSH  A
     08C2: 50 FA    MOV   A,0xFA
     08C4: 08       PUSH  A
     08C5: 90 81    CALL  _Ausgangansteuern
-    08C7: 38 FE    ADD   SP,0xFE
+    08C7: 38 FD    ADD   SP,0xFD
     08C9: 80 09    JMP   0x08D3
-(0163) 				else {
-(0164) 				Ausgangansteuern(0,0);	
+(0166) 				else {
+(0167) 				Ausgangansteuern(0,0);	
     08CB: 50 00    MOV   A,0x0
     08CD: 08       PUSH  A
     08CE: 08       PUSH  A
     08CF: 90 77    CALL  _Ausgangansteuern
     08D1: 38 FE    ADD   SP,0xFE
-(0165) 				}
-(0166) 			};
+(0168) 				}
+(0169) 			};
     08D3: 8F C7    JMP   0x089B
     08D5: 38 FC    ADD   SP,0xFC
     08D7: 20       POP   X
     08D8: 8F FF    JMP   0x08D8
-(0167) 			
-(0168) 	// Präprozessor: Ende der Verzweifung
-(0169) 	#endif 
-(0170) }
-(0171) 	
-(0172) /********************************************************
-(0173) * 			Funktionsdeklarationen						*
-(0174) ********************************************************/
-(0175) 	
-(0176) void LCDansteuern(char hichdata)
-(0177) 	{		
+(0170) 			
+(0171) 	// Präprozessor: Ende der Verzweifung
+(0172) 	#endif 
+(0173) }
+(0174) 	
+(0175) /********************************************************
+(0176) * 			Funktionsdeklarationen						*
+(0177) ********************************************************/
+(0178) 	
+(0179) void LCDansteuern(char hichdata)
+(0180) 	{		
 _LCDansteuern:
   rgch                 --> X+0
   hichdata             --> X-4
     08DA: 10       PUSH  X
     08DB: 4F       MOV   X,SP
     08DC: 38 05    ADD   SP,0x5
-(0178) 			char rgch[5];
-(0179) 			// Text auf LCD ausgeben
-(0180) 			LCD_1_Position(0,5);    
+(0181) 			char rgch[5];
+(0182) 			// Text auf LCD ausgeben
+(0183) 			LCD_1_Position(0,5);    
     08DE: 10       PUSH  X
     08DF: 57 05    MOV   X,0x5
     08E1: 50 00    MOV   A,0x0
     08E3: 7C 05 C6 LCALL _LCD_1_Position
-(0181) 			LCD_1_PrCString("Wert:");
+(0184) 			LCD_1_PrCString("Wert:");
     08E6: 50 01    MOV   A,0x1
     08E8: 08       PUSH  A
     08E9: 50 50    MOV   A,0x50
@@ -5864,9 +5867,9 @@ _LCDansteuern:
     08EC: 18       POP   A
     08ED: 7C 04 55 LCALL _LCD_1_PrCString
     08F0: 20       POP   X
-(0182) 			
-(0183) 			// Zahl Auf LCD ausgeben
-(0184) 			itoa(rgch,hichdata,10);
+(0185) 			
+(0186) 			// Zahl Auf LCD ausgeben
+(0187) 			itoa(rgch,hichdata,10);
     08F1: 50 00    MOV   A,0x0
     08F3: 08       PUSH  A
     08F4: 50 0A    MOV   A,0xA
@@ -5882,7 +5885,7 @@ _LCDansteuern:
     0904: 10       PUSH  X
     0905: 7C 09 FB LCALL _itoa
     0908: 38 FA    ADD   SP,0xFA
-(0185) 			LCD_1_PrString(rgch);		
+(0188) 			LCD_1_PrString(rgch);		
     090A: 10       PUSH  X
     090B: 51 05    MOV   A,[__r0]
     090D: 7C 04 91 LCALL _LCD_1_PrString
@@ -5890,30 +5893,30 @@ _LCDansteuern:
     0911: 38 FB    ADD   SP,0xFB
     0913: 20       POP   X
     0914: 7F       RET   
-(0186) 
-(0187) 	}
-(0188) 	
-(0189) void Dateneinlesen(void)
-(0190) 	{	
-(0191) 	// Wenn Sollwertdaten bereit sind
-(0192) 	if(ADCINC_fIsDataAvailable() != 0)
+(0189) 
+(0190) 	}
+(0191) 	
+(0192) void Dateneinlesen(void)
+(0193) 	{	
+(0194) 	// Wenn Sollwertdaten bereit sind
+(0195) 	if(ADCINC_fIsDataAvailable() != 0)
 _Dateneinlesen:
     0915: 10       PUSH  X
     0916: 7C 08 35 LCALL _ADCINC_fIsDataAvailable
     0919: 20       POP   X
     091A: 39 00    CMP   A,0x0
     091C: A0 08    JZ    0x0925
-(0193) 			
-(0194) 		// Einlesen des Sollwertes
-(0195)        	// data ready flag zurüvksetzen	
-(0196) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
+(0196) 			
+(0197) 		// Einlesen des Sollwertes
+(0198)        	// data ready flag zurüvksetzen	
+(0199) 		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
     091E: 10       PUSH  X
     091F: 7C 08 45 LCALL _ADCINC_bClearFlagGetData|ADCINC_cClearFlagGetData|_ADCINC_cClearFlagGetData
     0922: 20       POP   X
     0923: 53 1B    MOV   [prozess+2],A
-(0197)               	   
-(0198)     	// Auf Entfernung und Position Warten
-(0199) 		while(DUALADC8_fIsDataAvailable == 0);    		
+(0200)               	   
+(0201)     	// Auf Entfernung und Position Warten
+(0202) 		while(DUALADC8_fIsDataAvailable == 0);    		
     0925: 50 1C    MOV   A,0x1C
     0927: 10       PUSH  X
     0928: 58 04    MOV   X,[__r1]
@@ -5927,25 +5930,25 @@ _Dateneinlesen:
     0933: 20       POP   X
     0934: 3C 05 00 CMP   [__r0],0x0
     0937: AF ED    JZ    0x0925
-(0200)    		// Einlesen der Beschleunigung
-(0201) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
+(0203)    		// Einlesen der Beschleunigung
+(0204) 		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
     0939: 10       PUSH  X
     093A: 7C 07 65 LCALL _DUALADC8_cGetData1
     093D: 20       POP   X
     093E: 53 19    MOV   [prozess],A
-(0202)     	
-(0203) 		// Einlesen der Entfernung
-(0204)         // data ready flag zurüvksetzen         
-(0205) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+(0205)     	
+(0206) 		// Einlesen der Entfernung
+(0207)         // data ready flag zurüvksetzen         
+(0208) 		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
     0940: 10       PUSH  X
     0941: 7C 07 68 LCALL _DUALADC8_cGetData2ClearFlag
     0944: 20       POP   X
     0945: 53 1A    MOV   [prozess+1],A
     0947: 7F       RET   
-(0206) 	}
-(0207) 
-(0208) 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
-(0209) 	{
+(0209) 	}
+(0210) 
+(0211) 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
+(0212) 	{
 _Ausgangansteuern:
   iin                  --> X+0
   hichRichtung         --> X-5
@@ -5953,11 +5956,11 @@ _Ausgangansteuern:
     0948: 10       PUSH  X
     0949: 4F       MOV   X,SP
     094A: 38 04    ADD   SP,0x4
-(0210) 		// Variablendeklaration
-(0211) 		int iin;
-(0212) 		
-(0213) 		// Drehrichtung Auswählen
-(0214) 		switch(hichRichtung) {
+(0213) 		// Variablendeklaration
+(0214) 		int iin;
+(0215) 		
+(0216) 		// Drehrichtung Auswählen
+(0217) 		switch(hichRichtung) {
     094C: 52 FB    MOV   A,[X-5]
     094E: 54 03    MOV   [X+3],A
     0950: 56 02 00 MOV   [X+2],0x0
@@ -5970,52 +5973,52 @@ _Ausgangansteuern:
     0962: 3D 03 02 CMP   [X+3],0x2
     0965: A0 11    JZ    0x0977
     0967: 80 1D    JMP   0x0985
-(0215) 			
-(0216) 			// Linkslauf
-(0217) 			case 1: 
-(0218) 				// IN1 und IN2 Ansteuern
-(0219) 				IN1_Switch(0);
+(0218) 			
+(0219) 			// Linkslauf
+(0220) 			case 1: 
+(0221) 				// IN1 und IN2 Ansteuern
+(0222) 				IN1_Switch(0);
     0969: 10       PUSH  X
     096A: 50 00    MOV   A,0x0
     096C: 7C 06 23 LCALL _IN1_Switch
-(0220) 				IN2_Switch(1);
+(0223) 				IN2_Switch(1);
     096F: 50 01    MOV   A,0x1
     0971: 7C 05 FA LCALL _IN2_Switch
     0974: 20       POP   X
-(0221) 				break;
+(0224) 				break;
     0975: 80 18    JMP   0x098E
-(0222) 			
-(0223) 			// Rechtslauf
-(0224) 			case 2:
-(0225) 				
-(0226) 				// IN1 und IN2 Ansteuern
-(0227) 				IN1_Switch(1);
+(0225) 			
+(0226) 			// Rechtslauf
+(0227) 			case 2:
+(0228) 				
+(0229) 				// IN1 und IN2 Ansteuern
+(0230) 				IN1_Switch(1);
     0977: 10       PUSH  X
     0978: 50 01    MOV   A,0x1
     097A: 7C 06 23 LCALL _IN1_Switch
-(0228) 				IN2_Switch(0);
+(0231) 				IN2_Switch(0);
     097D: 50 00    MOV   A,0x0
     097F: 7C 05 FA LCALL _IN2_Switch
     0982: 20       POP   X
-(0229) 				break;
+(0232) 				break;
     0983: 80 0A    JMP   0x098E
-(0230) 				
-(0231) 			// Ungültiger Wert
-(0232) 			default:
-(0233) 				// Pulsweite auf 0 setzen
-(0234) 				PWM8_1_WritePulseWidth(0);
+(0233) 				
+(0234) 			// Ungültiger Wert
+(0235) 			default:
+(0236) 				// Pulsweite auf 0 setzen
+(0237) 				PWM8_1_WritePulseWidth(0);
     0985: 10       PUSH  X
     0986: 50 00    MOV   A,0x0
     0988: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
     098B: 20       POP   X
-(0235) 				// Funktion verlassen
-(0236) 				return ;
+(0238) 				// Funktion verlassen
+(0239) 				return ;
     098C: 80 08    JMP   0x0995
-(0237) 				
-(0238) 			}
-(0239) 		
-(0240) 		// Pulsweite auf hichAusgangswert setzen 		
-(0241) 		PWM8_1_WritePulseWidth(hichAusgangswert);
+(0240) 				
+(0241) 			}
+(0242) 		
+(0243) 		// Pulsweite auf hichAusgangswert setzen 		
+(0244) 		PWM8_1_WritePulseWidth(hichAusgangswert);
     098E: 10       PUSH  X
     098F: 52 FC    MOV   A,[X-4]
     0991: 7C 03 8A LCALL _PWM8_1_WritePulseWidth
@@ -6023,36 +6026,36 @@ _Ausgangansteuern:
     0995: 38 FC    ADD   SP,0xFC
     0997: 20       POP   X
     0998: 7F       RET   
-(0242) 	}
-(0243) 		
-(0244) // Präprozessor: kompiliere Funktion nur wenn Test
-(0245) #ifdef TEST
-(0246) 	// Ausgabe der Testdaten auf LCD-Display
-(0247) 	void test(char hichdata)
-(0248) 		{
+(0245) 	}
+(0246) 		
+(0247) // Präprozessor: kompiliere Funktion nur wenn Test
+(0248) #ifdef TEST
+(0249) 	// Ausgabe der Testdaten auf LCD-Display
+(0250) 	void test(char hichdata)
+(0251) 		{
 _test:
   iin                  --> X+0
   hichdata             --> X-4
     0999: 10       PUSH  X
     099A: 4F       MOV   X,SP
     099B: 38 02    ADD   SP,0x2
-(0249) 		// gibt 99999 mal LCD Aus
-(0250) 		int iin;
-(0251) 		for (iin = 0; iin <= 500; iin ++)
+(0252) 		// gibt 99999 mal LCD Aus
+(0253) 		int iin;
+(0254) 		for (iin = 0; iin <= 500; iin ++)
     099D: 56 01 00 MOV   [X+1],0x0
     09A0: 56 00 00 MOV   [X+0],0x0
-(0252) 			{
-(0253) 			LCDansteuern(hichdata);	
+(0255) 			{
+(0256) 			LCDansteuern(hichdata);	
     09A3: 52 FC    MOV   A,[X-4]
     09A5: 08       PUSH  A
     09A6: 9F 32    CALL  _LCDansteuern
     09A8: 38 FF    ADD   SP,0xFF
-(0254) 			}
+(0257) 			}
     09AA: 77 01    INC   [X+1]
     09AC: 0F 00 00 ADC   [X+0],0x0
     09AF: 50 F4    MOV   A,0xF4
-(0255) 		}
-(0256) #endif FILE: lib\psocgpioint.asm               (0001) ;  Generated by PSoC Designer 5.4.2946
+(0258) 		}
+(0259) #endif FILE: lib\psocgpioint.asm               (0001) ;  Generated by PSoC Designer 5.4.2946
                                         (0002) ;
                                         (0003) ;;*****************************************************************************
                                         (0004) ;;*****************************************************************************

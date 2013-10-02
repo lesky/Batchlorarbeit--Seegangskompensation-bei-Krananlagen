@@ -31,7 +31,7 @@ S _IN1_Switch Ref0000
 S _IN2_Switch Ref0000
 A text size 167 flags 0
 dbfile ./main.c
-dbfile C:\Users\Lesky\Desktop\Dropbox\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
 dbfunc e main 0 fV
 dbsym l hichBeschleunigungssumme 3 c
 dbsym l hichAusgangswert 2 c
@@ -55,19 +55,20 @@ dbline 61 34
 dbline 8B 37
 dbline 90 3F
 dbline 91 3F
-dbline 92 41
-dbline 9F 4B
-dbline A0 51
-dbline A0 51
-dbline A0 5B
-dbline A1 5D
-dbline A2 63
-dbline A2 63
-dbline A2 6D
-dbline A3 6F
-dbline A4 6F
-dbline A5 77
-dbline A6 77
+dbline 9F 41
+dbline A1 47
+dbline A1 47
+dbline A2 4C
+dbline A2 56
+dbline A3 58
+dbline A4 5E
+dbline A4 5E
+dbline A5 63
+dbline A5 6D
+dbline A6 6F
+dbline A7 6F
+dbline A8 77
+dbline A9 77
 dbline 8F 77
 dbline FFFFFFFE 79
 dbline 0 7C
@@ -75,22 +76,22 @@ dbfunc e LCDansteuern 7E fV
 dbsym l rgch 0 A[5:5]c
 dbsym l hichdata FFFFFFFC c
 dbline FFFFFFFF 7E
-dbline B1 82
 dbline B4 82
-dbline B5 8A
-dbline B8 95
-dbline B9 AE
+dbline B7 82
+dbline B8 8A
+dbline BB 95
+dbline BC AE
 dbline FFFFFFFE B5
 dbline 0 B8
 dbfunc e Dateneinlesen B9 fV
 dbline FFFFFFFF B9
-dbline BE B9
-dbline C0 B9
-dbline C4 C2
-dbline C7 C9
-dbline C7 C9
-dbline C9 DD
-dbline CD E4
+dbline C1 B9
+dbline C3 B9
+dbline C7 C2
+dbline CA C9
+dbline CA C9
+dbline CC DD
+dbline D0 E4
 dbline FFFFFFFE EB
 dbline 0 EB
 dbfunc e Ausgangansteuern EC fV
@@ -98,30 +99,30 @@ dbsym l iin 0 I
 dbsym l hichRichtung FFFFFFFB c
 dbsym l hichAusgangswert FFFFFFFC c
 dbline FFFFFFFF EC
-dbline D1 F0
-dbline D6 F0
-dbline DB 10D
-dbline DC 113
-dbline DD 119
-dbline E3 11B
-dbline E4 121
-dbline E5 127
-dbline EA 129
-dbline EC 130
-dbline F1 132
+dbline D4 F0
+dbline D9 F0
+dbline DE 10D
+dbline DF 113
+dbline E0 119
+dbline E6 11B
+dbline E7 121
+dbline E8 127
+dbline ED 129
+dbline EF 130
+dbline F4 132
 dbline FFFFFFFE 139
 dbline 0 13C
 dbfunc e test 13D fV
 dbsym l iin 0 I
 dbsym l hichdata FFFFFFFC c
 dbline FFFFFFFF 13D
-dbline F8 141
 dbline FB 141
-dbline FC 147
-dbline FD 147
+dbline FE 141
+dbline FF 147
+dbline 100 147
+dbline 101 14E
 dbline FE 14E
-dbline FB 14E
-dbline FB 153
+dbline FE 153
 dbline FFFFFFFE 163
 dbline 0 166
 S _main Def0000
@@ -130,7 +131,7 @@ S _test Def013D
 S _Dateneinlesen Def00B9
 S _Ausgangansteuern Def00EC
 A bss size 3 flags 20
-dbfile C:\Users\Lesky\Desktop\Dropbox\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\NEUERO~1\SEEGAN~1\SEEGAN~1\main.c
 dbstruct 3 .1
 dbfield 0 pdchBechleunigung c
 dbfield 1 pdchEntfernung c
@@ -148,15 +149,15 @@ T 00 1C 50 03 7C 00 00 7C 00 00 50 03 7C 00 00 50
 R 00 00 00 00 02 05 00 19 02 08 00 18 02 0D 00 0C
 T 00 2A 00 7C 00 00 7C 00 00 7C 00 00 7C
 R 00 00 00 00 02 04 00 08 02 07 00 13 02 0A 00 14
-T 00 35 00 00 50 01 7C 00 00 20 80 39 90 78 50 02
+T 00 35 00 00 50 01 7C 00 00 20 80 39 90 78 50 6E
 R 00 00 00 00 02 02 00 17 02 07 00 07
-T 00 43 08 50 00 08 90 A3 38 FE 50 6E 3A 00 01 C0
+T 00 43 3A 00 01 C0 12 50 01 08 90 32 50 01 08 50
+R 00 00 00 00 01 03 00 01
+T 00 50 FA 08 90 98 38 FD 80 20 50 6E 3A 00 00 C0
 R 00 00 00 00 01 0D 00 01
-T 00 50 0D 50 01 08 50 FA 08 90 93 38 FE 80 1B 50
+T 00 5D 12 50 02 08 90 1B 50 02 08 50 FA 08 90 81
 R 00 00 00 00
-T 00 5E 6E 3A 00 00 C0 0D 50 02 08 50 FA 08 90 81
-R 00 00 00 00 01 04 00 01
-T 00 6B 38 FE 80 09 50 00 08 08 90 77 38 FE 8F C7
+T 00 6B 38 FD 80 09 50 00 08 08 90 77 38 FE 8F C7
 R 00 00 00 00
 T 00 79 38 FC 20 8F FF 10 4F 38 05 10 57 05 50 00
 R 00 00 00 00
