@@ -27,6 +27,5 @@
 #include "PGA_2.h"
 #include "PGA_3.h"
 #include "PWM8_1.h"
-#include "SELBSTTEST.h"
 
 #endif

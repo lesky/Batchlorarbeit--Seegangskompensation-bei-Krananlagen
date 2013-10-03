@@ -43,35 +43,6 @@ AnalogColumn_InputMUX_0_IntCtrl_0_ADDR:	equ	102h
 AnalogColumn_InputMUX_0_IntCtrl_1_ADDR:	equ	103h
 AnalogColumn_InputMUX_0_IntEn_ADDR:	equ	1h
 AnalogColumn_InputMUX_0_MASK:	equ	80h
-; SELBSTTESTPin address and mask equates
-SELBSTTESTPin_Data_ADDR:	equ	4h
-SELBSTTESTPin_DriveMode_0_ADDR:	equ	104h
-SELBSTTESTPin_DriveMode_1_ADDR:	equ	105h
-SELBSTTESTPin_DriveMode_2_ADDR:	equ	7h
-SELBSTTESTPin_GlobalSelect_ADDR:	equ	6h
-SELBSTTESTPin_IntCtrl_0_ADDR:	equ	106h
-SELBSTTESTPin_IntCtrl_1_ADDR:	equ	107h
-SELBSTTESTPin_IntEn_ADDR:	equ	5h
-SELBSTTESTPin_MASK:	equ	2h
-; SELBSTTESTPin_Data access macros
-;   GetSELBSTTESTPin_Data macro, return in a
-macro GetSELBSTTESTPin_Data
-	mov		a,[Port_1_Data_SHADE]
-	and		a, 2h
-endm
-;   SetSELBSTTESTPin_Data macro
-macro SetSELBSTTESTPin_Data
-	or		[Port_1_Data_SHADE], 2h
-	mov		a, [Port_1_Data_SHADE]
-	mov		reg[SELBSTTESTPin_Data_ADDR], a
-endm
-;   ClearSELBSTTESTPin_Data macro
-macro ClearSELBSTTESTPin_Data
-	and		[Port_1_Data_SHADE], ~2h
-	mov		a, [Port_1_Data_SHADE]
-	mov		reg[SELBSTTESTPin_Data_ADDR], a
-endm
-
 ; IN1Pin address and mask equates
 IN1Pin_Data_ADDR:	equ	4h
 IN1Pin_DriveMode_0_ADDR:	equ	104h

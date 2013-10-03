@@ -1,4 +1,5 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /********************************************************
+   
+/********************************************************
 * C main-Funktion										*
 * Programm: Seegangskompensation bei Krahnanlagen		*
 * Controler: CY8C27446-24PXI							*
@@ -33,13 +34,7 @@
 void LCDansteuern(char);
 void Dateneinlesen(void);
 void Ausgangansteuern(char, char);
-
-
-// Präprozessor: kompiliere Funktion nur wenn Test
-#ifdef TEST
-	void test(char);
-#endif 
-
+void Initalisierung(void);
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
    {	  						
@@ -56,45 +51,15 @@ void main(void)
 	********************************************************/	
 		
 	// Konstanten					
-	char kochKP;
-	char kochKS;
+	char kochKR;
+	char kochKRZ;
 		
 	// Variablen
 	char hichAusgangswert;							
 	char hichBeschleunigungssumme;  
 		
-	/********************************************************
-	* 			Initialisierung des Controllers				*
-	********************************************************/
-	
-	//globale Interrupts Freigeben
-	M8C_EnableGInt;                     				
-  	
-	// Initialisieren des LCD-Displays
-	LCD_1_Start();                 					
-   	
-	// Initialisieren des PWM-Moduls
-	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
-    PWM8_1_Start();
-	
-	PGA_1_Start(PGA_1_HIGHPOWER);
-	PGA_2_Start(PGA_2_HIGHPOWER);
-	PGA_3_Start(PGA_3_HIGHPOWER);	
-	
-	// Initialisieren des Dualen AD-Wandlers
-	// für Entfernung und Beschleunigung
-	DUALADC8_Start(DUALADC8_HIGHPOWER); 			    			
-   	DUALADC8_GetSamples(); 
-	
-	// Initialisieren des AD-Wandlers
-	// für den Sollwert
-	ADCINC_Start(ADCINC_HIGHPOWER);      			
-	ADCINC_GetSamples(0);                 			
-	
-	//Initialisieren der Digitalen Ausgänge
-	IN1_Start();	
-	IN2_Start();
-	SELBSTTEST_Start();
+	// Initialisierung des Controllers
+	Initalisierung();
 	
 	// Präprozessor: kompiliere whileschleife wenn kein test
 	#ifndef TEST
@@ -113,8 +78,8 @@ void main(void)
 			
 			hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
 			
-			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKP
-								- 1 / kochKS * hichBeschleunigungssumme;
+			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKR
+								- kochKRZ * hichBeschleunigungssumme;
 			
 			// Daten Ausgeben:
 				
@@ -134,21 +99,13 @@ void main(void)
 	********************************************************/
 
 	#else
-			
-		// Selbsttest des Beshleunigungssensoers anschalten
-		SELBSTTEST_Switch(1);
-			
+						
 		// whileschleife zu testzwecken
 		// Konstante zur verweildauer in der schleife
 		while (1)
 			{
 				Dateneinlesen();
 				//Ausgangansteuern(250, 2);
-				
-				// Testfunktionen Aufrufen:
-				// test(prozess.pdchBechleunigung);
-				// test(prozess.pdchEntfernung);
-				// test(prozess.pdchSollwert);
 				// LCDansteuern(1);
 				//if (PRT0DR & 0x01)
 				//{LCDansteuern(1);}
@@ -243,17 +200,34 @@ void Dateneinlesen(void)
 		// Pulsweite auf hichAusgangswert setzen 		
 		PWM8_1_WritePulseWidth(hichAusgangswert);
 	}
-		
-// Präprozessor: kompiliere Funktion nur wenn Test
-#ifdef TEST
-	// Ausgabe der Testdaten auf LCD-Display
-	void test(char hichdata)
-		{
-		// gibt 99999 mal LCD Aus
-		int iin;
-		for (iin = 0; iin <= 500; iin ++)
-			{
-			LCDansteuern(hichdata);	
-			}
-		}
-#endif 
+
+void Initalisierung(void)
+	{
+	//globale Interrupts Freigeben
+	M8C_EnableGInt;                     				
+  	
+	// Initialisieren des LCD-Displays
+	LCD_1_Start();                 					
+   	
+	// Initialisieren des PWM-Moduls
+	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
+    PWM8_1_Start();
+	
+	PGA_1_Start(PGA_1_HIGHPOWER);
+	PGA_2_Start(PGA_2_HIGHPOWER);
+	PGA_3_Start(PGA_3_HIGHPOWER);	
+	
+	// Initialisieren des Dualen AD-Wandlers
+	// für Entfernung und Beschleunigung
+	DUALADC8_Start(DUALADC8_HIGHPOWER); 			    			
+   	DUALADC8_GetSamples(); 
+	
+	// Initialisieren des AD-Wandlers
+	// für den Sollwert
+	ADCINC_Start(ADCINC_HIGHPOWER);      			
+	ADCINC_GetSamples(0);                 			
+	
+	//Initialisieren der Digitalen Ausgänge
+	IN1_Start();	
+	IN2_Start();
+	}

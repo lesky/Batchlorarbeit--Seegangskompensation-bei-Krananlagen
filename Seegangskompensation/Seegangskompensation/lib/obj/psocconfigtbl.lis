@@ -703,7 +703,6 @@
  004E 2300              db              23h, 00h                ;PWM8_1_CONTROL_REG(DBB00CR0)
  0050 21FF              db              21h, ffh                ;PWM8_1_PERIOD_REG(DBB00DR1)
  0052 2200              db              22h, 00h                ;PWM8_1_COMPARE_REG(DBB00DR2)
- 0054           ;  Instance name SELBSTTEST, User Module LED
  0054           ;  Global Register values Bank 0
  0054 606B              db              60h, 6bh                ; AnalogColumnInputSelect register (AMX_IN)
  0056 6600              db              66h, 00h                ; AnalogComparatorControl1 register (CMP_CR1)
@@ -767,7 +766,6 @@
  009D 2031              db              20h, 31h                ;PWM8_1_FUNC_REG(DBB00FN)
  009F 2117              db              21h, 17h                ;PWM8_1_INPUT_REG(DBB00IN)
  00A1 2244              db              22h, 44h                ;PWM8_1_OUTPUT_REG(DBB00OU)
- 00A3           ;  Instance name SELBSTTEST, User Module LED
  00A3           ;  Global Register values Bank 1
  00A3 6100              db              61h, 00h                ; AnalogClockSelect1 register (CLK_CR1)
  00A5 6900              db              69h, 00h                ; AnalogClockSelect2 register (CLK_CR2)
@@ -805,10 +803,10 @@
  001F 620101            mov     reg[01h], 01h           ; Port_0_IntEn register (PRT0IE)
  0022 620400            mov     reg[04h], 00h           ; Port_1_Data register (PRT1DR)
  0025 7110          or    F, FLAG_XIO_MASK
- 0027 62043A            mov     reg[04h], 3ah           ; Port_1_DriveMode_0 register (PRT1DM0)
- 002A 6205C5            mov     reg[05h], c5h           ; Port_1_DriveMode_1 register (PRT1DM1)
+ 0027 620438            mov     reg[04h], 38h           ; Port_1_DriveMode_0 register (PRT1DM0)
+ 002A 6205C7            mov     reg[05h], c7h           ; Port_1_DriveMode_1 register (PRT1DM1)
  002D 70EF          and   F, ~FLAG_XIO_MASK
- 002F 6207C5            mov     reg[07h], c5h           ; Port_1_DriveMode_2 register (PRT1DM2)
+ 002F 6207C7            mov     reg[07h], c7h           ; Port_1_DriveMode_2 register (PRT1DM2)
  0032 620610            mov     reg[06h], 10h           ; Port_1_GlobalSelect register (PRT1GS)
  0035 7110          or    F, FLAG_XIO_MASK
  0037 620600            mov     reg[06h], 00h           ; Port_1_IntCtrl_0 register (PRT1IC0)

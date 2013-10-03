@@ -83,7 +83,6 @@ LoadConfigTBL_seegangskompensation_Bank0:
 	db		23h, 00h		;PWM8_1_CONTROL_REG(DBB00CR0)
 	db		21h, ffh		;PWM8_1_PERIOD_REG(DBB00DR1)
 	db		22h, 00h		;PWM8_1_COMPARE_REG(DBB00DR2)
-;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 0
 	db		60h, 6bh		; AnalogColumnInputSelect register (AMX_IN)
 	db		66h, 00h		; AnalogComparatorControl1 register (CMP_CR1)
@@ -147,7 +146,6 @@ LoadConfigTBL_seegangskompensation_Bank1:
 	db		20h, 31h		;PWM8_1_FUNC_REG(DBB00FN)
 	db		21h, 17h		;PWM8_1_INPUT_REG(DBB00IN)
 	db		22h, 44h		;PWM8_1_OUTPUT_REG(DBB00OU)
-;  Instance name SELBSTTEST, User Module LED
 ;  Global Register values Bank 1
 	db		61h, 00h		; AnalogClockSelect1 register (CLK_CR1)
 	db		69h, 00h		; AnalogClockSelect2 register (CLK_CR2)
@@ -185,10 +183,10 @@ LoadConfigTBL_seegangskompensation_Ordered:
 	mov	reg[01h], 01h		; Port_0_IntEn register (PRT0IE)
 	mov	reg[04h], 00h		; Port_1_Data register (PRT1DR)
 	M8C_SetBank1
-	mov	reg[04h], 3ah		; Port_1_DriveMode_0 register (PRT1DM0)
-	mov	reg[05h], c5h		; Port_1_DriveMode_1 register (PRT1DM1)
+	mov	reg[04h], 38h		; Port_1_DriveMode_0 register (PRT1DM0)
+	mov	reg[05h], c7h		; Port_1_DriveMode_1 register (PRT1DM1)
 	M8C_SetBank0
-	mov	reg[07h], c5h		; Port_1_DriveMode_2 register (PRT1DM2)
+	mov	reg[07h], c7h		; Port_1_DriveMode_2 register (PRT1DM2)
 	mov	reg[06h], 10h		; Port_1_GlobalSelect register (PRT1GS)
 	M8C_SetBank1
 	mov	reg[06h], 00h		; Port_1_IntCtrl_0 register (PRT1IC0)

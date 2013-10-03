@@ -1,76 +1,5 @@
 .start
 XH
-H 2 areas 15 global symbols
-M selbsttest.asm
-S Port_1_Data_SHADE Ref0000
-A text size 0 flags 0
-dbfile lib/selbsttest.asm
-dbfunc 0 ? 0 I
-dbfile memory.inc
-dbfunc 0 ? 0 I
-dbfile lib/selbsttest.asm
-dbfunc 0 ? 0 I
-dbfile SELBSTTEST.inc
-dbfunc 0 ? 0 I
-dbfile C:/PROGRA~1/Cypress/PSOCDE~1/5.4/Common/CY110F~1/tools/include/CY8C27~1/m8c.inc
-dbfunc 0 ? 0 I
-dbfile ./lib/SELBSTTEST.inc
-dbfunc 0 ? 0 I
-A UserModules size 29 flags 0
-dbfile lib/selbsttest.asm
-dbfunc 0 ? 0 I
-dbline 50 0
-dbline 51 2
-dbline 59 4
-dbline 61 6
-dbline 62 8
-dbline 68 A
-dbline 6A D
-dbline 70 F
-dbline 74 12
-dbline 75 14
-dbline 79 16
-dbline 95 17
-dbline 96 1A
-dbline 97 1C
-dbline 9B 1E
-dbline B6 1F
-dbline BA 21
-dbline BC 22
-dbline BD 24
-dbline BE 26
-dbline C3 28
-S $sb$_SELBSTTEST_GetState Def001F
-S $se$_SELBSTTEST_GetState Def0029
-S SELBSTTEST_Stop Def0004
-S SELBSTTEST_On Def0000
-S _SELBSTTEST_Switch Def0006
-S _SELBSTTEST_Invert Def0017
-S $sb$_SELBSTTEST_Invert Def0017
-S $se$_SELBSTTEST_Invert Def001F
-S _SELBSTTEST_Stop Def0004
-S SELBSTTEST_Start Def0004
-S SELBSTTEST_Off Def0004
-S _SELBSTTEST_On Def0000
-S SELBSTTEST_GetState Def001F
-S $sb$_SELBSTTEST_On Def0000
-S $se$_SELBSTTEST_On Def0017
-S _SELBSTTEST_Start Def0004
-S SELBSTTEST_Switch Def0006
-S SELBSTTEST_Invert Def0017
-S _SELBSTTEST_Off Def0004
-S _SELBSTTEST_GetState Def001F
-T 00 00 50 01 80 03 50 00 29 00 A0 06 26 00 00 FD
-R 00 00 00 01 03 0D 00 00
-T 00 0D 80 04 2E 00 00 02 51 00 00 60 04 7F 36
-R 00 00 00 01 03 05 00 00 03 09 00 00
-T 00 18 00 00 02 51 00 00 60 04 7F 51 00 00 73 21
-R 00 00 00 01 03 02 00 00 03 06 00 00 03 0C 00 00
-T 00 23 02 A0 03 50 01 7F
-R 00 00 00 01
-.end
-.start
-XH
 H 3 areas 1 global symbols
 M pwm8_1int.asm
 A text size 0 flags 0
@@ -241,80 +170,80 @@ A psoc_config size C5 flags 0
 dbfile lib/psocconfigtbl.asm
 dbfunc 0 ? 0 I
 dbline 2 0
-dbline AE 2
+dbline AC 2
 dbline 2 5
-dbline B0 7
-dbline B1 A
+dbline AE 7
+dbline AF A
 dbline 2 D
-dbline B3 F
-dbline B4 12
+dbline B1 F
+dbline B2 12
 dbline 2 15
-dbline B6 17
-dbline B7 1A
+dbline B4 17
+dbline B5 1A
 dbline 2 1D
-dbline B9 1F
-dbline BA 22
+dbline B7 1F
+dbline B8 22
 dbline 2 25
-dbline BC 27
-dbline BD 2A
+dbline BA 27
+dbline BB 2A
 dbline 2 2D
-dbline BF 2F
-dbline C0 32
+dbline BD 2F
+dbline BE 32
 dbline 2 35
-dbline C2 37
-dbline C3 3A
+dbline C0 37
+dbline C1 3A
 dbline 2 3D
-dbline C5 3F
-dbline C6 42
+dbline C3 3F
+dbline C4 42
 dbline 2 45
-dbline C8 47
-dbline C9 4A
+dbline C6 47
+dbline C7 4A
 dbline 2 4D
-dbline CB 4F
-dbline CC 52
+dbline C9 4F
+dbline CA 52
 dbline 2 55
-dbline CE 57
-dbline CF 5A
+dbline CC 57
+dbline CD 5A
 dbline 2 5D
-dbline D1 5F
-dbline D2 62
+dbline CF 5F
+dbline D0 62
 dbline 2 65
-dbline D4 67
-dbline D5 6A
+dbline D2 67
+dbline D3 6A
 dbline 2 6D
-dbline D7 6F
-dbline D8 72
+dbline D5 6F
+dbline D6 72
 dbline 2 75
-dbline DA 77
-dbline DB 7A
+dbline D8 77
+dbline D9 7A
 dbline 2 7D
-dbline DD 7F
-dbline DE 82
+dbline DB 7F
+dbline DC 82
 dbline 2 85
-dbline E0 87
-dbline E1 8A
+dbline DE 87
+dbline DF 8A
 dbline 2 8D
-dbline E3 8F
-dbline E4 92
+dbline E1 8F
+dbline E2 92
 dbline 2 95
-dbline E6 97
-dbline E7 9A
+dbline E4 97
+dbline E5 9A
 dbline 2 9D
-dbline E9 9F
-dbline EA A2
+dbline E7 9F
+dbline E8 A2
 dbline 2 A5
-dbline EC A7
-dbline ED AA
+dbline EA A7
+dbline EB AA
 dbline 2 AD
-dbline EF AF
-dbline F0 B2
+dbline ED AF
+dbline EE B2
 dbline 2 B5
-dbline F2 B7
-dbline F3 BA
+dbline F0 B7
+dbline F1 BA
 dbline 2 BD
-dbline F5 BF
+dbline F3 BF
 dbline 2 C2
-dbline F7 C4
+dbline F5 C4
 S LoadConfigTBL_seegangskompensation_Ordered Def0000
 T 00 00 88 90 89 00 8A 60 8B F0 3B 00 39 00 3A 01
 R 00 00 00 01
@@ -350,9 +279,9 @@ T 00 00 70 EF 62 00 00 71 10 62 00 00 62 01 FF 70
 R 00 00 00 02
 T 00 0E EF 62 03 FE 62 02 00 71 10 62 02 01 62 03
 R 00 00 00 02
-T 00 1C 00 70 EF 62 01 01 62 04 00 71 10 62 04 3A
+T 00 1C 00 70 EF 62 01 01 62 04 00 71 10 62 04 38
 R 00 00 00 02
-T 00 2A 62 05 C5 70 EF 62 07 C5 62 06 10 71 10 62
+T 00 2A 62 05 C7 70 EF 62 07 C7 62 06 10 71 10 62
 R 00 00 00 02
 T 00 38 06 00 62 07 00 70 EF 62 05 00 62 08 00 71
 R 00 00 00 02

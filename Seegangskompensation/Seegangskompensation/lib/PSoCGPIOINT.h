@@ -68,28 +68,6 @@ BYTE			AnalogColumn_InputMUX_0_IntCtrl_1_ADDR;
 #pragma	ioport	AnalogColumn_InputMUX_0_IntEn_ADDR:	0x1
 BYTE			AnalogColumn_InputMUX_0_IntEn_ADDR;
 #define AnalogColumn_InputMUX_0_MASK 0x80
-// SELBSTTESTPin address and mask defines
-#pragma	ioport	SELBSTTESTPin_Data_ADDR:	0x4
-BYTE			SELBSTTESTPin_Data_ADDR;
-#pragma	ioport	SELBSTTESTPin_DriveMode_0_ADDR:	0x104
-BYTE			SELBSTTESTPin_DriveMode_0_ADDR;
-#pragma	ioport	SELBSTTESTPin_DriveMode_1_ADDR:	0x105
-BYTE			SELBSTTESTPin_DriveMode_1_ADDR;
-#pragma	ioport	SELBSTTESTPin_DriveMode_2_ADDR:	0x7
-BYTE			SELBSTTESTPin_DriveMode_2_ADDR;
-#pragma	ioport	SELBSTTESTPin_GlobalSelect_ADDR:	0x6
-BYTE			SELBSTTESTPin_GlobalSelect_ADDR;
-#pragma	ioport	SELBSTTESTPin_IntCtrl_0_ADDR:	0x106
-BYTE			SELBSTTESTPin_IntCtrl_0_ADDR;
-#pragma	ioport	SELBSTTESTPin_IntCtrl_1_ADDR:	0x107
-BYTE			SELBSTTESTPin_IntCtrl_1_ADDR;
-#pragma	ioport	SELBSTTESTPin_IntEn_ADDR:	0x5
-BYTE			SELBSTTESTPin_IntEn_ADDR;
-#define SELBSTTESTPin_MASK 0x2
-// SELBSTTESTPin Shadow defines
-//   SELBSTTESTPin_DataShadow define
-extern BYTE Port_1_Data_SHADE;
-#define SELBSTTESTPin_DataShadow (*(unsigned char*)&Port_1_Data_SHADE)
 // IN1Pin address and mask defines
 #pragma	ioport	IN1Pin_Data_ADDR:	0x4
 BYTE			IN1Pin_Data_ADDR;
