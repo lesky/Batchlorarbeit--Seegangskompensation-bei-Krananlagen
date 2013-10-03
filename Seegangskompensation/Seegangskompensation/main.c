@@ -72,8 +72,7 @@ void main(void)
 			{
 			// Daten Einlesen
 			
-			Dateneinlesen();
-			                         
+			Dateneinlesen();		                         
 			// Parameter Berechnen
 			
 			hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
@@ -167,9 +166,6 @@ void Dateneinlesen(void)
 
 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 	{
-		// Variablendeklaration
-		int iin;
-		
 		// Drehrichtung Auswählen
 		switch(hichRichtung) {
 			
