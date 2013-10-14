@@ -1,4 +1,3 @@
-   
 /********************************************************
 * C main-Funktion										*
 * Programm: Seegangskompensation bei Krahnanlagen		*

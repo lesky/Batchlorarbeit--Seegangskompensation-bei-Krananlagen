@@ -4,7 +4,6 @@ Anutor: Benjamin Lesky
 
 I/O-Konfiguration:
 LCD -> Port 2
-Selbsttest ->1.1
 IN1 ->1.5
 IN2->1.3
 PWM 1-> Pin 1.4
