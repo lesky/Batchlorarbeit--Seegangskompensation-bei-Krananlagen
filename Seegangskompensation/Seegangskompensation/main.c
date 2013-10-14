@@ -146,21 +146,18 @@ void LCDansteuern(char hichdata)
 	
 void Dateneinlesen(void)
 	{	
-	// Wenn Sollwertdaten bereit sind
-	if(ADCINC_fIsDataAvailable() != 0)
-			
-		// Einlesen des Sollwertes
-       	// data ready flag zurüvksetzen	
-		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
-              	   
-    	// Auf Entfernung und Position Warten
-		while(DUALADC8_fIsDataAvailable == 0);    		
-   		// Einlesen der Beschleunigung
-		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
-    	
-		// Einlesen der Entfernung
-        // data ready flag zurüvksetzen         
-		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+		// To Do: Parameter Anpassen 
+		// Variablen deklarieren
+		I2Cm_fSendStart(0x68,I2Cm_WRITE);        // Do a write
+       	I2Cm_fWrite(0x00);                       // Set sub address 
+                                                // to zero
+       	I2Cm_fSendRepeatStart(0x68,I2Cm_READ);   // Do a read
+
+       	for(i = 0; i < 6; i++) {
+         	rxBuf[i] = I2Cm_bRead(I2Cm_ACKslave); // Read first 6 bytes,
+                                                // and ACK the slave
+       }
+	
 	}
 
 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
@@ -199,7 +196,10 @@ void Dateneinlesen(void)
 void Initalisierung(void)
 	{
 	//globale Interrupts Freigeben
-	M8C_EnableGInt;                     				
+	M8C_EnableGInt;
+		
+	// I2C Starten
+	I2Cm_Start();
   	
 	// Initialisieren des LCD-Displays
 	LCD_1_Start();                 					
@@ -207,20 +207,7 @@ void Initalisierung(void)
 	// Initialisieren des PWM-Moduls
 	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
-	
-	PGA_1_Start(PGA_1_HIGHPOWER);
-	PGA_2_Start(PGA_2_HIGHPOWER);
-	PGA_3_Start(PGA_3_HIGHPOWER);	
-	
-	// Initialisieren des Dualen AD-Wandlers
-	// für Entfernung und Beschleunigung
-	DUALADC8_Start(DUALADC8_HIGHPOWER); 			    			
-   	DUALADC8_GetSamples(); 
-	
-	// Initialisieren des AD-Wandlers
-	// für den Sollwert
-	ADCINC_Start(ADCINC_HIGHPOWER);      			
-	ADCINC_GetSamples(0);                 			
+         			
 	
 	//Initialisieren der Digitalen Ausgänge
 	IN1_Start();	
