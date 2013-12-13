@@ -146,12 +146,14 @@ void LCDansteuern(char hichdata)
 	
 void Dateneinlesen(void)
 	{	
+		// I2C Adresse: 1001 000R/W -> Lesen 0x91
+		//							-> Schreiben 0x90
 		// To Do: Parameter Anpassen 
 		// Variablen deklarieren
-		I2Cm_fSendStart(0x68,I2Cm_WRITE);        // Do a write
-       	I2Cm_fWrite(0x00);                       // Set sub address 
+		I2Cm_fSendStart(0x91,I2Cm_WRITE);        // Do a write
+       	I2Cm_fWrite(0x91);                       // Set sub address 
                                                 // to zero
-       	I2Cm_fSendRepeatStart(0x68,I2Cm_READ);   // Do a read
+       	I2Cm_fSendRepeatStart(0x91,I2Cm_READ);   // Do a read
 
        	for(i = 0; i < 6; i++) {
          	rxBuf[i] = I2Cm_bRead(I2Cm_ACKslave); // Read first 6 bytes,
