@@ -43,176 +43,176 @@ AnalogColumn_InputMUX_0_IntCtrl_0_ADDR:	equ	102h
 AnalogColumn_InputMUX_0_IntCtrl_1_ADDR:	equ	103h
 AnalogColumn_InputMUX_0_IntEn_ADDR:	equ	1h
 AnalogColumn_InputMUX_0_MASK:	equ	80h
-; I2CmSDA_Pin address and mask equates
-I2CmSDA_Pin_Data_ADDR:	equ	4h
-I2CmSDA_Pin_DriveMode_0_ADDR:	equ	104h
-I2CmSDA_Pin_DriveMode_1_ADDR:	equ	105h
-I2CmSDA_Pin_DriveMode_2_ADDR:	equ	7h
-I2CmSDA_Pin_GlobalSelect_ADDR:	equ	6h
-I2CmSDA_Pin_IntCtrl_0_ADDR:	equ	106h
-I2CmSDA_Pin_IntCtrl_1_ADDR:	equ	107h
-I2CmSDA_Pin_IntEn_ADDR:	equ	5h
-I2CmSDA_Pin_MASK:	equ	1h
-; I2CmSDA_Pin_Data access macros
-;   GetI2CmSDA_Pin_Data macro, return in a
-macro GetI2CmSDA_Pin_Data
+; I2Cm_1SDA_Pin address and mask equates
+I2Cm_1SDA_Pin_Data_ADDR:	equ	4h
+I2Cm_1SDA_Pin_DriveMode_0_ADDR:	equ	104h
+I2Cm_1SDA_Pin_DriveMode_1_ADDR:	equ	105h
+I2Cm_1SDA_Pin_DriveMode_2_ADDR:	equ	7h
+I2Cm_1SDA_Pin_GlobalSelect_ADDR:	equ	6h
+I2Cm_1SDA_Pin_IntCtrl_0_ADDR:	equ	106h
+I2Cm_1SDA_Pin_IntCtrl_1_ADDR:	equ	107h
+I2Cm_1SDA_Pin_IntEn_ADDR:	equ	5h
+I2Cm_1SDA_Pin_MASK:	equ	1h
+; I2Cm_1SDA_Pin_Data access macros
+;   GetI2Cm_1SDA_Pin_Data macro, return in a
+macro GetI2Cm_1SDA_Pin_Data
 	mov		a,[Port_1_Data_SHADE]
 	and		a, 1h
 endm
-;   SetI2CmSDA_Pin_Data macro
-macro SetI2CmSDA_Pin_Data
+;   SetI2Cm_1SDA_Pin_Data macro
+macro SetI2Cm_1SDA_Pin_Data
 	or		[Port_1_Data_SHADE], 1h
 	mov		a, [Port_1_Data_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSDA_Pin_Data macro
-macro ClearI2CmSDA_Pin_Data
+;   ClearI2Cm_1SDA_Pin_Data macro
+macro ClearI2Cm_1SDA_Pin_Data
 	and		[Port_1_Data_SHADE], ~1h
 	mov		a, [Port_1_Data_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
 
-; I2CmSDA_Pin_DriveMode_0 access macros
-;   GetI2CmSDA_Pin_DriveMode_0 macro, return in a
-macro GetI2CmSDA_Pin_DriveMode_0
+; I2Cm_1SDA_Pin_DriveMode_0 access macros
+;   GetI2Cm_1SDA_Pin_DriveMode_0 macro, return in a
+macro GetI2Cm_1SDA_Pin_DriveMode_0
 	mov		a,[Port_1_DriveMode_0_SHADE]
 	and		a, 1h
 endm
-;   SetI2CmSDA_Pin_DriveMode_0 macro
-macro SetI2CmSDA_Pin_DriveMode_0
+;   SetI2Cm_1SDA_Pin_DriveMode_0 macro
+macro SetI2Cm_1SDA_Pin_DriveMode_0
 	or		[Port_1_DriveMode_0_SHADE], 1h
 	mov		a, [Port_1_DriveMode_0_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSDA_Pin_DriveMode_0 macro
-macro ClearI2CmSDA_Pin_DriveMode_0
+;   ClearI2Cm_1SDA_Pin_DriveMode_0 macro
+macro ClearI2Cm_1SDA_Pin_DriveMode_0
 	and		[Port_1_DriveMode_0_SHADE], ~1h
 	mov		a, [Port_1_DriveMode_0_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
 
-; I2CmSDA_Pin_DriveMode_1 access macros
-;   GetI2CmSDA_Pin_DriveMode_1 macro, return in a
-macro GetI2CmSDA_Pin_DriveMode_1
+; I2Cm_1SDA_Pin_DriveMode_1 access macros
+;   GetI2Cm_1SDA_Pin_DriveMode_1 macro, return in a
+macro GetI2Cm_1SDA_Pin_DriveMode_1
 	mov		a,[Port_1_DriveMode_1_SHADE]
 	and		a, 1h
 endm
-;   SetI2CmSDA_Pin_DriveMode_1 macro
-macro SetI2CmSDA_Pin_DriveMode_1
+;   SetI2Cm_1SDA_Pin_DriveMode_1 macro
+macro SetI2Cm_1SDA_Pin_DriveMode_1
 	or		[Port_1_DriveMode_1_SHADE], 1h
 	mov		a, [Port_1_DriveMode_1_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSDA_Pin_DriveMode_1 macro
-macro ClearI2CmSDA_Pin_DriveMode_1
+;   ClearI2Cm_1SDA_Pin_DriveMode_1 macro
+macro ClearI2Cm_1SDA_Pin_DriveMode_1
 	and		[Port_1_DriveMode_1_SHADE], ~1h
 	mov		a, [Port_1_DriveMode_1_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
 
-; I2CmSDA_Pin_DriveMode_2 access macros
-;   GetI2CmSDA_Pin_DriveMode_2 macro, return in a
-macro GetI2CmSDA_Pin_DriveMode_2
+; I2Cm_1SDA_Pin_DriveMode_2 access macros
+;   GetI2Cm_1SDA_Pin_DriveMode_2 macro, return in a
+macro GetI2Cm_1SDA_Pin_DriveMode_2
 	mov		a,[Port_1_DriveMode_2_SHADE]
 	and		a, 1h
 endm
-;   SetI2CmSDA_Pin_DriveMode_2 macro
-macro SetI2CmSDA_Pin_DriveMode_2
+;   SetI2Cm_1SDA_Pin_DriveMode_2 macro
+macro SetI2Cm_1SDA_Pin_DriveMode_2
 	or		[Port_1_DriveMode_2_SHADE], 1h
 	mov		a, [Port_1_DriveMode_2_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSDA_Pin_DriveMode_2 macro
-macro ClearI2CmSDA_Pin_DriveMode_2
+;   ClearI2Cm_1SDA_Pin_DriveMode_2 macro
+macro ClearI2Cm_1SDA_Pin_DriveMode_2
 	and		[Port_1_DriveMode_2_SHADE], ~1h
 	mov		a, [Port_1_DriveMode_2_SHADE]
-	mov		reg[I2CmSDA_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SDA_Pin_Data_ADDR], a
 endm
 
-; I2CmSCL_Pin address and mask equates
-I2CmSCL_Pin_Data_ADDR:	equ	4h
-I2CmSCL_Pin_DriveMode_0_ADDR:	equ	104h
-I2CmSCL_Pin_DriveMode_1_ADDR:	equ	105h
-I2CmSCL_Pin_DriveMode_2_ADDR:	equ	7h
-I2CmSCL_Pin_GlobalSelect_ADDR:	equ	6h
-I2CmSCL_Pin_IntCtrl_0_ADDR:	equ	106h
-I2CmSCL_Pin_IntCtrl_1_ADDR:	equ	107h
-I2CmSCL_Pin_IntEn_ADDR:	equ	5h
-I2CmSCL_Pin_MASK:	equ	2h
-; I2CmSCL_Pin_Data access macros
-;   GetI2CmSCL_Pin_Data macro, return in a
-macro GetI2CmSCL_Pin_Data
+; I2Cm_1SCL_Pin address and mask equates
+I2Cm_1SCL_Pin_Data_ADDR:	equ	4h
+I2Cm_1SCL_Pin_DriveMode_0_ADDR:	equ	104h
+I2Cm_1SCL_Pin_DriveMode_1_ADDR:	equ	105h
+I2Cm_1SCL_Pin_DriveMode_2_ADDR:	equ	7h
+I2Cm_1SCL_Pin_GlobalSelect_ADDR:	equ	6h
+I2Cm_1SCL_Pin_IntCtrl_0_ADDR:	equ	106h
+I2Cm_1SCL_Pin_IntCtrl_1_ADDR:	equ	107h
+I2Cm_1SCL_Pin_IntEn_ADDR:	equ	5h
+I2Cm_1SCL_Pin_MASK:	equ	2h
+; I2Cm_1SCL_Pin_Data access macros
+;   GetI2Cm_1SCL_Pin_Data macro, return in a
+macro GetI2Cm_1SCL_Pin_Data
 	mov		a,[Port_1_Data_SHADE]
 	and		a, 2h
 endm
-;   SetI2CmSCL_Pin_Data macro
-macro SetI2CmSCL_Pin_Data
+;   SetI2Cm_1SCL_Pin_Data macro
+macro SetI2Cm_1SCL_Pin_Data
 	or		[Port_1_Data_SHADE], 2h
 	mov		a, [Port_1_Data_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSCL_Pin_Data macro
-macro ClearI2CmSCL_Pin_Data
+;   ClearI2Cm_1SCL_Pin_Data macro
+macro ClearI2Cm_1SCL_Pin_Data
 	and		[Port_1_Data_SHADE], ~2h
 	mov		a, [Port_1_Data_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
 
-; I2CmSCL_Pin_DriveMode_0 access macros
-;   GetI2CmSCL_Pin_DriveMode_0 macro, return in a
-macro GetI2CmSCL_Pin_DriveMode_0
+; I2Cm_1SCL_Pin_DriveMode_0 access macros
+;   GetI2Cm_1SCL_Pin_DriveMode_0 macro, return in a
+macro GetI2Cm_1SCL_Pin_DriveMode_0
 	mov		a,[Port_1_DriveMode_0_SHADE]
 	and		a, 2h
 endm
-;   SetI2CmSCL_Pin_DriveMode_0 macro
-macro SetI2CmSCL_Pin_DriveMode_0
+;   SetI2Cm_1SCL_Pin_DriveMode_0 macro
+macro SetI2Cm_1SCL_Pin_DriveMode_0
 	or		[Port_1_DriveMode_0_SHADE], 2h
 	mov		a, [Port_1_DriveMode_0_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSCL_Pin_DriveMode_0 macro
-macro ClearI2CmSCL_Pin_DriveMode_0
+;   ClearI2Cm_1SCL_Pin_DriveMode_0 macro
+macro ClearI2Cm_1SCL_Pin_DriveMode_0
 	and		[Port_1_DriveMode_0_SHADE], ~2h
 	mov		a, [Port_1_DriveMode_0_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
 
-; I2CmSCL_Pin_DriveMode_1 access macros
-;   GetI2CmSCL_Pin_DriveMode_1 macro, return in a
-macro GetI2CmSCL_Pin_DriveMode_1
+; I2Cm_1SCL_Pin_DriveMode_1 access macros
+;   GetI2Cm_1SCL_Pin_DriveMode_1 macro, return in a
+macro GetI2Cm_1SCL_Pin_DriveMode_1
 	mov		a,[Port_1_DriveMode_1_SHADE]
 	and		a, 2h
 endm
-;   SetI2CmSCL_Pin_DriveMode_1 macro
-macro SetI2CmSCL_Pin_DriveMode_1
+;   SetI2Cm_1SCL_Pin_DriveMode_1 macro
+macro SetI2Cm_1SCL_Pin_DriveMode_1
 	or		[Port_1_DriveMode_1_SHADE], 2h
 	mov		a, [Port_1_DriveMode_1_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSCL_Pin_DriveMode_1 macro
-macro ClearI2CmSCL_Pin_DriveMode_1
+;   ClearI2Cm_1SCL_Pin_DriveMode_1 macro
+macro ClearI2Cm_1SCL_Pin_DriveMode_1
 	and		[Port_1_DriveMode_1_SHADE], ~2h
 	mov		a, [Port_1_DriveMode_1_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
 
-; I2CmSCL_Pin_DriveMode_2 access macros
-;   GetI2CmSCL_Pin_DriveMode_2 macro, return in a
-macro GetI2CmSCL_Pin_DriveMode_2
+; I2Cm_1SCL_Pin_DriveMode_2 access macros
+;   GetI2Cm_1SCL_Pin_DriveMode_2 macro, return in a
+macro GetI2Cm_1SCL_Pin_DriveMode_2
 	mov		a,[Port_1_DriveMode_2_SHADE]
 	and		a, 2h
 endm
-;   SetI2CmSCL_Pin_DriveMode_2 macro
-macro SetI2CmSCL_Pin_DriveMode_2
+;   SetI2Cm_1SCL_Pin_DriveMode_2 macro
+macro SetI2Cm_1SCL_Pin_DriveMode_2
 	or		[Port_1_DriveMode_2_SHADE], 2h
 	mov		a, [Port_1_DriveMode_2_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
-;   ClearI2CmSCL_Pin_DriveMode_2 macro
-macro ClearI2CmSCL_Pin_DriveMode_2
+;   ClearI2Cm_1SCL_Pin_DriveMode_2 macro
+macro ClearI2Cm_1SCL_Pin_DriveMode_2
 	and		[Port_1_DriveMode_2_SHADE], ~2h
 	mov		a, [Port_1_DriveMode_2_SHADE]
-	mov		reg[I2CmSCL_Pin_Data_ADDR], a
+	mov		reg[I2Cm_1SCL_Pin_Data_ADDR], a
 endm
 
 ; IN1Pin address and mask equates

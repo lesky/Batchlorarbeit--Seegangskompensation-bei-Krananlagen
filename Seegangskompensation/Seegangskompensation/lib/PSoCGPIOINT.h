@@ -68,6 +68,68 @@ BYTE			AnalogColumn_InputMUX_0_IntCtrl_1_ADDR;
 #pragma	ioport	AnalogColumn_InputMUX_0_IntEn_ADDR:	0x1
 BYTE			AnalogColumn_InputMUX_0_IntEn_ADDR;
 #define AnalogColumn_InputMUX_0_MASK 0x80
+// I2CmSDA_Pin address and mask defines
+#pragma	ioport	I2CmSDA_Pin_Data_ADDR:	0x4
+BYTE			I2CmSDA_Pin_Data_ADDR;
+#pragma	ioport	I2CmSDA_Pin_DriveMode_0_ADDR:	0x104
+BYTE			I2CmSDA_Pin_DriveMode_0_ADDR;
+#pragma	ioport	I2CmSDA_Pin_DriveMode_1_ADDR:	0x105
+BYTE			I2CmSDA_Pin_DriveMode_1_ADDR;
+#pragma	ioport	I2CmSDA_Pin_DriveMode_2_ADDR:	0x7
+BYTE			I2CmSDA_Pin_DriveMode_2_ADDR;
+#pragma	ioport	I2CmSDA_Pin_GlobalSelect_ADDR:	0x6
+BYTE			I2CmSDA_Pin_GlobalSelect_ADDR;
+#pragma	ioport	I2CmSDA_Pin_IntCtrl_0_ADDR:	0x106
+BYTE			I2CmSDA_Pin_IntCtrl_0_ADDR;
+#pragma	ioport	I2CmSDA_Pin_IntCtrl_1_ADDR:	0x107
+BYTE			I2CmSDA_Pin_IntCtrl_1_ADDR;
+#pragma	ioport	I2CmSDA_Pin_IntEn_ADDR:	0x5
+BYTE			I2CmSDA_Pin_IntEn_ADDR;
+#define I2CmSDA_Pin_MASK 0x1
+// I2CmSDA_Pin Shadow defines
+//   I2CmSDA_Pin_DataShadow define
+extern BYTE Port_1_Data_SHADE;
+#define I2CmSDA_Pin_DataShadow (*(unsigned char*)&Port_1_Data_SHADE)
+//   I2CmSDA_Pin_DriveMode_0Shadow define
+extern BYTE Port_1_DriveMode_0_SHADE;
+#define I2CmSDA_Pin_DriveMode_0Shadow (*(unsigned char*)&Port_1_DriveMode_0_SHADE)
+//   I2CmSDA_Pin_DriveMode_1Shadow define
+extern BYTE Port_1_DriveMode_1_SHADE;
+#define I2CmSDA_Pin_DriveMode_1Shadow (*(unsigned char*)&Port_1_DriveMode_1_SHADE)
+//   I2CmSDA_Pin_DriveMode_2Shadow define
+extern BYTE Port_1_DriveMode_2_SHADE;
+#define I2CmSDA_Pin_DriveMode_2Shadow (*(unsigned char*)&Port_1_DriveMode_2_SHADE)
+// I2CmSCL_Pin address and mask defines
+#pragma	ioport	I2CmSCL_Pin_Data_ADDR:	0x4
+BYTE			I2CmSCL_Pin_Data_ADDR;
+#pragma	ioport	I2CmSCL_Pin_DriveMode_0_ADDR:	0x104
+BYTE			I2CmSCL_Pin_DriveMode_0_ADDR;
+#pragma	ioport	I2CmSCL_Pin_DriveMode_1_ADDR:	0x105
+BYTE			I2CmSCL_Pin_DriveMode_1_ADDR;
+#pragma	ioport	I2CmSCL_Pin_DriveMode_2_ADDR:	0x7
+BYTE			I2CmSCL_Pin_DriveMode_2_ADDR;
+#pragma	ioport	I2CmSCL_Pin_GlobalSelect_ADDR:	0x6
+BYTE			I2CmSCL_Pin_GlobalSelect_ADDR;
+#pragma	ioport	I2CmSCL_Pin_IntCtrl_0_ADDR:	0x106
+BYTE			I2CmSCL_Pin_IntCtrl_0_ADDR;
+#pragma	ioport	I2CmSCL_Pin_IntCtrl_1_ADDR:	0x107
+BYTE			I2CmSCL_Pin_IntCtrl_1_ADDR;
+#pragma	ioport	I2CmSCL_Pin_IntEn_ADDR:	0x5
+BYTE			I2CmSCL_Pin_IntEn_ADDR;
+#define I2CmSCL_Pin_MASK 0x2
+// I2CmSCL_Pin Shadow defines
+//   I2CmSCL_Pin_DataShadow define
+extern BYTE Port_1_Data_SHADE;
+#define I2CmSCL_Pin_DataShadow (*(unsigned char*)&Port_1_Data_SHADE)
+//   I2CmSCL_Pin_DriveMode_0Shadow define
+extern BYTE Port_1_DriveMode_0_SHADE;
+#define I2CmSCL_Pin_DriveMode_0Shadow (*(unsigned char*)&Port_1_DriveMode_0_SHADE)
+//   I2CmSCL_Pin_DriveMode_1Shadow define
+extern BYTE Port_1_DriveMode_1_SHADE;
+#define I2CmSCL_Pin_DriveMode_1Shadow (*(unsigned char*)&Port_1_DriveMode_1_SHADE)
+//   I2CmSCL_Pin_DriveMode_2Shadow define
+extern BYTE Port_1_DriveMode_2_SHADE;
+#define I2CmSCL_Pin_DriveMode_2Shadow (*(unsigned char*)&Port_1_DriveMode_2_SHADE)
 // IN1Pin address and mask defines
 #pragma	ioport	IN1Pin_Data_ADDR:	0x4
 BYTE			IN1Pin_Data_ADDR;
@@ -90,6 +152,15 @@ BYTE			IN1Pin_IntEn_ADDR;
 //   IN1Pin_DataShadow define
 extern BYTE Port_1_Data_SHADE;
 #define IN1Pin_DataShadow (*(unsigned char*)&Port_1_Data_SHADE)
+//   IN1Pin_DriveMode_0Shadow define
+extern BYTE Port_1_DriveMode_0_SHADE;
+#define IN1Pin_DriveMode_0Shadow (*(unsigned char*)&Port_1_DriveMode_0_SHADE)
+//   IN1Pin_DriveMode_1Shadow define
+extern BYTE Port_1_DriveMode_1_SHADE;
+#define IN1Pin_DriveMode_1Shadow (*(unsigned char*)&Port_1_DriveMode_1_SHADE)
+//   IN1Pin_DriveMode_2Shadow define
+extern BYTE Port_1_DriveMode_2_SHADE;
+#define IN1Pin_DriveMode_2Shadow (*(unsigned char*)&Port_1_DriveMode_2_SHADE)
 // IN2Pin address and mask defines
 #pragma	ioport	IN2Pin_Data_ADDR:	0x4
 BYTE			IN2Pin_Data_ADDR;
@@ -112,6 +183,15 @@ BYTE			IN2Pin_IntEn_ADDR;
 //   IN2Pin_DataShadow define
 extern BYTE Port_1_Data_SHADE;
 #define IN2Pin_DataShadow (*(unsigned char*)&Port_1_Data_SHADE)
+//   IN2Pin_DriveMode_0Shadow define
+extern BYTE Port_1_DriveMode_0_SHADE;
+#define IN2Pin_DriveMode_0Shadow (*(unsigned char*)&Port_1_DriveMode_0_SHADE)
+//   IN2Pin_DriveMode_1Shadow define
+extern BYTE Port_1_DriveMode_1_SHADE;
+#define IN2Pin_DriveMode_1Shadow (*(unsigned char*)&Port_1_DriveMode_1_SHADE)
+//   IN2Pin_DriveMode_2Shadow define
+extern BYTE Port_1_DriveMode_2_SHADE;
+#define IN2Pin_DriveMode_2Shadow (*(unsigned char*)&Port_1_DriveMode_2_SHADE)
 // LCD_1D4 address and mask defines
 #pragma	ioport	LCD_1D4_Data_ADDR:	0x8
 BYTE			LCD_1D4_Data_ADDR;

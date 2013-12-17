@@ -5,9 +5,10 @@
 * 														*
 * I/O-Konfiguration:									*
 * LCD 			-> Port 2								*
-* Selbsttest 	-> 1.1			 						*
-* IN1		 	-> 1.2									*
-* IN2			-> 1.3									*
+* SDA			-> 1.0
+* SCL 			-> 1.1			 						*
+* IN1		 	-> 1.3									*
+* IN2			-> 1.5									*
 * PWM 1			-> 1.4									*
 * Beschleunigung-> 0.7									*
 * Entfernung 	-> 0.4									*
@@ -109,7 +110,7 @@ void main(void)
 				//{LCDansteuern(1);}
 				//else {LCDansteuern(PRT0DR & 0x01);}
 					//LCDansteuern(PRT0DR & 0x01);
-				
+				/*
 				// Erkennen von eingangssignalen über A/D-Wandler
 				if (prozess.pdchEntfernung <= 110)
 				{
@@ -121,6 +122,8 @@ void main(void)
 				else {
 				Ausgangansteuern(0,0);	
 				}
+				*/
+				LCDansteuern(prozess.pdchSollwert);
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -146,20 +149,20 @@ void LCDansteuern(char hichdata)
 	
 void Dateneinlesen(void)
 	{	
-		// I2C Adresse: 1001 000R/W -> Lesen 0x91
-		//							-> Schreiben 0x90
-		// To Do: Parameter Anpassen 
-		// Variablen deklarieren
-		I2Cm_fSendStart(0x91,I2Cm_WRITE);        // Do a write
-       	I2Cm_fWrite(0x91);                       // Set sub address 
-                                                // to zero
-       	I2Cm_fSendRepeatStart(0x91,I2Cm_READ);   // Do a read
+		// I2C Adresse: 1001 000 -> 0x48
+		// Einleseforgang beginnen
+		I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
+		
+		// Daten Einlesen und ACK an slafe senden
+		prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchEntfernung	= I2Cm_bRead(I2Cm_ACKslave);
+		
+		// lezte Daten ohne ACK einlesen
+		prozess.pdchSollwert = I2Cm_bRead(I2Cm_NAKslave);
+		
+		//Stop Condition
+       	I2Cm_SendStop();
 
-       	for(i = 0; i < 6; i++) {
-         	rxBuf[i] = I2Cm_bRead(I2Cm_ACKslave); // Read first 6 bytes,
-                                                // and ACK the slave
-       }
-	
 	}
 
 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
@@ -202,7 +205,10 @@ void Initalisierung(void)
 		
 	// I2C Starten
 	I2Cm_Start();
-  	
+  	// A/D Wandler konfigurieren
+	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+    I2Cm_fWrite(0x00);
+	I2Cm_SendStop();
 	// Initialisieren des LCD-Displays
 	LCD_1_Start();                 					
    	
@@ -212,6 +218,7 @@ void Initalisierung(void)
          			
 	
 	//Initialisieren der Digitalen Ausgänge
+		
 	IN1_Start();	
 	IN2_Start();
 	}

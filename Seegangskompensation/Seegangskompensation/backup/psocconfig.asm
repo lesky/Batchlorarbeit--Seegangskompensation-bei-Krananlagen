@@ -26,6 +26,12 @@ export LoadConfig_seegangskompensation
 export _LoadConfig_seegangskompensation
 export Port_1_Data_SHADE
 export _Port_1_Data_SHADE
+export Port_1_DriveMode_0_SHADE
+export _Port_1_DriveMode_0_SHADE
+export Port_1_DriveMode_1_SHADE
+export _Port_1_DriveMode_1_SHADE
+export Port_1_DriveMode_2_SHADE
+export _Port_1_DriveMode_2_SHADE
 export Port_2_Data_SHADE
 export _Port_2_Data_SHADE
 export Port_2_DriveMode_0_SHADE
@@ -65,6 +71,9 @@ _LoadConfigInit:
     RAM_PROLOGUE RAM_USE_CLASS_4
     
 	mov		[Port_1_Data_SHADE], 0h
+	mov		[Port_1_DriveMode_0_SHADE], 38h
+	mov		[Port_1_DriveMode_1_SHADE], c7h
+	mov		[Port_1_DriveMode_2_SHADE], c4h
 	mov		[Port_2_Data_SHADE], 0h
 	mov		[Port_2_DriveMode_0_SHADE], 7fh
 	mov		[Port_2_DriveMode_1_SHADE], 80h
@@ -195,6 +204,12 @@ _Port_1_Data_SHADE:
 Port_1_Data_SHADE:	BLK	1
 _Port_2_Data_SHADE:
 Port_2_Data_SHADE:	BLK	1
+_Port_1_DriveMode_0_SHADE:
+Port_1_DriveMode_0_SHADE:	BLK	1
+_Port_1_DriveMode_1_SHADE:
+Port_1_DriveMode_1_SHADE:	BLK	1
+_Port_1_DriveMode_2_SHADE:
+Port_1_DriveMode_2_SHADE:	BLK	1
 _Port_2_DriveMode_0_SHADE:
 Port_2_DriveMode_0_SHADE:	BLK	1
 _Port_2_DriveMode_1_SHADE:
