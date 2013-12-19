@@ -104,7 +104,7 @@
  0010           PORT_1_GLOBAL_SELECT:	equ 10h	;Port 1 global select register (PRT1GS)
  0038           PORT_1_DRIVE_0:			equ 38h	;Port 1 drive mode 0 register (PRT1DM0)
  00C7           PORT_1_DRIVE_1:			equ c7h	;Port 1 drive mode 1 register (PRT1DM1)
- 00C7           PORT_1_DRIVE_2:			equ c7h	;Port 1 drive mode 2 register (PRT1DM2)
+ 00C4           PORT_1_DRIVE_2:			equ c4h	;Port 1 drive mode 2 register (PRT1DM2)
  0000           PORT_1_INTENABLE:		equ 0h	;Port 1 interrupt enable register (PRT1IE)
  0000           PORT_1_INTCTRL_0:		equ 0h	;Port 1 interrupt control 0 register (PRT1IC0)
  0000           PORT_1_INTCTRL_1:		equ 0h	;Port 1 interrupt control 1 register (PRT1IC1)
@@ -1270,25 +1270,25 @@
  0024 7E            reti
  0025           
                     org   28h                      ;PSoC Block DCB02 Interrupt Vector
- 0028 7D0000        ljmp        _DUALADC8_CNT1_ISR
- 002B 7E            reti
- 002C           
+                    // call     void_handler
+ 0028 7E            reti
+ 0029           
                     org   2Ch                      ;PSoC Block DCB03 Interrupt Vector
                     // call     void_handler
  002C 7E            reti
  002D           
                     org   30h                      ;PSoC Block DBB10 Interrupt Vector
- 0030 7D0000        ljmp        _DUALADC8_PWM16_ISR
- 0033 7E            reti
- 0034           
+                    // call     void_handler
+ 0030 7E            reti
+ 0031           
                     org   34h                      ;PSoC Block DBB11 Interrupt Vector
- 0034 7D0000        ljmp        _DUALADC8_CNT2_ISR
- 0037 7E            reti
- 0038           
+                    // call     void_handler
+ 0034 7E            reti
+ 0035           
                     org   38h                      ;PSoC Block DCB12 Interrupt Vector
- 0038 7D0000        ljmp        _ADCINC_ADConversion_ISR
- 003B 7E            reti
- 003C           
+                    // call     void_handler
+ 0038 7E            reti
+ 0039           
                     org   3Ch                      ;PSoC Block DCB13 Interrupt Vector
                     // call     void_handler
  003C 7E            reti

@@ -973,7 +973,7 @@
  0010           PORT_1_GLOBAL_SELECT:	equ 10h	;Port 1 global select register (PRT1GS)
  0038           PORT_1_DRIVE_0:			equ 38h	;Port 1 drive mode 0 register (PRT1DM0)
  00C7           PORT_1_DRIVE_1:			equ c7h	;Port 1 drive mode 1 register (PRT1DM1)
- 00C7           PORT_1_DRIVE_2:			equ c7h	;Port 1 drive mode 2 register (PRT1DM2)
+ 00C4           PORT_1_DRIVE_2:			equ c4h	;Port 1 drive mode 2 register (PRT1DM2)
  0000           PORT_1_INTENABLE:		equ 0h	;Port 1 interrupt enable register (PRT1IE)
  0000           PORT_1_INTCTRL_0:		equ 0h	;Port 1 interrupt control 0 register (PRT1IC0)
  0000           PORT_1_INTCTRL_1:		equ 0h	;Port 1 interrupt control 1 register (PRT1IC1)
@@ -1014,6 +1014,12 @@
                 export _LoadConfig_seegangskompensation
                 export Port_1_Data_SHADE
                 export _Port_1_Data_SHADE
+                export Port_1_DriveMode_0_SHADE
+                export _Port_1_DriveMode_0_SHADE
+                export Port_1_DriveMode_1_SHADE
+                export _Port_1_DriveMode_1_SHADE
+                export Port_1_DriveMode_2_SHADE
+                export _Port_1_DriveMode_2_SHADE
                 export Port_2_Data_SHADE
                 export _Port_2_Data_SHADE
                 export Port_2_DriveMode_0_SHADE
@@ -1076,14 +1082,17 @@
                 
                     
  0000 550000            mov             [Port_1_Data_SHADE], 0h
- 0003 550100            mov             [Port_2_Data_SHADE], 0h
- 0006 55027F            mov             [Port_2_DriveMode_0_SHADE], 7fh
- 0009 550380            mov             [Port_2_DriveMode_1_SHADE], 80h
- 000C           
- 000C 7C0013            lcall   LoadConfig_seegangskompensation
- 000F 7C0000            lcall   LoadConfigTBL_seegangskompensation_Ordered
- 0012           
- 0012           
+ 0003 550238            mov             [Port_1_DriveMode_0_SHADE], 38h
+ 0006 5503C7            mov             [Port_1_DriveMode_1_SHADE], c7h
+ 0009 5504C4            mov             [Port_1_DriveMode_2_SHADE], c4h
+ 000C 550100            mov             [Port_2_Data_SHADE], 0h
+ 000F 55057F            mov             [Port_2_DriveMode_0_SHADE], 7fh
+ 0012 550680            mov             [Port_2_DriveMode_1_SHADE], 80h
+ 0015           
+ 0015 7C001C            lcall   LoadConfig_seegangskompensation
+ 0018 7C0000            lcall   LoadConfigTBL_seegangskompensation_Ordered
+ 001B           
+ 001B           
                    IF ( RAM_USE_CLASS_4 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -1126,29 +1135,29 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 0012 7F            ret
- 0013           
- 0013           ;---------------------------------------------------------------------------
- 0013           ; Load Configuration seegangskompensation
- 0013           ;
- 0013           ;    Load configuration registers for seegangskompensation.
- 0013           ;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
- 0013           ;
- 0013           ;       INPUTS: None.
- 0013           ;      RETURNS: Nothing.
- 0013           ; SIDE EFFECTS: Registers are volatile: the CPU A and X registers may be
- 0013           ;               modified as may the Page Pointer registers!
- 0013           ;               In the large memory model currently only the page
- 0013           ;               pointer registers listed below are modified.  This does
- 0013           ;               not guarantee that in future implementations of this
- 0013           ;               function other page pointer registers will not be
- 0013           ;               modified.
- 0013           ;          
- 0013           ;               Page Pointer Registers Modified: 
- 0013           ;               CUR_PP
- 0013           ;
- 0013           _LoadConfig_seegangskompensation:
- 0013            LoadConfig_seegangskompensation:
+ 001B 7F            ret
+ 001C           
+ 001C           ;---------------------------------------------------------------------------
+ 001C           ; Load Configuration seegangskompensation
+ 001C           ;
+ 001C           ;    Load configuration registers for seegangskompensation.
+ 001C           ;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
+ 001C           ;
+ 001C           ;       INPUTS: None.
+ 001C           ;      RETURNS: Nothing.
+ 001C           ; SIDE EFFECTS: Registers are volatile: the CPU A and X registers may be
+ 001C           ;               modified as may the Page Pointer registers!
+ 001C           ;               In the large memory model currently only the page
+ 001C           ;               pointer registers listed below are modified.  This does
+ 001C           ;               not guarantee that in future implementations of this
+ 001C           ;               function other page pointer registers will not be
+ 001C           ;               modified.
+ 001C           ;          
+ 001C           ;               Page Pointer Registers Modified: 
+ 001C           ;               CUR_PP
+ 001C           ;
+ 001C           _LoadConfig_seegangskompensation:
+ 001C            LoadConfig_seegangskompensation:
                    IF ( RAM_USE_CLASS_4 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -1174,25 +1183,25 @@
                    ENDIF ; RAM_USE_CLASS_4
                 
                 
- 0013 10                push    x
- 0014 70EF          and   F, ~FLAG_XIO_MASK
- 0016 5000          mov     a, 0                    ; Specify bank 0
- 0018 67            asr     a                       ; Store in carry flag
- 0019                                               ; Load bank 0 table:
- 0019 5000          mov     A, >LoadConfigTBL_seegangskompensation_Bank0
- 001B 5700          mov     X, <LoadConfigTBL_seegangskompensation_Bank0
- 001D 7C002E        lcall   LoadConfig              ; Load the bank 0 values
- 0020           
- 0020 5001          mov     a, 1                    ; Specify bank 1
- 0022 67            asr     a                       ; Store in carry flag
- 0023                                               ; Load bank 1 table:
- 0023 5000          mov     A, >LoadConfigTBL_seegangskompensation_Bank1
- 0025 5700          mov     X, <LoadConfigTBL_seegangskompensation_Bank1
- 0027 7C002E        lcall   LoadConfig              ; Load the bank 1 values
- 002A           
- 002A 70EF          and   F, ~FLAG_XIO_MASK
- 002C 20                pop             x
- 002D           
+ 001C 10                push    x
+ 001D 70EF          and   F, ~FLAG_XIO_MASK
+ 001F 5000          mov     a, 0                    ; Specify bank 0
+ 0021 67            asr     a                       ; Store in carry flag
+ 0022                                               ; Load bank 0 table:
+ 0022 5000          mov     A, >LoadConfigTBL_seegangskompensation_Bank0
+ 0024 5700          mov     X, <LoadConfigTBL_seegangskompensation_Bank0
+ 0026 7C0037        lcall   LoadConfig              ; Load the bank 0 values
+ 0029           
+ 0029 5001          mov     a, 1                    ; Specify bank 1
+ 002B 67            asr     a                       ; Store in carry flag
+ 002C                                               ; Load bank 1 table:
+ 002C 5000          mov     A, >LoadConfigTBL_seegangskompensation_Bank1
+ 002E 5700          mov     X, <LoadConfigTBL_seegangskompensation_Bank1
+ 0030 7C0037        lcall   LoadConfig              ; Load the bank 1 values
+ 0033           
+ 0033 70EF          and   F, ~FLAG_XIO_MASK
+ 0035 20                pop             x
+ 0036           
                    IF ( RAM_USE_CLASS_4 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -1235,27 +1244,27 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 002D 7F            ret
- 002E           
- 002E           
- 002E           
- 002E           
- 002E           ;---------------------------------------------------------------------------
- 002E           ; LoadConfig - Set IO registers as specified in ROM table of (address,value)
- 002E           ;              pairs. Terminate on address=0xFF.
- 002E           ;
- 002E           ;  INPUTS:  [A,X] points to the table to be loaded
- 002E           ;           Flag Register Carry bit encodes the Register Bank
- 002E           ;           (Carry=0 => Bank 0; Carry=1 => Bank 1)
- 002E           ;
- 002E           ;  RETURNS: nothing.
- 002E           ;
- 002E           ;  STACK FRAME:  X-4 I/O Bank 0/1 indicator
- 002E           ;                X-3 Temporary store for register address
- 002E           ;                X-2 LSB of config table address
- 002E           ;                X-1 MSB of config table address
- 002E           ;
- 002E           LoadConfig:
+ 0036 7F            ret
+ 0037           
+ 0037           
+ 0037           
+ 0037           
+ 0037           ;---------------------------------------------------------------------------
+ 0037           ; LoadConfig - Set IO registers as specified in ROM table of (address,value)
+ 0037           ;              pairs. Terminate on address=0xFF.
+ 0037           ;
+ 0037           ;  INPUTS:  [A,X] points to the table to be loaded
+ 0037           ;           Flag Register Carry bit encodes the Register Bank
+ 0037           ;           (Carry=0 => Bank 0; Carry=1 => Bank 1)
+ 0037           ;
+ 0037           ;  RETURNS: nothing.
+ 0037           ;
+ 0037           ;  STACK FRAME:  X-4 I/O Bank 0/1 indicator
+ 0037           ;                X-3 Temporary store for register address
+ 0037           ;                X-2 LSB of config table address
+ 0037           ;                X-1 MSB of config table address
+ 0037           ;
+ 0037           LoadConfig:
                    IF ( RAM_USE_CLASS_2 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -1280,48 +1289,48 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 002E 3802          add     SP, 2                   ; Set up local vars
- 0030 10            push    X                       ; Save config table address on stack
- 0031 08            push    A
- 0032 4F            mov     X, SP
- 0033 56FC00        mov     [X-4], 0                ; Set default Destination to Bank 0
- 0036 D004          jnc     .BankSelectSaved        ; Carry says Bank 0 is OK
- 0038 56FC01        mov     [X-4], 1                ; No Carry: default to Bank 1
- 003B           .BankSelectSaved:
- 003B 18            pop     A
- 003C 20            pop     X
- 003D           
- 003D           LoadConfigLp:
- 003D 70EF          and   F, ~FLAG_XIO_MASK
- 003F 62E300        mov   reg[RES_WDT], 00h
- 0042 10            push    X                       ; Preserve the config table address
- 0043 08            push    A
- 0044 28            romx                            ; Load register address from table
- 0045 39FF          cmp     A, END_CONFIG_TABLE     ; End of table?
- 0047 A01F          jz      EndLoadConfig           ;   Yes, go wrap it up
- 0049 4F            mov     X, SP                   ;
- 004A 48FC01        tst     [X-4], 1                ; Loading IO Bank 1?
- 004D A003          jz      .IOBankNowSet           ;    No, Bank 0 is fine
- 004F 7110          or    F, FLAG_XIO_MASK
- 0051           .IOBankNowSet:
- 0051 54FD          mov     [X-3], A                ; Stash the register address
- 0053 18            pop     A                       ; Retrieve the table address
- 0054 20            pop     X
- 0055 75            inc     X                       ; Advance to the data byte
- 0056 0900          adc     A, 0
- 0058 10            push    X                       ; Save the config table address again
- 0059 08            push    A
- 005A 28            romx                            ; load config data from the table
- 005B 4F            mov     X, SP                   ; retrieve the register address
- 005C 59FD          mov     X, [X-3]
- 005E 6100          mov     reg[X], A               ; Configure the register
- 0060 18            pop     A                       ; retrieve the table address
- 0061 20            pop     X
- 0062 75            inc     X                       ; advance to next table entry
- 0063 0900          adc     A, 0
- 0065 8FD7          jmp     LoadConfigLp            ; loop to configure another register
- 0067           EndLoadConfig:
- 0067 38FC          add     SP, -4
+ 0037 3802          add     SP, 2                   ; Set up local vars
+ 0039 10            push    X                       ; Save config table address on stack
+ 003A 08            push    A
+ 003B 4F            mov     X, SP
+ 003C 56FC00        mov     [X-4], 0                ; Set default Destination to Bank 0
+ 003F D004          jnc     .BankSelectSaved        ; Carry says Bank 0 is OK
+ 0041 56FC01        mov     [X-4], 1                ; No Carry: default to Bank 1
+ 0044           .BankSelectSaved:
+ 0044 18            pop     A
+ 0045 20            pop     X
+ 0046           
+ 0046           LoadConfigLp:
+ 0046 70EF          and   F, ~FLAG_XIO_MASK
+ 0048 62E300        mov   reg[RES_WDT], 00h
+ 004B 10            push    X                       ; Preserve the config table address
+ 004C 08            push    A
+ 004D 28            romx                            ; Load register address from table
+ 004E 39FF          cmp     A, END_CONFIG_TABLE     ; End of table?
+ 0050 A01F          jz      EndLoadConfig           ;   Yes, go wrap it up
+ 0052 4F            mov     X, SP                   ;
+ 0053 48FC01        tst     [X-4], 1                ; Loading IO Bank 1?
+ 0056 A003          jz      .IOBankNowSet           ;    No, Bank 0 is fine
+ 0058 7110          or    F, FLAG_XIO_MASK
+ 005A           .IOBankNowSet:
+ 005A 54FD          mov     [X-3], A                ; Stash the register address
+ 005C 18            pop     A                       ; Retrieve the table address
+ 005D 20            pop     X
+ 005E 75            inc     X                       ; Advance to the data byte
+ 005F 0900          adc     A, 0
+ 0061 10            push    X                       ; Save the config table address again
+ 0062 08            push    A
+ 0063 28            romx                            ; load config data from the table
+ 0064 4F            mov     X, SP                   ; retrieve the register address
+ 0065 59FD          mov     X, [X-3]
+ 0067 6100          mov     reg[X], A               ; Configure the register
+ 0069 18            pop     A                       ; retrieve the table address
+ 006A 20            pop     X
+ 006B 75            inc     X                       ; advance to next table entry
+ 006C 0900          adc     A, 0
+ 006E 8FD7          jmp     LoadConfigLp            ; loop to configure another register
+ 0070           EndLoadConfig:
+ 0070 38FC          add     SP, -4
                    IF ( RAM_USE_CLASS_2 & RAM_USE_CLASS_1 )
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_1
@@ -1364,8 +1373,8 @@
                    ; Nothing to do
                    ENDIF ; RAM_USE_CLASS_4
                 
- 0069 7F            ret
- 006A           
+ 0072 7F            ret
+ 0073           
                 AREA InterruptRAM(ram, rel)
                 
  0000           NO_SHADOW:
@@ -1375,8 +1384,14 @@
  0000           Port_1_Data_SHADE:      BLK     1
  0001           _Port_2_Data_SHADE:
  0001           Port_2_Data_SHADE:      BLK     1
- 0002           _Port_2_DriveMode_0_SHADE:
- 0002           Port_2_DriveMode_0_SHADE:       BLK     1
- 0003           _Port_2_DriveMode_1_SHADE:
- 0003           Port_2_DriveMode_1_SHADE:       BLK     1
- 0004           
+ 0002           _Port_1_DriveMode_0_SHADE:
+ 0002           Port_1_DriveMode_0_SHADE:       BLK     1
+ 0003           _Port_1_DriveMode_1_SHADE:
+ 0003           Port_1_DriveMode_1_SHADE:       BLK     1
+ 0004           _Port_1_DriveMode_2_SHADE:
+ 0004           Port_1_DriveMode_2_SHADE:       BLK     1
+ 0005           _Port_2_DriveMode_0_SHADE:
+ 0005           Port_2_DriveMode_0_SHADE:       BLK     1
+ 0006           _Port_2_DriveMode_1_SHADE:
+ 0006           Port_2_DriveMode_1_SHADE:       BLK     1
+ 0007           

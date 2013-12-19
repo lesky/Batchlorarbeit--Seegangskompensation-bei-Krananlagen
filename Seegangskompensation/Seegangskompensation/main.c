@@ -5,9 +5,10 @@
 * 														*
 * I/O-Konfiguration:									*
 * LCD 			-> Port 2								*
-* Selbsttest 	-> 1.1			 						*
-* IN1		 	-> 1.2									*
-* IN2			-> 1.3									*
+* SDA			-> 1.0
+* SCL 			-> 1.1			 						*
+* IN1		 	-> 1.3									*
+* IN2			-> 1.5									*
 * PWM 1			-> 1.4									*
 * Beschleunigung-> 0.7									*
 * Entfernung 	-> 0.4									*
@@ -109,7 +110,7 @@ void main(void)
 				//{LCDansteuern(1);}
 				//else {LCDansteuern(PRT0DR & 0x01);}
 					//LCDansteuern(PRT0DR & 0x01);
-				
+				/*
 				// Erkennen von eingangssignalen über A/D-Wandler
 				if (prozess.pdchEntfernung <= 110)
 				{
@@ -121,6 +122,8 @@ void main(void)
 				else {
 				Ausgangansteuern(0,0);	
 				}
+				*/
+				LCDansteuern(prozess.pdchSollwert);
 			};
 			
 	// Präprozessor: Ende der Verzweifung
@@ -146,21 +149,20 @@ void LCDansteuern(char hichdata)
 	
 void Dateneinlesen(void)
 	{	
-	// Wenn Sollwertdaten bereit sind
-	if(ADCINC_fIsDataAvailable() != 0)
-			
-		// Einlesen des Sollwertes
-       	// data ready flag zurüvksetzen	
-		prozess.pdchSollwert = ADCINC_cClearFlagGetData();		
-              	   
-    	// Auf Entfernung und Position Warten
-		while(DUALADC8_fIsDataAvailable == 0);    		
-   		// Einlesen der Beschleunigung
-		prozess.pdchBechleunigung = DUALADC8_cGetData1();      	
-    	
-		// Einlesen der Entfernung
-        // data ready flag zurüvksetzen         
-		prozess.pdchEntfernung = DUALADC8_cGetData2ClearFlag();	 	
+		// I2C Adresse: 1001 000 -> 0x48
+		// Einleseforgang beginnen
+		I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
+		
+		// Daten Einlesen und ACK an slafe senden
+		prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchEntfernung	= I2Cm_bRead(I2Cm_ACKslave);
+		
+		// lezte Daten ohne ACK einlesen
+		prozess.pdchSollwert = I2Cm_bRead(I2Cm_NAKslave);
+		
+		//Stop Condition
+       	I2Cm_SendStop();
+
 	}
 
 	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
@@ -199,30 +201,24 @@ void Dateneinlesen(void)
 void Initalisierung(void)
 	{
 	//globale Interrupts Freigeben
-	M8C_EnableGInt;                     				
-  	
+	M8C_EnableGInt;
+		
+	// I2C Starten
+	I2Cm_Start();
+  	// A/D Wandler konfigurieren
+	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+    I2Cm_fWrite(0x00);
+	I2Cm_SendStop();
 	// Initialisieren des LCD-Displays
 	LCD_1_Start();                 					
    	
 	// Initialisieren des PWM-Moduls
 	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
-	
-	PGA_1_Start(PGA_1_HIGHPOWER);
-	PGA_2_Start(PGA_2_HIGHPOWER);
-	PGA_3_Start(PGA_3_HIGHPOWER);	
-	
-	// Initialisieren des Dualen AD-Wandlers
-	// für Entfernung und Beschleunigung
-	DUALADC8_Start(DUALADC8_HIGHPOWER); 			    			
-   	DUALADC8_GetSamples(); 
-	
-	// Initialisieren des AD-Wandlers
-	// für den Sollwert
-	ADCINC_Start(ADCINC_HIGHPOWER);      			
-	ADCINC_GetSamples(0);                 			
+         			
 	
 	//Initialisieren der Digitalen Ausgänge
+		
 	IN1_Start();	
 	IN2_Start();
 	}
