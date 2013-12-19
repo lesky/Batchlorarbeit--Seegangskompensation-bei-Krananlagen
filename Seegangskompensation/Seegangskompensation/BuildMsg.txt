@@ -1,34 +1,14 @@
 Starting MAKE...
-creating project.mk 
-
-lib/i2cm.asm
-
-lib/in1.asm
-
-lib/in2.asm
-
-lib/lcd_1.asm
-
-lib/psocconfig.asm
-
-lib/psocconfigtbl.asm
-
-lib/psocgpioint.asm
-
-lib/pwm8_1.asm
-
-lib/pwm8_1int.asm
-
-./boot.asm
+creating project.mk -- no changes
 
 Linking..
 
-  ROM 12% full. 1833 out of 16384 bytes used (does not include absolute areas).
+  ROM 15% full. 2363 out of 16384 bytes used (does not include absolute areas).
 
-  RAM 6% full. 15 bytes used (does not include stack usage).
+  RAM 8% full. 20 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 0 warning(s) 11:25:44
+Seegangskompensation - 0 error(s) 0 warning(s) 11:38:06
 

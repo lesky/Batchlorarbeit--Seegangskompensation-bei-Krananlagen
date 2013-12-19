@@ -22,6 +22,10 @@
 * in	-> Datentyp Integer								*
 ********************************************************/
 
+// Präprozessor:Für Unittesting:
+// #defein Test nicht auskomentieren:
+#define UTEST
+
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 #include <stdlib.h>
@@ -35,16 +39,24 @@ struct
 
 // Funktionsprototypen:
 void Initalisierung(void);
+void LCDansteuern(char);
 
-void main(void)
-	{
-	
-	
-	Initalisierung();
-	
+// mainfunktion
+// Präprozessor: kompiliere wenn kein test
+#ifndef UTEST
+
+#else
+	// Funktion zum Unittesting
+	void main(void)
+		{
+		Initalisierung();
 		
-}
-	
+		// Unittest des LCD
+		LCDansteuern(99);
+		LCD_1_Position(1,0);    
+    	LCD_1_PrCString("OK");
+		}
+#endif 
 
 
 void Initalisierung(void)
@@ -64,10 +76,20 @@ void Initalisierung(void)
 	// Initialisieren des PWM-Moduls
 	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
     PWM8_1_Start();
-         			
 	
 	//Initialisieren der Digitalen Ausgänge
-		
 	IN1_Start();	
 	IN2_Start();
 	}
+	
+void LCDansteuern(char hichdata)
+    {                
+    char rgch[5];
+    // Text auf LCD ausgeben
+    LCD_1_Position(0,5);    
+    LCD_1_PrCString("Wert:");
+    
+    // Zahl Auf LCD ausgeben
+    itoa(rgch,hichdata,10);
+    LCD_1_PrString(rgch);                
+    }
