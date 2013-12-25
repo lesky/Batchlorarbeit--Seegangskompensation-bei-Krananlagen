@@ -34,12 +34,15 @@
 struct 
    {	  						
 	char pdchBechleunigung, pdchEntfernung;			
-	char pdchSollwert;								
+	char pdchSollwert;
+	char pdchDrehzahl; 
+	char pdchRichtung;
+	char hichBeschleunigungssumme;
 	} prozess;
 
 // Funktionsprototypen:
 void Initalisierung(void);
-void LCDansteuern(char);
+void Ausgangberechnen(void);
 
 // mainfunktion
 // Präprozessor: kompiliere wenn kein test
@@ -52,7 +55,7 @@ void LCDansteuern(char);
 		Initalisierung();
 		
 		// Unittest des LCD
-		LCDansteuern(99);
+
 		LCD_1_Position(1,0);    
     	LCD_1_PrCString("OK");
 		}
@@ -82,14 +85,18 @@ void Initalisierung(void)
 	IN2_Start();
 	}
 	
-void LCDansteuern(char hichdata)
-    {                
-    char rgch[5];
-    // Text auf LCD ausgeben
-    LCD_1_Position(0,5);    
-    LCD_1_PrCString("Wert:");
-    
-    // Zahl Auf LCD ausgeben
-    itoa(rgch,hichdata,10);
-    LCD_1_PrString(rgch);                
+void Ausgangberechnen(void)
+    {   
+	// Variablen
+	char hichAusgangswert;
+		
+	// Konstanten					
+	char kochKR;
+	char kochKRZ;
+		// Parameter Berechnen
+			
+			prozess.hichBeschleunigungssumme = prozess.hichBeschleunigungssumme + prozess.pdchBechleunigung;
+			
+			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKR
+								- kochKRZ * prozess.hichBeschleunigungssumme;
     }

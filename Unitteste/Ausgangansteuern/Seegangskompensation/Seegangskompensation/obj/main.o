@@ -1,56 +1,61 @@
 XH
-H 3 areas F global symbols
+H 3 areas E global symbols
 M main.c
-S _itoa Ref0000
 S _LCD_1_Start Ref0000
-S _LCD_1_PrString Ref0000
-S __r0 Ref0000
-S __r1 Ref0000
 S _LCD_1_Position Ref0000
 S _PWM8_1_Start Ref0000
+S _PWM8_1_WritePulseWidth Ref0000
 S _IN1_Start Ref0000
 S _IN2_Start Ref0000
 S _LCD_1_PrCString Ref0000
 S _I2Cm_Start Ref0000
-A text size 6D flags 0
+S _IN1_Switch Ref0000
+S _IN2_Switch Ref0000
+A text size 84 flags 0
 dbfile ./main.c
-dbfile C:\Users\Lesky\Desktop\UNITTE~2\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
 dbfunc e main 0 fV
 dbline FFFFFFFF 0
 dbline 33 0
 dbline 34 0
 dbline 37 2
-dbline 38 9
-dbline 39 11
-dbline FFFFFFFE 1C
-dbline 0 1C
-dbfunc e Initalisierung 1E fV
-dbline FFFFFFFF 1E
-dbline 3F 1E
-dbline 41 1E
-dbline 44 20
-dbline 4A 24
-dbline 4E 27
-dbline 51 2A
-dbline 52 2D
-dbline FFFFFFFE 31
-dbline 0 31
-dbfunc e LCDansteuern 32 fV
-dbsym l rgch 0 A[5:5]c
-dbsym l hichdata FFFFFFFC c
-dbline FFFFFFFF 32
-dbline 56 36
-dbline 59 36
-dbline 5A 3E
-dbline 5D 49
-dbline 5E 62
-dbline FFFFFFFE 69
-dbline 0 6C
+dbline 38 A
+dbline 39 12
+dbline FFFFFFFE 1D
+dbline 0 1D
+dbfunc e Initalisierung 1F fV
+dbline FFFFFFFF 1F
+dbline 3F 1F
+dbline 41 1F
+dbline 44 21
+dbline 4A 25
+dbline 4E 28
+dbline 51 2B
+dbline 52 2E
+dbline FFFFFFFE 32
+dbline 0 32
+dbfunc e Ausgangansteuern 33 fV
+dbsym l hichRichtung FFFFFFFB c
+dbsym l hichAusgangswert FFFFFFFC c
+dbline FFFFFFFF 33
+dbline 56 37
+dbline 58 37
+dbline 5D 54
+dbline 5E 5A
+dbline 5F 60
+dbline 65 62
+dbline 66 68
+dbline 67 6E
+dbline 6C 70
+dbline 6E 77
+dbline 73 79
+dbline FFFFFFFE 80
+dbline 0 83
 S _main Def0000
-S _LCDansteuern Def0032
-S _Initalisierung Def001E
+S _Initalisierung Def001F
+S _Ausgangansteuern Def0033
 A bss size 3 flags 20
-dbfile C:\Users\Lesky\Desktop\UNITTE~2\SEEGAN~1\SEEGAN~1\main.c
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
 dbstruct 3 .1
 dbfield 0 pdchBechleunigung c
 dbfield 1 pdchEntfernung c
@@ -58,24 +63,26 @@ dbfield 2 pdchSollwert c
 dbend
 dbsym e prozess 0 S[.1]
 S _prozess Def0000
-A lit size 9 flags 1
-T 00 00 90 1C 50 63 08 90 2B 38 FF 10 57 00 50 01
+A lit size 3 flags 1
+T 00 00 90 1D 50 00 08 08 90 2B 38 FE 10 57 00 50
 R 00 00 00 00
-T 00 0E 7C 00 00 50 00 06 08 50 00 06 5C 18 7C
-R 00 00 00 00 02 03 00 05 41 06 00 02 01 0A 00 02
-T 00 19 00 00 20 8F FF 71 01 10 7C 00 00 7C 00 00
-R 00 00 00 00 02 02 00 09 02 0B 00 0A 02 0E 00 01
-T 00 27 7C 00 00 7C 00 00 7C 00 00 20 7F 10 4F 38
-R 00 00 00 00 02 03 00 06 02 06 00 07 02 09 00 08
-T 00 35 05 10 57 05 50 00 7C 00 00 50 00 00 08 50
-R 00 00 00 00 02 09 00 05 41 0C 00 02
-T 00 42 00 00 5C 18 7C 00 00 20 50 00 08 50 0A 08
-R 00 00 00 00 01 02 00 02 02 07 00 09
-T 00 4F 52 FC 53 00 00 50 00 08 51 00 00 08 50 00
-R 00 00 00 00 03 05 00 04 03 0B 00 04
-T 00 5B 08 10 7C 00 00 38 FA 10 51 00 00 7C 00 00
-R 00 00 00 00 02 05 00 00 03 0B 00 03 02 0E 00 02
-T 00 68 20 38 FB 20 7F
+T 00 0E 01 7C 00 00 50 00 00 08 50 00 00 5C 18 7C
+R 00 00 00 00 02 04 00 01 41 07 00 02 01 0B 00 02
+T 00 1A 00 00 20 8F FF 71 01 10 7C 00 00 7C 00 00
+R 00 00 00 00 02 02 00 06 02 0B 00 07 02 0E 00 00
+T 00 28 7C 00 00 7C 00 00 7C 00 00 20 7F 10 4F 38
+R 00 00 00 00 02 03 00 02 02 06 00 04 02 09 00 05
+T 00 36 02 52 FB 54 01 56 00 00 3D 00 00 B0 06 3D
 R 00 00 00 00
-T 00 00 57 65 72 74 3A 00 4F 4B 00
+T 00 44 01 01 A0 0D 3D 00 00 B0 06 3D 01 02 A0 11
+R 00 00 00 00
+T 00 52 80 1D 10 50 00 7C 00 00 50 01 7C 00 00 20
+R 00 00 00 00 02 08 00 08 02 0D 00 09
+T 00 60 80 18 10 50 01 7C 00 00 50 00 7C 00 00 20
+R 00 00 00 00 02 08 00 08 02 0D 00 09
+T 00 6E 80 0A 10 50 00 7C 00 00 20 80 08 10 52 FC
+R 00 00 00 00 02 08 00 03
+T 00 7C 7C 00 00 20 38 FE 20 7F
+R 00 00 00 00 02 03 00 03
+T 00 00 4F 4B 00
 R 00 00 00 02

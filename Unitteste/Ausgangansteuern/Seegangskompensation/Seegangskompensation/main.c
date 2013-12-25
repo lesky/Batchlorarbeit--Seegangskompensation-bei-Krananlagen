@@ -39,7 +39,7 @@ struct
 
 // Funktionsprototypen:
 void Initalisierung(void);
-void LCDansteuern(char);
+void Ausgangansteuern(char, char);
 
 // mainfunktion
 // Präprozessor: kompiliere wenn kein test
@@ -52,7 +52,7 @@ void LCDansteuern(char);
 		Initalisierung();
 		
 		// Unittest des LCD
-		LCDansteuern(99);
+		Ausgangansteuern(0,0);
 		LCD_1_Position(1,0);    
     	LCD_1_PrCString("OK");
 		}
@@ -81,15 +81,36 @@ void Initalisierung(void)
 	IN1_Start();	
 	IN2_Start();
 	}
-	
-void LCDansteuern(char hichdata)
-    {                
-    char rgch[5];
-    // Text auf LCD ausgeben
-    LCD_1_Position(0,5);    
-    LCD_1_PrCString("Wert:");
-    
-    // Zahl Auf LCD ausgeben
-    itoa(rgch,hichdata,10);
-    LCD_1_PrString(rgch);                
-    }
+
+void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
+	{
+		// Drehrichtung Auswählen
+		switch(hichRichtung) {
+			
+			// Linkslauf
+			case 1: 
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(0);
+				IN2_Switch(1);
+				break;
+			
+			// Rechtslauf
+			case 2:
+				
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(1);
+				IN2_Switch(0);
+				break;
+				
+			// Ungültiger Wert
+			default:
+				// Pulsweite auf 0 setzen
+				PWM8_1_WritePulseWidth(0);
+				// Funktion verlassen
+				return ;
+				
+			}
+		
+		// Pulsweite auf hichAusgangswert setzen 		
+		PWM8_1_WritePulseWidth(hichAusgangswert);
+	}
