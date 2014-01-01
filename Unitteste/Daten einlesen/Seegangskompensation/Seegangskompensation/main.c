@@ -39,7 +39,7 @@ struct
 
 // Funktionsprototypen:
 void Initalisierung(void);
-void LCDansteuern(char);
+void Dateneinlesen(void);
 
 // mainfunktion
 // Präprozessor: kompiliere wenn kein test
@@ -47,12 +47,11 @@ void LCDansteuern(char);
 
 #else
 	// Funktion zum Unittesting
-	void main(void)
-		{
+	void main(void){
 		Initalisierung();
 		
 		// Unittest des LCD
-		LCDansteuern(99);
+		
 		LCD_1_Position(1,0);    
     	LCD_1_PrCString("OK");
 		}
@@ -66,10 +65,10 @@ void Initalisierung(void)
 		
 	// I2C Starten
 	I2Cm_Start();
-//  	// A/D Wandler konfigurieren
-//	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
-//    I2Cm_fWrite(0x00);
-//	I2Cm_SendStop();
+  	// A/D Wandler konfigurieren
+	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+    I2Cm_fWrite(0x00);
+	I2Cm_SendStop();
 	// Initialisieren des LCD-Displays
 	LCD_1_Start();                 					
    	
@@ -82,14 +81,21 @@ void Initalisierung(void)
 	IN2_Start();
 	}
 	
-void LCDansteuern(char hichdata)
-    {                
-    char rgch[5];
-    // Text auf LCD ausgeben
-    LCD_1_Position(0,5);    
-    LCD_1_PrCString("Wert:");
-    
-    // Zahl Auf LCD ausgeben
-    itoa(rgch,hichdata,10);
-    LCD_1_PrString(rgch);                
-    }
+void Dateneinlesen(void)
+	{	
+		// I2C Adresse: 1001 000 -> 0x48
+		// Einleseforgang beginnen
+		I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
+		
+		// Daten Einlesen und ACK an slafe senden
+		I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchEntfernung	= I2Cm_bRead(I2Cm_ACKslave);
+		
+		// lezte Daten ohne ACK einlesen
+		prozess.pdchSollwert = I2Cm_bRead(I2Cm_NAKslave);
+		
+		//Stop Condition
+       	I2Cm_SendStop();
+
+	}
