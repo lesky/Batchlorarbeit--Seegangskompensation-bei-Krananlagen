@@ -1,6 +1,6 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Tue Dec 17 12:57:46 2013
+Date:         Wed Jan 08 13:40:38 2014
 Compiler:     ICCM8C
 Version:      7.05.00
 
@@ -77,8 +77,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        0498  LCD_1_ROW_OFFSET
        049C  _LCD_1_Position
        049C  LCD_1_Position
-       04A8  _LCD_1_Delay50uTimes
        04A8  LCD_1_Delay50uTimes
+       04A8  _LCD_1_Delay50uTimes
        04AE  LCD_1_Delay50u_Table
        04B6  LCD_1_Delay50u
        04B6  _LCD_1_Delay50u
@@ -134,23 +134,24 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   0866   02A4 =    676. bytes (rel,con,rom,code)
+                            text   0866   02C9 =    713. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
        0866  _main
        0866  __text_start
-       087E  _LCDansteuern
-       08B9  _Dateneinlesen
-       08E1  _Ausgangansteuern
-       0932  _Initalisierung
-       0955  PSoC_GPIO_ISR
-       098D  _itoa
-       0B0A  __text_end
+       087D  _Ausgangansteuern
+       08B7  _Initalisierung
+       08CB  _LCDansteuern
+       0906  _Ausgangberechnen
+       094D  _Dateneinlesen
+       097A  PSoC_GPIO_ISR
+       09B2  _itoa
+       0B2F  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-               virtual_registers   0000   0006 =      6. bytes (rel,con,ram)
+               virtual_registers   0000   0007 =      7. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -158,58 +159,59 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        0001  __rY
        0002  __rX
        0003  __r3
-       0004  __r1
-       0005  __r0
-       0006  __virtual_registers_end
+       0004  __r2
+       0005  __r1
+       0006  __r0
+       0007  __virtual_registers_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                    InterruptRAM   0006   0007 =      7. bytes (rel,con,ram)
+                    InterruptRAM   0007   0007 =      7. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0006  NO_SHADOW
-       0006  Port_1_Data_SHADE
-       0006  _NO_SHADOW
-       0006  _Port_1_Data_SHADE
-       0007  Port_2_Data_SHADE
-       0007  _Port_2_Data_SHADE
-       0008  Port_1_DriveMode_0_SHADE
-       0008  _Port_1_DriveMode_0_SHADE
-       0009  _Port_1_DriveMode_1_SHADE
-       0009  Port_1_DriveMode_1_SHADE
-       000A  Port_1_DriveMode_2_SHADE
-       000A  _Port_1_DriveMode_2_SHADE
-       000B  _Port_2_DriveMode_0_SHADE
-       000B  Port_2_DriveMode_0_SHADE
-       000C  Port_2_DriveMode_1_SHADE
-       000C  _Port_2_DriveMode_1_SHADE
-       000D  __InterruptRAM_end
+       0007  NO_SHADOW
+       0007  Port_1_Data_SHADE
+       0007  _NO_SHADOW
+       0007  _Port_1_Data_SHADE
+       0008  Port_2_Data_SHADE
+       0008  _Port_2_Data_SHADE
+       0009  Port_1_DriveMode_0_SHADE
+       0009  _Port_1_DriveMode_0_SHADE
+       000A  _Port_1_DriveMode_1_SHADE
+       000A  Port_1_DriveMode_1_SHADE
+       000B  Port_1_DriveMode_2_SHADE
+       000B  _Port_1_DriveMode_2_SHADE
+       000C  _Port_2_DriveMode_0_SHADE
+       000C  Port_2_DriveMode_0_SHADE
+       000D  Port_2_DriveMode_1_SHADE
+       000D  _Port_2_DriveMode_1_SHADE
+       000E  __InterruptRAM_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             bss   000D   0003 =      3. bytes (rel,con,ram)
+                             bss   000E   0006 =      6. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       000D  _prozess
-       000D  __bss_start
-       0010  __bss_end
+       000E  _prozess
+       000E  __bss_start
+       0014  __bss_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-        seegangskompensation_RAM   0010   0004 =      4. bytes (rel,con,ram)
+        seegangskompensation_RAM   0014   0004 =      4. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0010  _I2Cm_bStatus
-       0010  I2Cm_bStatus
-       0011  _I2Cm_bData
-       0011  I2Cm_bData
-       0012  _I2Cm_bAddr
-       0012  I2Cm_bAddr
-       0014  __seegangskompensation_RAM_end
-       0014  __ramareas_end
+       0014  _I2Cm_bStatus
+       0014  I2Cm_bStatus
+       0015  _I2Cm_bData
+       0015  I2Cm_bData
+       0016  _I2Cm_bAddr
+       0016  I2Cm_bAddr
+       0018  __seegangskompensation_RAM_end
+       0018  __ramareas_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -226,8 +228,8 @@ Files Linked      [ module(s) ]
 ./obj/boot.o	[ boot.asm ]
 obj/main.o	[ main.c ]
 <library>	[ pwm8_1int.asm, pwm8_1.asm, psocgpioint.asm, psocconfigtbl.asm, psocconfig.asm, lcd_1.asm, in2.asm ]
-[ in1.asm, i2cm.asm, rZ.asm, rY.asm, rX.asm, r3.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm, i_div16_block_util.asm ]
-[ itoa.s ]
+[ in1.asm, i2cm.asm, rZ.asm, rY.asm, rX.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmodu_16x16_16_util.asm ]
+[ i_div16_block_util.asm, itoa.s ]
 
 Area Definitions
 

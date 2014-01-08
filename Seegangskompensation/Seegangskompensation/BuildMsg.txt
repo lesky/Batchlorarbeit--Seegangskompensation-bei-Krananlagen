@@ -3,12 +3,12 @@ creating project.mk -- no changes
 
 Linking..
 
-  ROM 16% full. 2490 out of 16384 bytes used (does not include absolute areas).
+  ROM 16% full. 2527 out of 16384 bytes used (does not include absolute areas).
 
-  RAM 8% full. 20 bytes used (does not include stack usage).
+  RAM 10% full. 24 bytes used (does not include stack usage).
 
 Built with ICCM8C STD V7.05.00
 
  
-Seegangskompensation - 0 error(s) 0 warning(s) 12:57:46
+Seegangskompensation - 0 error(s) 0 warning(s) 13:40:38
 

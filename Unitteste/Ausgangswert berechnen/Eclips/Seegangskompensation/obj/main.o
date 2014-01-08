@@ -1,0 +1,92 @@
+XH
+H 3 areas D global symbols
+M main.c
+S _LCD_1_Start Ref0000
+S __r0 Ref0000
+S __r2 Ref0000
+S _LCD_1_Position Ref0000
+S _PWM8_1_Start Ref0000
+S _IN1_Start Ref0000
+S _IN2_Start Ref0000
+S _LCD_1_PrCString Ref0000
+S _I2Cm_Start Ref0000
+A text size 72 flags 0
+dbfile ./main.c
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~2\SEEGAN~1\SEEGAN~1\main.c
+dbfunc e main 0 fV
+dbline FFFFFFFF 0
+dbline 36 0
+dbline 37 0
+dbline 3B 2
+dbline 3C A
+dbline FFFFFFFE 15
+dbline 0 15
+dbfunc e Initalisierung 17 fV
+dbline FFFFFFFF 17
+dbline 42 17
+dbline 44 17
+dbline 47 19
+dbline 4D 1D
+dbline 51 20
+dbline 54 23
+dbline 55 26
+dbline FFFFFFFE 2A
+dbline 0 2A
+dbfunc e Ausgangberechnen 2B fV
+dbsym l kochKRZ 2 c
+dbsym l kochKR 1 c
+dbsym l hichAusgangswert 0 c
+dbline FFFFFFFF 2B
+dbline 59 2F
+dbline 62 2F
+dbline 64 33
+dbline 67 55
+dbline 69 5B
+dbline 69 5B
+dbline 6A 5F
+dbline 6B 62
+dbline 6D 64
+dbline 6E 64
+dbline 6F 6B
+dbline 70 6E
+dbline 70 6E
+dbline FFFFFFFE 6E
+dbline 0 71
+S _main Def0000
+S _Initalisierung Def0017
+S _Ausgangberechnen Def002B
+A bss size 6 flags 20
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~2\SEEGAN~1\SEEGAN~1\main.c
+dbstruct 6 .1
+dbfield 0 pdchBechleunigung c
+dbfield 1 pdchEntfernung c
+dbfield 2 pdchSollwert c
+dbfield 3 pdchDrehzahl c
+dbfield 4 pdchRichtung c
+dbfield 5 hichBeschleunigungssumme c
+dbend
+dbsym e prozess 0 S[.1]
+S _prozess Def0000
+A lit size 3 flags 1
+T 00 00 90 15 10 57 00 50 01 7C 00 00 50 00 00 08
+R 00 00 00 00 02 0A 00 03 41 0D 00 02
+T 00 0D 50 00 00 5C 18 7C 00 00 20 8F FF 71 01 10
+R 00 00 00 00 01 03 00 02 02 08 00 07
+T 00 1A 7C 00 00 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 03 00 08 02 06 00 00 02 09 00 04
+T 00 24 00 00 7C 00 00 20 7F 10 4F 38 03 51 00 00
+R 00 00 00 00 02 02 00 05 02 05 00 06 01 0E 00 01
+T 00 31 04 00 05 51 00 05 60 E8 52 02 60 E9 40 5D
+R 00 00 00 00 01 03 00 01 01 06 00 01
+T 00 3D EB 53 00 00 51 00 02 12 00 00 53
+R 00 00 00 00 03 04 00 01 01 07 00 01 01 0A 00 01
+T 00 45 00 00 52 01 60 E8 51 00 00 60 E9 40 5D EB
+R 00 00 00 00 03 02 00 02 03 09 00 02
+T 00 51 12 00 00 54 00 50 00 3B 00 C0 0A 52 00 53
+R 00 00 00 00 03 03 00 01
+T 00 5E 00 03 55 00 04 01 80 0B 52 00 73 11 FF 53
+R 00 00 00 00 01 02 00 01 01 05 00 01
+T 00 6A 00 03 55 00 04 02 38 FD 20 7F
+R 00 00 00 00 01 02 00 01 01 05 00 01
+T 00 00 4F 4B 00
+R 00 00 00 02

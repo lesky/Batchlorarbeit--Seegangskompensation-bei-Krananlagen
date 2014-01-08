@@ -1,0 +1,211 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\DATENE~1\SEEGAN~1\SEEGAN~1\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 50
+ 0000           ; /********************************************************
+ 0000           ; * C main-Funktion                                                                             *
+ 0000           ; * Programm: Seegangskompensation bei Krahnanlagen             *
+ 0000           ; * Controler: CY8C27446-24PXI                                                  *
+ 0000           ; *                                                                                                             *
+ 0000           ; * I/O-Konfiguration:                                                                  *
+ 0000           ; * LCD                         -> Port 2                                                               *
+ 0000           ; * SDA                 -> 1.0                                                                  *
+ 0000           ; * SCL                         -> 1.1                                                                  *
+ 0000           ; * IN1                 -> 1.3                                                                  *
+ 0000           ; * IN2                 -> 1.5                                                                  *
+ 0000           ; * PWM 1                       -> 1.4                                                                  *
+ 0000           ; * Beschleunigung-> 0.7                                                                        *
+ 0000           ; * Entfernung  -> 0.4                                                                  *
+ 0000           ; * Sollwert            -> 0.5                                                                  *
+ 0000           ; *                                                                                                             *
+ 0000           ; * Zusätzlich definierte Prüfixe zur Variablenbenennung      *
+ 0000           ; * Mittels Ungaricher Notation nach Charles Simonyi:           *
+ 0000           ; * pd  -> Prozessbezogene Daten                                                *
+ 0000           ; * ko  -> Konstanten                                                                   *
+ 0000           ; * hi  -> Interne Hilfsgrößen                                                        *
+ 0000           ; * in  -> Datentyp Integer                                                             *
+ 0000           ; ********************************************************/
+ 0000           ; 
+ 0000           ; // Präprozessor:Für Unittesting:
+ 0000           ; // #defein Test nicht auskomentieren:
+ 0000           ; #define UTEST
+ 0000           ; 
+ 0000           ; #include <m8c.h>        
+ 0000           ; #include "PSoCAPI.h"    
+ 0000           ; #include <stdlib.h>
+ 0000           ; 
+ 0000           ; // globale Structur zur Übergabe der Prozessdaten:
+ 0000           ; struct 
+ 0000           ;    {                                                  
+ 0000           ;       char pdchBechleunigung, pdchEntfernung;                 
+ 0000           ;       char pdchSollwert;                                                              
+ 0000           ;       } prozess;
+ 0000           ; 
+ 0000           ; // Funktionsprototypen:
+ 0000           ; void Initalisierung(void);
+ 0000           ; void Dateneinlesen(void);
+ 0000           ; 
+ 0000           ; // mainfunktion
+ 0000           ; // Präprozessor: kompiliere wenn kein test
+ 0000           ; #ifndef UTEST
+ 0000           ; 
+ 0000           ; #else
+ 0000           ;       // Funktion zum Unittesting
+ 0000           ;       void main(void){
+ 0000                   .dbline 51
+ 0000           ;               Initalisierung();
+ 0000 9015              xcall _Initalisierung
+ 0002                   .dbline 55
+ 0002           ;               
+ 0002           ;               // Unittest des LCD
+ 0002           ;               
+ 0002           ;               LCD_1_Position(1,0);    
+ 0002 10                push X
+ 0003 5700              mov X,0
+ 0005 5001              mov A,1
+ 0007 7C0000            xcall _LCD_1_Position
+ 000A                   .dbline 56
+ 000A           ;       LCD_1_PrCString("OK");
+ 000A 5000              mov A,>L3
+ 000C 08                push A
+ 000D 5000              mov A,<L3
+ 000F 5C                mov X,A
+ 0010 18                pop A
+ 0011 7C0000            xcall _LCD_1_PrCString
+ 0014 20                pop X
+ 0015                   .dbline -2
+ 0015           L2:
+ 0015                   .dbline 0 ; func end
+ 0015 8FFF              jmp .
+ 0017                   .dbend
+ 0017                   .dbfunc e Initalisierung _Initalisierung fV
+ 0017           _Initalisierung::
+ 0017                   .dbline -1
+ 0017                   .dbline 62
+ 0017           ;               }
+ 0017           ; #endif 
+ 0017           ; 
+ 0017           ; 
+ 0017           ; void Initalisierung(void)
+ 0017           ;       {
+ 0017                   .dbline 64
+ 0017           ;       //globale Interrupts Freigeben
+ 0017           ;       M8C_EnableGInt;
+ 0017 7101                      or  F, 01h
+ 0019           
+ 0019                   .dbline 67
+ 0019           ;               
+ 0019           ;       // I2C Starten
+ 0019           ;       I2Cm_Start();
+ 0019 10                push X
+ 001A 7C0000            xcall _I2Cm_Start
+ 001D                   .dbline 69
+ 001D           ;       // A/D Wandler konfigurieren
+ 001D           ;       I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+ 001D 5700              mov X,0
+ 001F 5048              mov A,72
+ 0021 7C0000            xcall _I2Cm_fSendStart
+ 0024                   .dbline 70
+ 0024           ;     I2Cm_fWrite(0x00);
+ 0024 5000              mov A,0
+ 0026 7C0000            xcall _I2Cm_fWrite
+ 0029                   .dbline 71
+ 0029           ;       I2Cm_SendStop();
+ 0029 7C0000            xcall _I2Cm_SendStop
+ 002C                   .dbline 73
+ 002C           ;       // Initialisieren des LCD-Displays
+ 002C           ;       LCD_1_Start();                                                  
+ 002C 7C0000            xcall _LCD_1_Start
+ 002F                   .dbline 77
+ 002F           ;       
+ 002F           ;       // Initialisieren des PWM-Moduls
+ 002F           ;       // PWM8_1_WritePeriod(kochPeriodendauer);                                   
+ 002F           ;     PWM8_1_Start();
+ 002F 7C0000            xcall _PWM8_1_Start
+ 0032                   .dbline 80
+ 0032           ;       
+ 0032           ;       //Initialisieren der Digitalen Ausgänge
+ 0032           ;       IN1_Start();    
+ 0032 7C0000            xcall _IN1_Start
+ 0035                   .dbline 81
+ 0035           ;       IN2_Start();
+ 0035 7C0000            xcall _IN2_Start
+ 0038 20                pop X
+ 0039                   .dbline -2
+ 0039           L4:
+ 0039                   .dbline 0 ; func end
+ 0039 7F                ret
+ 003A                   .dbend
+ 003A                   .dbfunc e Dateneinlesen _Dateneinlesen fV
+ 003A           _Dateneinlesen::
+ 003A                   .dbline -1
+ 003A                   .dbline 85
+ 003A           ;       }
+ 003A           ;       
+ 003A           ; void Dateneinlesen(void)
+ 003A           ;       {       
+ 003A                   .dbline 88
+ 003A           ;               // I2C Adresse: 1001 000 -> 0x48
+ 003A           ;               // Einleseforgang beginnen
+ 003A           ;               I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
+ 003A 10                push X
+ 003B 5701              mov X,1
+ 003D 5048              mov A,72
+ 003F 7C0000            xcall _I2Cm_fSendRepeatStart
+ 0042                   .dbline 91
+ 0042           ;               
+ 0042           ;               // Daten Einlesen und ACK an slafe senden
+ 0042           ;               I2Cm_bRead(I2Cm_ACKslave);
+ 0042 5001              mov A,1
+ 0044 7C0000            xcall _I2Cm_bRead
+ 0047                   .dbline 92
+ 0047           ;               prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
+ 0047 5001              mov A,1
+ 0049 7C0000            xcall _I2Cm_bRead
+ 004C 20                pop X
+ 004D 5300              mov [_prozess],A
+ 004F                   .dbline 93
+ 004F           ;               prozess.pdchEntfernung  = I2Cm_bRead(I2Cm_ACKslave);
+ 004F 10                push X
+ 0050 5001              mov A,1
+ 0052 7C0000            xcall _I2Cm_bRead
+ 0055 20                pop X
+ 0056 5301              mov [_prozess+1],A
+ 0058                   .dbline 96
+ 0058           ;               
+ 0058           ;               // lezte Daten ohne ACK einlesen
+ 0058           ;               prozess.pdchSollwert = I2Cm_bRead(I2Cm_NAKslave);
+ 0058 10                push X
+ 0059 5000              mov A,0
+ 005B 7C0000            xcall _I2Cm_bRead
+ 005E 20                pop X
+ 005F 5302              mov [_prozess+2],A
+ 0061                   .dbline 99
+ 0061           ;               
+ 0061           ;               //Stop Condition
+ 0061           ;               I2Cm_SendStop();
+ 0061 10                push X
+ 0062 7C0000            xcall _I2Cm_SendStop
+ 0065 20                pop X
+ 0066                   .dbline -2
+ 0066           L5:
+ 0066                   .dbline 0 ; func end
+ 0066 7F                ret
+ 0067                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\DATENE~1\SEEGAN~1\SEEGAN~1\main.c
+ 0000           _prozess::
+ 0000                   .blkb 3
+ 0003                   .dbstruct 0 3 .1
+ 0003                   .dbfield 0 pdchBechleunigung c
+ 0003                   .dbfield 1 pdchEntfernung c
+ 0003                   .dbfield 2 pdchSollwert c
+ 0003                   .dbend
+ 0003                   .dbsym e prozess _prozess S[.1]
+                        .area lit(rom, con, rel, lit)
+ 0000           L3:
+ 0000 4F4B00            .byte 'O,'K,0

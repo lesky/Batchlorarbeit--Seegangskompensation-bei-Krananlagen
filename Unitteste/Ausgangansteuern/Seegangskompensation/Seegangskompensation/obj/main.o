@@ -1,0 +1,102 @@
+XH
+H 3 areas E global symbols
+M main.c
+S _LCD_1_Start Ref0000
+S _LCD_1_Position Ref0000
+S _PWM8_1_Start Ref0000
+S _PWM8_1_WritePulseWidth Ref0000
+S _IN1_Start Ref0000
+S _IN2_Start Ref0000
+S _LCD_1_PrCString Ref0000
+S _I2Cm_Start Ref0000
+S _IN1_Switch Ref0000
+S _IN2_Switch Ref0000
+A text size 91 flags 0
+dbfile ./main.c
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
+dbfunc e main 0 fV
+dbline FFFFFFFF 0
+dbline 33 0
+dbline 34 0
+dbline 37 2
+dbline 38 C
+dbline 39 14
+dbline FFFFFFFE 1F
+dbline 0 1F
+dbfunc e Initalisierung 21 fV
+dbline FFFFFFFF 21
+dbline 3F 21
+dbline 41 21
+dbline 44 23
+dbline 4A 27
+dbline 4E 2A
+dbline 51 2D
+dbline 52 30
+dbline FFFFFFFE 34
+dbline 0 34
+dbfunc e Ausgangansteuern 35 fV
+dbsym l hichRichtung FFFFFFFB c
+dbsym l hichAusgangswert FFFFFFFC c
+dbline FFFFFFFF 35
+dbline 56 37
+dbline 5B 37
+dbline 5E 3C
+dbline 5E 3C
+dbline 5F 42
+dbline 61 47
+dbline 62 4E
+dbline 64 59
+dbline 66 5B
+dbline 6A 60
+dbline 6A 60
+dbline 6B 66
+dbline 6D 6B
+dbline 6E 72
+dbline 70 7D
+dbline 73 7F
+dbline 75 7F
+dbline 77 86
+dbline 7B 88
+dbline FFFFFFFE 8F
+dbline 0 90
+S _main Def0000
+S _Initalisierung Def0021
+S _Ausgangansteuern Def0035
+A bss size 3 flags 20
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
+dbstruct 3 .1
+dbfield 0 pdchBechleunigung c
+dbfield 1 pdchEntfernung c
+dbfield 2 pdchSollwert c
+dbend
+dbsym e prozess 0 S[.1]
+S _prozess Def0000
+A lit size 10 flags 1
+T 00 00 90 1F 50 01 08 50 00 08 90 2B 38 FE 10 50
+R 00 00 00 00
+T 00 0E 01 57 01 7C 00 00 50 00 0D 08 50 00 0D 5C
+R 00 00 00 00 02 06 00 01 41 09 00 02 01 0D 00 02
+T 00 1A 18 7C 00 00 20 8F FF 71 01 10 7C 00 00 7C
+R 00 00 00 00 02 04 00 06 02 0D 00 07
+T 00 28 00 00 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 02 00 00 02 05 00 02 02 08 00 04
+T 00 31 00 00 20 7F 10 4F 3D FB 01 B0 20 10 50 00
+R 00 00 00 00 02 02 00 05
+T 00 3F 7C 00 00 50 01 7C 00 00 50 01 57 01 7C
+R 00 00 00 00 02 03 00 08 02 08 00 09
+T 00 4C 00 00 50 00 07 08 50 00 07 5C 18 7C
+R 00 00 00 00 02 02 00 01 41 05 00 02 01 09 00 02
+T 00 56 00 00 20 80 2E 3D FB 02 B0 20 10 50 01 7C
+R 00 00 00 00 02 02 00 06
+T 00 64 00 00 50 00 7C 00 00 50 01 57 01 7C 00 00
+R 00 00 00 00 02 02 00 08 02 07 00 09 02 0E 00 01
+T 00 72 50 00 00 08 50 00 00 5C 18 7C 00 00 20 80
+R 00 00 00 00 41 03 00 02 01 07 00 02 02 0C 00 06
+T 00 7E 0A 10 50 00 7C 00 00 20 80 08 10 52 FC 7C
+R 00 00 00 00 02 07 00 03
+T 00 8C 00 00 20 20 7F
+R 00 00 00 00 02 02 00 03
+T 00 00 72 65 63 68 74 73 00 6C 69 6E 6B 73 00 4F
+R 00 00 00 02
+T 00 0E 4B 00
+R 00 00 00 02

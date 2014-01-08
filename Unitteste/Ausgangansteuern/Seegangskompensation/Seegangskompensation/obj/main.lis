@@ -1,0 +1,282 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 51
+ 0000           ; /********************************************************
+ 0000           ; * C main-Funktion                                                                             *
+ 0000           ; * Programm: Seegangskompensation bei Krahnanlagen             *
+ 0000           ; * Controler: CY8C27446-24PXI                                                  *
+ 0000           ; *                                                                                                             *
+ 0000           ; * I/O-Konfiguration:                                                                  *
+ 0000           ; * LCD                         -> Port 2                                                               *
+ 0000           ; * SDA                 -> 1.0                                                                  *
+ 0000           ; * SCL                         -> 1.1                                                                  *
+ 0000           ; * IN1                 -> 1.3                                                                  *
+ 0000           ; * IN2                 -> 1.5                                                                  *
+ 0000           ; * PWM 1                       -> 1.4                                                                  *
+ 0000           ; * Beschleunigung-> 0.7                                                                        *
+ 0000           ; * Entfernung  -> 0.4                                                                  *
+ 0000           ; * Sollwert            -> 0.5                                                                  *
+ 0000           ; *                                                                                                             *
+ 0000           ; * Zusätzlich definierte Prüfixe zur Variablenbenennung      *
+ 0000           ; * Mittels Ungaricher Notation nach Charles Simonyi:           *
+ 0000           ; * pd  -> Prozessbezogene Daten                                                *
+ 0000           ; * ko  -> Konstanten                                                                   *
+ 0000           ; * hi  -> Interne Hilfsgrößen                                                        *
+ 0000           ; * in  -> Datentyp Integer                                                             *
+ 0000           ; ********************************************************/
+ 0000           ; 
+ 0000           ; // Präprozessor:Für Unittesting:
+ 0000           ; // #defein Test nicht auskomentieren:
+ 0000           ; #define UTEST
+ 0000           ; 
+ 0000           ; #include <m8c.h>        
+ 0000           ; #include "PSoCAPI.h"    
+ 0000           ; #include <stdlib.h>
+ 0000           ; 
+ 0000           ; // globale Structur zur Übergabe der Prozessdaten:
+ 0000           ; struct 
+ 0000           ;    {                                                  
+ 0000           ;       char pdchBechleunigung, pdchEntfernung;                 
+ 0000           ;       char pdchSollwert;                                                              
+ 0000           ;       } prozess;
+ 0000           ; 
+ 0000           ; // Funktionsprototypen:
+ 0000           ; void Initalisierung(void);
+ 0000           ; void Ausgangansteuern(char, char);
+ 0000           ; 
+ 0000           ; // mainfunktion
+ 0000           ; // Präprozessor: kompiliere wenn kein test
+ 0000           ; #ifndef UTEST
+ 0000           ; 
+ 0000           ; #else
+ 0000           ;       // Funktion zum Unittesting
+ 0000           ;       void main(void)
+ 0000           ;               {
+ 0000                   .dbline 52
+ 0000           ;               Initalisierung();
+ 0000 901F              xcall _Initalisierung
+ 0002                   .dbline 55
+ 0002           ;               
+ 0002           ;               // Unittest des LCD
+ 0002           ;               Ausgangansteuern(0,1);
+ 0002 5001              mov A,1
+ 0004 08                push A
+ 0005 5000              mov A,0
+ 0007 08                push A
+ 0008 902B              xcall _Ausgangansteuern
+ 000A 38FE              add SP,-2
+ 000C                   .dbline 56
+ 000C           ;               LCD_1_Position(1,1);    
+ 000C 10                push X
+ 000D 5001              mov A,1
+ 000F 5701              mov X,1
+ 0011 7C0000            xcall _LCD_1_Position
+ 0014                   .dbline 57
+ 0014           ;       LCD_1_PrCString("OK");
+ 0014 500D              mov A,>L3
+ 0016 08                push A
+ 0017 500D              mov A,<L3
+ 0019 5C                mov X,A
+ 001A 18                pop A
+ 001B 7C0000            xcall _LCD_1_PrCString
+ 001E 20                pop X
+ 001F                   .dbline -2
+ 001F           L2:
+ 001F                   .dbline 0 ; func end
+ 001F 8FFF              jmp .
+ 0021                   .dbend
+ 0021                   .dbfunc e Initalisierung _Initalisierung fV
+ 0021           _Initalisierung::
+ 0021                   .dbline -1
+ 0021                   .dbline 63
+ 0021           ;               }
+ 0021           ; #endif 
+ 0021           ; 
+ 0021           ; 
+ 0021           ; void Initalisierung(void)
+ 0021           ;       {
+ 0021                   .dbline 65
+ 0021           ;       //globale Interrupts Freigeben
+ 0021           ;       M8C_EnableGInt;
+ 0021 7101                      or  F, 01h
+ 0023           
+ 0023                   .dbline 68
+ 0023           ;               
+ 0023           ;       // I2C Starten
+ 0023           ;       I2Cm_Start();
+ 0023 10                push X
+ 0024 7C0000            xcall _I2Cm_Start
+ 0027                   .dbline 74
+ 0027           ; //    // A/D Wandler konfigurieren
+ 0027           ; //    I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+ 0027           ; //    I2Cm_fWrite(0x00);
+ 0027           ; //    I2Cm_SendStop();
+ 0027           ;       // Initialisieren des LCD-Displays
+ 0027           ;       LCD_1_Start();                                                  
+ 0027 7C0000            xcall _LCD_1_Start
+ 002A                   .dbline 78
+ 002A           ;       
+ 002A           ;       // Initialisieren des PWM-Moduls
+ 002A           ;       // PWM8_1_WritePeriod(kochPeriodendauer);                                   
+ 002A           ;     PWM8_1_Start();
+ 002A 7C0000            xcall _PWM8_1_Start
+ 002D                   .dbline 81
+ 002D           ;       
+ 002D           ;       //Initialisieren der Digitalen Ausgänge
+ 002D           ;       IN1_Start();    
+ 002D 7C0000            xcall _IN1_Start
+ 0030                   .dbline 82
+ 0030           ;       IN2_Start();
+ 0030 7C0000            xcall _IN2_Start
+ 0033 20                pop X
+ 0034                   .dbline -2
+ 0034           L4:
+ 0034                   .dbline 0 ; func end
+ 0034 7F                ret
+ 0035                   .dbend
+ 0035                   .dbfunc e Ausgangansteuern _Ausgangansteuern fV
+ 0035           ;   hichRichtung -> X-5
+ 0035           ; hichAusgangswert -> X-4
+ 0035           _Ausgangansteuern::
+ 0035                   .dbline -1
+ 0035 10                push X
+ 0036 4F                mov X,SP
+ 0037                   .dbline 86
+ 0037           ;       }
+ 0037           ; 
+ 0037           ; void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
+ 0037           ;       {
+ 0037                   .dbline 91
+ 0037           ;               // Drehrichtung Auswählen
+ 0037           ;               
+ 0037           ;                       
+ 0037           ;                       // Linkslauf
+ 0037           ;                       if (hichRichtung == 1)
+ 0037 3DFB01            cmp [X-5],1
+ 003A B020              jnz L6
+ 003C                   .dbline 94
+ 003C           ;                       {
+ 003C           ;                               // IN1 und IN2 Ansteuern
+ 003C           ;                               IN1_Switch(0);
+ 003C                   .dbline 94
+ 003C 10                push X
+ 003D 5000              mov A,0
+ 003F 7C0000            xcall _IN1_Switch
+ 0042                   .dbline 95
+ 0042           ;                               IN2_Switch(1);
+ 0042 5001              mov A,1
+ 0044 7C0000            xcall _IN2_Switch
+ 0047                   .dbline 97
+ 0047           ;                               
+ 0047           ;                               LCD_1_Position(1,1);    
+ 0047 5001              mov A,1
+ 0049 5701              mov X,1
+ 004B 7C0000            xcall _LCD_1_Position
+ 004E                   .dbline 98
+ 004E           ;                       LCD_1_PrCString("links");
+ 004E 5007              mov A,>L8
+ 0050 08                push A
+ 0051 5007              mov A,<L8
+ 0053 5C                mov X,A
+ 0054 18                pop A
+ 0055 7C0000            xcall _LCD_1_PrCString
+ 0058 20                pop X
+ 0059                   .dbline 100
+ 0059           ;                       
+ 0059           ;                       }
+ 0059 802E              xjmp L7
+ 005B           L6:
+ 005B                   .dbline 102
+ 005B           ;                       // Rechtslauf
+ 005B           ;                       else if (hichRichtung == 2)
+ 005B 3DFB02            cmp [X-5],2
+ 005E B020              jnz L9
+ 0060                   .dbline 106
+ 0060           ;                       {
+ 0060           ;                               
+ 0060           ;                               // IN1 und IN2 Ansteuern
+ 0060           ;                               IN1_Switch(1);
+ 0060                   .dbline 106
+ 0060 10                push X
+ 0061 5001              mov A,1
+ 0063 7C0000            xcall _IN1_Switch
+ 0066                   .dbline 107
+ 0066           ;                               IN2_Switch(0);
+ 0066 5000              mov A,0
+ 0068 7C0000            xcall _IN2_Switch
+ 006B                   .dbline 109
+ 006B           ;                               
+ 006B           ;                               LCD_1_Position(1,1);    
+ 006B 5001              mov A,1
+ 006D 5701              mov X,1
+ 006F 7C0000            xcall _LCD_1_Position
+ 0072                   .dbline 110
+ 0072           ;                       LCD_1_PrCString("rechts");
+ 0072 5000              mov A,>L11
+ 0074 08                push A
+ 0075 5000              mov A,<L11
+ 0077 5C                mov X,A
+ 0078 18                pop A
+ 0079 7C0000            xcall _LCD_1_PrCString
+ 007C 20                pop X
+ 007D                   .dbline 112
+ 007D           ;                       
+ 007D           ;                       }
+ 007D 800A              xjmp L10
+ 007F           L9:
+ 007F                   .dbline 115
+ 007F           ;                       // Ungültiger Wert
+ 007F           ;                       else
+ 007F           ;                       {
+ 007F                   .dbline 117
+ 007F           ;                               // Pulsweite auf 0 setzen
+ 007F           ;                               PWM8_1_WritePulseWidth(0);
+ 007F 10                push X
+ 0080 5000              mov A,0
+ 0082 7C0000            xcall _PWM8_1_WritePulseWidth
+ 0085 20                pop X
+ 0086                   .dbline 119
+ 0086           ;                               // Funktion verlassen
+ 0086           ;                               return ;
+ 0086 8008              xjmp L5
+ 0088           L10:
+ 0088           L7:
+ 0088                   .dbline 123
+ 0088           ;                       }       
+ 0088           ;                       
+ 0088           ;               // Pulsweite auf hichAusgangswert setzen                
+ 0088           ;               PWM8_1_WritePulseWidth(hichAusgangswert);
+ 0088 10                push X
+ 0089 52FC              mov A,[X-4]
+ 008B 7C0000            xcall _PWM8_1_WritePulseWidth
+ 008E 20                pop X
+ 008F                   .dbline -2
+ 008F           L5:
+ 008F 20                pop X
+ 0090                   .dbline 0 ; func end
+ 0090 7F                ret
+ 0091                   .dbsym l hichRichtung -5 c
+ 0091                   .dbsym l hichAusgangswert -4 c
+ 0091                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\AUSGAN~1\SEEGAN~1\SEEGAN~1\main.c
+ 0000           _prozess::
+ 0000                   .blkb 3
+ 0003                   .dbstruct 0 3 .1
+ 0003                   .dbfield 0 pdchBechleunigung c
+ 0003                   .dbfield 1 pdchEntfernung c
+ 0003                   .dbfield 2 pdchSollwert c
+ 0003                   .dbend
+ 0003                   .dbsym e prozess _prozess S[.1]
+                        .area lit(rom, con, rel, lit)
+ 0000           L11:
+ 0000 72656368747300    .byte 'r,'e,'c,'h,'t,'s,0
+ 0007           L8:
+ 0007 6C696E6B7300      .byte 'l,'i,'n,'k,'s,0
+ 000D           L3:
+ 000D 4F4B00            .byte 'O,'K,0

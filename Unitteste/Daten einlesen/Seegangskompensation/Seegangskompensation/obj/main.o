@@ -1,0 +1,84 @@
+XH
+H 3 areas 10 global symbols
+M main.c
+S _I2Cm_SendStop Ref0000
+S _LCD_1_Start Ref0000
+S _I2Cm_fSendRepeatStart Ref0000
+S _I2Cm_fWrite Ref0000
+S _LCD_1_Position Ref0000
+S _PWM8_1_Start Ref0000
+S _IN1_Start Ref0000
+S _IN2_Start Ref0000
+S _LCD_1_PrCString Ref0000
+S _I2Cm_bRead Ref0000
+S _I2Cm_fSendStart Ref0000
+S _I2Cm_Start Ref0000
+A text size 67 flags 0
+dbfile ./main.c
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\DATENE~1\SEEGAN~1\SEEGAN~1\main.c
+dbfunc e main 0 fV
+dbline FFFFFFFF 0
+dbline 32 0
+dbline 33 0
+dbline 37 2
+dbline 38 A
+dbline FFFFFFFE 15
+dbline 0 15
+dbfunc e Initalisierung 17 fV
+dbline FFFFFFFF 17
+dbline 3E 17
+dbline 40 17
+dbline 43 19
+dbline 45 1D
+dbline 46 24
+dbline 47 29
+dbline 49 2C
+dbline 4D 2F
+dbline 50 32
+dbline 51 35
+dbline FFFFFFFE 39
+dbline 0 39
+dbfunc e Dateneinlesen 3A fV
+dbline FFFFFFFF 3A
+dbline 55 3A
+dbline 58 3A
+dbline 5B 42
+dbline 5C 47
+dbline 5D 4F
+dbline 60 58
+dbline 63 61
+dbline FFFFFFFE 66
+dbline 0 66
+S _main Def0000
+S _Initalisierung Def0017
+S _Dateneinlesen Def003A
+A bss size 3 flags 20
+dbfile C:\Users\Lesky\Desktop\UNITTE~2\UNITTE~1\DATENE~1\SEEGAN~1\SEEGAN~1\main.c
+dbstruct 3 .1
+dbfield 0 pdchBechleunigung c
+dbfield 1 pdchEntfernung c
+dbfield 2 pdchSollwert c
+dbend
+dbsym e prozess 0 S[.1]
+S _prozess Def0000
+A lit size 3 flags 1
+T 00 00 90 15 10 57 00 50 01 7C 00 00 50 00 00 08
+R 00 00 00 00 02 0A 00 04 41 0D 00 02
+T 00 0D 50 00 00 5C 18 7C 00 00 20 8F FF 71 01 10
+R 00 00 00 00 01 03 00 02 02 08 00 08
+T 00 1A 7C 00 00 57 00 50 48 7C 00 00 50 00 7C
+R 00 00 00 00 02 03 00 0B 02 0A 00 0A
+T 00 27 00 00 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 02 00 03 02 05 00 00 02 08 00 01
+T 00 30 00 00 7C 00 00 7C 00 00 20 7F 10 57 01 50
+R 00 00 00 00 02 02 00 05 02 05 00 06 02 08 00 07
+T 00 3E 48 7C 00 00 50 01 7C 00 00 50 01 7C 00 00
+R 00 00 00 00 02 04 00 02 02 09 00 09 02 0E 00 09
+T 00 4C 20 53 00 00 10 50 01 7C 00 00 20 53 00 01
+R 00 00 00 00 01 04 00 01 02 0A 00 09 01 0E 00 01
+T 00 58 10 50 00 7C 00 00 20 53 00 02 10 7C 00 00
+R 00 00 00 00 02 06 00 09 01 0A 00 01 02 0E 00 00
+T 00 65 20 7F
+R 00 00 00 00
+T 00 00 4F 4B 00
+R 00 00 00 02

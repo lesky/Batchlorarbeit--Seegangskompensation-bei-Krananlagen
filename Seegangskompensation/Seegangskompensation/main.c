@@ -5,7 +5,7 @@
 * 														*
 * I/O-Konfiguration:									*
 * LCD 			-> Port 2								*
-* SDA			-> 1.0
+* SDA			-> 1.0									*
 * SCL 			-> 1.1			 						*
 * IN1		 	-> 1.3									*
 * IN2			-> 1.5									*
@@ -22,130 +22,156 @@
 * in	-> Datentyp Integer								*
 ********************************************************/
 
+// Präprozessor:Für Unittesting:
+// #defein Test nicht auskomentieren:
+// #define UTEST
+
 #include <m8c.h>        
 #include "PSoCAPI.h"    
 #include <stdlib.h>
 
-// Präprozessor:Für testzwecke 
-// #defein Test nicht auskomentieren:
-#define TEST
-
-// Funktionsprototypen:
-void LCDansteuern(char);
-void Dateneinlesen(void);
-void Ausgangansteuern(char, char);
-void Initalisierung(void);
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
    {	  						
-	char pdchBechleunigung, pdchEntfernung;			
-	char pdchSollwert;								
+	char pdchBechleunigung;
+	char pdchEntfernung;			
+	char pdchSollwert;
+	char pdchDrehzahl; 
+	char pdchRichtung;
+	char hichBeschleunigungssumme;
 	} prozess;
 
+// Funktionsprototypen:
+void Initalisierung(void);
+void LCDansteuern(char);
+void Ausgangansteuern(char, char);
+void Ausgangberechnen(void);
+void Dateneinlesen(void);
 
-void main(void)
+// mainfunktion
+// Präprozessor: kompiliere wenn kein test
+#ifndef UTEST
+	void main(void )
+		{
+			Initalisierung();
+			Dateneinlesen();
+			Ausgangberechnen();
+			Ausgangansteuern(prozess.pdchDrehzahl, prozess.pdchRichtung);
+			LCDansteuern(prozess.pdchEntfernung);
+		}
+#else
+	// Funktion zum Unittesting
+	void main(void)
+		{
+		Initalisierung();
+		
+		// Unittest des LCD
+		LCDansteuern(99);
+		LCD_1_Position(1,0);    
+    	LCD_1_PrCString("OK");
+		}
+#endif 
+
+void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 	{
+		// Drehrichtung Auswählen
+		
+			
+			// Linkslauf
+			if (hichRichtung == 1)
+			{
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(0);
+				IN2_Switch(1);
+				
+			
+			}
+			// Rechtslauf
+			else if (hichRichtung == 2)
+			{
+				
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(1);
+				IN2_Switch(0);
+				
+			
+			}
+			// Ungültiger Wert
+			else
+			{
+				// Pulsweite auf 0 setzen
+				PWM8_1_WritePulseWidth(0);
+				// Funktion verlassen
+				return ;
+			}	
+			
+		// Pulsweite auf hichAusgangswert setzen 		
+		PWM8_1_WritePulseWidth(hichAusgangswert);
+	}
+
+		
+void Initalisierung(void)
+	{
+	//globale Interrupts Freigeben
+	M8C_EnableGInt;
+		
+	// I2C Starten
+	I2Cm_Start();
+//  	// A/D Wandler konfigurieren
+//	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
+//    I2Cm_fWrite(0x00);
+//	I2Cm_SendStop();
+	// Initialisieren des LCD-Displays
+	LCD_1_Start();                 					
+   	
+	// Initialisieren des PWM-Moduls
+	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
+    PWM8_1_Start();
 	
-	/********************************************************
-	* 			Deffinitionen und Deklarationen				*
-	********************************************************/	
+	//Initialisieren der Digitalen Ausgänge
+	IN1_Start();	
+	IN2_Start();
+	}
+	
+void LCDansteuern(char hichdata)
+    {                
+    char rgch[5];
+    // Text auf LCD ausgeben
+    LCD_1_Position(0,5);    
+    LCD_1_PrCString("Wert:");
+    
+    // Zahl Auf LCD ausgeben
+    itoa(rgch,hichdata,10);
+    LCD_1_PrString(rgch);                
+    }
+	
+void Ausgangberechnen(void)
+    {   
+	// Variablen
+	char hichAusgangswert;
 		
 	// Konstanten					
 	char kochKR;
 	char kochKRZ;
-		
-	// Variablen
-	char hichAusgangswert;							
-	char hichBeschleunigungssumme;  
-		
-	// Initialisierung des Controllers
-	Initalisierung();
-	
-	// Präprozessor: kompiliere whileschleife wenn kein test
-	#ifndef TEST
-		
-		/********************************************************
-		* 			Endlosschleife für Dauerbetrieb				*
-		********************************************************/
-
-		while(1) 
-			{
-			// Daten Einlesen
+		// Parameter Berechnen
 			
-			Dateneinlesen();		                         
-			// Parameter Berechnen
-			
-			hichBeschleunigungssumme = hichBeschleunigungssumme + prozess.pdchBechleunigung;
+			prozess.hichBeschleunigungssumme = prozess.hichBeschleunigungssumme + prozess.pdchBechleunigung;
 			
 			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKR
-								- kochKRZ * hichBeschleunigungssumme;
-			
-			// Daten Ausgeben:
-				
-			Ausgangansteuern(hichAusgangswert);
-			
-			LCDansteuern(prozess.pdchEntfernung);
-
-				
-			};
-			
-	/********************************************************
-	* Achtung die Folgenden Zeilen dienen nur zu Testzwecken*
-	* und sind für das Fertige Programm nicht relevant.		*
-	* Sie werden anstelle der Regulären while Schleife 		*
-	* Kompiliert, wenn die Bedingung #ifndef TEST nicht 	*
-	* erfüllt ist.											*
-	********************************************************/
-
-	#else
-						
-		// whileschleife zu testzwecken
-		// Konstante zur verweildauer in der schleife
-		while (1)
+								- kochKRZ * prozess.hichBeschleunigungssumme;
+		
+			if (hichAusgangswert <= 0)
 			{
-				Dateneinlesen();
-				//Ausgangansteuern(250, 2);
-				// LCDansteuern(1);
-				//if (PRT0DR & 0x01)
-				//{LCDansteuern(1);}
-				//else {LCDansteuern(PRT0DR & 0x01);}
-					//LCDansteuern(PRT0DR & 0x01);
-				/*
-				// Erkennen von eingangssignalen über A/D-Wandler
-				if (prozess.pdchEntfernung <= 110)
-				{
-					LCDansteuern(1);
-					Ausgangansteuern(250,1);}
-				else if (prozess.pdchBechleunigung <= 110)
-				{	LCDansteuern(2);
-					Ausgangansteuern(250,2);}
-				else {
-				Ausgangansteuern(0,0);	
-				}
-				*/
-				LCDansteuern(prozess.pdchSollwert);
+				prozess.pdchDrehzahl = hichAusgangswert;
+				prozess.pdchRichtung = 1;
+			}
+			else 
+			{
+				prozess.pdchDrehzahl = -hichAusgangswert;
+				prozess.pdchRichtung = 2;
 			};
 			
-	// Präprozessor: Ende der Verzweifung
-	#endif 
-}
-	
-/********************************************************
-* 			Funktionsdeklarationen						*
-********************************************************/
-	
-void LCDansteuern(char hichdata)
-	{		
-			char rgch[5];
-			// Text auf LCD ausgeben
-			LCD_1_Position(0,5);    
-			LCD_1_PrCString("Wert:");
-			
-			// Zahl Auf LCD ausgeben
-			itoa(rgch,hichdata,10);
-			LCD_1_PrString(rgch);		
-
-	}
+    }
 	
 void Dateneinlesen(void)
 	{	
@@ -154,6 +180,7 @@ void Dateneinlesen(void)
 		I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
 		
 		// Daten Einlesen und ACK an slafe senden
+		I2Cm_bRead(I2Cm_ACKslave);
 		prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
 		prozess.pdchEntfernung	= I2Cm_bRead(I2Cm_ACKslave);
 		
@@ -163,62 +190,4 @@ void Dateneinlesen(void)
 		//Stop Condition
        	I2Cm_SendStop();
 
-	}
-
-	void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
-	{
-		// Drehrichtung Auswählen
-		switch(hichRichtung) {
-			
-			// Linkslauf
-			case 1: 
-				// IN1 und IN2 Ansteuern
-				IN1_Switch(0);
-				IN2_Switch(1);
-				break;
-			
-			// Rechtslauf
-			case 2:
-				
-				// IN1 und IN2 Ansteuern
-				IN1_Switch(1);
-				IN2_Switch(0);
-				break;
-				
-			// Ungültiger Wert
-			default:
-				// Pulsweite auf 0 setzen
-				PWM8_1_WritePulseWidth(0);
-				// Funktion verlassen
-				return ;
-				
-			}
-		
-		// Pulsweite auf hichAusgangswert setzen 		
-		PWM8_1_WritePulseWidth(hichAusgangswert);
-	}
-
-void Initalisierung(void)
-	{
-	//globale Interrupts Freigeben
-	M8C_EnableGInt;
-		
-	// I2C Starten
-	I2Cm_Start();
-  	// A/D Wandler konfigurieren
-	I2Cm_fSendStart(0x48,I2Cm_WRITE);       
-    I2Cm_fWrite(0x00);
-	I2Cm_SendStop();
-	// Initialisieren des LCD-Displays
-	LCD_1_Start();                 					
-   	
-	// Initialisieren des PWM-Moduls
-	// PWM8_1_WritePeriod(kochPeriodendauer);        	                    
-    PWM8_1_Start();
-         			
-	
-	//Initialisieren der Digitalen Ausgänge
-		
-	IN1_Start();	
-	IN2_Start();
 	}
