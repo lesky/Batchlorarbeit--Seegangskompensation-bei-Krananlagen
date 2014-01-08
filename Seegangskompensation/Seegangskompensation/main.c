@@ -24,7 +24,7 @@
 
 // Präprozessor:Für Unittesting:
 // #defein Test nicht auskomentieren:
-#define UTEST
+// #define UTEST
 
 #include <m8c.h>        
 #include "PSoCAPI.h"    
@@ -33,18 +33,32 @@
 // globale Structur zur Übergabe der Prozessdaten:
 struct 
    {	  						
-	char pdchBechleunigung, pdchEntfernung;			
-	char pdchSollwert;								
+	char pdchBechleunigung;
+	char pdchEntfernung;			
+	char pdchSollwert;
+	char pdchDrehzahl; 
+	char pdchRichtung;
+	char hichBeschleunigungssumme;
 	} prozess;
 
 // Funktionsprototypen:
 void Initalisierung(void);
 void LCDansteuern(char);
+void Ausgangansteuern(char, char);
+void Ausgangberechnen(void);
+void Dateneinlesen(void);
 
 // mainfunktion
 // Präprozessor: kompiliere wenn kein test
 #ifndef UTEST
-
+	void main(void )
+		{
+			Initalisierung();
+			Dateneinlesen();
+			Ausgangberechnen();
+			Ausgangansteuern(prozess.pdchDrehzahl, prozess.pdchRichtung);
+			LCDansteuern(prozess.pdchEntfernung);
+		}
 #else
 	// Funktion zum Unittesting
 	void main(void)
@@ -58,7 +72,44 @@ void LCDansteuern(char);
 		}
 #endif 
 
+void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
+	{
+		// Drehrichtung Auswählen
+		
+			
+			// Linkslauf
+			if (hichRichtung == 1)
+			{
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(0);
+				IN2_Switch(1);
+				
+			
+			}
+			// Rechtslauf
+			else if (hichRichtung == 2)
+			{
+				
+				// IN1 und IN2 Ansteuern
+				IN1_Switch(1);
+				IN2_Switch(0);
+				
+			
+			}
+			// Ungültiger Wert
+			else
+			{
+				// Pulsweite auf 0 setzen
+				PWM8_1_WritePulseWidth(0);
+				// Funktion verlassen
+				return ;
+			}	
+			
+		// Pulsweite auf hichAusgangswert setzen 		
+		PWM8_1_WritePulseWidth(hichAusgangswert);
+	}
 
+		
 void Initalisierung(void)
 	{
 	//globale Interrupts Freigeben
@@ -93,3 +144,50 @@ void LCDansteuern(char hichdata)
     itoa(rgch,hichdata,10);
     LCD_1_PrString(rgch);                
     }
+	
+void Ausgangberechnen(void)
+    {   
+	// Variablen
+	char hichAusgangswert;
+		
+	// Konstanten					
+	char kochKR;
+	char kochKRZ;
+		// Parameter Berechnen
+			
+			prozess.hichBeschleunigungssumme = prozess.hichBeschleunigungssumme + prozess.pdchBechleunigung;
+			
+			hichAusgangswert = ( prozess.pdchSollwert - prozess.pdchBechleunigung ) * kochKR
+								- kochKRZ * prozess.hichBeschleunigungssumme;
+		
+			if (hichAusgangswert <= 0)
+			{
+				prozess.pdchDrehzahl = hichAusgangswert;
+				prozess.pdchRichtung = 1;
+			}
+			else 
+			{
+				prozess.pdchDrehzahl = -hichAusgangswert;
+				prozess.pdchRichtung = 2;
+			};
+			
+    }
+	
+void Dateneinlesen(void)
+	{	
+		// I2C Adresse: 1001 000 -> 0x48
+		// Einleseforgang beginnen
+		I2Cm_fSendRepeatStart(0x48,I2Cm_READ);
+		
+		// Daten Einlesen und ACK an slafe senden
+		I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchBechleunigung = I2Cm_bRead(I2Cm_ACKslave);
+		prozess.pdchEntfernung	= I2Cm_bRead(I2Cm_ACKslave);
+		
+		// lezte Daten ohne ACK einlesen
+		prozess.pdchSollwert = I2Cm_bRead(I2Cm_NAKslave);
+		
+		//Stop Condition
+       	I2Cm_SendStop();
+
+	}

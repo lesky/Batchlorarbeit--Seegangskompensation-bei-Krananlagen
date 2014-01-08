@@ -52,8 +52,8 @@ void Ausgangansteuern(char, char);
 		Initalisierung();
 		
 		// Unittest des LCD
-		Ausgangansteuern(0,0);
-		LCD_1_Position(1,0);    
+		Ausgangansteuern(0,2);
+		LCD_1_Position(1,1);    
     	LCD_1_PrCString("OK");
 		}
 #endif 
@@ -85,32 +85,36 @@ void Initalisierung(void)
 void Ausgangansteuern(char hichAusgangswert, char hichRichtung)
 	{
 		// Drehrichtung Auswählen
-		switch(hichRichtung) {
+		
 			
 			// Linkslauf
-			case 1: 
+			if (hichRichtung == 1)
+			{
 				// IN1 und IN2 Ansteuern
 				IN1_Switch(0);
 				IN2_Switch(1);
-				break;
+				
 			
+			}
 			// Rechtslauf
-			case 2:
+			else if (hichRichtung == 2)
+			{
 				
 				// IN1 und IN2 Ansteuern
 				IN1_Switch(1);
 				IN2_Switch(0);
-				break;
 				
+			
+			}
 			// Ungültiger Wert
-			default:
+			else
+			{
 				// Pulsweite auf 0 setzen
 				PWM8_1_WritePulseWidth(0);
 				// Funktion verlassen
 				return ;
-				
-			}
-		
+			}	
+			
 		// Pulsweite auf hichAusgangswert setzen 		
 		PWM8_1_WritePulseWidth(hichAusgangswert);
 	}

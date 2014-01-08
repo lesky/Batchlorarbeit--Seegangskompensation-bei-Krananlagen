@@ -1,149 +1,149 @@
 Project:      output/Seegangskompensation
 Build Number: 0
-Date:         Wed Dec 25 07:52:50 2013
+Date:         Mon Jan 06 10:59:50 2014
 Compiler:     ICCM8C
 Version:      7.05.00
 
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                             lit   0150   005D =     93. bytes (rel,con,rom,lit)
+                             lit   0150   006A =    106. bytes (rel,con,rom,lit)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0153  LoadConfigTBL_seegangskompensation_Bank0
-       0184  LoadConfigTBL_seegangskompensation_Bank1
-       01AD  __lit_end
+       0160  LoadConfigTBL_seegangskompensation_Bank0
+       0191  LoadConfigTBL_seegangskompensation_Bank1
+       01BA  __lit_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     psoc_config   01AD   0138 =    312. bytes (rel,con,rom,code)
+                     psoc_config   01BA   0138 =    312. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       01AD  LoadConfigTBL_seegangskompensation_Ordered
-       0272  _LoadConfigInit
-       0272  LoadConfigInit
-       028E  _LoadConfig_seegangskompensation
-       028E  LoadConfig_seegangskompensation
-       02E5  __psoc_config_end
+       01BA  LoadConfigTBL_seegangskompensation_Ordered
+       027F  _LoadConfigInit
+       027F  LoadConfigInit
+       029B  _LoadConfig_seegangskompensation
+       029B  LoadConfig_seegangskompensation
+       02F2  __psoc_config_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     UserModules   02E5   057E =   1406. bytes (rel,con,rom,code)
+                     UserModules   02F2   057E =   1406. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       02E5  _PWM8_1_ISR
-       02E6  PWM8_1_EnableInt
-       02E6  _PWM8_1_EnableInt
-       02EA  _PWM8_1_DisableInt
-       02EA  PWM8_1_DisableInt
-       02EE  PWM8_1_Start
-       02EE  _PWM8_1_Start
-       02F2  PWM8_1_Stop
-       02F2  _PWM8_1_Stop
-       02F6  _PWM8_1_WritePeriod
-       02F6  PWM8_1_WritePeriod
-       02F9  _PWM8_1_WritePulseWidth
-       02F9  PWM8_1_WritePulseWidth
-       02FC  bPWM8_1_ReadPulseWidth
-       02FC  _bPWM8_1_ReadPulseWidth
-       02FC  _PWM8_1_bReadPulseWidth
-       02FC  PWM8_1_bReadPulseWidth
-       02FF  PWM8_1_bReadCounter
-       02FF  bPWM8_1_ReadCounter
-       02FF  _bPWM8_1_ReadCounter
-       02FF  _PWM8_1_bReadCounter
-       0328  _LCD_1_PrCString
-       0328  LCD_1_PrCString
-       033A  LCD_1_HEX_STR
-       034A  LCD_1_PrHexByte
-       034A  _LCD_1_PrHexByte
-       035D  LCD_1_PrHexInt
-       035D  _LCD_1_PrHexInt
-       0364  _LCD_1_PrString
-       0364  LCD_1_PrString
-       036E  _LCD_1_WriteData
-       036E  _LCD_1_Write_Data
-       036E  LCD_1_Write_Data
-       036E  LCD_1_WriteData
-       0382  LCD_1_Control
-       0382  _LCD_1_Control
-       0429  LCD_1_Start
-       0429  _LCD_1_Start
-       0429  _LCD_1_Init
-       0429  LCD_1_Init
-       0495  LCD_1_ROW_OFFSET
-       0499  _LCD_1_Position
-       0499  LCD_1_Position
-       04A5  LCD_1_Delay50uTimes
-       04A5  _LCD_1_Delay50uTimes
-       04AB  LCD_1_Delay50u_Table
-       04B3  LCD_1_Delay50u
-       04B3  _LCD_1_Delay50u
-       04C7  IN2_On
-       04C7  _IN2_On
-       04CB  _IN2_Stop
-       04CB  IN2_Stop
-       04CB  IN2_Off
-       04CB  _IN2_Start
-       04CB  IN2_Start
-       04CB  _IN2_Off
-       04CD  IN2_Switch
-       04CD  _IN2_Switch
-       04DE  _IN2_Invert
-       04DE  IN2_Invert
-       04E6  IN2_GetState
-       04E6  _IN2_GetState
-       04F0  IN1_On
-       04F0  _IN1_On
-       04F4  _IN1_Off
-       04F4  _IN1_Stop
-       04F4  _IN1_Start
-       04F4  IN1_Off
-       04F4  IN1_Stop
-       04F4  IN1_Start
-       04F6  IN1_Switch
-       04F6  _IN1_Switch
-       0507  IN1_Invert
-       0507  _IN1_Invert
-       050F  _IN1_GetState
-       050F  IN1_GetState
-       0519  _I2Cm_Start
-       0519  I2Cm_Start
-       053A  I2Cm_Stop
-       053A  _I2Cm_Stop
-       053B  _I2Cm_fReadBytes
-       0584  I2Cm_fReadBytes
-       05C8  _I2Cm_bWriteBytes
-       0605  I2Cm_bWriteBytes
-       063D  _I2Cm_bWriteCBytes
-       067D  I2Cm_bWriteCBytes
-       06BA  _I2Cm_fSendRepeatStart
-       06BA  I2Cm_fSendRepeatStart
-       06ED  I2Cm_fSendStart
-       06ED  _I2Cm_fSendStart
-       071E  _I2Cm_fWrite
-       071E  I2Cm_fWrite
-       079D  _I2Cm_bRead
-       079D  I2Cm_bRead
-       0830  I2Cm_SendStop
-       0830  _I2Cm_SendStop
-       0863  __UserModules_end
+       02F2  _PWM8_1_ISR
+       02F3  PWM8_1_EnableInt
+       02F3  _PWM8_1_EnableInt
+       02F7  _PWM8_1_DisableInt
+       02F7  PWM8_1_DisableInt
+       02FB  PWM8_1_Start
+       02FB  _PWM8_1_Start
+       02FF  PWM8_1_Stop
+       02FF  _PWM8_1_Stop
+       0303  _PWM8_1_WritePeriod
+       0303  PWM8_1_WritePeriod
+       0306  _PWM8_1_WritePulseWidth
+       0306  PWM8_1_WritePulseWidth
+       0309  bPWM8_1_ReadPulseWidth
+       0309  _bPWM8_1_ReadPulseWidth
+       0309  _PWM8_1_bReadPulseWidth
+       0309  PWM8_1_bReadPulseWidth
+       030C  PWM8_1_bReadCounter
+       030C  bPWM8_1_ReadCounter
+       030C  _bPWM8_1_ReadCounter
+       030C  _PWM8_1_bReadCounter
+       0335  _LCD_1_PrCString
+       0335  LCD_1_PrCString
+       0347  LCD_1_HEX_STR
+       0357  LCD_1_PrHexByte
+       0357  _LCD_1_PrHexByte
+       036A  LCD_1_PrHexInt
+       036A  _LCD_1_PrHexInt
+       0371  _LCD_1_PrString
+       0371  LCD_1_PrString
+       037B  _LCD_1_WriteData
+       037B  _LCD_1_Write_Data
+       037B  LCD_1_Write_Data
+       037B  LCD_1_WriteData
+       038F  LCD_1_Control
+       038F  _LCD_1_Control
+       0436  LCD_1_Start
+       0436  _LCD_1_Start
+       0436  _LCD_1_Init
+       0436  LCD_1_Init
+       04A2  LCD_1_ROW_OFFSET
+       04A6  _LCD_1_Position
+       04A6  LCD_1_Position
+       04B2  LCD_1_Delay50uTimes
+       04B2  _LCD_1_Delay50uTimes
+       04B8  LCD_1_Delay50u_Table
+       04C0  LCD_1_Delay50u
+       04C0  _LCD_1_Delay50u
+       04D4  IN2_On
+       04D4  _IN2_On
+       04D8  _IN2_Stop
+       04D8  IN2_Stop
+       04D8  IN2_Off
+       04D8  _IN2_Start
+       04D8  IN2_Start
+       04D8  _IN2_Off
+       04DA  IN2_Switch
+       04DA  _IN2_Switch
+       04EB  _IN2_Invert
+       04EB  IN2_Invert
+       04F3  IN2_GetState
+       04F3  _IN2_GetState
+       04FD  IN1_On
+       04FD  _IN1_On
+       0501  _IN1_Off
+       0501  _IN1_Stop
+       0501  _IN1_Start
+       0501  IN1_Off
+       0501  IN1_Stop
+       0501  IN1_Start
+       0503  IN1_Switch
+       0503  _IN1_Switch
+       0514  IN1_Invert
+       0514  _IN1_Invert
+       051C  _IN1_GetState
+       051C  IN1_GetState
+       0526  _I2Cm_Start
+       0526  I2Cm_Start
+       0547  I2Cm_Stop
+       0547  _I2Cm_Stop
+       0548  _I2Cm_fReadBytes
+       0591  I2Cm_fReadBytes
+       05D5  _I2Cm_bWriteBytes
+       0612  I2Cm_bWriteBytes
+       064A  _I2Cm_bWriteCBytes
+       068A  I2Cm_bWriteCBytes
+       06C7  _I2Cm_fSendRepeatStart
+       06C7  I2Cm_fSendRepeatStart
+       06FA  I2Cm_fSendStart
+       06FA  _I2Cm_fSendStart
+       072B  _I2Cm_fWrite
+       072B  I2Cm_fWrite
+       07AA  _I2Cm_bRead
+       07AA  I2Cm_bRead
+       083D  I2Cm_SendStop
+       083D  _I2Cm_SendStop
+       0870  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   0863   0085 =    133. bytes (rel,con,rom,code)
+                            text   0870   0092 =    146. bytes (rel,con,rom,code)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0863  __text_start
-       0863  _main
-       0882  _Initalisierung
-       0896  _Ausgangansteuern
-       08E7  PSoC_GPIO_ISR
-       08E8  __text_end
+       0870  __text_start
+       0870  _main
+       0891  _Initalisierung
+       08A5  _Ausgangansteuern
+       0901  PSoC_GPIO_ISR
+       0902  __text_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
